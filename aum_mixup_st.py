@@ -1,0 +1,979 @@
+import argparse
+from aum import AUMCalculator
+
+from collections import defaultdict
+from copy import deepcopy
+
+import json
+import logging
+import matplotlib.pyplot as plt
+
+import numpy as np
+
+import os
+import pandas as pd
+
+
+from sklearn.metrics import f1_score
+from sklearn.utils import shuffle
+
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+from torchmetrics.classification import MulticlassCalibrationError
+
+from tqdm import tqdm
+from transformers import AutoConfig, AutoTokenizer, AutoModelForSequenceClassification
+
+# logging
+logger = logging.getLogger('UST')
+logging.basicConfig(level=logging.INFO)
+
+GLOBAL_SEED = int(os.getenv("PYTHONHASHSEED"))
+logger.info("Global seed {}".format(GLOBAL_SEED))
+
+
+
+# ── GPU setup ──────────────────────────────────────────────────────────────────
+if torch.cuda.device_count() >= 2:
+    os.environ['CUDA_VISIBLE_DEVICES'] = '2,3'
+
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+print("The device is:", device)
+
+
+def multigpu(model):
+    if torch.cuda.device_count() >= 2:
+        return nn.DataParallel(model).to(device)
+    return model.to(device)
+
+
+# ── Model ──────────────────────────────────────────────────────────────────────
+class BertModel(torch.nn.Module):
+    def __init__(self, checkpoint, num_labels=10):
+        super().__init__()
+        self.model = AutoModelForSequenceClassification.from_pretrained(
+            checkpoint, num_labels=num_labels)
+        self.T = torch.nn.Parameter(torch.ones(1) * 1.0)
+
+    def forward(self, input_ids, token_type_ids=None, attention_mask=None,
+                temperature_scaling=False):
+        if temperature_scaling:
+            with torch.no_grad():
+                outputs = self.model(input_ids=input_ids,
+                                     token_type_ids=token_type_ids,
+                                     attention_mask=attention_mask)
+            temperature = self.T.unsqueeze(1).expand(
+                outputs.logits.size(0), outputs.logits.size(1))
+            outputs.logits = outputs.logits / temperature
+        else:
+            outputs = self.model(input_ids=input_ids,
+                                 token_type_ids=token_type_ids,
+                                 attention_mask=attention_mask)
+        return outputs
+
+
+# ── Evaluation ─────────────────────────────────────────────────────────────────
+def evaluate(model, test_dataloader, criterion, batch_size, num_labels,
+             temp_scaling=False):
+    full_predictions, true_labels, probabilities = [], [], []
+    model.eval()
+    crt_loss = 0.0
+
+    with torch.no_grad():
+        for elem in tqdm(test_dataloader):
+            x = {k: elem[k].to(device) for k in elem if k not in ['idx', 'weights']}
+            logits = model(input_ids=x['input_ids'],
+                           token_type_ids=x.get('token_type_ids'),
+                           attention_mask=x['attention_mask'],
+                           temperature_scaling=temp_scaling)
+            results = torch.argmax(logits.logits, dim=1)
+            prob = F.softmax(logits.logits.cpu(), dim=1)
+            probabilities += list(prob)
+            crt_loss += criterion(logits.logits, x['lbl']).cpu().item()
+            full_predictions += list(results.cpu().numpy())
+            true_labels += list(elem['lbl'].cpu().numpy())
+
+    model.train()
+
+    preds = torch.stack(probabilities).to(device)
+    orig = torch.tensor(true_labels, dtype=torch.long, device=device)
+    metric = MulticlassCalibrationError(num_classes=num_labels, n_bins=10, norm='l1').to(device)
+    ece_metric = metric(preds, orig)
+
+    return (f1_score(true_labels, full_predictions, average='macro'),
+            crt_loss / len(test_dataloader),
+            ece_metric)
+
+
+# ── Pseudo-labelling ───────────────────────────────────────────────────────────
+def predict_unlabeled(model, ds_unlabeled):
+    model.eval()
+    data_loader = torch.utils.data.DataLoader(
+        ds_unlabeled, batch_size=128, shuffle=False)
+    y_pred_unlbl = []
+
+    with torch.no_grad():
+        for elem in data_loader:
+            x = {k: elem[k].to(device) for k in elem if k not in ['idx', 'weights']}
+            pred = model(input_ids=x['input_ids'],
+                         token_type_ids=x.get('token_type_ids'),
+                         attention_mask=x['attention_mask'])
+            y_pred_unlbl.extend(pred.logits.cpu().numpy())
+
+    y_pred_unlbl = np.argmax(np.array(y_pred_unlbl), axis=-1).flatten()
+    return CustomDataset_tracked(
+        ds_unlabeled.text_list, y_pred_unlbl, ds_unlabeled.idxes,
+        ds_unlabeled.tokenizer, labeled=True)
+
+
+# ── Reliability helpers ────────────────────────────────────────────────────────
+def save_reliability_data(filename, confidences, predictions, true_labels):
+    df = pd.DataFrame({
+        'predictions': np.array(predictions),
+        'true_labels': np.array(true_labels),
+        'confidences': confidences.cpu().numpy(),
+    })
+    out_path = os.path.join(
+        "/home/b/bharanibala/noisefind/DisasterTweet-Experiments-main/reliability",
+        f"{filename}_rel_data.csv")
+    df.to_csv(out_path, sep=',', index=False)
+
+
+def compute_reliability_data(confidences, predictions, true_labels, num_bins=10):
+    predictions = np.array(predictions)
+    true_labels = np.array(true_labels)
+    bins = np.linspace(0, 1, num_bins + 1)
+    bin_indices = np.digitize(confidences, bins) - 1
+    bin_accuracies = np.zeros(num_bins)
+    bin_confidences = np.zeros(num_bins)
+    bin_counts = np.zeros(num_bins)
+    for i in range(num_bins):
+        mask = bin_indices == i
+        if np.sum(mask) > 0:
+            bin_confidences[i] = np.mean(confidences[mask])
+            bin_accuracies[i] = f1_score(true_labels[mask], predictions[mask],
+                                         average='macro', zero_division=0)
+            bin_counts[i] = np.sum(mask)
+    return bins[:-1], bin_accuracies, bin_confidences
+
+
+def plot_reliability_diagram(bin_edges, bin_accuracies, bin_confidences,
+                             method, filename, ece):
+    num_bins = 10
+    bin_width = 1 / num_bins
+    calibration_gaps = np.abs(bin_accuracies - bin_confidences)
+
+    fig, ax1 = plt.subplots(figsize=(7, 7))
+    ax1.plot([0, 1], [0, 1], linestyle='--', color='black', linewidth=1.5,
+             label='Perfect Calibration')
+    ax1.bar(bin_edges, calibration_gaps, width=bin_width,
+            color=['#1f77b4' if g >= 0 else '#ff7f0e' for g in calibration_gaps],
+            alpha=0.6, align='edge', label='Calibration Gap')
+    ax1.scatter(bin_edges + bin_width / 2, bin_accuracies, color='blue',
+                label='Empirical F1', edgecolors='black', linewidth=0.8, s=50)
+    ax1.set_xlabel('Confidence', fontsize=14)
+    ax1.set_ylabel('F1-score', fontsize=14)
+    ax1.set_xlim(0, 1)
+    ax1.set_ylim(0, 1)
+    ax1.tick_params(axis='both', labelsize=12)
+    ax1.axhline(y=0, color='gray', linestyle='-')
+    ax1.legend(fontsize=12, loc='upper left')
+    ax1.text(0.75, 0.05, f'ECE: {ece:.4f}', fontsize=12,
+             bbox=dict(facecolor='white', alpha=0.8))
+
+    plt.title(method, fontsize=16)
+    plt.grid(True, linestyle='--', alpha=0.6)
+
+    base = ("/home/b/bharanibala/noisefind/DisasterTweet-Experiments-main"
+            "/reliability/" + filename)
+    plt.savefig(base + '.pdf', format='pdf', dpi=300, bbox_inches='tight')
+    # BUG FIX: was saving PNG with format='pdf'
+    plt.savefig(base + '.png', format='png', dpi=300, bbox_inches='tight')
+    plt.show()
+
+
+def evaluate_with_reliability(model, test_dataloader, criterion, batch_size,
+                               filename, method, num_labels):
+    full_predictions, true_labels, probabilities = [], [], []
+    model.eval()
+    crt_loss = 0.0
+
+    with torch.no_grad():
+        for elem in tqdm(test_dataloader):
+            x = {k: elem[k].to(device) for k in elem if k not in ['idx', 'weights']}
+            logits = model(input_ids=x['input_ids'],
+                           token_type_ids=x.get('token_type_ids'),
+                           attention_mask=x['attention_mask'],
+                           temperature_scaling=False)
+            results = torch.argmax(logits.logits, dim=1)
+            prob = F.softmax(logits.logits.cpu(), dim=1)
+            probabilities += list(prob)
+            crt_loss += criterion(logits.logits, x['lbl']).cpu().item()
+            full_predictions += list(results.cpu().numpy())
+            true_labels += list(elem['lbl'].cpu().numpy())
+
+    model.train()
+
+    preds = torch.stack(probabilities).to(device)
+    orig = torch.tensor(true_labels, dtype=torch.long, device=device)
+    metric = MulticlassCalibrationError(num_classes=num_labels, n_bins=4, norm='l1').to(device)
+    ece_metric = metric(preds, orig)
+
+    confidences, _ = torch.max(preds, dim=1)
+    save_reliability_data(filename, confidences, full_predictions, true_labels)
+    f1_per_bin, conf_per_bin, bin_conf = compute_reliability_data(
+        confidences.cpu().numpy(), full_predictions, true_labels)
+    plot_reliability_diagram(f1_per_bin, conf_per_bin, bin_conf, method, filename, ece_metric)
+
+    return (f1_score(true_labels, full_predictions, average='macro'),
+            crt_loss / len(test_dataloader),
+            ece_metric)
+
+
+# ── SSL with AUM tracking ──────────────────────────────────────────────────────
+def train_ssl_with_aum(pt_teacher_checkpoint, ds_train, ds_pseudolabeled,
+                       ulb_epochs, aum_calculator, ls, sup_batch_size, num_labels):
+    model = multigpu(BertModel(pt_teacher_checkpoint, num_labels=num_labels))
+    optimizer = torch.optim.Adam(model.parameters(), lr=5e-5)
+    model.train()
+
+    loss_fn_supervised = torch.nn.CrossEntropyLoss(reduction='mean', label_smoothing=ls)
+    loss_fn_unsupervised = torch.nn.CrossEntropyLoss(reduction='none', label_smoothing=ls)
+
+    data_sampler = torch.utils.data.RandomSampler(ds_train, num_samples=10 ** 4)
+    batch_sampler = torch.utils.data.BatchSampler(data_sampler, sup_batch_size, drop_last=False)
+    train_dataloader = torch.utils.data.DataLoader(ds_train, batch_sampler=batch_sampler)
+    data_loader_unlabeled = torch.utils.data.DataLoader(
+        ds_pseudolabeled, batch_size=128, shuffle=False)
+
+    for epoch in range(ulb_epochs):
+        for data_supervised, data_unsupervised in tqdm(
+                zip(train_dataloader, data_loader_unlabeled)):
+            cuda_sup = {k: data_supervised[k].to(device)
+                        for k in data_supervised if k not in ['idx', 'weights']}
+            cuda_unsup = {k: data_unsupervised[k].to(device)
+                          for k in data_unsupervised if k not in ['idx', 'weights']}
+
+            optimizer.zero_grad()
+            logits_lbls = model(input_ids=cuda_sup['input_ids'],
+                                token_type_ids=cuda_sup.get('token_type_ids'),
+                                attention_mask=cuda_sup['attention_mask']).logits
+            logits_ulbl = model(input_ids=cuda_unsup['input_ids'],
+                                token_type_ids=cuda_unsup.get('token_type_ids'),
+                                attention_mask=cuda_unsup['attention_mask']).logits
+
+            aum_calculator.update(logits_ulbl.detach(), cuda_unsup['lbl'],
+                                  data_unsupervised['idx'].numpy())
+
+            loss_sup = loss_fn_supervised(logits_lbls, cuda_sup['lbl'])
+            loss_unsup = loss_fn_unsupervised(logits_ulbl, cuda_unsup['lbl'])
+            loss = 0.5 * loss_sup + 0.5 * torch.mean(loss_unsup)
+            loss.backward()
+            optimizer.step()
+
+
+# ── SSL with Mixup (no AUM) ────────────────────────────────────────────────────
+def train_ssl_no_aum_with_mixup(pt_teacher_checkpoint, ds_train, val_dataloader,
+                                ds_low_aum, ds_high_aum, ulb_epochs, ls, model_dir,
+                                sup_batch_size, best_f1_overall, best_f1, num_labels):
+    model = multigpu(BertModel(pt_teacher_checkpoint, num_labels))
+    optimizer = torch.optim.Adam(model.parameters(), lr=5e-5)
+    model.train()
+
+    loss_fn_supervised = torch.nn.CrossEntropyLoss(reduction='mean', label_smoothing=ls)
+    loss_fn_unsupervised = torch.nn.CrossEntropyLoss(reduction='none', label_smoothing=ls)
+
+    data_sampler = torch.utils.data.RandomSampler(ds_train, num_samples=10 ** 4)
+    batch_sampler = torch.utils.data.BatchSampler(data_sampler, sup_batch_size, drop_last=False)
+    train_dataloader = torch.utils.data.DataLoader(ds_train, batch_sampler=batch_sampler)
+    unlabeled_low = torch.utils.data.DataLoader(ds_low_aum, batch_size=128, shuffle=False)
+    unlabeled_high = torch.utils.data.DataLoader(ds_high_aum, batch_size=128, shuffle=False)
+
+    crt_patience = 0
+    save_path = f"/home/b/bharanibala/datasets/humaid_data/data/{model_dir}/pytorch_model.bin"
+
+    for epoch in range(ulb_epochs):
+        for data_supervised, data_unsup_low, data_unsup_high in tqdm(
+                zip(train_dataloader, unlabeled_low, unlabeled_high)):
+            cuda_sup = {k: data_supervised[k].to(device)
+                        for k in data_supervised if k not in ['idx', 'weights']}
+            cuda_low = {k: data_unsup_low[k].to(device)
+                        for k in data_unsup_low if k not in ['idx', 'weights']}
+            cuda_high = {k: data_unsup_high[k].to(device)
+                         for k in data_unsup_high if k not in ['idx', 'weights']}
+
+            num_lb = cuda_sup['input_ids'].shape[0]
+            num_ulb_low = cuda_low['input_ids'].shape[0]
+            num_ulb_high = cuda_high['input_ids'].shape[0]  # BUG FIX: was num_ulb_hight
+
+            # Forward pass on all three splits at once
+            merged = {}
+            for k in cuda_sup:
+                merged[k] = torch.cat((cuda_sup[k], cuda_low[k], cuda_high[k]))
+
+            optimizer.zero_grad()
+            logits = model(input_ids=merged['input_ids'],
+                           token_type_ids=merged.get('token_type_ids'),
+                           attention_mask=merged['attention_mask'])
+
+            logits_lbls = logits.logits[:num_lb]
+            logits_ulbl_low = logits.logits[num_lb:num_lb + num_ulb_low]
+            logits_ulbl_high = logits.logits[num_lb + num_ulb_low:]
+
+            alpha_mix = 0.4
+            lam = np.random.beta(alpha_mix, alpha_mix)
+
+            labels_lbls = F.one_hot(cuda_sup['lbl'], num_classes=logits_lbls.shape[1]).float()
+            labels_ulbl_low = F.one_hot(cuda_low['lbl'], num_classes=logits_ulbl_low.shape[1]).float()
+            labels_ulbl_high = F.one_hot(cuda_high['lbl'], num_classes=logits_ulbl_high.shape[1]).float()
+
+            batch_size = logits_lbls.shape[0]
+
+            # Mixup: labeled ↔ low-AUM unlabeled
+            M_logits_1 = lam * logits_lbls + (1 - lam) * logits_ulbl_low[:batch_size]
+            M_labels_1 = lam * labels_lbls + (1 - lam) * labels_ulbl_low[:batch_size]
+
+            # Mixup: high-AUM ↔ low-AUM unlabeled
+            M_logits_2 = lam * logits_ulbl_high + (1 - lam) * logits_ulbl_low
+            M_labels_2 = lam * labels_ulbl_high + (1 - lam) * labels_ulbl_low
+
+            loss_lbl = loss_fn_supervised(logits_lbls, cuda_sup['lbl'])
+            loss_ulbl_high = loss_fn_unsupervised(logits_ulbl_high, cuda_high['lbl'])
+            loss_M1 = torch.mean(
+                torch.sum(-M_labels_1 * torch.log_softmax(M_logits_1, dim=-1), dim=-1))
+            loss_M2 = torch.mean(
+                torch.sum(-M_labels_2 * torch.log_softmax(M_logits_2, dim=-1), dim=-1))
+
+            loss = 0.25 * loss_lbl + 0.25 * torch.mean(loss_ulbl_high) + \
+                   0.25 * loss_M1 + 0.25 * loss_M2
+            loss.backward()
+            optimizer.step()
+
+        # BUG FIX: evaluate once per epoch, not once per batch
+        f1_val, _, _ = evaluate(model, val_dataloader, loss_fn_supervised, 128, num_labels)
+        print(f'Validation F1: {f1_val:.4f}  (epoch {epoch})')
+
+        if f1_val >= best_f1:
+            crt_patience = 0
+            best_f1 = f1_val
+            if best_f1 > best_f1_overall:
+                torch.save(model.state_dict(), save_path)
+                best_f1_overall = best_f1
+            print(f'New best macro validation {best_f1:.4f}  epoch {epoch}')
+        else:
+            crt_patience += 1
+            if crt_patience >= 3:
+                crt_patience = 0
+                print('Exceeding max patience; Exiting..')
+                break
+
+    return best_f1_overall, best_f1
+
+
+# ── Main self-training loop (AUM + Mixup) ─────────────────────────────────────
+def train_model_st_with_aummixup(ds_train, ds_dev, ds_test, ds_unlabeled,
+                                  pt_teacher_checkpoint, cfg, model_dir,
+                                  aum_save_dir, num_labels,
+                                  sup_batch_size=16, unsup_batch_size=64,
+                                  unsup_size=4096, sample_size=16384,
+                                  sample_scheme='easy_bald_class_conf',
+                                  T=30, alpha=0.1, sup_epochs=20,
+                                  unsup_epochs=25, N_base=10,
+                                  dense_dropout=0.5,
+                                  attention_probs_dropout_prob=0.3,
+                                  hidden_dropout_prob=0.3,
+                                  results_file="", temp_scaling=False, ls=0.0):
+
+    logger_dict = {"Temperature Scaling": temp_scaling, "Label Smoothing": ls}
+
+    train_dataloader = torch.utils.data.DataLoader(
+        ds_train, batch_size=sup_batch_size, shuffle=True)
+    validation_dataloader = torch.utils.data.DataLoader(
+        ds_dev, batch_size=sup_batch_size, shuffle=False)
+    test_dataloader = torch.utils.data.DataLoader(
+        ds_test, batch_size=128, shuffle=False)
+
+    loss_fn = torch.nn.CrossEntropyLoss(label_smoothing=ls)
+    save_path = f"/home/b/bharanibala/datasets/humaid_data/data/{model_dir}/pytorch_model.bin"
+
+    best_f1_overall = 0
+    best_f1 = 0  #BUG FIX: initialise here so it is always defined
+    crt_patience = 0
+
+    # ── Phase 1: supervised warm-up ──
+    for counter in range(N_base):
+        best_f1 = 0
+        model = multigpu(BertModel(pt_teacher_checkpoint, num_labels))
+        model.train()
+        optimizer = torch.optim.Adam(model.parameters(), lr=5e-5)
+        if counter == 0:
+            logger.info(model)
+
+        for epoch in range(sup_epochs):
+            for data in tqdm(train_dataloader):
+                cuda = {k: data[k].to(device)
+                        for k in data if k not in ['idx', 'weights']}
+                optimizer.zero_grad()
+                logits = model(input_ids=cuda['input_ids'],
+                               token_type_ids=cuda.get('token_type_ids'),
+                               attention_mask=cuda['attention_mask'])
+                loss = loss_fn(logits.logits, cuda['lbl'])
+                loss.backward()
+                optimizer.step()
+
+            f1_val, _, _ = evaluate(model, validation_dataloader, loss_fn,
+                                    unsup_batch_size, num_labels)
+            if f1_val >= best_f1:
+                crt_patience = 0
+                best_f1 = f1_val
+                if best_f1 > best_f1_overall:
+                    torch.save(model.state_dict(), save_path)
+                    best_f1_overall = best_f1
+                print(f'New best macro validation {best_f1:.4f}  epoch {epoch}')
+            else:
+                crt_patience += 1
+                if crt_patience >= 3:
+                    crt_patience = 0
+                    print('Exceeding max patience; Exiting..')
+                    break
+
+    del model
+
+    # ── Phase 2: self-training with AUM-guided Mixup ──
+    best_model = multigpu(BertModel(pt_teacher_checkpoint, num_labels))
+    best_model.load_state_dict(torch.load(save_path))
+
+    for epoch in range(unsup_epochs):
+        aum_calculator = AUMCalculator(aum_save_dir, compressed=False)
+        pseudolabeled_data = predict_unlabeled(best_model, ds_unlabeled)
+        train_ssl_with_aum(pt_teacher_checkpoint, ds_train, pseudolabeled_data,
+                           sup_epochs, aum_calculator, ls, sup_batch_size, num_labels)
+        aum_calculator.finalize()
+
+        aum_values_df = pd.read_csv(os.path.join(aum_save_dir, 'aum_values.csv'))
+        aum_values = sorted(aum_values_df['aum'].tolist())
+        median_aum_value = aum_values[int(len(aum_values) * 0.5)]
+
+        high_aum_ids, low_aum_ids = [], []
+        for _, row in aum_values_df.iterrows():
+            (high_aum_ids if row['aum'] > median_aum_value else low_aum_ids).append(
+                int(row['sample_id']))
+
+        print(f"Low AUM: {len(low_aum_ids)}  High AUM: {len(high_aum_ids)}")
+
+        low_aum_data = pseudolabeled_data.get_subset_dataset(low_aum_ids)
+        high_aum_data = pseudolabeled_data.get_subset_dataset(high_aum_ids)
+
+        ds_unlabeled_low = CustomDataset(
+            low_aum_data.text_list, low_aum_data.labels, ds_unlabeled.tokenizer, labeled=True)
+        ds_unlabeled_high = CustomDataset(
+            high_aum_data.text_list, high_aum_data.labels, ds_unlabeled.tokenizer, labeled=True)
+
+        best_f1_overall, best_f1 = train_ssl_no_aum_with_mixup(
+            pt_teacher_checkpoint, ds_train, validation_dataloader,
+            ds_unlabeled_low, ds_unlabeled_high, sup_epochs, ls, model_dir,
+            sup_batch_size, best_f1_overall, best_f1, num_labels)
+
+    # ── Final evaluation ──
+    # BUG FIX: load best checkpoint into a fresh model for evaluation;
+    # previously the code evaluated `best_model` (the AUM-phase seed model)
+    # instead of the final best model saved during mixup training.
+    final_model = multigpu(BertModel(pt_teacher_checkpoint, num_labels))
+    final_model.load_state_dict(torch.load(save_path))
+
+    rel_file = f"{model_dir}_{results_file}"
+    f1_macro_test, loss_test, ece_metric = evaluate_with_reliability(
+        final_model, test_dataloader, loss_fn, unsup_batch_size,
+        rel_file, "Self-Training with AUM based Mixup", num_labels)
+    logger.info(f"Test macro F1 based on best validation f1: {f1_macro_test}")
+
+    logger_dict["Best ST+AumMixup model"] = {
+        "F1 before temp scaling": str(f1_macro_test),
+        "ECE before temp scaling": str(ece_metric),
+    }
+
+    if temp_scaling:
+        optimizer = torch.optim.Adam(final_model.parameters(), lr=2e-2)
+        for ep in range(20):
+            for data in tqdm(validation_dataloader):
+                cuda = {k: data[k].to(device)
+                        for k in data if k not in ['idx', 'weights']}
+                optimizer.zero_grad()
+                result = final_model(cuda['input_ids'], cuda.get('token_type_ids'),
+                                     cuda['attention_mask'], True)
+                loss = loss_fn(result.logits, cuda['lbl'])
+                loss.backward()
+                optimizer.step()
+
+        f1_macro_test, _, ece_metric = evaluate(
+            final_model, test_dataloader, loss_fn, unsup_batch_size, num_labels, True)
+        logger_dict["Best ST+AumMixup model"]["F1 after temp scaling"] = str(f1_macro_test)
+        logger_dict["Best ST+AumMixup model"]["ECE after temp scaling"] = str(ece_metric)
+
+    print(json.dumps(logger_dict, indent=4))
+    out_path = f"/home/b/bharanibala/datasets/humaid_data/data/{model_dir}/{results_file}.txt"
+    with open(out_path, 'w') as fp:
+        fp.write(json.dumps(logger_dict, indent=4))
+
+
+# ── SSL with Saliency-guided Mixup (no AUM) ───────────────────────────────────
+def train_ssl_no_aum_with_sal_mixup(pt_teacher_checkpoint, ds_train, val_dataloader,
+                                    ds_low_aum, ds_high_aum, ulb_epochs, ls, model_dir,
+                                    sup_batch_size, best_f1_overall, best_f1, num_labels):
+    model = multigpu(BertModel(pt_teacher_checkpoint, num_labels=num_labels))
+    optimizer = torch.optim.Adam(model.parameters(), lr=5e-5)
+    model.train()
+
+    loss_fn_supervised = torch.nn.CrossEntropyLoss(reduction='mean', label_smoothing=ls)
+    loss_fn_unsupervised = torch.nn.CrossEntropyLoss(reduction='none', label_smoothing=ls)
+    cosine_similarity = nn.CosineSimilarity(dim=1, eps=1e-6)
+
+    data_sampler = torch.utils.data.RandomSampler(ds_train, num_samples=10 ** 4)
+    batch_sampler = torch.utils.data.BatchSampler(data_sampler, sup_batch_size, drop_last=False)
+    train_dataloader = torch.utils.data.DataLoader(ds_train, batch_sampler=batch_sampler)
+    unlabeled_low = torch.utils.data.DataLoader(ds_low_aum, batch_size=128, shuffle=False)
+    unlabeled_high = torch.utils.data.DataLoader(ds_high_aum, batch_size=128, shuffle=False)
+
+    crt_patience = 0
+    save_path = f"/home/b/bharanibala/datasets/humaid_data/data/{model_dir}/pytorch_model.bin"
+
+    for epoch in range(ulb_epochs):
+        for data_supervised, data_unsup_low, data_unsup_high in tqdm(
+                zip(train_dataloader, unlabeled_low, unlabeled_high)):
+            cuda_sup = {k: data_supervised[k].to(device)
+                        for k in data_supervised if k not in ['idx', 'weights']}
+            cuda_low = {k: data_unsup_low[k].to(device)
+                        for k in data_unsup_low if k not in ['idx', 'weights']}
+            cuda_high = {k: data_unsup_high[k].to(device)
+                         for k in data_unsup_high if k not in ['idx', 'weights']}
+
+            num_lb = cuda_sup['input_ids'].shape[0]
+            num_ulb_low = cuda_low['input_ids'].shape[0]
+            num_ulb_high = cuda_high['input_ids'].shape[0]
+
+            merged = {}
+            for k in cuda_sup:
+                merged[k] = torch.cat((cuda_sup[k], cuda_low[k], cuda_high[k]))
+
+            optimizer.zero_grad()
+            logits = model(input_ids=merged['input_ids'],
+                           token_type_ids=merged.get('token_type_ids'),
+                           attention_mask=merged['attention_mask'])
+
+            logits_lbls = logits.logits[:num_lb]
+            logits_ulbl_low = logits.logits[num_lb:num_lb + num_ulb_low]
+            logits_ulbl_high = logits.logits[num_lb + num_ulb_low:]
+
+            # BUG FIX: use a single backward pass for saliency gradients.
+            # Previously three separate .backward(retain_graph=True) calls ran
+            # before the final loss.backward(), causing gradients to accumulate
+            # and the graph to be traversed multiple times incorrectly.
+            loss_for_grad = (loss_fn_supervised(logits_lbls, cuda_sup['lbl']) +
+                             (cuda_high['weights'] * loss_fn_unsupervised(
+                                 logits_ulbl_high, cuda_high['lbl'])).mean() +
+                             (cuda_low['weights'] * loss_fn_unsupervised(
+                                 logits_ulbl_low, cuda_low['lbl'])).mean())
+
+            logits_lbls.retain_grad()
+            logits_ulbl_low.retain_grad()
+            logits_ulbl_high.retain_grad()
+            loss_for_grad.backward(retain_graph=True)
+
+            lbl_grads = logits_lbls.grad.data.abs()
+            ulbl_high_grads = logits_ulbl_high.grad.data.abs()
+            ulbl_low_grads = logits_ulbl_low.grad.data.abs()
+
+            alpha_mix = 0.4
+            lam = np.random.beta(alpha_mix, alpha_mix)
+
+            labels_lbls = F.one_hot(cuda_sup['lbl'], num_classes=logits_lbls.shape[1]).float()
+            labels_ulbl_low = F.one_hot(cuda_low['lbl'], num_classes=logits_ulbl_low.shape[1]).float()
+            labels_ulbl_high = F.one_hot(cuda_high['lbl'], num_classes=logits_ulbl_high.shape[1]).float()
+
+            batch_size = logits_lbls.shape[0]
+
+            # ── Saliency-guided mixup for labeled ↔ low-AUM ──
+            similar = torch.clone(logits_ulbl_low[:batch_size])
+            similar_label = torch.clone(labels_ulbl_low[:batch_size])
+            dissimilar = torch.clone(logits_ulbl_low[:batch_size])
+            dissimilar_label = torch.clone(labels_ulbl_low[:batch_size])
+
+            for j in range(batch_size):
+                sim_map = cosine_similarity(lbl_grads[j].unsqueeze(0),
+                                            ulbl_low_grads[:batch_size])
+                similar[j] = logits_ulbl_low[:batch_size][torch.argmax(sim_map)]
+                similar_label[j] = labels_ulbl_low[:batch_size][torch.argmax(sim_map)]
+                dissimilar[j] = logits_ulbl_low[:batch_size][torch.argmin(sim_map)]
+                dissimilar_label[j] = labels_ulbl_low[:batch_size][torch.argmin(sim_map)]
+
+            M_logits_1_ood = lam * logits_lbls + (1 - lam) * dissimilar
+            M_labels_1_ood = lam * labels_lbls + (1 - lam) * dissimilar_label
+            M_logits_1_id = lam * logits_lbls + (1 - lam) * similar
+            M_labels_1_id = lam * labels_lbls + (1 - lam) * similar_label
+
+            # ── Saliency-guided mixup for high-AUM ↔ low-AUM ──
+            similar_h = torch.clone(logits_ulbl_low)
+            similar_label_h = torch.clone(labels_ulbl_low)
+            dissimilar_h = torch.clone(logits_ulbl_low)
+            dissimilar_label_h = torch.clone(labels_ulbl_low)
+
+            for j in range(logits_ulbl_high.shape[0]):
+                sim_map = cosine_similarity(ulbl_high_grads[j].unsqueeze(0),
+                                            ulbl_low_grads)
+                similar_h[j] = logits_ulbl_low[torch.argmax(sim_map)]
+                similar_label_h[j] = labels_ulbl_low[torch.argmax(sim_map)]
+                dissimilar_h[j] = logits_ulbl_low[torch.argmin(sim_map)]
+                dissimilar_label_h[j] = labels_ulbl_low[torch.argmin(sim_map)]
+
+            M_logits_2_ood = lam * logits_ulbl_high + (1 - lam) * dissimilar_h
+            M_labels_2_ood = lam * labels_ulbl_high + (1 - lam) * dissimilar_label_h
+            M_logits_2_id = lam * logits_ulbl_high + (1 - lam) * similar_h
+            M_labels_2_id = lam * labels_ulbl_high + (1 - lam) * similar_label_h
+
+            loss_lbl = loss_fn_supervised(logits_lbls, cuda_sup['lbl'])
+            loss_ulbl_high = loss_fn_unsupervised(logits_ulbl_high, cuda_high['lbl'])
+            loss_M1 = (torch.mean(torch.sum(-M_labels_1_ood * torch.log_softmax(M_logits_1_ood, dim=-1), dim=-1)) +
+                       torch.mean(torch.sum(-M_labels_1_id * torch.log_softmax(M_logits_1_id, dim=-1), dim=-1))) / 2
+            loss_M2 = (torch.mean(torch.sum(-M_labels_2_ood * torch.log_softmax(M_logits_2_ood, dim=-1), dim=-1)) +
+                       torch.mean(torch.sum(-M_labels_2_id * torch.log_softmax(M_logits_2_id, dim=-1), dim=-1))) / 2
+
+            loss = 0.25 * loss_lbl + 0.25 * torch.mean(loss_ulbl_high) + \
+                   0.25 * loss_M1 + 0.25 * loss_M2
+            optimizer.zero_grad()
+            loss.backward()
+            optimizer.step()
+
+        # BUG FIX: evaluate once per epoch, not once per batch
+        f1_val, _, _ = evaluate(model, val_dataloader, loss_fn_supervised, 128, num_labels)
+        print(f'Validation F1: {f1_val:.4f}  (epoch {epoch})')
+
+        if f1_val >= best_f1:
+            crt_patience = 0
+            best_f1 = f1_val
+            if best_f1 > best_f1_overall:
+                torch.save(model.state_dict(), save_path)
+                best_f1_overall = best_f1
+            print(f'New best macro validation {best_f1:.4f}  epoch {epoch}')
+        else:
+            crt_patience += 1
+            if crt_patience >= 3:
+                crt_patience = 0
+                print('Exceeding max patience; Exiting..')
+                break
+
+    return best_f1_overall, best_f1
+
+class CustomDataset(torch.utils.data.Dataset):
+    def __init__(self, text_list, labels, tokenizer, max_seq_len=128, labeled=True):
+        self.text_list = text_list
+        self.labels = labels
+        self.tokenizer = tokenizer
+        self.max_seq_len = max_seq_len
+        self.labeled = labeled
+        self.idxes = list(range(len(text_list)))
+        self.weights = [1] * len(self.text_list)
+
+    def __getitem__(self, idx):
+        tok = self.tokenizer(
+            self.text_list[idx], padding='max_length', max_length=self.max_seq_len, truncation=True)
+        item = {key: torch.tensor(tok[key]) for key in tok}
+        if self.labeled:
+            item['lbl'] = torch.tensor(self.labels[idx], dtype=torch.long)
+        item['idx'] = self.idxes[idx]
+        item['weights'] = self.weights[idx]
+        return item
+
+    def __len__(self):
+        return len(self.text_list)
+
+    def get_subset_dataset(self, idxs):
+        # idxs are positional indices (0..n-1) for CustomDataset
+        idxs_set = set(idxs)
+        text_lists = [self.text_list[i] for i in range(len(self.text_list)) if i in idxs_set]
+        label_lists = [self.labels[i] for i in range(len(self.labels)) if i in idxs_set] if self.labeled else None
+        return CustomDataset(text_lists, label_lists, self.tokenizer, self.max_seq_len, self.labeled)
+
+
+class CustomDataset_tracked(torch.utils.data.Dataset):
+    def __init__(self, text_list, labels, idxes, tokenizer, max_seq_len=128, labeled=True):
+        self.text_list = text_list
+        self.labels = labels
+        self.tokenizer = tokenizer
+        self.max_seq_len = max_seq_len
+        self.labeled = labeled
+        self.idxes = idxes
+        self.weights = [1] * len(self.text_list)
+
+    def __getitem__(self, idx):
+        tok = self.tokenizer(
+            self.text_list[idx], padding='max_length', max_length=self.max_seq_len, truncation=True)
+        item = {key: torch.tensor(tok[key]) for key in tok}
+        if self.labeled:
+            item['lbl'] = torch.tensor(self.labels[idx], dtype=torch.long)
+        item['idx'] = self.idxes[idx]
+        item['weights'] = self.weights[idx]
+        return item
+
+    def __len__(self):
+        return len(self.text_list)
+
+    def get_subset_dataset(self, idxs):
+        # BUG FIX: was O(n²) nested loop; now O(n) using a dict mapping id -> position
+        idxs_set = set(idxs)
+        text_lists, label_lists, id_lists = [], [], []
+        for pos, (text, label, id_) in enumerate(zip(self.text_list, self.labels, self.idxes)):
+            if id_ in idxs_set:
+                text_lists.append(text)
+                label_lists.append(label)
+                id_lists.append(id_)
+        return CustomDataset_tracked(text_lists, label_lists, id_lists, self.tokenizer, self.max_seq_len, self.labeled)
+
+
+
+
+def get_BALD_acquisition(y_T):
+    expected_entropy = - np.mean(np.sum(y_T * np.log(y_T + 1e-10), axis=-1), axis=0)
+    expected_p = np.mean(y_T, axis=0)
+    entropy_expected_p = - np.sum(expected_p * np.log(expected_p + 1e-10), axis=-1)
+    return entropy_expected_p - expected_entropy
+
+
+def sample_by_bald_difficulty(X, y_mean, y_var, y, num_samples, num_classes, y_T):
+    # BUG FIX: removed unused `tokenizer` parameter
+    logger.info("Sampling by difficulty BALD acquisition function")
+    BALD_acq = get_BALD_acquisition(y_T)
+    p_norm = np.maximum(np.zeros(len(BALD_acq)), BALD_acq)
+    p_norm = p_norm / np.sum(p_norm)
+    indices = np.random.choice(len(X['input_ids']), num_samples, p=p_norm, replace=False)
+    X_s = {
+        "input_ids": X["input_ids"][indices],
+        "attention_mask": X["attention_mask"][indices],
+    }
+    # BUG FIX: token_type_ids is optional (not all models produce it)
+    if "token_type_ids" in X:
+        X_s["token_type_ids"] = X["token_type_ids"][indices]
+    y_s = y[indices]
+    w_s = y_var[indices][:, 0]
+    return X_s, y_s, w_s
+
+
+def sample_by_bald_easiness(X, y_mean, y_var, y, num_samples, num_classes, y_T):
+    # BUG FIX: removed unused `tokenizer` parameter
+    logger.info("Sampling by easy BALD acquisition function")
+    BALD_acq = get_BALD_acquisition(y_T)
+    p_norm = np.maximum(np.zeros(len(BALD_acq)), (1. - BALD_acq) / np.sum(1. - BALD_acq))
+    p_norm = p_norm / np.sum(p_norm)
+    logger.info(p_norm[:10])
+    indices = np.random.choice(len(X['input_ids']), num_samples, p=p_norm, replace=False)
+    X_s = {
+        "input_ids": X["input_ids"][indices],
+        "attention_mask": X["attention_mask"][indices],
+    }
+    if "token_type_ids" in X:
+        X_s["token_type_ids"] = X["token_type_ids"][indices]
+    y_s = y[indices]
+    w_s = y_var[indices][:, 0]
+    return X_s, y_s, w_s
+
+
+def sample_by_bald_class_easiness(X_new_unlabeled_dataset, y_mean, y_var, y_pred, unsup_size, num_classes, y_T):
+    logger.info("Sampling by easy BALD acquisition function per class")
+
+    BALD_acq = get_BALD_acquisition(y_T)
+    BALD_acq = (1. - BALD_acq) / np.sum(1. - BALD_acq)
+    logger.info(BALD_acq)
+    samples_per_class = unsup_size // num_classes
+
+    y_s = []
+    w_s = []
+    x_s = []
+
+    for label in range(num_classes):
+        y_var_ = y_var[y_pred == label]
+        p_norm = BALD_acq[y_pred == label]
+        p_norm = np.maximum(np.zeros(len(p_norm)), p_norm)
+        p_norm = p_norm / np.sum(p_norm)
+        pool_of_idx = np.array(X_new_unlabeled_dataset.idxes)[y_pred == label]
+        if len(pool_of_idx) == 0:
+            continue
+        replace = len(pool_of_idx) < samples_per_class
+        if replace:
+            logger.info("Sampling with replacement.")
+        print("Pool of idx ", len(pool_of_idx))
+        indices = np.random.choice(pool_of_idx, samples_per_class, p=p_norm, replace=replace)
+        y_s.extend([label] * len(indices))
+        for elem in indices:
+            w_s.append(y_var[elem][label])
+        x_s.extend([X_new_unlabeled_dataset.text_list[i] for i in indices])
+        assert len(y_s) == len(w_s) and len(w_s) == len(x_s)
+
+    text_lists, labels, weights = shuffle(x_s, y_s, w_s)
+    final_ds = CustomDataset(text_lists, labels, X_new_unlabeled_dataset.tokenizer, labeled=True)
+    final_ds.weights = weights
+    return final_ds
+
+
+def sample_by_bald_class_difficulty(X, y_mean, y_var, y, num_samples, num_classes, y_T):
+    # BUG FIX: removed unused `tokenizer` parameter
+    logger.info("Sampling by difficulty BALD acquisition function per class")
+    BALD_acq = get_BALD_acquisition(y_T)
+    samples_per_class = num_samples // num_classes
+    X_s_input_ids, X_s_token_type_ids, X_s_attention_mask, y_s, w_s = [], [], [], [], []
+    has_token_type_ids = "token_type_ids" in X
+    for label in range(num_classes):
+        X_input_ids = X['input_ids'][y == label]
+        X_attention_mask = X['attention_mask'][y == label]
+        X_token_type_ids = X['token_type_ids'][y == label] if has_token_type_ids else None
+        y_ = y[y == label]
+        y_var_ = y_var[y == label]
+        p_norm = BALD_acq[y == label]
+        p_norm = np.maximum(np.zeros(len(p_norm)), p_norm)
+        p_norm = p_norm / np.sum(p_norm)
+        replace = len(X_input_ids) < samples_per_class
+        if replace:
+            logger.info("Sampling with replacement.")
+        indices = np.random.choice(len(X_input_ids), samples_per_class, p=p_norm, replace=replace)
+        X_s_input_ids.extend(X_input_ids[indices])
+        X_s_attention_mask.extend(X_attention_mask[indices])
+        if has_token_type_ids:
+            X_s_token_type_ids.extend(X_token_type_ids[indices])
+        y_s.extend(y_[indices])
+        w_s.extend(y_var_[indices][:, 0])
+
+    if has_token_type_ids:
+        X_s_input_ids, X_s_token_type_ids, X_s_attention_mask, y_s, w_s = shuffle(
+            X_s_input_ids, X_s_token_type_ids, X_s_attention_mask, y_s, w_s)
+        return {
+            'input_ids': np.array(X_s_input_ids),
+            'token_type_ids': np.array(X_s_token_type_ids),
+            'attention_mask': np.array(X_s_attention_mask)
+        }, np.array(y_s), np.array(w_s)
+    else:
+        X_s_input_ids, X_s_attention_mask, y_s, w_s = shuffle(
+            X_s_input_ids, X_s_attention_mask, y_s, w_s)
+        return {
+            'input_ids': np.array(X_s_input_ids),
+            'attention_mask': np.array(X_s_attention_mask)
+        }, np.array(y_s), np.array(w_s)
+    
+def get_label_to_id(args):
+    if args["dataset"] == 'humanitarian8':
+        return {
+            "caution_and_advice": 0,
+            "displaced_people_and_evacuations": 1,
+            "infrastructure_and_utility_damage": 2,
+            "not_humanitarian": 3,
+            "other_relevant_information": 4,
+            "requests_or_urgent_needs": 5,
+            "rescue_volunteering_or_donation_effort": 6,
+            "sympathy_and_support": 7,
+        }
+    elif args["dataset"] == 'humanitarian9':
+        return {
+            "caution_and_advice": 0,
+            "displaced_people_and_evacuations": 1,
+            "infrastructure_and_utility_damage": 2,
+            "injured_or_dead_people": 3,
+            "not_humanitarian": 4,
+            "other_relevant_information": 5,
+            "requests_or_urgent_needs": 6,
+            "rescue_volunteering_or_donation_effort": 7,
+            "sympathy_and_support": 8,
+        }
+    elif args["dataset"] == 'humanitarian10':
+        return {
+            "caution_and_advice": 0,
+            "displaced_people_and_evacuations": 1,
+            "infrastructure_and_utility_damage": 2,
+            "injured_or_dead_people": 3,
+            "missing_or_found_people": 4,
+            "not_humanitarian": 5,
+            "other_relevant_information": 6,
+            "requests_or_urgent_needs": 7,
+            "rescue_volunteering_or_donation_effort": 8,
+            "sympathy_and_support": 9,
+        }
+    else:
+        raise ValueError(f"Unknown dataset: {args['dataset']}")
+
+
+def get_dataset(path, tokenizer, label_to_id, labeled=True):
+    df = pd.read_csv(path, sep='\t')
+    text_list, labels_list, ids_list = [], [], []
+    for _, row in df.iterrows():
+        if pd.isna(row['tweet_text']):
+            continue
+        text_list.append(row['tweet_text'])
+        labels_list.append(label_to_id[row['class_label']])
+        ids_list.append(row['tweet_id'])
+    return CustomDataset_tracked(text_list, labels_list, ids_list, tokenizer, labeled=labeled)
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--disaster", required=True, help="path of the disaster directory containing train, test and unlabeled data files")
+    parser.add_argument("--train_file", nargs="?", type=str, default="S1T_5")
+    parser.add_argument("--dev_file", nargs="?", type=str, default="S1V_5")
+    parser.add_argument("--unlabeled_file", nargs="?", type=str, default="S1U")
+    parser.add_argument("--aum_save_dir", nargs="?", type=str, default="AUM0")
+    parser.add_argument("--num_labels", nargs="?", type=int, default=10)
+    parser.add_argument("--seq_len", nargs="?", type=int, default=128)
+    parser.add_argument("--sup_batch_size", nargs="?", type=int, default=16)
+    parser.add_argument("--unsup_batch_size", nargs="?", type=int, default=64)
+    parser.add_argument("--sample_size", nargs="?", type=int, default=1800)
+    parser.add_argument("--unsup_size", nargs="?", type=int, default=1000)
+    parser.add_argument("--sample_scheme", nargs="?", default="easy_bald_class_conf")
+    parser.add_argument("--T", nargs="?", type=int, default=7)
+    parser.add_argument("--alpha", nargs="?", type=float, default=0.1)
+    parser.add_argument("--sup_epochs", nargs="?", type=int, default=18)
+    parser.add_argument("--unsup_epochs", nargs="?", type=int, default=12)
+    parser.add_argument("--N_base", nargs="?", type=int, default=3)
+    parser.add_argument("--pt_teacher_checkpoint", nargs="?", default="vinai/bertweet-base")
+    parser.add_argument("--results_file", nargs="?", default="result.txt")
+    parser.add_argument("--do_pairwise", action="store_true", default=False)
+    parser.add_argument("--hidden_dropout_prob", nargs="?", type=float, default=0.3)
+    parser.add_argument("--attention_probs_dropout_prob", nargs="?", type=float, default=0.3)
+    parser.add_argument("--dense_dropout", nargs="?", type=float, default=0.5)
+    parser.add_argument("--temp_scaling", nargs="?", type=bool, default=True)
+    parser.add_argument("--label_smoothing", nargs="?", type=float, default=0.0)
+    parser.add_argument("--dataset", nargs="?", type=str, default="humanitarian10")
+
+    args = vars(parser.parse_args())
+    logger.info(args)
+
+    disaster_name = args["disaster"]
+    data_root = "/home/b/bharanibala/datasets/humaid_data/data"
+
+    cfg = AutoConfig.from_pretrained(args["pt_teacher_checkpoint"])
+    cfg.hidden_dropout_prob = args["hidden_dropout_prob"]
+    cfg.attention_probs_dropout_prob = args["attention_probs_dropout_prob"]
+
+    tokenizer = AutoTokenizer.from_pretrained(args["pt_teacher_checkpoint"])
+    label_to_id = get_label_to_id(args)
+
+    ds_train = get_dataset(f"{data_root}/{disaster_name}/labeled_{args['train_file']}.tsv", tokenizer, label_to_id)
+    ds_dev = get_dataset(f"{data_root}/{disaster_name}/{disaster_name}_dev.tsv", tokenizer, label_to_id)
+    ds_test = get_dataset(f"{data_root}/{disaster_name}/{disaster_name}_test.tsv", tokenizer, label_to_id)
+    ds_unlabeled = get_dataset(f"{data_root}/{disaster_name}/unlabeled_{args['train_file']}.tsv", tokenizer, label_to_id, labeled=False)
+
+    train_model_st_with_aummixup(
+        ds_train, ds_dev, ds_test, ds_unlabeled,
+        args["pt_teacher_checkpoint"], cfg, disaster_name, args["aum_save_dir"], args["num_labels"],
+        sup_batch_size=args["sup_batch_size"],
+        unsup_batch_size=args["unsup_batch_size"],
+        unsup_size=args["unsup_size"],
+        sample_size=args["sample_size"],
+        sample_scheme=args["sample_scheme"],
+        T=args["T"],
+        alpha=args["alpha"],
+        sup_epochs=args["sup_epochs"],
+        unsup_epochs=args["unsup_epochs"],
+        N_base=args["N_base"],
+        dense_dropout=args["dense_dropout"],
+        attention_probs_dropout_prob=args["attention_probs_dropout_prob"],
+        hidden_dropout_prob=args["hidden_dropout_prob"],
+        results_file=args["results_file"],
+        temp_scaling=args["temp_scaling"],
+        ls=args["label_smoothing"],
+    )

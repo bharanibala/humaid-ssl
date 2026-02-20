@@ -1,0 +1,991 @@
+2026-02-13 00:07:02 - INFO - 
+[Optuna] Starting hyperparameter search with 14 trials.
+2026-02-13 00:07:02 - INFO - A new study created in memory with name: study_humanitarian8_canada_wildfires_2016
+2026-02-13 00:07:02 - INFO - Using devices: cuda:1, cuda:1
+2026-02-13 00:07:02 - INFO - Devices: cuda:1, cuda:1
+2026-02-13 00:07:02 - INFO - Starting log
+2026-02-13 00:07:02 - INFO - Dataset: humanitarian8, Event: canada_wildfires_2016, N: 50, Seed: 1234, HF Model: GPT-4o, NumShots: 50, PLM: bert-tweet
+2026-02-13 00:07:02 - INFO - Learning Rate: 1.9770135571760854e-05
+Weight Decay: 0.0003793771957769865
+Batch Size: 32
+No. Epochs: 18
+Epoch Patience: 7
+ Accumulation Steps: 2
+2026-02-13 00:07:04 - INFO - Generating initial weights
+2026-02-13 00:07:13 - INFO - Time taken for Epoch 1:7.83 - F1: 0.0453
+2026-02-13 00:07:20 - INFO - Time taken for Epoch 2:7.54 - F1: 0.0532
+2026-02-13 00:07:28 - INFO - Time taken for Epoch 3:7.50 - F1: 0.0659
+2026-02-13 00:07:35 - INFO - Time taken for Epoch 4:7.52 - F1: 0.0864
+2026-02-13 00:07:43 - INFO - Time taken for Epoch 5:7.42 - F1: 0.2000
+2026-02-13 00:07:50 - INFO - Time taken for Epoch 6:7.47 - F1: 0.2328
+2026-02-13 00:07:58 - INFO - Time taken for Epoch 7:7.57 - F1: 0.2363
+2026-02-13 00:08:06 - INFO - Time taken for Epoch 8:7.62 - F1: 0.2331
+2026-02-13 00:08:13 - INFO - Time taken for Epoch 9:7.61 - F1: 0.2510
+2026-02-13 00:08:21 - INFO - Time taken for Epoch 10:7.59 - F1: 0.2966
+2026-02-13 00:08:28 - INFO - Time taken for Epoch 11:7.58 - F1: 0.3567
+2026-02-13 00:08:36 - INFO - Time taken for Epoch 12:7.56 - F1: 0.3915
+2026-02-13 00:08:43 - INFO - Time taken for Epoch 13:7.63 - F1: 0.4185
+2026-02-13 00:08:51 - INFO - Time taken for Epoch 14:7.59 - F1: 0.4344
+2026-02-13 00:08:59 - INFO - Time taken for Epoch 15:7.59 - F1: 0.4470
+2026-02-13 00:09:06 - INFO - Time taken for Epoch 16:7.55 - F1: 0.4528
+2026-02-13 00:09:14 - INFO - Time taken for Epoch 17:7.56 - F1: 0.4495
+2026-02-13 00:09:21 - INFO - Time taken for Epoch 18:7.56 - F1: 0.4493
+2026-02-13 00:09:21 - INFO - Best F1:0.4528 - Best Epoch:16
+2026-02-13 00:09:23 - INFO - Starting co-training
+2026-02-13 00:09:34 - INFO - Time taken for Epoch 1: 10.64s - F1: 0.07352941
+2026-02-13 00:09:45 - INFO - Time taken for Epoch 2: 11.70s - F1: 0.15056808
+2026-02-13 00:09:57 - INFO - Time taken for Epoch 3: 11.54s - F1: 0.33365577
+2026-02-13 00:10:08 - INFO - Time taken for Epoch 4: 11.69s - F1: 0.35356583
+2026-02-13 00:10:26 - INFO - Time taken for Epoch 5: 18.06s - F1: 0.35303858
+2026-02-13 00:10:37 - INFO - Time taken for Epoch 6: 10.52s - F1: 0.39285217
+2026-02-13 00:10:49 - INFO - Time taken for Epoch 7: 11.65s - F1: 0.42143285
+2026-02-13 00:11:00 - INFO - Time taken for Epoch 8: 11.71s - F1: 0.49989419
+2026-02-13 00:11:16 - INFO - Time taken for Epoch 9: 15.31s - F1: 0.46899917
+2026-02-13 00:11:26 - INFO - Time taken for Epoch 10: 10.50s - F1: 0.48345479
+2026-02-13 00:11:37 - INFO - Time taken for Epoch 11: 10.53s - F1: 0.49601566
+2026-02-13 00:11:47 - INFO - Time taken for Epoch 12: 10.61s - F1: 0.45588289
+2026-02-13 00:11:58 - INFO - Time taken for Epoch 13: 10.55s - F1: 0.46789037
+2026-02-13 00:12:08 - INFO - Time taken for Epoch 14: 10.51s - F1: 0.50480556
+2026-02-13 00:12:20 - INFO - Time taken for Epoch 15: 11.56s - F1: 0.49668853
+2026-02-13 00:12:31 - INFO - Time taken for Epoch 16: 10.64s - F1: 0.47371613
+2026-02-13 00:12:41 - INFO - Time taken for Epoch 17: 10.59s - F1: 0.47880315
+2026-02-13 00:12:52 - INFO - Time taken for Epoch 18: 10.52s - F1: 0.48693953
+2026-02-13 00:12:54 - INFO - Fine-tuning models
+2026-02-13 00:12:57 - INFO - Time taken for Epoch 1:3.11 - F1: 0.5054
+2026-02-13 00:13:01 - INFO - Time taken for Epoch 2:4.00 - F1: 0.4969
+2026-02-13 00:13:04 - INFO - Time taken for Epoch 3:3.03 - F1: 0.5065
+2026-02-13 00:13:08 - INFO - Time taken for Epoch 4:4.15 - F1: 0.5042
+2026-02-13 00:13:11 - INFO - Time taken for Epoch 5:3.08 - F1: 0.4998
+2026-02-13 00:13:14 - INFO - Time taken for Epoch 6:3.06 - F1: 0.5124
+2026-02-13 00:13:32 - INFO - Time taken for Epoch 7:17.79 - F1: 0.5195
+2026-02-13 00:13:36 - INFO - Time taken for Epoch 8:4.10 - F1: 0.5676
+2026-02-13 00:13:41 - INFO - Time taken for Epoch 9:4.51 - F1: 0.5987
+2026-02-13 00:13:45 - INFO - Time taken for Epoch 10:4.01 - F1: 0.5967
+2026-02-13 00:13:48 - INFO - Time taken for Epoch 11:3.04 - F1: 0.5967
+2026-02-13 00:13:51 - INFO - Time taken for Epoch 12:3.02 - F1: 0.5845
+2026-02-13 00:13:54 - INFO - Time taken for Epoch 13:3.04 - F1: 0.5826
+2026-02-13 00:13:57 - INFO - Time taken for Epoch 14:3.02 - F1: 0.5669
+2026-02-13 00:14:00 - INFO - Time taken for Epoch 15:3.05 - F1: 0.5862
+2026-02-13 00:14:03 - INFO - Time taken for Epoch 16:3.06 - F1: 0.5902
+2026-02-13 00:14:06 - INFO - Time taken for Epoch 17:3.07 - F1: 0.5953
+2026-02-13 00:14:09 - INFO - Time taken for Epoch 18:3.06 - F1: 0.5969
+2026-02-13 00:14:12 - INFO - Time taken for Epoch 19:3.06 - F1: 0.5808
+2026-02-13 00:14:12 - INFO - Performance not improving for 10 consecutive epochs.
+2026-02-13 00:14:12 - INFO - Best F1:0.5987 - Best Epoch:8
+2026-02-13 00:14:16 - INFO - 
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian8, NumShots: 50, N: 50 Test SEED: 1234 F1: 0.5566, Test ECE: 0.0846
+2026-02-13 00:14:16 - INFO - All results: {'f1_macro': 0.5566353063465099, 'ece': np.float64(0.08459187665682161)}
+2026-02-13 00:14:16 - INFO - 
+Total time taken: 434.61 seconds
+2026-02-13 00:14:16 - INFO - Trial 0 finished with value: 0.5566353063465099 and parameters: {'learning_rate': 1.9770135571760854e-05, 'weight_decay': 0.0003793771957769865, 'batch_size': 32, 'co_train_epochs': 18, 'epoch_patience': 7}. Best is trial 0 with value: 0.5566353063465099.
+2026-02-13 00:14:16 - INFO - Using devices: cuda:1, cuda:1
+2026-02-13 00:14:16 - INFO - Devices: cuda:1, cuda:1
+2026-02-13 00:14:16 - INFO - Starting log
+2026-02-13 00:14:16 - INFO - Dataset: humanitarian8, Event: canada_wildfires_2016, N: 50, Seed: 1234, HF Model: GPT-4o, NumShots: 50, PLM: bert-tweet
+2026-02-13 00:14:17 - INFO - Learning Rate: 7.208035399367041e-05
+Weight Decay: 0.004919740301439167
+Batch Size: 16
+No. Epochs: 15
+Epoch Patience: 6
+ Accumulation Steps: 4
+2026-02-13 00:14:18 - INFO - Generating initial weights
+2026-02-13 00:14:27 - INFO - Time taken for Epoch 1:8.82 - F1: 0.0367
+2026-02-13 00:14:36 - INFO - Time taken for Epoch 2:8.50 - F1: 0.1102
+2026-02-13 00:14:44 - INFO - Time taken for Epoch 3:8.63 - F1: 0.1383
+2026-02-13 00:14:53 - INFO - Time taken for Epoch 4:8.71 - F1: 0.2729
+2026-02-13 00:15:02 - INFO - Time taken for Epoch 5:8.83 - F1: 0.3235
+2026-02-13 00:15:10 - INFO - Time taken for Epoch 6:8.65 - F1: 0.4571
+2026-02-13 00:15:19 - INFO - Time taken for Epoch 7:8.71 - F1: 0.4418
+2026-02-13 00:15:28 - INFO - Time taken for Epoch 8:8.62 - F1: 0.5295
+2026-02-13 00:15:36 - INFO - Time taken for Epoch 9:8.67 - F1: 0.5018
+2026-02-13 00:15:45 - INFO - Time taken for Epoch 10:8.64 - F1: 0.5075
+2026-02-13 00:15:54 - INFO - Time taken for Epoch 11:8.49 - F1: 0.5463
+2026-02-13 00:16:02 - INFO - Time taken for Epoch 12:8.35 - F1: 0.5518
+2026-02-13 00:16:11 - INFO - Time taken for Epoch 13:8.61 - F1: 0.5322
+2026-02-13 00:16:19 - INFO - Time taken for Epoch 14:8.63 - F1: 0.5492
+2026-02-13 00:16:28 - INFO - Time taken for Epoch 15:8.67 - F1: 0.5341
+2026-02-13 00:16:28 - INFO - Best F1:0.5518 - Best Epoch:12
+2026-02-13 00:16:29 - INFO - Starting co-training
+2026-02-13 00:16:39 - INFO - Time taken for Epoch 1: 9.76s - F1: 0.23665700
+2026-02-13 00:16:49 - INFO - Time taken for Epoch 2: 10.60s - F1: 0.35267903
+2026-02-13 00:17:01 - INFO - Time taken for Epoch 3: 11.06s - F1: 0.36795141
+2026-02-13 00:17:41 - INFO - Time taken for Epoch 4: 40.95s - F1: 0.42483872
+2026-02-13 00:17:54 - INFO - Time taken for Epoch 5: 12.70s - F1: 0.38245229
+2026-02-13 00:18:04 - INFO - Time taken for Epoch 6: 9.80s - F1: 0.48085626
+2026-02-13 00:18:15 - INFO - Time taken for Epoch 7: 10.63s - F1: 0.50498158
+2026-02-13 00:18:25 - INFO - Time taken for Epoch 8: 10.65s - F1: 0.48664079
+2026-02-13 00:18:35 - INFO - Time taken for Epoch 9: 9.57s - F1: 0.49272416
+2026-02-13 00:18:44 - INFO - Time taken for Epoch 10: 9.45s - F1: 0.47980720
+2026-02-13 00:18:54 - INFO - Time taken for Epoch 11: 9.50s - F1: 0.48360166
+2026-02-13 00:19:04 - INFO - Time taken for Epoch 12: 9.74s - F1: 0.48284329
+2026-02-13 00:19:13 - INFO - Time taken for Epoch 13: 9.65s - F1: 0.46355711
+2026-02-13 00:19:13 - INFO - Performance not improving for 6 consecutive epochs.
+2026-02-13 00:19:15 - INFO - Fine-tuning models
+2026-02-13 00:19:19 - INFO - Time taken for Epoch 1:3.62 - F1: 0.4436
+2026-02-13 00:19:23 - INFO - Time taken for Epoch 2:4.39 - F1: 0.4262
+2026-02-13 00:19:27 - INFO - Time taken for Epoch 3:3.48 - F1: 0.4810
+2026-02-13 00:19:32 - INFO - Time taken for Epoch 4:4.67 - F1: 0.4834
+2026-02-13 00:19:36 - INFO - Time taken for Epoch 5:4.71 - F1: 0.5277
+2026-02-13 00:19:53 - INFO - Time taken for Epoch 6:16.85 - F1: 0.4876
+2026-02-13 00:19:57 - INFO - Time taken for Epoch 7:3.53 - F1: 0.4870
+2026-02-13 00:20:00 - INFO - Time taken for Epoch 8:3.55 - F1: 0.5235
+2026-02-13 00:20:04 - INFO - Time taken for Epoch 9:3.55 - F1: 0.5462
+2026-02-13 00:20:08 - INFO - Time taken for Epoch 10:4.60 - F1: 0.5768
+2026-02-13 00:20:13 - INFO - Time taken for Epoch 11:4.55 - F1: 0.6420
+2026-02-13 00:20:17 - INFO - Time taken for Epoch 12:4.58 - F1: 0.5614
+2026-02-13 00:20:21 - INFO - Time taken for Epoch 13:3.52 - F1: 0.6216
+2026-02-13 00:20:25 - INFO - Time taken for Epoch 14:3.55 - F1: 0.6451
+2026-02-13 00:20:41 - INFO - Time taken for Epoch 15:16.51 - F1: 0.5987
+2026-02-13 00:20:45 - INFO - Time taken for Epoch 16:3.51 - F1: 0.6131
+2026-02-13 00:20:48 - INFO - Time taken for Epoch 17:3.55 - F1: 0.5887
+2026-02-13 00:20:52 - INFO - Time taken for Epoch 18:3.53 - F1: 0.5945
+2026-02-13 00:20:55 - INFO - Time taken for Epoch 19:3.50 - F1: 0.6286
+2026-02-13 00:20:59 - INFO - Time taken for Epoch 20:3.50 - F1: 0.6157
+2026-02-13 00:21:02 - INFO - Time taken for Epoch 21:3.53 - F1: 0.6654
+2026-02-13 00:21:07 - INFO - Time taken for Epoch 22:4.73 - F1: 0.6200
+2026-02-13 00:21:10 - INFO - Time taken for Epoch 23:3.58 - F1: 0.6230
+2026-02-13 00:21:14 - INFO - Time taken for Epoch 24:3.58 - F1: 0.6433
+2026-02-13 00:21:18 - INFO - Time taken for Epoch 25:3.56 - F1: 0.6427
+2026-02-13 00:21:24 - INFO - Time taken for Epoch 26:6.13 - F1: 0.6521
+2026-02-13 00:21:27 - INFO - Time taken for Epoch 27:3.46 - F1: 0.6740
+2026-02-13 00:21:32 - INFO - Time taken for Epoch 28:4.54 - F1: 0.6491
+2026-02-13 00:21:35 - INFO - Time taken for Epoch 29:3.55 - F1: 0.6231
+2026-02-13 00:21:39 - INFO - Time taken for Epoch 30:3.54 - F1: 0.6066
+2026-02-13 00:21:42 - INFO - Time taken for Epoch 31:3.53 - F1: 0.5899
+2026-02-13 00:21:46 - INFO - Time taken for Epoch 32:3.53 - F1: 0.5997
+2026-02-13 00:21:49 - INFO - Time taken for Epoch 33:3.52 - F1: 0.5997
+2026-02-13 00:21:53 - INFO - Time taken for Epoch 34:3.52 - F1: 0.5989
+2026-02-13 00:21:56 - INFO - Time taken for Epoch 35:3.55 - F1: 0.6003
+2026-02-13 00:22:02 - INFO - Time taken for Epoch 36:5.61 - F1: 0.5972
+2026-02-13 00:22:06 - INFO - Time taken for Epoch 37:3.52 - F1: 0.6054
+2026-02-13 00:22:06 - INFO - Performance not improving for 10 consecutive epochs.
+2026-02-13 00:22:06 - INFO - Best F1:0.6740 - Best Epoch:26
+2026-02-13 00:22:10 - INFO - 
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian8, NumShots: 50, N: 50 Test SEED: 1234 F1: 0.5938, Test ECE: 0.0535
+2026-02-13 00:22:10 - INFO - All results: {'f1_macro': 0.593843301154275, 'ece': np.float64(0.053518769044554645)}
+2026-02-13 00:22:10 - INFO - 
+Total time taken: 473.45 seconds
+2026-02-13 00:22:10 - INFO - Trial 1 finished with value: 0.593843301154275 and parameters: {'learning_rate': 7.208035399367041e-05, 'weight_decay': 0.004919740301439167, 'batch_size': 16, 'co_train_epochs': 15, 'epoch_patience': 6}. Best is trial 1 with value: 0.593843301154275.
+2026-02-13 00:22:10 - INFO - Using devices: cuda:1, cuda:1
+2026-02-13 00:22:10 - INFO - Devices: cuda:1, cuda:1
+2026-02-13 00:22:10 - INFO - Starting log
+2026-02-13 00:22:10 - INFO - Dataset: humanitarian8, Event: canada_wildfires_2016, N: 50, Seed: 1234, HF Model: GPT-4o, NumShots: 50, PLM: bert-tweet
+2026-02-13 00:22:10 - INFO - Learning Rate: 0.00033962072038007683
+Weight Decay: 0.0029553176209314753
+Batch Size: 64
+No. Epochs: 20
+Epoch Patience: 6
+ Accumulation Steps: 1
+2026-02-13 00:22:11 - INFO - Generating initial weights
+2026-02-13 00:22:19 - INFO - Time taken for Epoch 1:6.92 - F1: 0.0309
+2026-02-13 00:22:25 - INFO - Time taken for Epoch 2:6.74 - F1: 0.0365
+2026-02-13 00:22:32 - INFO - Time taken for Epoch 3:6.82 - F1: 0.0541
+2026-02-13 00:22:39 - INFO - Time taken for Epoch 4:6.78 - F1: 0.0085
+2026-02-13 00:22:46 - INFO - Time taken for Epoch 5:6.83 - F1: 0.0085
+2026-02-13 00:22:53 - INFO - Time taken for Epoch 6:6.88 - F1: 0.0085
+2026-02-13 00:23:00 - INFO - Time taken for Epoch 7:6.82 - F1: 0.0085
+2026-02-13 00:23:06 - INFO - Time taken for Epoch 8:6.82 - F1: 0.0085
+2026-02-13 00:23:13 - INFO - Time taken for Epoch 9:6.79 - F1: 0.0085
+2026-02-13 00:23:20 - INFO - Time taken for Epoch 10:6.78 - F1: 0.0308
+2026-02-13 00:23:27 - INFO - Time taken for Epoch 11:6.85 - F1: 0.0308
+2026-02-13 00:23:34 - INFO - Time taken for Epoch 12:6.81 - F1: 0.0308
+2026-02-13 00:23:40 - INFO - Time taken for Epoch 13:6.85 - F1: 0.0308
+2026-02-13 00:23:47 - INFO - Time taken for Epoch 14:6.79 - F1: 0.0085
+2026-02-13 00:23:54 - INFO - Time taken for Epoch 15:6.78 - F1: 0.0085
+2026-02-13 00:24:01 - INFO - Time taken for Epoch 16:6.82 - F1: 0.0085
+2026-02-13 00:24:08 - INFO - Time taken for Epoch 17:6.82 - F1: 0.0085
+2026-02-13 00:24:14 - INFO - Time taken for Epoch 18:6.78 - F1: 0.0085
+2026-02-13 00:24:21 - INFO - Time taken for Epoch 19:6.74 - F1: 0.0085
+2026-02-13 00:24:28 - INFO - Time taken for Epoch 20:6.74 - F1: 0.0085
+2026-02-13 00:24:28 - INFO - Best F1:0.0541 - Best Epoch:3
+2026-02-13 00:24:29 - INFO - Starting co-training
+2026-02-13 00:24:42 - INFO - Time taken for Epoch 1: 13.21s - F1: 0.07586478
+2026-02-13 00:24:57 - INFO - Time taken for Epoch 2: 14.00s - F1: 0.07352941
+2026-02-13 00:25:10 - INFO - Time taken for Epoch 3: 13.23s - F1: 0.07352941
+2026-02-13 00:25:23 - INFO - Time taken for Epoch 4: 13.17s - F1: 0.07352941
+2026-02-13 00:25:36 - INFO - Time taken for Epoch 5: 13.12s - F1: 0.07352941
+2026-02-13 00:25:49 - INFO - Time taken for Epoch 6: 13.08s - F1: 0.07352941
+2026-02-13 00:26:02 - INFO - Time taken for Epoch 7: 13.25s - F1: 0.07352941
+2026-02-13 00:26:02 - INFO - Performance not improving for 6 consecutive epochs.
+2026-02-13 00:26:04 - INFO - Fine-tuning models
+2026-02-13 00:26:07 - INFO - Time taken for Epoch 1:2.75 - F1: 0.0289
+2026-02-13 00:26:11 - INFO - Time taken for Epoch 2:3.83 - F1: 0.0164
+2026-02-13 00:26:14 - INFO - Time taken for Epoch 3:2.71 - F1: 0.0443
+2026-02-13 00:26:18 - INFO - Time taken for Epoch 4:3.74 - F1: 0.0308
+2026-02-13 00:26:20 - INFO - Time taken for Epoch 5:2.74 - F1: 0.0372
+2026-02-13 00:26:23 - INFO - Time taken for Epoch 6:2.71 - F1: 0.0367
+2026-02-13 00:26:26 - INFO - Time taken for Epoch 7:2.70 - F1: 0.0247
+2026-02-13 00:26:28 - INFO - Time taken for Epoch 8:2.70 - F1: 0.0247
+2026-02-13 00:26:31 - INFO - Time taken for Epoch 9:2.72 - F1: 0.0085
+2026-02-13 00:26:34 - INFO - Time taken for Epoch 10:2.70 - F1: 0.0085
+2026-02-13 00:26:37 - INFO - Time taken for Epoch 11:2.69 - F1: 0.0308
+2026-02-13 00:26:39 - INFO - Time taken for Epoch 12:2.69 - F1: 0.0308
+2026-02-13 00:26:42 - INFO - Time taken for Epoch 13:2.69 - F1: 0.0735
+2026-02-13 00:26:46 - INFO - Time taken for Epoch 14:3.64 - F1: 0.0723
+2026-02-13 00:26:48 - INFO - Time taken for Epoch 15:2.68 - F1: 0.0085
+2026-02-13 00:26:51 - INFO - Time taken for Epoch 16:2.69 - F1: 0.0085
+2026-02-13 00:26:54 - INFO - Time taken for Epoch 17:2.67 - F1: 0.0085
+2026-02-13 00:26:56 - INFO - Time taken for Epoch 18:2.67 - F1: 0.0085
+2026-02-13 00:26:59 - INFO - Time taken for Epoch 19:2.70 - F1: 0.0085
+2026-02-13 00:27:02 - INFO - Time taken for Epoch 20:2.68 - F1: 0.0085
+2026-02-13 00:27:04 - INFO - Time taken for Epoch 21:2.68 - F1: 0.0085
+2026-02-13 00:27:08 - INFO - Time taken for Epoch 22:3.92 - F1: 0.0521
+2026-02-13 00:27:11 - INFO - Time taken for Epoch 23:2.69 - F1: 0.0308
+2026-02-13 00:27:11 - INFO - Performance not improving for 10 consecutive epochs.
+2026-02-13 00:27:11 - INFO - Best F1:0.0735 - Best Epoch:12
+2026-02-13 00:27:15 - INFO - 
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian8, NumShots: 50, N: 50 Test SEED: 1234 F1: 0.0737, Test ECE: 0.1318
+2026-02-13 00:27:15 - INFO - All results: {'f1_macro': 0.07369255150554675, 'ece': np.float64(0.13184647740942707)}
+2026-02-13 00:27:15 - INFO - 
+Total time taken: 304.86 seconds
+2026-02-13 00:27:15 - INFO - Trial 2 finished with value: 0.07369255150554675 and parameters: {'learning_rate': 0.00033962072038007683, 'weight_decay': 0.0029553176209314753, 'batch_size': 64, 'co_train_epochs': 20, 'epoch_patience': 6}. Best is trial 1 with value: 0.593843301154275.
+2026-02-13 00:27:15 - INFO - Using devices: cuda:1, cuda:1
+2026-02-13 00:27:15 - INFO - Devices: cuda:1, cuda:1
+2026-02-13 00:27:15 - INFO - Starting log
+2026-02-13 00:27:15 - INFO - Dataset: humanitarian8, Event: canada_wildfires_2016, N: 50, Seed: 1234, HF Model: GPT-4o, NumShots: 50, PLM: bert-tweet
+2026-02-13 00:27:15 - INFO - Learning Rate: 9.215745359886587e-05
+Weight Decay: 0.00040850910146050687
+Batch Size: 64
+No. Epochs: 15
+Epoch Patience: 5
+ Accumulation Steps: 1
+2026-02-13 00:27:16 - INFO - Generating initial weights
+2026-02-13 00:27:23 - INFO - Time taken for Epoch 1:6.85 - F1: 0.0665
+2026-02-13 00:27:30 - INFO - Time taken for Epoch 2:6.72 - F1: 0.1082
+2026-02-13 00:27:37 - INFO - Time taken for Epoch 3:6.77 - F1: 0.0945
+2026-02-13 00:27:44 - INFO - Time taken for Epoch 4:6.79 - F1: 0.1625
+2026-02-13 00:27:50 - INFO - Time taken for Epoch 5:6.76 - F1: 0.2567
+2026-02-13 00:27:57 - INFO - Time taken for Epoch 6:6.79 - F1: 0.4325
+2026-02-13 00:28:04 - INFO - Time taken for Epoch 7:6.73 - F1: 0.4706
+2026-02-13 00:28:11 - INFO - Time taken for Epoch 8:6.72 - F1: 0.4679
+2026-02-13 00:28:17 - INFO - Time taken for Epoch 9:6.74 - F1: 0.4784
+2026-02-13 00:28:24 - INFO - Time taken for Epoch 10:6.79 - F1: 0.5019
+2026-02-13 00:28:31 - INFO - Time taken for Epoch 11:6.81 - F1: 0.5012
+2026-02-13 00:28:38 - INFO - Time taken for Epoch 12:6.84 - F1: 0.5106
+2026-02-13 00:28:45 - INFO - Time taken for Epoch 13:6.76 - F1: 0.5058
+2026-02-13 00:28:51 - INFO - Time taken for Epoch 14:6.77 - F1: 0.4991
+2026-02-13 00:28:58 - INFO - Time taken for Epoch 15:6.76 - F1: 0.4995
+2026-02-13 00:28:58 - INFO - Best F1:0.5106 - Best Epoch:12
+2026-02-13 00:28:59 - INFO - Starting co-training
+2026-02-13 00:29:12 - INFO - Time taken for Epoch 1: 13.01s - F1: 0.33277201
+2026-02-13 00:29:27 - INFO - Time taken for Epoch 2: 14.22s - F1: 0.36941770
+2026-02-13 00:29:44 - INFO - Time taken for Epoch 3: 17.44s - F1: 0.46399762
+2026-02-13 00:29:59 - INFO - Time taken for Epoch 4: 14.91s - F1: 0.47962911
+2026-02-13 00:30:14 - INFO - Time taken for Epoch 5: 14.56s - F1: 0.43354696
+2026-02-13 00:30:27 - INFO - Time taken for Epoch 6: 13.08s - F1: 0.53057454
+2026-02-13 00:30:41 - INFO - Time taken for Epoch 7: 13.99s - F1: 0.49894364
+2026-02-13 00:30:54 - INFO - Time taken for Epoch 8: 13.13s - F1: 0.55072709
+2026-02-13 00:31:22 - INFO - Time taken for Epoch 9: 27.95s - F1: 0.54823777
+2026-02-13 00:31:35 - INFO - Time taken for Epoch 10: 13.12s - F1: 0.54245189
+2026-02-13 00:31:48 - INFO - Time taken for Epoch 11: 13.05s - F1: 0.54005936
+2026-02-13 00:32:01 - INFO - Time taken for Epoch 12: 13.13s - F1: 0.53935181
+2026-02-13 00:32:14 - INFO - Time taken for Epoch 13: 13.07s - F1: 0.52530897
+2026-02-13 00:32:14 - INFO - Performance not improving for 5 consecutive epochs.
+2026-02-13 00:32:16 - INFO - Fine-tuning models
+2026-02-13 00:32:19 - INFO - Time taken for Epoch 1:2.75 - F1: 0.4506
+2026-02-13 00:32:23 - INFO - Time taken for Epoch 2:3.61 - F1: 0.4977
+2026-02-13 00:32:26 - INFO - Time taken for Epoch 3:3.71 - F1: 0.5661
+2026-02-13 00:32:30 - INFO - Time taken for Epoch 4:3.75 - F1: 0.5758
+2026-02-13 00:32:50 - INFO - Time taken for Epoch 5:20.01 - F1: 0.5895
+2026-02-13 00:32:54 - INFO - Time taken for Epoch 6:3.66 - F1: 0.5642
+2026-02-13 00:32:57 - INFO - Time taken for Epoch 7:2.68 - F1: 0.5522
+2026-02-13 00:32:59 - INFO - Time taken for Epoch 8:2.67 - F1: 0.5511
+2026-02-13 00:33:02 - INFO - Time taken for Epoch 9:2.68 - F1: 0.5737
+2026-02-13 00:33:05 - INFO - Time taken for Epoch 10:2.68 - F1: 0.5859
+2026-02-13 00:33:07 - INFO - Time taken for Epoch 11:2.68 - F1: 0.6825
+2026-02-13 00:33:11 - INFO - Time taken for Epoch 12:4.06 - F1: 0.6532
+2026-02-13 00:33:14 - INFO - Time taken for Epoch 13:2.68 - F1: 0.6727
+2026-02-13 00:33:17 - INFO - Time taken for Epoch 14:2.67 - F1: 0.6833
+2026-02-13 00:33:21 - INFO - Time taken for Epoch 15:4.09 - F1: 0.5935
+2026-02-13 00:33:23 - INFO - Time taken for Epoch 16:2.69 - F1: 0.6689
+2026-02-13 00:33:27 - INFO - Time taken for Epoch 17:3.10 - F1: 0.6702
+2026-02-13 00:33:29 - INFO - Time taken for Epoch 18:2.70 - F1: 0.6760
+2026-02-13 00:33:32 - INFO - Time taken for Epoch 19:2.69 - F1: 0.6797
+2026-02-13 00:33:35 - INFO - Time taken for Epoch 20:2.69 - F1: 0.6874
+2026-02-13 00:33:40 - INFO - Time taken for Epoch 21:5.39 - F1: 0.6874
+2026-02-13 00:33:43 - INFO - Time taken for Epoch 22:2.69 - F1: 0.6832
+2026-02-13 00:33:45 - INFO - Time taken for Epoch 23:2.69 - F1: 0.6919
+2026-02-13 00:33:49 - INFO - Time taken for Epoch 24:3.75 - F1: 0.6113
+2026-02-13 00:33:52 - INFO - Time taken for Epoch 25:2.69 - F1: 0.6075
+2026-02-13 00:33:55 - INFO - Time taken for Epoch 26:2.69 - F1: 0.6025
+2026-02-13 00:33:57 - INFO - Time taken for Epoch 27:2.69 - F1: 0.5950
+2026-02-13 00:34:00 - INFO - Time taken for Epoch 28:2.68 - F1: 0.5981
+2026-02-13 00:34:03 - INFO - Time taken for Epoch 29:2.68 - F1: 0.6000
+2026-02-13 00:34:05 - INFO - Time taken for Epoch 30:2.69 - F1: 0.6000
+2026-02-13 00:34:08 - INFO - Time taken for Epoch 31:2.69 - F1: 0.6101
+2026-02-13 00:34:11 - INFO - Time taken for Epoch 32:2.69 - F1: 0.6140
+2026-02-13 00:34:13 - INFO - Time taken for Epoch 33:2.70 - F1: 0.6442
+2026-02-13 00:34:13 - INFO - Performance not improving for 10 consecutive epochs.
+2026-02-13 00:34:13 - INFO - Best F1:0.6919 - Best Epoch:22
+2026-02-13 00:34:17 - INFO - 
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian8, NumShots: 50, N: 50 Test SEED: 1234 F1: 0.5926, Test ECE: 0.0434
+2026-02-13 00:34:17 - INFO - All results: {'f1_macro': 0.5926380645341626, 'ece': np.float64(0.04338240770811444)}
+2026-02-13 00:34:17 - INFO - 
+Total time taken: 422.49 seconds
+2026-02-13 00:34:17 - INFO - Trial 3 finished with value: 0.5926380645341626 and parameters: {'learning_rate': 9.215745359886587e-05, 'weight_decay': 0.00040850910146050687, 'batch_size': 64, 'co_train_epochs': 15, 'epoch_patience': 5}. Best is trial 1 with value: 0.593843301154275.
+2026-02-13 00:34:17 - INFO - Using devices: cuda:1, cuda:1
+2026-02-13 00:34:17 - INFO - Devices: cuda:1, cuda:1
+2026-02-13 00:34:17 - INFO - Starting log
+2026-02-13 00:34:17 - INFO - Dataset: humanitarian8, Event: canada_wildfires_2016, N: 50, Seed: 1234, HF Model: GPT-4o, NumShots: 50, PLM: bert-tweet
+2026-02-13 00:34:18 - INFO - Learning Rate: 0.0005258400973386142
+Weight Decay: 0.003957943449819067
+Batch Size: 64
+No. Epochs: 12
+Epoch Patience: 8
+ Accumulation Steps: 1
+2026-02-13 00:34:19 - INFO - Generating initial weights
+2026-02-13 00:34:26 - INFO - Time taken for Epoch 1:6.97 - F1: 0.0308
+2026-02-13 00:34:33 - INFO - Time taken for Epoch 2:6.77 - F1: 0.0371
+2026-02-13 00:34:40 - INFO - Time taken for Epoch 3:6.81 - F1: 0.0085
+2026-02-13 00:34:47 - INFO - Time taken for Epoch 4:6.81 - F1: 0.0085
+2026-02-13 00:34:53 - INFO - Time taken for Epoch 5:6.80 - F1: 0.0085
+2026-02-13 00:35:00 - INFO - Time taken for Epoch 6:6.82 - F1: 0.0085
+2026-02-13 00:35:07 - INFO - Time taken for Epoch 7:6.79 - F1: 0.0085
+2026-02-13 00:35:14 - INFO - Time taken for Epoch 8:6.79 - F1: 0.0085
+2026-02-13 00:35:21 - INFO - Time taken for Epoch 9:6.75 - F1: 0.0085
+2026-02-13 00:35:27 - INFO - Time taken for Epoch 10:6.80 - F1: 0.0085
+2026-02-13 00:35:34 - INFO - Time taken for Epoch 11:6.80 - F1: 0.0085
+2026-02-13 00:35:41 - INFO - Time taken for Epoch 12:6.79 - F1: 0.0085
+2026-02-13 00:35:41 - INFO - Best F1:0.0371 - Best Epoch:2
+2026-02-13 00:35:42 - INFO - Starting co-training
+2026-02-13 00:35:55 - INFO - Time taken for Epoch 1: 13.08s - F1: 0.07352941
+2026-02-13 00:36:09 - INFO - Time taken for Epoch 2: 13.84s - F1: 0.07352941
+2026-02-13 00:36:22 - INFO - Time taken for Epoch 3: 13.14s - F1: 0.07352941
+2026-02-13 00:36:36 - INFO - Time taken for Epoch 4: 14.15s - F1: 0.07352941
+2026-02-13 00:36:49 - INFO - Time taken for Epoch 5: 13.07s - F1: 0.07352941
+2026-02-13 00:37:02 - INFO - Time taken for Epoch 6: 13.07s - F1: 0.07352941
+2026-02-13 00:37:16 - INFO - Time taken for Epoch 7: 13.13s - F1: 0.07352941
+2026-02-13 00:37:29 - INFO - Time taken for Epoch 8: 13.15s - F1: 0.07352941
+2026-02-13 00:37:42 - INFO - Time taken for Epoch 9: 13.13s - F1: 0.07352941
+2026-02-13 00:37:42 - INFO - Performance not improving for 8 consecutive epochs.
+2026-02-13 00:37:44 - INFO - Fine-tuning models
+2026-02-13 00:37:47 - INFO - Time taken for Epoch 1:2.74 - F1: 0.0085
+2026-02-13 00:37:50 - INFO - Time taken for Epoch 2:3.61 - F1: 0.0115
+2026-02-13 00:38:07 - INFO - Time taken for Epoch 3:16.33 - F1: 0.0365
+2026-02-13 00:38:11 - INFO - Time taken for Epoch 4:4.10 - F1: 0.0365
+2026-02-13 00:38:13 - INFO - Time taken for Epoch 5:2.67 - F1: 0.0247
+2026-02-13 00:38:16 - INFO - Time taken for Epoch 6:2.68 - F1: 0.0247
+2026-02-13 00:38:19 - INFO - Time taken for Epoch 7:2.67 - F1: 0.0164
+2026-02-13 00:38:21 - INFO - Time taken for Epoch 8:2.68 - F1: 0.0085
+2026-02-13 00:38:24 - INFO - Time taken for Epoch 9:2.68 - F1: 0.0085
+2026-02-13 00:38:27 - INFO - Time taken for Epoch 10:2.68 - F1: 0.0308
+2026-02-13 00:38:30 - INFO - Time taken for Epoch 11:2.68 - F1: 0.0308
+2026-02-13 00:38:32 - INFO - Time taken for Epoch 12:2.69 - F1: 0.0247
+2026-02-13 00:38:35 - INFO - Time taken for Epoch 13:2.68 - F1: 0.0247
+2026-02-13 00:38:35 - INFO - Performance not improving for 10 consecutive epochs.
+2026-02-13 00:38:35 - INFO - Best F1:0.0365 - Best Epoch:2
+2026-02-13 00:38:38 - INFO - 
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian8, NumShots: 50, N: 50 Test SEED: 1234 F1: 0.0361, Test ECE: 0.1533
+2026-02-13 00:38:38 - INFO - All results: {'f1_macro': 0.036057692307692304, 'ece': np.float64(0.15329689845610203)}
+2026-02-13 00:38:38 - INFO - 
+Total time taken: 261.36 seconds
+2026-02-13 00:38:38 - INFO - Trial 4 finished with value: 0.036057692307692304 and parameters: {'learning_rate': 0.0005258400973386142, 'weight_decay': 0.003957943449819067, 'batch_size': 64, 'co_train_epochs': 12, 'epoch_patience': 8}. Best is trial 1 with value: 0.593843301154275.
+2026-02-13 00:38:38 - INFO - Using devices: cuda:1, cuda:1
+2026-02-13 00:38:38 - INFO - Devices: cuda:1, cuda:1
+2026-02-13 00:38:38 - INFO - Starting log
+2026-02-13 00:38:38 - INFO - Dataset: humanitarian8, Event: canada_wildfires_2016, N: 50, Seed: 1234, HF Model: GPT-4o, NumShots: 50, PLM: bert-tweet
+2026-02-13 00:38:39 - INFO - Learning Rate: 0.000506003795444719
+Weight Decay: 0.0002669006294998312
+Batch Size: 64
+No. Epochs: 14
+Epoch Patience: 9
+ Accumulation Steps: 1
+2026-02-13 00:38:40 - INFO - Generating initial weights
+2026-02-13 00:38:47 - INFO - Time taken for Epoch 1:6.96 - F1: 0.0312
+2026-02-13 00:38:54 - INFO - Time taken for Epoch 2:6.80 - F1: 0.0336
+2026-02-13 00:39:01 - INFO - Time taken for Epoch 3:6.78 - F1: 0.0308
+2026-02-13 00:39:08 - INFO - Time taken for Epoch 4:6.79 - F1: 0.0735
+2026-02-13 00:39:15 - INFO - Time taken for Epoch 5:6.74 - F1: 0.0735
+2026-02-13 00:39:21 - INFO - Time taken for Epoch 6:6.78 - F1: 0.0735
+2026-02-13 00:39:28 - INFO - Time taken for Epoch 7:6.78 - F1: 0.0735
+2026-02-13 00:39:35 - INFO - Time taken for Epoch 8:6.80 - F1: 0.0308
+2026-02-13 00:39:42 - INFO - Time taken for Epoch 9:6.79 - F1: 0.0308
+2026-02-13 00:39:48 - INFO - Time taken for Epoch 10:6.78 - F1: 0.0308
+2026-02-13 00:39:55 - INFO - Time taken for Epoch 11:6.81 - F1: 0.0308
+2026-02-13 00:40:02 - INFO - Time taken for Epoch 12:6.81 - F1: 0.0085
+2026-02-13 00:40:09 - INFO - Time taken for Epoch 13:6.83 - F1: 0.0085
+2026-02-13 00:40:16 - INFO - Time taken for Epoch 14:6.79 - F1: 0.0085
+2026-02-13 00:40:16 - INFO - Best F1:0.0735 - Best Epoch:4
+2026-02-13 00:40:17 - INFO - Starting co-training
+2026-02-13 00:40:30 - INFO - Time taken for Epoch 1: 13.08s - F1: 0.07352941
+2026-02-13 00:40:44 - INFO - Time taken for Epoch 2: 13.86s - F1: 0.07352941
+2026-02-13 00:40:57 - INFO - Time taken for Epoch 3: 13.11s - F1: 0.07352941
+2026-02-13 00:41:10 - INFO - Time taken for Epoch 4: 13.13s - F1: 0.07352941
+2026-02-13 00:41:23 - INFO - Time taken for Epoch 5: 13.09s - F1: 0.07352941
+2026-02-13 00:41:36 - INFO - Time taken for Epoch 6: 13.11s - F1: 0.07352941
+2026-02-13 00:41:49 - INFO - Time taken for Epoch 7: 13.10s - F1: 0.07352941
+2026-02-13 00:42:03 - INFO - Time taken for Epoch 8: 13.10s - F1: 0.07352941
+2026-02-13 00:42:16 - INFO - Time taken for Epoch 9: 13.13s - F1: 0.07352941
+2026-02-13 00:42:29 - INFO - Time taken for Epoch 10: 13.13s - F1: 0.07352941
+2026-02-13 00:42:29 - INFO - Performance not improving for 9 consecutive epochs.
+2026-02-13 00:42:31 - INFO - Fine-tuning models
+2026-02-13 00:42:34 - INFO - Time taken for Epoch 1:2.75 - F1: 0.0308
+2026-02-13 00:42:37 - INFO - Time taken for Epoch 2:3.49 - F1: 0.0085
+2026-02-13 00:42:40 - INFO - Time taken for Epoch 3:2.68 - F1: 0.0085
+2026-02-13 00:42:42 - INFO - Time taken for Epoch 4:2.68 - F1: 0.0308
+2026-02-13 00:42:45 - INFO - Time taken for Epoch 5:2.68 - F1: 0.0308
+2026-02-13 00:42:48 - INFO - Time taken for Epoch 6:2.68 - F1: 0.0164
+2026-02-13 00:42:50 - INFO - Time taken for Epoch 7:2.68 - F1: 0.0164
+2026-02-13 00:42:53 - INFO - Time taken for Epoch 8:2.68 - F1: 0.0164
+2026-02-13 00:42:56 - INFO - Time taken for Epoch 9:2.68 - F1: 0.0164
+2026-02-13 00:42:58 - INFO - Time taken for Epoch 10:2.68 - F1: 0.0735
+2026-02-13 00:43:02 - INFO - Time taken for Epoch 11:3.60 - F1: 0.0735
+2026-02-13 00:43:05 - INFO - Time taken for Epoch 12:3.06 - F1: 0.0735
+2026-02-13 00:43:08 - INFO - Time taken for Epoch 13:2.68 - F1: 0.0365
+2026-02-13 00:43:10 - INFO - Time taken for Epoch 14:2.68 - F1: 0.0085
+2026-02-13 00:43:13 - INFO - Time taken for Epoch 15:2.70 - F1: 0.0085
+2026-02-13 00:43:16 - INFO - Time taken for Epoch 16:2.69 - F1: 0.0085
+2026-02-13 00:43:19 - INFO - Time taken for Epoch 17:2.69 - F1: 0.0085
+2026-02-13 00:43:21 - INFO - Time taken for Epoch 18:2.68 - F1: 0.0085
+2026-02-13 00:43:24 - INFO - Time taken for Epoch 19:2.69 - F1: 0.0308
+2026-02-13 00:43:27 - INFO - Time taken for Epoch 20:2.69 - F1: 0.0308
+2026-02-13 00:43:27 - INFO - Performance not improving for 10 consecutive epochs.
+2026-02-13 00:43:27 - INFO - Best F1:0.0735 - Best Epoch:9
+2026-02-13 00:43:30 - INFO - 
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian8, NumShots: 50, N: 50 Test SEED: 1234 F1: 0.0737, Test ECE: 0.1195
+2026-02-13 00:43:30 - INFO - All results: {'f1_macro': 0.07369255150554675, 'ece': np.float64(0.11951024826992762)}
+2026-02-13 00:43:30 - INFO - 
+Total time taken: 291.76 seconds
+2026-02-13 00:43:30 - INFO - Trial 5 finished with value: 0.07369255150554675 and parameters: {'learning_rate': 0.000506003795444719, 'weight_decay': 0.0002669006294998312, 'batch_size': 64, 'co_train_epochs': 14, 'epoch_patience': 9}. Best is trial 1 with value: 0.593843301154275.
+2026-02-13 00:43:30 - INFO - Using devices: cuda:1, cuda:1
+2026-02-13 00:43:30 - INFO - Devices: cuda:1, cuda:1
+2026-02-13 00:43:30 - INFO - Starting log
+2026-02-13 00:43:30 - INFO - Dataset: humanitarian8, Event: canada_wildfires_2016, N: 50, Seed: 1234, HF Model: GPT-4o, NumShots: 50, PLM: bert-tweet
+2026-02-13 00:43:31 - INFO - Learning Rate: 0.0006052131073843119
+Weight Decay: 0.0055516834343996325
+Batch Size: 64
+No. Epochs: 10
+Epoch Patience: 10
+ Accumulation Steps: 1
+2026-02-13 00:43:32 - INFO - Generating initial weights
+2026-02-13 00:43:39 - INFO - Time taken for Epoch 1:6.92 - F1: 0.0308
+2026-02-13 00:43:46 - INFO - Time taken for Epoch 2:6.79 - F1: 0.0085
+2026-02-13 00:43:53 - INFO - Time taken for Epoch 3:6.79 - F1: 0.0085
+2026-02-13 00:44:00 - INFO - Time taken for Epoch 4:6.76 - F1: 0.0308
+2026-02-13 00:44:06 - INFO - Time taken for Epoch 5:6.75 - F1: 0.0164
+2026-02-13 00:44:13 - INFO - Time taken for Epoch 6:6.76 - F1: 0.0308
+2026-02-13 00:44:20 - INFO - Time taken for Epoch 7:6.78 - F1: 0.0308
+2026-02-13 00:44:27 - INFO - Time taken for Epoch 8:6.81 - F1: 0.0308
+2026-02-13 00:44:33 - INFO - Time taken for Epoch 9:6.77 - F1: 0.0308
+2026-02-13 00:44:40 - INFO - Time taken for Epoch 10:6.80 - F1: 0.0308
+2026-02-13 00:44:40 - INFO - Best F1:0.0308 - Best Epoch:1
+2026-02-13 00:44:41 - INFO - Starting co-training
+2026-02-13 00:44:54 - INFO - Time taken for Epoch 1: 13.14s - F1: 0.03076923
+2026-02-13 00:45:09 - INFO - Time taken for Epoch 2: 14.11s - F1: 0.07352941
+2026-02-13 00:45:30 - INFO - Time taken for Epoch 3: 21.38s - F1: 0.07352941
+2026-02-13 00:45:43 - INFO - Time taken for Epoch 4: 13.01s - F1: 0.07352941
+2026-02-13 00:45:56 - INFO - Time taken for Epoch 5: 13.11s - F1: 0.07352941
+2026-02-13 00:46:09 - INFO - Time taken for Epoch 6: 13.08s - F1: 0.07352941
+2026-02-13 00:46:22 - INFO - Time taken for Epoch 7: 13.03s - F1: 0.07352941
+2026-02-13 00:46:35 - INFO - Time taken for Epoch 8: 13.14s - F1: 0.07352941
+2026-02-13 00:46:48 - INFO - Time taken for Epoch 9: 13.15s - F1: 0.07352941
+2026-02-13 00:47:02 - INFO - Time taken for Epoch 10: 13.10s - F1: 0.07352941
+2026-02-13 00:47:04 - INFO - Fine-tuning models
+2026-02-13 00:47:07 - INFO - Time taken for Epoch 1:2.74 - F1: 0.0247
+2026-02-13 00:47:10 - INFO - Time taken for Epoch 2:3.57 - F1: 0.0115
+2026-02-13 00:47:13 - INFO - Time taken for Epoch 3:2.70 - F1: 0.0365
+2026-02-13 00:47:31 - INFO - Time taken for Epoch 4:18.17 - F1: 0.0365
+2026-02-13 00:47:34 - INFO - Time taken for Epoch 5:2.67 - F1: 0.0247
+2026-02-13 00:47:36 - INFO - Time taken for Epoch 6:2.66 - F1: 0.0247
+2026-02-13 00:47:39 - INFO - Time taken for Epoch 7:2.67 - F1: 0.0115
+2026-02-13 00:47:42 - INFO - Time taken for Epoch 8:2.68 - F1: 0.0115
+2026-02-13 00:47:44 - INFO - Time taken for Epoch 9:2.67 - F1: 0.0164
+2026-02-13 00:47:47 - INFO - Time taken for Epoch 10:2.68 - F1: 0.0164
+2026-02-13 00:47:50 - INFO - Time taken for Epoch 11:2.68 - F1: 0.0164
+2026-02-13 00:47:52 - INFO - Time taken for Epoch 12:2.69 - F1: 0.0164
+2026-02-13 00:47:55 - INFO - Time taken for Epoch 13:2.68 - F1: 0.0164
+2026-02-13 00:47:55 - INFO - Performance not improving for 10 consecutive epochs.
+2026-02-13 00:47:55 - INFO - Best F1:0.0365 - Best Epoch:2
+2026-02-13 00:47:59 - INFO - 
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian8, NumShots: 50, N: 50 Test SEED: 1234 F1: 0.0361, Test ECE: 0.1514
+2026-02-13 00:47:59 - INFO - All results: {'f1_macro': 0.036057692307692304, 'ece': np.float64(0.15141131194789756)}
+2026-02-13 00:47:59 - INFO - 
+Total time taken: 268.41 seconds
+2026-02-13 00:47:59 - INFO - Trial 6 finished with value: 0.036057692307692304 and parameters: {'learning_rate': 0.0006052131073843119, 'weight_decay': 0.0055516834343996325, 'batch_size': 64, 'co_train_epochs': 10, 'epoch_patience': 10}. Best is trial 1 with value: 0.593843301154275.
+2026-02-13 00:47:59 - INFO - Using devices: cuda:1, cuda:1
+2026-02-13 00:47:59 - INFO - Devices: cuda:1, cuda:1
+2026-02-13 00:47:59 - INFO - Starting log
+2026-02-13 00:47:59 - INFO - Dataset: humanitarian8, Event: canada_wildfires_2016, N: 50, Seed: 1234, HF Model: GPT-4o, NumShots: 50, PLM: bert-tweet
+2026-02-13 00:47:59 - INFO - Learning Rate: 0.00021109255664032966
+Weight Decay: 0.0026464647529051625
+Batch Size: 8
+No. Epochs: 17
+Epoch Patience: 4
+ Accumulation Steps: 8
+2026-02-13 00:48:00 - INFO - Generating initial weights
+2026-02-13 00:48:12 - INFO - Time taken for Epoch 1:10.75 - F1: 0.0406
+2026-02-13 00:48:23 - INFO - Time taken for Epoch 2:11.11 - F1: 0.0610
+2026-02-13 00:48:33 - INFO - Time taken for Epoch 3:10.87 - F1: 0.0308
+2026-02-13 00:48:44 - INFO - Time taken for Epoch 4:10.79 - F1: 0.0308
+2026-02-13 00:48:55 - INFO - Time taken for Epoch 5:10.85 - F1: 0.0308
+2026-02-13 00:49:06 - INFO - Time taken for Epoch 6:10.60 - F1: 0.0085
+2026-02-13 00:49:17 - INFO - Time taken for Epoch 7:10.84 - F1: 0.0085
+2026-02-13 00:49:27 - INFO - Time taken for Epoch 8:10.87 - F1: 0.0085
+2026-02-13 00:49:39 - INFO - Time taken for Epoch 9:11.13 - F1: 0.0164
+2026-02-13 00:49:49 - INFO - Time taken for Epoch 10:10.69 - F1: 0.0164
+2026-02-13 00:50:00 - INFO - Time taken for Epoch 11:10.70 - F1: 0.0164
+2026-02-13 00:50:11 - INFO - Time taken for Epoch 12:10.66 - F1: 0.0369
+2026-02-13 00:50:22 - INFO - Time taken for Epoch 13:10.93 - F1: 0.0173
+2026-02-13 00:50:32 - INFO - Time taken for Epoch 14:10.71 - F1: 0.0115
+2026-02-13 00:50:43 - INFO - Time taken for Epoch 15:10.94 - F1: 0.0115
+2026-02-13 00:50:54 - INFO - Time taken for Epoch 16:10.87 - F1: 0.0116
+2026-02-13 00:51:05 - INFO - Time taken for Epoch 17:11.02 - F1: 0.0453
+2026-02-13 00:51:05 - INFO - Best F1:0.0610 - Best Epoch:2
+2026-02-13 00:51:06 - INFO - Starting co-training
+2026-02-13 00:51:17 - INFO - Time taken for Epoch 1: 10.14s - F1: 0.07352941
+2026-02-13 00:51:28 - INFO - Time taken for Epoch 2: 11.00s - F1: 0.07352941
+2026-02-13 00:51:38 - INFO - Time taken for Epoch 3: 10.10s - F1: 0.07352941
+2026-02-13 00:51:48 - INFO - Time taken for Epoch 4: 10.12s - F1: 0.07352941
+2026-02-13 00:51:58 - INFO - Time taken for Epoch 5: 10.06s - F1: 0.07352941
+2026-02-13 00:51:58 - INFO - Performance not improving for 4 consecutive epochs.
+2026-02-13 00:52:00 - INFO - Fine-tuning models
+2026-02-13 00:52:04 - INFO - Time taken for Epoch 1:4.50 - F1: 0.0312
+2026-02-13 00:52:10 - INFO - Time taken for Epoch 2:5.41 - F1: 0.0228
+2026-02-13 00:52:14 - INFO - Time taken for Epoch 3:4.30 - F1: 0.0285
+2026-02-13 00:52:18 - INFO - Time taken for Epoch 4:4.33 - F1: 0.0325
+2026-02-13 00:52:36 - INFO - Time taken for Epoch 5:17.66 - F1: 0.0085
+2026-02-13 00:52:41 - INFO - Time taken for Epoch 6:4.49 - F1: 0.0365
+2026-02-13 00:52:47 - INFO - Time taken for Epoch 7:6.76 - F1: 0.0365
+2026-02-13 00:52:52 - INFO - Time taken for Epoch 8:4.58 - F1: 0.0308
+2026-02-13 00:52:56 - INFO - Time taken for Epoch 9:4.47 - F1: 0.0115
+2026-02-13 00:53:01 - INFO - Time taken for Epoch 10:4.47 - F1: 0.0115
+2026-02-13 00:53:05 - INFO - Time taken for Epoch 11:4.47 - F1: 0.0115
+2026-02-13 00:53:10 - INFO - Time taken for Epoch 12:4.68 - F1: 0.0085
+2026-02-13 00:53:15 - INFO - Time taken for Epoch 13:4.66 - F1: 0.0085
+2026-02-13 00:53:19 - INFO - Time taken for Epoch 14:4.62 - F1: 0.0164
+2026-02-13 00:53:24 - INFO - Time taken for Epoch 15:4.52 - F1: 0.0164
+2026-02-13 00:53:28 - INFO - Time taken for Epoch 16:4.49 - F1: 0.0164
+2026-02-13 00:53:28 - INFO - Performance not improving for 10 consecutive epochs.
+2026-02-13 00:53:28 - INFO - Best F1:0.0365 - Best Epoch:5
+2026-02-13 00:53:33 - INFO - 
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian8, NumShots: 50, N: 50 Test SEED: 1234 F1: 0.0361, Test ECE: 0.1466
+2026-02-13 00:53:33 - INFO - All results: {'f1_macro': 0.036057692307692304, 'ece': np.float64(0.14658054856771832)}
+2026-02-13 00:53:33 - INFO - 
+Total time taken: 334.03 seconds
+2026-02-13 00:53:33 - INFO - Trial 7 finished with value: 0.036057692307692304 and parameters: {'learning_rate': 0.00021109255664032966, 'weight_decay': 0.0026464647529051625, 'batch_size': 8, 'co_train_epochs': 17, 'epoch_patience': 4}. Best is trial 1 with value: 0.593843301154275.
+2026-02-13 00:53:33 - INFO - Using devices: cuda:1, cuda:1
+2026-02-13 00:53:33 - INFO - Devices: cuda:1, cuda:1
+2026-02-13 00:53:33 - INFO - Starting log
+2026-02-13 00:53:33 - INFO - Dataset: humanitarian8, Event: canada_wildfires_2016, N: 50, Seed: 1234, HF Model: GPT-4o, NumShots: 50, PLM: bert-tweet
+2026-02-13 00:53:33 - INFO - Learning Rate: 1.9755211599478512e-05
+Weight Decay: 0.0009225998616614073
+Batch Size: 32
+No. Epochs: 10
+Epoch Patience: 6
+ Accumulation Steps: 2
+2026-02-13 00:53:34 - INFO - Generating initial weights
+2026-02-13 00:53:42 - INFO - Time taken for Epoch 1:7.63 - F1: 0.0453
+2026-02-13 00:53:50 - INFO - Time taken for Epoch 2:7.69 - F1: 0.0533
+2026-02-13 00:53:58 - INFO - Time taken for Epoch 3:7.73 - F1: 0.0627
+2026-02-13 00:54:05 - INFO - Time taken for Epoch 4:7.70 - F1: 0.0870
+2026-02-13 00:54:13 - INFO - Time taken for Epoch 5:7.63 - F1: 0.1664
+2026-02-13 00:54:21 - INFO - Time taken for Epoch 6:7.68 - F1: 0.2203
+2026-02-13 00:54:28 - INFO - Time taken for Epoch 7:7.57 - F1: 0.2478
+2026-02-13 00:54:36 - INFO - Time taken for Epoch 8:7.58 - F1: 0.2350
+2026-02-13 00:54:44 - INFO - Time taken for Epoch 9:7.64 - F1: 0.2334
+2026-02-13 00:54:51 - INFO - Time taken for Epoch 10:7.70 - F1: 0.2424
+2026-02-13 00:54:51 - INFO - Best F1:0.2478 - Best Epoch:7
+2026-02-13 00:54:52 - INFO - Starting co-training
+2026-02-13 00:55:03 - INFO - Time taken for Epoch 1: 10.66s - F1: 0.07352941
+2026-02-13 00:55:15 - INFO - Time taken for Epoch 2: 11.49s - F1: 0.15203571
+2026-02-13 00:55:26 - INFO - Time taken for Epoch 3: 11.60s - F1: 0.25339197
+2026-02-13 00:55:38 - INFO - Time taken for Epoch 4: 11.64s - F1: 0.30247241
+2026-02-13 00:55:53 - INFO - Time taken for Epoch 5: 15.00s - F1: 0.35181004
+2026-02-13 00:56:04 - INFO - Time taken for Epoch 6: 11.48s - F1: 0.34556640
+2026-02-13 00:56:15 - INFO - Time taken for Epoch 7: 10.55s - F1: 0.36966574
+2026-02-13 00:56:36 - INFO - Time taken for Epoch 8: 21.00s - F1: 0.45710073
+2026-02-13 00:56:48 - INFO - Time taken for Epoch 9: 12.14s - F1: 0.47384705
+2026-02-13 00:57:00 - INFO - Time taken for Epoch 10: 11.76s - F1: 0.45204215
+2026-02-13 00:57:02 - INFO - Fine-tuning models
+2026-02-13 00:57:05 - INFO - Time taken for Epoch 1:3.11 - F1: 0.4873
+2026-02-13 00:57:09 - INFO - Time taken for Epoch 2:3.88 - F1: 0.4863
+2026-02-13 00:57:12 - INFO - Time taken for Epoch 3:3.06 - F1: 0.4820
+2026-02-13 00:57:15 - INFO - Time taken for Epoch 4:3.05 - F1: 0.4860
+2026-02-13 00:57:18 - INFO - Time taken for Epoch 5:3.03 - F1: 0.4903
+2026-02-13 00:57:22 - INFO - Time taken for Epoch 6:4.11 - F1: 0.4991
+2026-02-13 00:57:26 - INFO - Time taken for Epoch 7:4.00 - F1: 0.5292
+2026-02-13 00:57:30 - INFO - Time taken for Epoch 8:3.91 - F1: 0.5558
+2026-02-13 00:57:34 - INFO - Time taken for Epoch 9:4.11 - F1: 0.5507
+2026-02-13 00:57:37 - INFO - Time taken for Epoch 10:3.00 - F1: 0.5817
+2026-02-13 00:57:58 - INFO - Time taken for Epoch 11:21.15 - F1: 0.5604
+2026-02-13 00:58:01 - INFO - Time taken for Epoch 12:2.99 - F1: 0.5408
+2026-02-13 00:58:04 - INFO - Time taken for Epoch 13:3.00 - F1: 0.5469
+2026-02-13 00:58:07 - INFO - Time taken for Epoch 14:3.00 - F1: 0.5421
+2026-02-13 00:58:10 - INFO - Time taken for Epoch 15:3.00 - F1: 0.5313
+2026-02-13 00:58:13 - INFO - Time taken for Epoch 16:3.00 - F1: 0.5391
+2026-02-13 00:58:16 - INFO - Time taken for Epoch 17:3.00 - F1: 0.5346
+2026-02-13 00:58:19 - INFO - Time taken for Epoch 18:3.00 - F1: 0.5349
+2026-02-13 00:58:22 - INFO - Time taken for Epoch 19:3.01 - F1: 0.5250
+2026-02-13 00:58:25 - INFO - Time taken for Epoch 20:3.01 - F1: 0.5438
+2026-02-13 00:58:25 - INFO - Performance not improving for 10 consecutive epochs.
+2026-02-13 00:58:25 - INFO - Best F1:0.5817 - Best Epoch:9
+2026-02-13 00:58:29 - INFO - 
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian8, NumShots: 50, N: 50 Test SEED: 1234 F1: 0.5721, Test ECE: 0.0801
+2026-02-13 00:58:29 - INFO - All results: {'f1_macro': 0.5721251669169962, 'ece': np.float64(0.08009542976872305)}
+2026-02-13 00:58:29 - INFO - 
+Total time taken: 296.47 seconds
+2026-02-13 00:58:29 - INFO - Trial 8 finished with value: 0.5721251669169962 and parameters: {'learning_rate': 1.9755211599478512e-05, 'weight_decay': 0.0009225998616614073, 'batch_size': 32, 'co_train_epochs': 10, 'epoch_patience': 6}. Best is trial 1 with value: 0.593843301154275.
+2026-02-13 00:58:29 - INFO - Using devices: cuda:1, cuda:1
+2026-02-13 00:58:29 - INFO - Devices: cuda:1, cuda:1
+2026-02-13 00:58:29 - INFO - Starting log
+2026-02-13 00:58:29 - INFO - Dataset: humanitarian8, Event: canada_wildfires_2016, N: 50, Seed: 1234, HF Model: GPT-4o, NumShots: 50, PLM: bert-tweet
+2026-02-13 00:58:30 - INFO - Learning Rate: 3.065122803916743e-05
+Weight Decay: 0.00043673141818648516
+Batch Size: 8
+No. Epochs: 16
+Epoch Patience: 9
+ Accumulation Steps: 8
+2026-02-13 00:58:31 - INFO - Generating initial weights
+2026-02-13 00:58:42 - INFO - Time taken for Epoch 1:10.72 - F1: 0.0489
+2026-02-13 00:58:53 - INFO - Time taken for Epoch 2:10.93 - F1: 0.0552
+2026-02-13 00:59:04 - INFO - Time taken for Epoch 3:10.91 - F1: 0.0994
+2026-02-13 00:59:15 - INFO - Time taken for Epoch 4:10.96 - F1: 0.1357
+2026-02-13 00:59:25 - INFO - Time taken for Epoch 5:10.60 - F1: 0.2462
+2026-02-13 00:59:36 - INFO - Time taken for Epoch 6:10.74 - F1: 0.3202
+2026-02-13 00:59:47 - INFO - Time taken for Epoch 7:10.75 - F1: 0.3946
+2026-02-13 00:59:58 - INFO - Time taken for Epoch 8:10.71 - F1: 0.4328
+2026-02-13 01:00:08 - INFO - Time taken for Epoch 9:10.79 - F1: 0.4333
+2026-02-13 01:00:19 - INFO - Time taken for Epoch 10:10.74 - F1: 0.4858
+2026-02-13 01:00:30 - INFO - Time taken for Epoch 11:10.62 - F1: 0.4893
+2026-02-13 01:00:41 - INFO - Time taken for Epoch 12:10.93 - F1: 0.4841
+2026-02-13 01:00:51 - INFO - Time taken for Epoch 13:10.75 - F1: 0.4968
+2026-02-13 01:01:02 - INFO - Time taken for Epoch 14:10.90 - F1: 0.5176
+2026-02-13 01:01:13 - INFO - Time taken for Epoch 15:10.92 - F1: 0.5236
+2026-02-13 01:01:24 - INFO - Time taken for Epoch 16:11.08 - F1: 0.5320
+2026-02-13 01:01:24 - INFO - Best F1:0.5320 - Best Epoch:16
+2026-02-13 01:01:25 - INFO - Starting co-training
+2026-02-13 01:01:36 - INFO - Time taken for Epoch 1: 10.10s - F1: 0.07352941
+2026-02-13 01:01:47 - INFO - Time taken for Epoch 2: 11.25s - F1: 0.14177489
+2026-02-13 01:01:58 - INFO - Time taken for Epoch 3: 11.13s - F1: 0.15898541
+2026-02-13 01:02:09 - INFO - Time taken for Epoch 4: 11.17s - F1: 0.29082649
+2026-02-13 01:02:25 - INFO - Time taken for Epoch 5: 15.90s - F1: 0.33208609
+2026-02-13 01:02:36 - INFO - Time taken for Epoch 6: 11.04s - F1: 0.34287293
+2026-02-13 01:02:47 - INFO - Time taken for Epoch 7: 11.29s - F1: 0.40182745
+2026-02-13 01:03:08 - INFO - Time taken for Epoch 8: 20.60s - F1: 0.41369085
+2026-02-13 01:03:19 - INFO - Time taken for Epoch 9: 11.00s - F1: 0.39265633
+2026-02-13 01:03:29 - INFO - Time taken for Epoch 10: 10.14s - F1: 0.38179750
+2026-02-13 01:03:39 - INFO - Time taken for Epoch 11: 10.17s - F1: 0.45929692
+2026-02-13 01:03:57 - INFO - Time taken for Epoch 12: 17.96s - F1: 0.45174499
+2026-02-13 01:04:07 - INFO - Time taken for Epoch 13: 9.96s - F1: 0.47071535
+2026-02-13 01:04:19 - INFO - Time taken for Epoch 14: 11.27s - F1: 0.46239227
+2026-02-13 01:04:29 - INFO - Time taken for Epoch 15: 10.50s - F1: 0.46411475
+2026-02-13 01:04:39 - INFO - Time taken for Epoch 16: 10.12s - F1: 0.46309511
+2026-02-13 01:04:46 - INFO - Fine-tuning models
+2026-02-13 01:04:51 - INFO - Time taken for Epoch 1:4.57 - F1: 0.4867
+2026-02-13 01:04:57 - INFO - Time taken for Epoch 2:5.54 - F1: 0.4839
+2026-02-13 01:05:01 - INFO - Time taken for Epoch 3:4.48 - F1: 0.4852
+2026-02-13 01:05:06 - INFO - Time taken for Epoch 4:4.53 - F1: 0.5111
+2026-02-13 01:05:19 - INFO - Time taken for Epoch 5:12.95 - F1: 0.5074
+2026-02-13 01:05:23 - INFO - Time taken for Epoch 6:4.46 - F1: 0.4950
+2026-02-13 01:05:28 - INFO - Time taken for Epoch 7:4.42 - F1: 0.5134
+2026-02-13 01:05:33 - INFO - Time taken for Epoch 8:5.47 - F1: 0.4961
+2026-02-13 01:05:37 - INFO - Time taken for Epoch 9:4.33 - F1: 0.5105
+2026-02-13 01:05:42 - INFO - Time taken for Epoch 10:4.49 - F1: 0.5129
+2026-02-13 01:05:46 - INFO - Time taken for Epoch 11:4.53 - F1: 0.5295
+2026-02-13 01:05:52 - INFO - Time taken for Epoch 12:5.62 - F1: 0.5181
+2026-02-13 01:05:57 - INFO - Time taken for Epoch 13:4.53 - F1: 0.5373
+2026-02-13 01:06:02 - INFO - Time taken for Epoch 14:5.70 - F1: 0.6269
+2026-02-13 01:06:08 - INFO - Time taken for Epoch 15:5.69 - F1: 0.6563
+2026-02-13 01:06:13 - INFO - Time taken for Epoch 16:5.53 - F1: 0.6626
+2026-02-13 01:06:19 - INFO - Time taken for Epoch 17:5.72 - F1: 0.6852
+2026-02-13 01:06:28 - INFO - Time taken for Epoch 18:8.86 - F1: 0.6621
+2026-02-13 01:06:33 - INFO - Time taken for Epoch 19:4.50 - F1: 0.6571
+2026-02-13 01:06:37 - INFO - Time taken for Epoch 20:4.51 - F1: 0.6739
+2026-02-13 01:06:41 - INFO - Time taken for Epoch 21:4.33 - F1: 0.6503
+2026-02-13 01:06:46 - INFO - Time taken for Epoch 22:4.31 - F1: 0.6450
+2026-02-13 01:06:50 - INFO - Time taken for Epoch 23:4.31 - F1: 0.6109
+2026-02-13 01:06:54 - INFO - Time taken for Epoch 24:4.33 - F1: 0.6055
+2026-02-13 01:06:59 - INFO - Time taken for Epoch 25:4.58 - F1: 0.6366
+2026-02-13 01:07:03 - INFO - Time taken for Epoch 26:4.57 - F1: 0.6179
+2026-02-13 01:07:08 - INFO - Time taken for Epoch 27:4.56 - F1: 0.6074
+2026-02-13 01:07:08 - INFO - Performance not improving for 10 consecutive epochs.
+2026-02-13 01:07:08 - INFO - Best F1:0.6852 - Best Epoch:16
+2026-02-13 01:07:12 - INFO - 
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian8, NumShots: 50, N: 50 Test SEED: 1234 F1: 0.5928, Test ECE: 0.0771
+2026-02-13 01:07:12 - INFO - All results: {'f1_macro': 0.5927770807742252, 'ece': np.float64(0.0771402438704887)}
+2026-02-13 01:07:12 - INFO - 
+Total time taken: 523.34 seconds
+2026-02-13 01:07:13 - INFO - Trial 9 finished with value: 0.5927770807742252 and parameters: {'learning_rate': 3.065122803916743e-05, 'weight_decay': 0.00043673141818648516, 'batch_size': 8, 'co_train_epochs': 16, 'epoch_patience': 9}. Best is trial 1 with value: 0.593843301154275.
+2026-02-13 01:07:13 - INFO - Using devices: cuda:1, cuda:1
+2026-02-13 01:07:13 - INFO - Devices: cuda:1, cuda:1
+2026-02-13 01:07:13 - INFO - Starting log
+2026-02-13 01:07:13 - INFO - Dataset: humanitarian8, Event: canada_wildfires_2016, N: 50, Seed: 1234, HF Model: GPT-4o, NumShots: 50, PLM: bert-tweet
+2026-02-13 01:07:13 - INFO - Learning Rate: 8.228732798088615e-05
+Weight Decay: 3.470583062419213e-05
+Batch Size: 16
+No. Epochs: 6
+Epoch Patience: 4
+ Accumulation Steps: 4
+2026-02-13 01:07:14 - INFO - Generating initial weights
+2026-02-13 01:07:23 - INFO - Time taken for Epoch 1:8.65 - F1: 0.0365
+2026-02-13 01:07:32 - INFO - Time taken for Epoch 2:8.62 - F1: 0.1058
+2026-02-13 01:07:41 - INFO - Time taken for Epoch 3:8.69 - F1: 0.1146
+2026-02-13 01:07:50 - INFO - Time taken for Epoch 4:8.80 - F1: 0.2541
+2026-02-13 01:07:58 - INFO - Time taken for Epoch 5:8.74 - F1: 0.3183
+2026-02-13 01:08:07 - INFO - Time taken for Epoch 6:8.62 - F1: 0.4542
+2026-02-13 01:08:07 - INFO - Best F1:0.4542 - Best Epoch:6
+2026-02-13 01:08:08 - INFO - Starting co-training
+2026-02-13 01:08:18 - INFO - Time taken for Epoch 1: 9.72s - F1: 0.26459741
+2026-02-13 01:08:30 - INFO - Time taken for Epoch 2: 12.07s - F1: 0.35850130
+2026-02-13 01:08:49 - INFO - Time taken for Epoch 3: 19.30s - F1: 0.38475816
+2026-02-13 01:09:00 - INFO - Time taken for Epoch 4: 10.88s - F1: 0.40053108
+2026-02-13 01:09:11 - INFO - Time taken for Epoch 5: 10.77s - F1: 0.44520545
+2026-02-13 01:09:22 - INFO - Time taken for Epoch 6: 10.82s - F1: 0.45046445
+2026-02-13 01:09:30 - INFO - Fine-tuning models
+2026-02-13 01:09:33 - INFO - Time taken for Epoch 1:3.52 - F1: 0.4266
+2026-02-13 01:09:39 - INFO - Time taken for Epoch 2:5.38 - F1: 0.4868
+2026-02-13 01:09:43 - INFO - Time taken for Epoch 3:4.56 - F1: 0.5163
+2026-02-13 01:09:48 - INFO - Time taken for Epoch 4:4.56 - F1: 0.5070
+2026-02-13 01:09:51 - INFO - Time taken for Epoch 5:3.53 - F1: 0.5145
+2026-02-13 01:09:55 - INFO - Time taken for Epoch 6:3.56 - F1: 0.5165
+2026-02-13 01:10:00 - INFO - Time taken for Epoch 7:4.84 - F1: 0.6008
+2026-02-13 01:10:05 - INFO - Time taken for Epoch 8:4.94 - F1: 0.6754
+2026-02-13 01:10:26 - INFO - Time taken for Epoch 9:21.48 - F1: 0.6476
+2026-02-13 01:10:30 - INFO - Time taken for Epoch 10:3.48 - F1: 0.6481
+2026-02-13 01:10:33 - INFO - Time taken for Epoch 11:3.55 - F1: 0.6550
+2026-02-13 01:10:37 - INFO - Time taken for Epoch 12:3.55 - F1: 0.6499
+2026-02-13 01:10:40 - INFO - Time taken for Epoch 13:3.51 - F1: 0.6582
+2026-02-13 01:10:44 - INFO - Time taken for Epoch 14:3.49 - F1: 0.6588
+2026-02-13 01:10:47 - INFO - Time taken for Epoch 15:3.53 - F1: 0.6773
+2026-02-13 01:10:52 - INFO - Time taken for Epoch 16:4.71 - F1: 0.6928
+2026-02-13 01:11:09 - INFO - Time taken for Epoch 17:16.85 - F1: 0.6820
+2026-02-13 01:11:12 - INFO - Time taken for Epoch 18:3.53 - F1: 0.6927
+2026-02-13 01:11:16 - INFO - Time taken for Epoch 19:3.53 - F1: 0.7012
+2026-02-13 01:11:20 - INFO - Time taken for Epoch 20:4.63 - F1: 0.6902
+2026-02-13 01:11:24 - INFO - Time taken for Epoch 21:3.53 - F1: 0.6817
+2026-02-13 01:11:27 - INFO - Time taken for Epoch 22:3.51 - F1: 0.6791
+2026-02-13 01:11:31 - INFO - Time taken for Epoch 23:3.54 - F1: 0.6799
+2026-02-13 01:11:35 - INFO - Time taken for Epoch 24:3.48 - F1: 0.6736
+2026-02-13 01:11:38 - INFO - Time taken for Epoch 25:3.49 - F1: 0.6647
+2026-02-13 01:11:42 - INFO - Time taken for Epoch 26:3.55 - F1: 0.6740
+2026-02-13 01:11:45 - INFO - Time taken for Epoch 27:3.49 - F1: 0.6729
+2026-02-13 01:11:49 - INFO - Time taken for Epoch 28:3.56 - F1: 0.6557
+2026-02-13 01:11:52 - INFO - Time taken for Epoch 29:3.55 - F1: 0.6485
+2026-02-13 01:11:52 - INFO - Performance not improving for 10 consecutive epochs.
+2026-02-13 01:11:52 - INFO - Best F1:0.7012 - Best Epoch:18
+2026-02-13 01:11:56 - INFO - 
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian8, NumShots: 50, N: 50 Test SEED: 1234 F1: 0.6174, Test ECE: 0.0477
+2026-02-13 01:11:56 - INFO - All results: {'f1_macro': 0.6173931808694054, 'ece': np.float64(0.04770192363288965)}
+2026-02-13 01:11:56 - INFO - 
+Total time taken: 283.85 seconds
+2026-02-13 01:11:56 - INFO - Trial 10 finished with value: 0.6173931808694054 and parameters: {'learning_rate': 8.228732798088615e-05, 'weight_decay': 3.470583062419213e-05, 'batch_size': 16, 'co_train_epochs': 6, 'epoch_patience': 4}. Best is trial 10 with value: 0.6173931808694054.
+2026-02-13 01:11:56 - INFO - Using devices: cuda:1, cuda:1
+2026-02-13 01:11:56 - INFO - Devices: cuda:1, cuda:1
+2026-02-13 01:11:56 - INFO - Starting log
+2026-02-13 01:11:56 - INFO - Dataset: humanitarian8, Event: canada_wildfires_2016, N: 50, Seed: 1234, HF Model: GPT-4o, NumShots: 50, PLM: bert-tweet
+2026-02-13 01:11:57 - INFO - Learning Rate: 5.937473890851211e-05
+Weight Decay: 2.4265000075161833e-05
+Batch Size: 16
+No. Epochs: 5
+Epoch Patience: 4
+ Accumulation Steps: 4
+2026-02-13 01:11:58 - INFO - Generating initial weights
+2026-02-13 01:12:07 - INFO - Time taken for Epoch 1:8.63 - F1: 0.0367
+2026-02-13 01:12:16 - INFO - Time taken for Epoch 2:8.65 - F1: 0.0987
+2026-02-13 01:12:24 - INFO - Time taken for Epoch 3:8.63 - F1: 0.1165
+2026-02-13 01:12:33 - INFO - Time taken for Epoch 4:8.85 - F1: 0.2469
+2026-02-13 01:12:42 - INFO - Time taken for Epoch 5:8.70 - F1: 0.2748
+2026-02-13 01:12:42 - INFO - Best F1:0.2748 - Best Epoch:5
+2026-02-13 01:12:43 - INFO - Starting co-training
+2026-02-13 01:12:53 - INFO - Time taken for Epoch 1: 9.72s - F1: 0.25893200
+2026-02-13 01:13:04 - INFO - Time taken for Epoch 2: 10.73s - F1: 0.33039807
+2026-02-13 01:13:14 - INFO - Time taken for Epoch 3: 10.81s - F1: 0.38276372
+2026-02-13 01:13:34 - INFO - Time taken for Epoch 4: 19.31s - F1: 0.42262555
+2026-02-13 01:13:45 - INFO - Time taken for Epoch 5: 10.83s - F1: 0.38836079
+2026-02-13 01:13:47 - INFO - Fine-tuning models
+2026-02-13 01:13:50 - INFO - Time taken for Epoch 1:3.60 - F1: 0.4448
+2026-02-13 01:13:55 - INFO - Time taken for Epoch 2:4.55 - F1: 0.4689
+2026-02-13 01:13:59 - INFO - Time taken for Epoch 3:4.52 - F1: 0.4701
+2026-02-13 01:14:04 - INFO - Time taken for Epoch 4:4.66 - F1: 0.5645
+2026-02-13 01:14:09 - INFO - Time taken for Epoch 5:4.66 - F1: 0.5482
+2026-02-13 01:14:12 - INFO - Time taken for Epoch 6:3.59 - F1: 0.5259
+2026-02-13 01:14:16 - INFO - Time taken for Epoch 7:3.56 - F1: 0.5287
+2026-02-13 01:14:19 - INFO - Time taken for Epoch 8:3.55 - F1: 0.5231
+2026-02-13 01:14:23 - INFO - Time taken for Epoch 9:3.55 - F1: 0.5254
+2026-02-13 01:14:27 - INFO - Time taken for Epoch 10:3.58 - F1: 0.6279
+2026-02-13 01:14:44 - INFO - Time taken for Epoch 11:17.61 - F1: 0.6224
+2026-02-13 01:14:48 - INFO - Time taken for Epoch 12:3.51 - F1: 0.6584
+2026-02-13 01:14:52 - INFO - Time taken for Epoch 13:4.49 - F1: 0.6917
+2026-02-13 01:14:57 - INFO - Time taken for Epoch 14:4.54 - F1: 0.6393
+2026-02-13 01:15:00 - INFO - Time taken for Epoch 15:3.54 - F1: 0.6253
+2026-02-13 01:15:04 - INFO - Time taken for Epoch 16:3.57 - F1: 0.6582
+2026-02-13 01:15:07 - INFO - Time taken for Epoch 17:3.49 - F1: 0.6291
+2026-02-13 01:15:11 - INFO - Time taken for Epoch 18:3.54 - F1: 0.6842
+2026-02-13 01:15:14 - INFO - Time taken for Epoch 19:3.57 - F1: 0.7030
+2026-02-13 01:15:34 - INFO - Time taken for Epoch 20:19.64 - F1: 0.7111
+2026-02-13 01:15:39 - INFO - Time taken for Epoch 21:4.52 - F1: 0.6938
+2026-02-13 01:15:42 - INFO - Time taken for Epoch 22:3.50 - F1: 0.6946
+2026-02-13 01:15:46 - INFO - Time taken for Epoch 23:3.52 - F1: 0.7114
+2026-02-13 01:15:50 - INFO - Time taken for Epoch 24:4.62 - F1: 0.7164
+2026-02-13 01:15:55 - INFO - Time taken for Epoch 25:4.45 - F1: 0.7164
+2026-02-13 01:15:58 - INFO - Time taken for Epoch 26:3.48 - F1: 0.6991
+2026-02-13 01:16:02 - INFO - Time taken for Epoch 27:3.56 - F1: 0.6994
+2026-02-13 01:16:05 - INFO - Time taken for Epoch 28:3.60 - F1: 0.6994
+2026-02-13 01:16:09 - INFO - Time taken for Epoch 29:3.55 - F1: 0.7016
+2026-02-13 01:16:12 - INFO - Time taken for Epoch 30:3.53 - F1: 0.6996
+2026-02-13 01:16:16 - INFO - Time taken for Epoch 31:3.49 - F1: 0.6990
+2026-02-13 01:16:23 - INFO - Time taken for Epoch 32:6.81 - F1: 0.6908
+2026-02-13 01:16:26 - INFO - Time taken for Epoch 33:3.55 - F1: 0.6908
+2026-02-13 01:16:30 - INFO - Time taken for Epoch 34:3.54 - F1: 0.6891
+2026-02-13 01:16:30 - INFO - Performance not improving for 10 consecutive epochs.
+2026-02-13 01:16:30 - INFO - Best F1:0.7164 - Best Epoch:23
+2026-02-13 01:16:34 - INFO - 
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian8, NumShots: 50, N: 50 Test SEED: 1234 F1: 0.6223, Test ECE: 0.0340
+2026-02-13 01:16:34 - INFO - All results: {'f1_macro': 0.622287512311388, 'ece': np.float64(0.03401754826642154)}
+2026-02-13 01:16:34 - INFO - 
+Total time taken: 277.25 seconds
+2026-02-13 01:16:34 - INFO - Trial 11 finished with value: 0.622287512311388 and parameters: {'learning_rate': 5.937473890851211e-05, 'weight_decay': 2.4265000075161833e-05, 'batch_size': 16, 'co_train_epochs': 5, 'epoch_patience': 4}. Best is trial 11 with value: 0.622287512311388.
+2026-02-13 01:16:34 - INFO - Using devices: cuda:1, cuda:1
+2026-02-13 01:16:34 - INFO - Devices: cuda:1, cuda:1
+2026-02-13 01:16:34 - INFO - Starting log
+2026-02-13 01:16:34 - INFO - Dataset: humanitarian8, Event: canada_wildfires_2016, N: 50, Seed: 1234, HF Model: GPT-4o, NumShots: 50, PLM: bert-tweet
+2026-02-13 01:16:34 - INFO - Learning Rate: 5.064347382484991e-05
+Weight Decay: 1.9966212670389005e-05
+Batch Size: 16
+No. Epochs: 5
+Epoch Patience: 4
+ Accumulation Steps: 4
+2026-02-13 01:16:35 - INFO - Generating initial weights
+2026-02-13 01:16:45 - INFO - Time taken for Epoch 1:8.77 - F1: 0.0367
+2026-02-13 01:16:53 - INFO - Time taken for Epoch 2:8.68 - F1: 0.0885
+2026-02-13 01:17:02 - INFO - Time taken for Epoch 3:8.70 - F1: 0.1231
+2026-02-13 01:17:11 - INFO - Time taken for Epoch 4:8.77 - F1: 0.2349
+2026-02-13 01:17:19 - INFO - Time taken for Epoch 5:8.64 - F1: 0.2644
+2026-02-13 01:17:19 - INFO - Best F1:0.2644 - Best Epoch:5
+2026-02-13 01:17:20 - INFO - Starting co-training
+2026-02-13 01:17:30 - INFO - Time taken for Epoch 1: 9.62s - F1: 0.25143155
+2026-02-13 01:17:41 - INFO - Time taken for Epoch 2: 10.67s - F1: 0.28706291
+2026-02-13 01:18:00 - INFO - Time taken for Epoch 3: 18.70s - F1: 0.35537419
+2026-02-13 01:18:10 - INFO - Time taken for Epoch 4: 10.62s - F1: 0.40253339
+2026-02-13 01:18:21 - INFO - Time taken for Epoch 5: 10.68s - F1: 0.42521656
+2026-02-13 01:18:41 - INFO - Fine-tuning models
+2026-02-13 01:18:45 - INFO - Time taken for Epoch 1:3.60 - F1: 0.4865
+2026-02-13 01:18:49 - INFO - Time taken for Epoch 2:4.54 - F1: 0.4667
+2026-02-13 01:18:53 - INFO - Time taken for Epoch 3:3.55 - F1: 0.4782
+2026-02-13 01:18:56 - INFO - Time taken for Epoch 4:3.55 - F1: 0.5033
+2026-02-13 01:19:01 - INFO - Time taken for Epoch 5:4.56 - F1: 0.5642
+2026-02-13 01:19:06 - INFO - Time taken for Epoch 6:4.64 - F1: 0.5774
+2026-02-13 01:19:10 - INFO - Time taken for Epoch 7:4.78 - F1: 0.5795
+2026-02-13 01:19:15 - INFO - Time taken for Epoch 8:4.67 - F1: 0.5762
+2026-02-13 01:19:34 - INFO - Time taken for Epoch 9:18.93 - F1: 0.5517
+2026-02-13 01:19:38 - INFO - Time taken for Epoch 10:3.55 - F1: 0.5675
+2026-02-13 01:19:41 - INFO - Time taken for Epoch 11:3.49 - F1: 0.5696
+2026-02-13 01:19:45 - INFO - Time taken for Epoch 12:3.51 - F1: 0.5700
+2026-02-13 01:19:48 - INFO - Time taken for Epoch 13:3.52 - F1: 0.5724
+2026-02-13 01:19:52 - INFO - Time taken for Epoch 14:3.54 - F1: 0.5629
+2026-02-13 01:19:55 - INFO - Time taken for Epoch 15:3.52 - F1: 0.6359
+2026-02-13 01:20:00 - INFO - Time taken for Epoch 16:4.59 - F1: 0.5745
+2026-02-13 01:20:03 - INFO - Time taken for Epoch 17:3.51 - F1: 0.6355
+2026-02-13 01:20:07 - INFO - Time taken for Epoch 18:3.61 - F1: 0.6505
+2026-02-13 01:20:12 - INFO - Time taken for Epoch 19:4.69 - F1: 0.6463
+2026-02-13 01:20:15 - INFO - Time taken for Epoch 20:3.60 - F1: 0.6562
+2026-02-13 01:20:26 - INFO - Time taken for Epoch 21:11.20 - F1: 0.6444
+2026-02-13 01:20:30 - INFO - Time taken for Epoch 22:3.51 - F1: 0.6597
+2026-02-13 01:20:34 - INFO - Time taken for Epoch 23:4.54 - F1: 0.6672
+2026-02-13 01:20:39 - INFO - Time taken for Epoch 24:4.58 - F1: 0.6703
+2026-02-13 01:20:43 - INFO - Time taken for Epoch 25:4.54 - F1: 0.6621
+2026-02-13 01:20:47 - INFO - Time taken for Epoch 26:3.56 - F1: 0.6621
+2026-02-13 01:20:51 - INFO - Time taken for Epoch 27:3.59 - F1: 0.6513
+2026-02-13 01:21:03 - INFO - Time taken for Epoch 28:12.78 - F1: 0.6624
+2026-02-13 01:21:07 - INFO - Time taken for Epoch 29:3.58 - F1: 0.6531
+2026-02-13 01:21:11 - INFO - Time taken for Epoch 30:3.53 - F1: 0.6517
+2026-02-13 01:21:14 - INFO - Time taken for Epoch 31:3.52 - F1: 0.6509
+2026-02-13 01:21:18 - INFO - Time taken for Epoch 32:3.53 - F1: 0.6458
+2026-02-13 01:21:21 - INFO - Time taken for Epoch 33:3.51 - F1: 0.6386
+2026-02-13 01:21:25 - INFO - Time taken for Epoch 34:3.53 - F1: 0.6443
+2026-02-13 01:21:25 - INFO - Performance not improving for 10 consecutive epochs.
+2026-02-13 01:21:25 - INFO - Best F1:0.6703 - Best Epoch:23
+2026-02-13 01:21:29 - INFO - 
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian8, NumShots: 50, N: 50 Test SEED: 1234 F1: 0.5838, Test ECE: 0.0488
+2026-02-13 01:21:29 - INFO - All results: {'f1_macro': 0.5838354165471579, 'ece': np.float64(0.048811097761218475)}
+2026-02-13 01:21:29 - INFO - 
+Total time taken: 294.93 seconds
+2026-02-13 01:21:29 - INFO - Trial 12 finished with value: 0.5838354165471579 and parameters: {'learning_rate': 5.064347382484991e-05, 'weight_decay': 1.9966212670389005e-05, 'batch_size': 16, 'co_train_epochs': 5, 'epoch_patience': 4}. Best is trial 11 with value: 0.622287512311388.
+2026-02-13 01:21:29 - INFO - Using devices: cuda:1, cuda:1
+2026-02-13 01:21:29 - INFO - Devices: cuda:1, cuda:1
+2026-02-13 01:21:29 - INFO - Starting log
+2026-02-13 01:21:29 - INFO - Dataset: humanitarian8, Event: canada_wildfires_2016, N: 50, Seed: 1234, HF Model: GPT-4o, NumShots: 50, PLM: bert-tweet
+2026-02-13 01:21:29 - INFO - Learning Rate: 0.0001689398256491444
+Weight Decay: 1.7487637387071834e-05
+Batch Size: 16
+No. Epochs: 5
+Epoch Patience: 4
+ Accumulation Steps: 4
+2026-02-13 01:21:30 - INFO - Generating initial weights
+2026-02-13 01:21:40 - INFO - Time taken for Epoch 1:8.78 - F1: 0.0567
+2026-02-13 01:21:48 - INFO - Time taken for Epoch 2:8.61 - F1: 0.1089
+2026-02-13 01:21:57 - INFO - Time taken for Epoch 3:8.56 - F1: 0.2296
+2026-02-13 01:22:05 - INFO - Time taken for Epoch 4:8.65 - F1: 0.2334
+2026-02-13 01:22:14 - INFO - Time taken for Epoch 5:8.71 - F1: 0.2583
+2026-02-13 01:22:14 - INFO - Best F1:0.2583 - Best Epoch:5
+2026-02-13 01:22:15 - INFO - Starting co-training
+2026-02-13 01:22:25 - INFO - Time taken for Epoch 1: 9.72s - F1: 0.15514001
+2026-02-13 01:22:36 - INFO - Time taken for Epoch 2: 10.57s - F1: 0.34780260
+2026-02-13 01:22:46 - INFO - Time taken for Epoch 3: 10.57s - F1: 0.41683210
+2026-02-13 01:22:57 - INFO - Time taken for Epoch 4: 10.76s - F1: 0.37538282
+2026-02-13 01:23:07 - INFO - Time taken for Epoch 5: 9.82s - F1: 0.45632010
+2026-02-13 01:23:39 - INFO - Fine-tuning models
+2026-02-13 01:23:43 - INFO - Time taken for Epoch 1:3.63 - F1: 0.3995
+2026-02-13 01:23:48 - INFO - Time taken for Epoch 2:4.72 - F1: 0.4128
+2026-02-13 01:23:52 - INFO - Time taken for Epoch 3:4.65 - F1: 0.4049
+2026-02-13 01:23:56 - INFO - Time taken for Epoch 4:3.53 - F1: 0.4403
+2026-02-13 01:24:00 - INFO - Time taken for Epoch 5:4.56 - F1: 0.4447
+2026-02-13 01:24:05 - INFO - Time taken for Epoch 6:4.61 - F1: 0.4445
+2026-02-13 01:24:08 - INFO - Time taken for Epoch 7:3.58 - F1: 0.4394
+2026-02-13 01:24:12 - INFO - Time taken for Epoch 8:3.65 - F1: 0.4395
+2026-02-13 01:24:16 - INFO - Time taken for Epoch 9:3.64 - F1: 0.5137
+2026-02-13 01:24:42 - INFO - Time taken for Epoch 10:25.86 - F1: 0.4942
+2026-02-13 01:24:45 - INFO - Time taken for Epoch 11:3.53 - F1: 0.4820
+2026-02-13 01:24:49 - INFO - Time taken for Epoch 12:3.55 - F1: 0.5423
+2026-02-13 01:24:53 - INFO - Time taken for Epoch 13:4.62 - F1: 0.5893
+2026-02-13 01:24:58 - INFO - Time taken for Epoch 14:4.71 - F1: 0.5561
+2026-02-13 01:25:02 - INFO - Time taken for Epoch 15:3.54 - F1: 0.5620
+2026-02-13 01:25:05 - INFO - Time taken for Epoch 16:3.54 - F1: 0.5803
+2026-02-13 01:25:09 - INFO - Time taken for Epoch 17:3.59 - F1: 0.5938
+2026-02-13 01:25:23 - INFO - Time taken for Epoch 18:14.67 - F1: 0.6140
+2026-02-13 01:25:28 - INFO - Time taken for Epoch 19:4.67 - F1: 0.6011
+2026-02-13 01:25:32 - INFO - Time taken for Epoch 20:3.52 - F1: 0.6071
+2026-02-13 01:25:35 - INFO - Time taken for Epoch 21:3.52 - F1: 0.6425
+2026-02-13 01:25:40 - INFO - Time taken for Epoch 22:5.11 - F1: 0.5653
+2026-02-13 01:25:44 - INFO - Time taken for Epoch 23:3.56 - F1: 0.5907
+2026-02-13 01:25:47 - INFO - Time taken for Epoch 24:3.59 - F1: 0.5614
+2026-02-13 01:25:51 - INFO - Time taken for Epoch 25:3.58 - F1: 0.5872
+2026-02-13 01:25:54 - INFO - Time taken for Epoch 26:3.53 - F1: 0.5742
+2026-02-13 01:25:58 - INFO - Time taken for Epoch 27:3.52 - F1: 0.5714
+2026-02-13 01:26:02 - INFO - Time taken for Epoch 28:3.52 - F1: 0.6070
+2026-02-13 01:26:05 - INFO - Time taken for Epoch 29:3.55 - F1: 0.6161
+2026-02-13 01:26:09 - INFO - Time taken for Epoch 30:3.54 - F1: 0.5811
+2026-02-13 01:26:12 - INFO - Time taken for Epoch 31:3.48 - F1: 0.5852
+2026-02-13 01:26:12 - INFO - Performance not improving for 10 consecutive epochs.
+2026-02-13 01:26:12 - INFO - Best F1:0.6425 - Best Epoch:20
+2026-02-13 01:26:16 - INFO - 
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian8, NumShots: 50, N: 50 Test SEED: 1234 F1: 0.6343, Test ECE: 0.0468
+2026-02-13 01:26:16 - INFO - All results: {'f1_macro': 0.6342986388840612, 'ece': np.float64(0.046811869439114334)}
+2026-02-13 01:26:16 - INFO - 
+Total time taken: 287.39 seconds
+2026-02-13 01:26:16 - INFO - Trial 13 finished with value: 0.6342986388840612 and parameters: {'learning_rate': 0.0001689398256491444, 'weight_decay': 1.7487637387071834e-05, 'batch_size': 16, 'co_train_epochs': 5, 'epoch_patience': 4}. Best is trial 13 with value: 0.6342986388840612.
+2026-02-13 01:26:16 - INFO - 
+[BEST TRIAL RESULTS]
+2026-02-13 01:26:16 - INFO - F1 Score: 0.6343
+2026-02-13 01:26:16 - INFO - Params: {'learning_rate': 0.0001689398256491444, 'weight_decay': 1.7487637387071834e-05, 'batch_size': 16, 'co_train_epochs': 5, 'epoch_patience': 4}
+2026-02-13 01:26:16 - INFO -   learning_rate: 0.0001689398256491444
+2026-02-13 01:26:16 - INFO -   weight_decay: 1.7487637387071834e-05
+2026-02-13 01:26:16 - INFO -   batch_size: 16
+2026-02-13 01:26:16 - INFO -   co_train_epochs: 5
+2026-02-13 01:26:16 - INFO -   epoch_patience: 4
+2026-02-13 01:26:16 - INFO - 
+Total time taken: 4754.44 seconds

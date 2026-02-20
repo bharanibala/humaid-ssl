@@ -50,32 +50,25 @@ def multigpu(model):
 
 # ── Model ──────────────────────────────────────────────────────────────────────
 class BertModel(torch.nn.Module):
-    def __init__(self, checkpoint, num_labels=10):
+    def __init__(self, checkpoint, num_labels):
         super().__init__()
-        self.model = AutoModelForSequenceClassification.from_pretrained(
-            checkpoint, num_labels=num_labels)
+        self.model = AutoModelForSequenceClassification.from_pretrained(checkpoint, num_labels=num_labels)
         self.T = torch.nn.Parameter(torch.ones(1) * 1.0)
 
-    def forward(self, input_ids, token_type_ids=None, attention_mask=None,
-                temperature_scaling=False):
+    def forward(self, input_ids, token_type_ids=None, attention_mask=None, temperature_scaling=False):
         if temperature_scaling:
             with torch.no_grad():
-                outputs = self.model(input_ids=input_ids,
-                                     token_type_ids=token_type_ids,
-                                     attention_mask=attention_mask)
-            temperature = self.T.unsqueeze(1).expand(
-                outputs.logits.size(0), outputs.logits.size(1))
+                outputs = self.model(input_ids=input_ids, token_type_ids=token_type_ids, attention_mask=attention_mask)
+            temperature = self.T.unsqueeze(1).expand(outputs.logits.size(0), outputs.logits.size(1))
             outputs.logits = outputs.logits / temperature
         else:
-            outputs = self.model(input_ids=input_ids,
-                                 token_type_ids=token_type_ids,
-                                 attention_mask=attention_mask)
+            outputs = self.model(input_ids=input_ids, token_type_ids=token_type_ids, attention_mask=attention_mask)
+
         return outputs
 
 
 # ── Evaluation ─────────────────────────────────────────────────────────────────
-def evaluate(model, test_dataloader, criterion, batch_size, num_labels,
-             temp_scaling=False):
+def evaluate(model, test_dataloader, criterion, batch_size, num_labels, temp_scaling=False):
     full_predictions, true_labels, probabilities = [], [], []
     model.eval()
     crt_loss = 0.0
@@ -122,113 +115,9 @@ def predict_unlabeled(model, ds_unlabeled):
             y_pred_unlbl.extend(pred.logits.cpu().numpy())
 
     y_pred_unlbl = np.argmax(np.array(y_pred_unlbl), axis=-1).flatten()
-    return CustomDataset_tracked(
+    return CustomDataset(
         ds_unlabeled.text_list, y_pred_unlbl, ds_unlabeled.idxes,
         ds_unlabeled.tokenizer, labeled=True)
-
-
-# ── Reliability helpers ────────────────────────────────────────────────────────
-def save_reliability_data(filename, confidences, predictions, true_labels):
-    df = pd.DataFrame({
-        'predictions': np.array(predictions),
-        'true_labels': np.array(true_labels),
-        'confidences': confidences.cpu().numpy(),
-    })
-    out_path = os.path.join(
-        "/home/b/bharanibala/noisefind/DisasterTweet-Experiments-main/reliability",
-        f"{filename}_rel_data.csv")
-    df.to_csv(out_path, sep=',', index=False)
-
-
-def compute_reliability_data(confidences, predictions, true_labels, num_bins=10):
-    predictions = np.array(predictions)
-    true_labels = np.array(true_labels)
-    bins = np.linspace(0, 1, num_bins + 1)
-    bin_indices = np.digitize(confidences, bins) - 1
-    bin_accuracies = np.zeros(num_bins)
-    bin_confidences = np.zeros(num_bins)
-    bin_counts = np.zeros(num_bins)
-    for i in range(num_bins):
-        mask = bin_indices == i
-        if np.sum(mask) > 0:
-            bin_confidences[i] = np.mean(confidences[mask])
-            bin_accuracies[i] = f1_score(true_labels[mask], predictions[mask],
-                                         average='macro', zero_division=0)
-            bin_counts[i] = np.sum(mask)
-    return bins[:-1], bin_accuracies, bin_confidences
-
-
-def plot_reliability_diagram(bin_edges, bin_accuracies, bin_confidences,
-                             method, filename, ece):
-    num_bins = 10
-    bin_width = 1 / num_bins
-    calibration_gaps = np.abs(bin_accuracies - bin_confidences)
-
-    fig, ax1 = plt.subplots(figsize=(7, 7))
-    ax1.plot([0, 1], [0, 1], linestyle='--', color='black', linewidth=1.5,
-             label='Perfect Calibration')
-    ax1.bar(bin_edges, calibration_gaps, width=bin_width,
-            color=['#1f77b4' if g >= 0 else '#ff7f0e' for g in calibration_gaps],
-            alpha=0.6, align='edge', label='Calibration Gap')
-    ax1.scatter(bin_edges + bin_width / 2, bin_accuracies, color='blue',
-                label='Empirical F1', edgecolors='black', linewidth=0.8, s=50)
-    ax1.set_xlabel('Confidence', fontsize=14)
-    ax1.set_ylabel('F1-score', fontsize=14)
-    ax1.set_xlim(0, 1)
-    ax1.set_ylim(0, 1)
-    ax1.tick_params(axis='both', labelsize=12)
-    ax1.axhline(y=0, color='gray', linestyle='-')
-    ax1.legend(fontsize=12, loc='upper left')
-    ax1.text(0.75, 0.05, f'ECE: {ece:.4f}', fontsize=12,
-             bbox=dict(facecolor='white', alpha=0.8))
-
-    plt.title(method, fontsize=16)
-    plt.grid(True, linestyle='--', alpha=0.6)
-
-    base = ("/home/b/bharanibala/noisefind/DisasterTweet-Experiments-main"
-            "/reliability/" + filename)
-    plt.savefig(base + '.pdf', format='pdf', dpi=300, bbox_inches='tight')
-    # BUG FIX: was saving PNG with format='pdf'
-    plt.savefig(base + '.png', format='png', dpi=300, bbox_inches='tight')
-    plt.show()
-
-
-def evaluate_with_reliability(model, test_dataloader, criterion, batch_size,
-                               filename, method, num_labels):
-    full_predictions, true_labels, probabilities = [], [], []
-    model.eval()
-    crt_loss = 0.0
-
-    with torch.no_grad():
-        for elem in tqdm(test_dataloader):
-            x = {k: elem[k].to(device) for k in elem if k not in ['idx', 'weights']}
-            logits = model(input_ids=x['input_ids'],
-                           token_type_ids=x.get('token_type_ids'),
-                           attention_mask=x['attention_mask'],
-                           temperature_scaling=False)
-            results = torch.argmax(logits.logits, dim=1)
-            prob = F.softmax(logits.logits.cpu(), dim=1)
-            probabilities += list(prob)
-            crt_loss += criterion(logits.logits, x['lbl']).cpu().item()
-            full_predictions += list(results.cpu().numpy())
-            true_labels += list(elem['lbl'].cpu().numpy())
-
-    model.train()
-
-    preds = torch.stack(probabilities).to(device)
-    orig = torch.tensor(true_labels, dtype=torch.long, device=device)
-    metric = MulticlassCalibrationError(num_classes=num_labels, n_bins=4, norm='l1').to(device)
-    ece_metric = metric(preds, orig)
-
-    confidences, _ = torch.max(preds, dim=1)
-    save_reliability_data(filename, confidences, full_predictions, true_labels)
-    f1_per_bin, conf_per_bin, bin_conf = compute_reliability_data(
-        confidences.cpu().numpy(), full_predictions, true_labels)
-    plot_reliability_diagram(f1_per_bin, conf_per_bin, bin_conf, method, filename, ece_metric)
-
-    return (f1_score(true_labels, full_predictions, average='macro'),
-            crt_loss / len(test_dataloader),
-            ece_metric)
 
 
 # ── SSL with AUM tracking ──────────────────────────────────────────────────────
@@ -483,9 +372,8 @@ def train_model_st_with_aummixup(ds_train, ds_dev, ds_test, ds_unlabeled,
     final_model.load_state_dict(torch.load(save_path))
 
     rel_file = f"{model_dir}_{results_file}"
-    f1_macro_test, loss_test, ece_metric = evaluate_with_reliability(
-        final_model, test_dataloader, loss_fn, unsup_batch_size,
-        rel_file, "Self-Training with AUM based Mixup", num_labels)
+    f1_val, _, ece_metric = evaluate(model, validation_dataloader, loss_fn,
+                                    unsup_batch_size, num_labels)
     logger.info(f"Test macro F1 based on best validation f1: {f1_macro_test}")
 
     logger_dict["Best ST+AumMixup model"] = {
@@ -645,7 +533,7 @@ def train_ssl_no_aum_with_sal_mixup(pt_teacher_checkpoint, ds_train, val_dataloa
             optimizer.step()
 
         # BUG FIX: evaluate once per epoch, not once per batch
-        f1_val, _, _ = evaluate(model, val_dataloader, loss_fn_supervised, 128, num_labels)
+        f1_val, _, ece_metric = evaluate(model, val_dataloader, loss_fn_supervised, 128, num_labels)
         print(f'Validation F1: {f1_val:.4f}  (epoch {epoch})')
 
         if f1_val >= best_f1:
@@ -664,38 +552,8 @@ def train_ssl_no_aum_with_sal_mixup(pt_teacher_checkpoint, ds_train, val_dataloa
 
     return best_f1_overall, best_f1
 
+
 class CustomDataset(torch.utils.data.Dataset):
-    def __init__(self, text_list, labels, tokenizer, max_seq_len=128, labeled=True):
-        self.text_list = text_list
-        self.labels = labels
-        self.tokenizer = tokenizer
-        self.max_seq_len = max_seq_len
-        self.labeled = labeled
-        self.idxes = list(range(len(text_list)))
-        self.weights = [1] * len(self.text_list)
-
-    def __getitem__(self, idx):
-        tok = self.tokenizer(
-            self.text_list[idx], padding='max_length', max_length=self.max_seq_len, truncation=True)
-        item = {key: torch.tensor(tok[key]) for key in tok}
-        if self.labeled:
-            item['lbl'] = torch.tensor(self.labels[idx], dtype=torch.long)
-        item['idx'] = self.idxes[idx]
-        item['weights'] = self.weights[idx]
-        return item
-
-    def __len__(self):
-        return len(self.text_list)
-
-    def get_subset_dataset(self, idxs):
-        # idxs are positional indices (0..n-1) for CustomDataset
-        idxs_set = set(idxs)
-        text_lists = [self.text_list[i] for i in range(len(self.text_list)) if i in idxs_set]
-        label_lists = [self.labels[i] for i in range(len(self.labels)) if i in idxs_set] if self.labeled else None
-        return CustomDataset(text_lists, label_lists, self.tokenizer, self.max_seq_len, self.labeled)
-
-
-class CustomDataset_tracked(torch.utils.data.Dataset):
     def __init__(self, text_list, labels, idxes, tokenizer, max_seq_len=128, labeled=True):
         self.text_list = text_list
         self.labels = labels
@@ -727,136 +585,9 @@ class CustomDataset_tracked(torch.utils.data.Dataset):
                 text_lists.append(text)
                 label_lists.append(label)
                 id_lists.append(id_)
-        return CustomDataset_tracked(text_lists, label_lists, id_lists, self.tokenizer, self.max_seq_len, self.labeled)
+        return CustomDataset(text_lists, label_lists, id_lists, self.tokenizer, self.max_seq_len, self.labeled)
 
 
-
-
-def get_BALD_acquisition(y_T):
-    expected_entropy = - np.mean(np.sum(y_T * np.log(y_T + 1e-10), axis=-1), axis=0)
-    expected_p = np.mean(y_T, axis=0)
-    entropy_expected_p = - np.sum(expected_p * np.log(expected_p + 1e-10), axis=-1)
-    return entropy_expected_p - expected_entropy
-
-
-def sample_by_bald_difficulty(X, y_mean, y_var, y, num_samples, num_classes, y_T):
-    # BUG FIX: removed unused `tokenizer` parameter
-    logger.info("Sampling by difficulty BALD acquisition function")
-    BALD_acq = get_BALD_acquisition(y_T)
-    p_norm = np.maximum(np.zeros(len(BALD_acq)), BALD_acq)
-    p_norm = p_norm / np.sum(p_norm)
-    indices = np.random.choice(len(X['input_ids']), num_samples, p=p_norm, replace=False)
-    X_s = {
-        "input_ids": X["input_ids"][indices],
-        "attention_mask": X["attention_mask"][indices],
-    }
-    # BUG FIX: token_type_ids is optional (not all models produce it)
-    if "token_type_ids" in X:
-        X_s["token_type_ids"] = X["token_type_ids"][indices]
-    y_s = y[indices]
-    w_s = y_var[indices][:, 0]
-    return X_s, y_s, w_s
-
-
-def sample_by_bald_easiness(X, y_mean, y_var, y, num_samples, num_classes, y_T):
-    # BUG FIX: removed unused `tokenizer` parameter
-    logger.info("Sampling by easy BALD acquisition function")
-    BALD_acq = get_BALD_acquisition(y_T)
-    p_norm = np.maximum(np.zeros(len(BALD_acq)), (1. - BALD_acq) / np.sum(1. - BALD_acq))
-    p_norm = p_norm / np.sum(p_norm)
-    logger.info(p_norm[:10])
-    indices = np.random.choice(len(X['input_ids']), num_samples, p=p_norm, replace=False)
-    X_s = {
-        "input_ids": X["input_ids"][indices],
-        "attention_mask": X["attention_mask"][indices],
-    }
-    if "token_type_ids" in X:
-        X_s["token_type_ids"] = X["token_type_ids"][indices]
-    y_s = y[indices]
-    w_s = y_var[indices][:, 0]
-    return X_s, y_s, w_s
-
-
-def sample_by_bald_class_easiness(X_new_unlabeled_dataset, y_mean, y_var, y_pred, unsup_size, num_classes, y_T):
-    logger.info("Sampling by easy BALD acquisition function per class")
-
-    BALD_acq = get_BALD_acquisition(y_T)
-    BALD_acq = (1. - BALD_acq) / np.sum(1. - BALD_acq)
-    logger.info(BALD_acq)
-    samples_per_class = unsup_size // num_classes
-
-    y_s = []
-    w_s = []
-    x_s = []
-
-    for label in range(num_classes):
-        y_var_ = y_var[y_pred == label]
-        p_norm = BALD_acq[y_pred == label]
-        p_norm = np.maximum(np.zeros(len(p_norm)), p_norm)
-        p_norm = p_norm / np.sum(p_norm)
-        pool_of_idx = np.array(X_new_unlabeled_dataset.idxes)[y_pred == label]
-        if len(pool_of_idx) == 0:
-            continue
-        replace = len(pool_of_idx) < samples_per_class
-        if replace:
-            logger.info("Sampling with replacement.")
-        print("Pool of idx ", len(pool_of_idx))
-        indices = np.random.choice(pool_of_idx, samples_per_class, p=p_norm, replace=replace)
-        y_s.extend([label] * len(indices))
-        for elem in indices:
-            w_s.append(y_var[elem][label])
-        x_s.extend([X_new_unlabeled_dataset.text_list[i] for i in indices])
-        assert len(y_s) == len(w_s) and len(w_s) == len(x_s)
-
-    text_lists, labels, weights = shuffle(x_s, y_s, w_s)
-    final_ds = CustomDataset(text_lists, labels, X_new_unlabeled_dataset.tokenizer, labeled=True)
-    final_ds.weights = weights
-    return final_ds
-
-
-def sample_by_bald_class_difficulty(X, y_mean, y_var, y, num_samples, num_classes, y_T):
-    # BUG FIX: removed unused `tokenizer` parameter
-    logger.info("Sampling by difficulty BALD acquisition function per class")
-    BALD_acq = get_BALD_acquisition(y_T)
-    samples_per_class = num_samples // num_classes
-    X_s_input_ids, X_s_token_type_ids, X_s_attention_mask, y_s, w_s = [], [], [], [], []
-    has_token_type_ids = "token_type_ids" in X
-    for label in range(num_classes):
-        X_input_ids = X['input_ids'][y == label]
-        X_attention_mask = X['attention_mask'][y == label]
-        X_token_type_ids = X['token_type_ids'][y == label] if has_token_type_ids else None
-        y_ = y[y == label]
-        y_var_ = y_var[y == label]
-        p_norm = BALD_acq[y == label]
-        p_norm = np.maximum(np.zeros(len(p_norm)), p_norm)
-        p_norm = p_norm / np.sum(p_norm)
-        replace = len(X_input_ids) < samples_per_class
-        if replace:
-            logger.info("Sampling with replacement.")
-        indices = np.random.choice(len(X_input_ids), samples_per_class, p=p_norm, replace=replace)
-        X_s_input_ids.extend(X_input_ids[indices])
-        X_s_attention_mask.extend(X_attention_mask[indices])
-        if has_token_type_ids:
-            X_s_token_type_ids.extend(X_token_type_ids[indices])
-        y_s.extend(y_[indices])
-        w_s.extend(y_var_[indices][:, 0])
-
-    if has_token_type_ids:
-        X_s_input_ids, X_s_token_type_ids, X_s_attention_mask, y_s, w_s = shuffle(
-            X_s_input_ids, X_s_token_type_ids, X_s_attention_mask, y_s, w_s)
-        return {
-            'input_ids': np.array(X_s_input_ids),
-            'token_type_ids': np.array(X_s_token_type_ids),
-            'attention_mask': np.array(X_s_attention_mask)
-        }, np.array(y_s), np.array(w_s)
-    else:
-        X_s_input_ids, X_s_attention_mask, y_s, w_s = shuffle(
-            X_s_input_ids, X_s_attention_mask, y_s, w_s)
-        return {
-            'input_ids': np.array(X_s_input_ids),
-            'attention_mask': np.array(X_s_attention_mask)
-        }, np.array(y_s), np.array(w_s)
-    
 def get_label_to_id(args):
     if args["dataset"] == 'humanitarian8':
         return {
@@ -907,7 +638,7 @@ def get_dataset(path, tokenizer, label_to_id, labeled=True):
         text_list.append(row['tweet_text'])
         labels_list.append(label_to_id[row['class_label']])
         ids_list.append(row['tweet_id'])
-    return CustomDataset_tracked(text_list, labels_list, ids_list, tokenizer, labeled=labeled)
+    return CustomDataset(text_list, labels_list, ids_list, tokenizer, labeled=labeled)
 
 
 if __name__ == '__main__':

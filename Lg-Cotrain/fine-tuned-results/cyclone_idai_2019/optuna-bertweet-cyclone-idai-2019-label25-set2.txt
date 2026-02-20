@@ -1,0 +1,1629 @@
+[Optuna] Starting hyperparameter search with 10 trials.
+2026-02-12 14:45:13 - INFO - 
+[Optuna] Starting hyperparameter search with 10 trials.
+2026-02-12 14:45:13 - INFO - A new study created in memory with name: study_humanitarian10_cyclone_idai_2019
+Using devices: cuda, cuda
+2026-02-12 14:45:13 - INFO - Using devices: cuda, cuda
+Devices: cuda, cuda
+2026-02-12 14:45:13 - INFO - Devices: cuda, cuda
+Starting log
+2026-02-12 14:45:13 - INFO - Starting log
+Dataset: humanitarian10, Event: cyclone_idai_2019, N: 25, Seed: 1234, HF Model: GPT-4o, NumShots: 25, PLM: bert-tweet
+2026-02-12 14:45:13 - INFO - Dataset: humanitarian10, Event: cyclone_idai_2019, N: 25, Seed: 1234, HF Model: GPT-4o, NumShots: 25, PLM: bert-tweet
+/opt/conda/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+Learning Rate: 0.00011055105809535694
+Weight Decay: 6.269626328006286e-05
+Batch Size: 32
+No. Epochs: 11
+Epoch Patience: 3
+ Accumulation Steps: 2
+2026-02-12 14:45:15 - INFO - Learning Rate: 0.00011055105809535694
+Weight Decay: 6.269626328006286e-05
+Batch Size: 32
+No. Epochs: 11
+Epoch Patience: 3
+ Accumulation Steps: 2
+Using Bert Tweet model: bert-tweet
+Generating initial weights
+2026-02-12 14:45:16 - INFO - Generating initial weights
+Time taken for Epoch 1:8.71 - F1: 0.0421
+2026-02-12 14:45:26 - INFO - Time taken for Epoch 1:8.71 - F1: 0.0421
+Time taken for Epoch 2:8.54 - F1: 0.0589
+2026-02-12 14:45:35 - INFO - Time taken for Epoch 2:8.54 - F1: 0.0589
+Time taken for Epoch 3:8.59 - F1: 0.1204
+2026-02-12 14:45:43 - INFO - Time taken for Epoch 3:8.59 - F1: 0.1204
+Time taken for Epoch 4:8.54 - F1: 0.1463
+2026-02-12 14:45:52 - INFO - Time taken for Epoch 4:8.54 - F1: 0.1463
+Time taken for Epoch 5:8.58 - F1: 0.1632
+2026-02-12 14:46:01 - INFO - Time taken for Epoch 5:8.58 - F1: 0.1632
+Time taken for Epoch 6:8.59 - F1: 0.1972
+2026-02-12 14:46:09 - INFO - Time taken for Epoch 6:8.59 - F1: 0.1972
+Time taken for Epoch 7:8.54 - F1: 0.2533
+2026-02-12 14:46:18 - INFO - Time taken for Epoch 7:8.54 - F1: 0.2533
+Time taken for Epoch 8:8.54 - F1: 0.2918
+2026-02-12 14:46:26 - INFO - Time taken for Epoch 8:8.54 - F1: 0.2918
+Time taken for Epoch 9:8.52 - F1: 0.3070
+2026-02-12 14:46:35 - INFO - Time taken for Epoch 9:8.52 - F1: 0.3070
+Time taken for Epoch 10:8.53 - F1: 0.3112
+2026-02-12 14:46:43 - INFO - Time taken for Epoch 10:8.53 - F1: 0.3112
+Time taken for Epoch 11:8.58 - F1: 0.3635
+2026-02-12 14:46:52 - INFO - Time taken for Epoch 11:8.58 - F1: 0.3635
+Best F1:0.3635 - Best Epoch:11
+2026-02-12 14:46:52 - INFO - Best F1:0.3635 - Best Epoch:11
+Using Bert Tweet model: bert-tweet
+Starting co-training
+2026-02-12 14:46:53 - INFO - Starting co-training
+Time taken for Epoch 1: 12.89s - F1: 0.18381800
+2026-02-12 14:47:06 - INFO - Time taken for Epoch 1: 12.89s - F1: 0.18381800
+Time taken for Epoch 2: 13.91s - F1: 0.31160979
+2026-02-12 14:47:20 - INFO - Time taken for Epoch 2: 13.91s - F1: 0.31160979
+Time taken for Epoch 3: 17.77s - F1: 0.30278710
+2026-02-12 14:47:38 - INFO - Time taken for Epoch 3: 17.77s - F1: 0.30278710
+Time taken for Epoch 4: 12.81s - F1: 0.28745881
+2026-02-12 14:47:51 - INFO - Time taken for Epoch 4: 12.81s - F1: 0.28745881
+Time taken for Epoch 5: 12.85s - F1: 0.32018404
+2026-02-12 14:48:04 - INFO - Time taken for Epoch 5: 12.85s - F1: 0.32018404
+Time taken for Epoch 6: 17.81s - F1: 0.32466310
+2026-02-12 14:48:22 - INFO - Time taken for Epoch 6: 17.81s - F1: 0.32466310
+Time taken for Epoch 7: 18.77s - F1: 0.34721464
+2026-02-12 14:48:40 - INFO - Time taken for Epoch 7: 18.77s - F1: 0.34721464
+Time taken for Epoch 8: 19.42s - F1: 0.34646537
+2026-02-12 14:49:00 - INFO - Time taken for Epoch 8: 19.42s - F1: 0.34646537
+Time taken for Epoch 9: 12.84s - F1: 0.34584802
+2026-02-12 14:49:13 - INFO - Time taken for Epoch 9: 12.84s - F1: 0.34584802
+Time taken for Epoch 10: 12.83s - F1: 0.34209155
+2026-02-12 14:49:25 - INFO - Time taken for Epoch 10: 12.83s - F1: 0.34209155
+Performance not improving for 3 consecutive epochs.
+Performance not improving for 3 consecutive epochs.
+2026-02-12 14:49:25 - INFO - Performance not improving for 3 consecutive epochs.
+Using Bert Tweet model: bert-tweet
+/tmp/ipykernel_213/485473895.py:775: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_1.load_state_dict(torch.load(model_1_path))
+/tmp/ipykernel_213/485473895.py:776: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_2.load_state_dict(torch.load(model_2_path))
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/co_trained_model_1_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/co_trained_model_2_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+Fine-tuning models
+2026-02-12 14:49:28 - INFO - Fine-tuning models
+Time taken for Epoch 1:2.53 - F1: 0.3411
+2026-02-12 14:49:31 - INFO - Time taken for Epoch 1:2.53 - F1: 0.3411
+Time taken for Epoch 2:3.49 - F1: 0.3347
+2026-02-12 14:49:34 - INFO - Time taken for Epoch 2:3.49 - F1: 0.3347
+Time taken for Epoch 3:2.38 - F1: 0.3408
+2026-02-12 14:49:36 - INFO - Time taken for Epoch 3:2.38 - F1: 0.3408
+Time taken for Epoch 4:2.40 - F1: 0.3634
+2026-02-12 14:49:39 - INFO - Time taken for Epoch 4:2.40 - F1: 0.3634
+Time taken for Epoch 5:22.72 - F1: 0.3672
+2026-02-12 14:50:02 - INFO - Time taken for Epoch 5:22.72 - F1: 0.3672
+Time taken for Epoch 6:10.42 - F1: 0.3580
+2026-02-12 14:50:12 - INFO - Time taken for Epoch 6:10.42 - F1: 0.3580
+Time taken for Epoch 7:2.40 - F1: 0.3721
+2026-02-12 14:50:14 - INFO - Time taken for Epoch 7:2.40 - F1: 0.3721
+Time taken for Epoch 8:10.08 - F1: 0.4061
+2026-02-12 14:50:24 - INFO - Time taken for Epoch 8:10.08 - F1: 0.4061
+Time taken for Epoch 9:9.67 - F1: 0.4559
+2026-02-12 14:50:34 - INFO - Time taken for Epoch 9:9.67 - F1: 0.4559
+Time taken for Epoch 10:10.02 - F1: 0.4415
+2026-02-12 14:50:44 - INFO - Time taken for Epoch 10:10.02 - F1: 0.4415
+Time taken for Epoch 11:2.39 - F1: 0.4571
+2026-02-12 14:50:47 - INFO - Time taken for Epoch 11:2.39 - F1: 0.4571
+Time taken for Epoch 12:10.12 - F1: 0.4401
+2026-02-12 14:50:57 - INFO - Time taken for Epoch 12:10.12 - F1: 0.4401
+Time taken for Epoch 13:2.41 - F1: 0.4259
+2026-02-12 14:50:59 - INFO - Time taken for Epoch 13:2.41 - F1: 0.4259
+Time taken for Epoch 14:2.40 - F1: 0.4254
+2026-02-12 14:51:01 - INFO - Time taken for Epoch 14:2.40 - F1: 0.4254
+Time taken for Epoch 15:2.39 - F1: 0.4558
+2026-02-12 14:51:04 - INFO - Time taken for Epoch 15:2.39 - F1: 0.4558
+Time taken for Epoch 16:2.39 - F1: 0.4468
+2026-02-12 14:51:06 - INFO - Time taken for Epoch 16:2.39 - F1: 0.4468
+Time taken for Epoch 17:2.39 - F1: 0.4360
+2026-02-12 14:51:09 - INFO - Time taken for Epoch 17:2.39 - F1: 0.4360
+Time taken for Epoch 18:2.40 - F1: 0.4559
+2026-02-12 14:51:11 - INFO - Time taken for Epoch 18:2.40 - F1: 0.4559
+Time taken for Epoch 19:2.40 - F1: 0.4924
+2026-02-12 14:51:13 - INFO - Time taken for Epoch 19:2.40 - F1: 0.4924
+Time taken for Epoch 20:11.45 - F1: 0.5157
+2026-02-12 14:51:25 - INFO - Time taken for Epoch 20:11.45 - F1: 0.5157
+Time taken for Epoch 21:10.83 - F1: 0.4993
+2026-02-12 14:51:36 - INFO - Time taken for Epoch 21:10.83 - F1: 0.4993
+Time taken for Epoch 22:2.40 - F1: 0.4879
+2026-02-12 14:51:38 - INFO - Time taken for Epoch 22:2.40 - F1: 0.4879
+Time taken for Epoch 23:2.41 - F1: 0.4731
+2026-02-12 14:51:41 - INFO - Time taken for Epoch 23:2.41 - F1: 0.4731
+Time taken for Epoch 24:2.41 - F1: 0.4776
+2026-02-12 14:51:43 - INFO - Time taken for Epoch 24:2.41 - F1: 0.4776
+Time taken for Epoch 25:2.39 - F1: 0.4805
+2026-02-12 14:51:45 - INFO - Time taken for Epoch 25:2.39 - F1: 0.4805
+Time taken for Epoch 26:2.40 - F1: 0.4899
+2026-02-12 14:51:48 - INFO - Time taken for Epoch 26:2.40 - F1: 0.4899
+Time taken for Epoch 27:2.39 - F1: 0.4892
+2026-02-12 14:51:50 - INFO - Time taken for Epoch 27:2.39 - F1: 0.4892
+Time taken for Epoch 28:2.40 - F1: 0.4742
+2026-02-12 14:51:53 - INFO - Time taken for Epoch 28:2.40 - F1: 0.4742
+Time taken for Epoch 29:2.41 - F1: 0.4755
+2026-02-12 14:51:55 - INFO - Time taken for Epoch 29:2.41 - F1: 0.4755
+Time taken for Epoch 30:2.41 - F1: 0.4755
+2026-02-12 14:51:57 - INFO - Time taken for Epoch 30:2.41 - F1: 0.4755
+Performance not improving for 10 consecutive epochs.
+2026-02-12 14:51:57 - INFO - Performance not improving for 10 consecutive epochs.
+Best F1:0.5157 - Best Epoch:19
+2026-02-12 14:51:57 - INFO - Best F1:0.5157 - Best Epoch:19
+Using Bert Tweet model: bert-tweet
+/tmp/ipykernel_213/485473895.py:816: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_1.load_state_dict(torch.load(model_1_path))
+/tmp/ipykernel_213/485473895.py:817: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_2.load_state_dict(torch.load(model_2_path))
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/final_model_1_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/final_model_2_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian10, NumShots: 25, N: 25 Test SEED: 1234 F1: 0.5421, Test ECE: 0.1447
+2026-02-12 14:52:03 - INFO - 
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian10, NumShots: 25, N: 25 Test SEED: 1234 F1: 0.5421, Test ECE: 0.1447
+All results: {'f1_macro': 0.5420731563840324, 'ece': 0.1446763075821207}
+2026-02-12 14:52:03 - INFO - All results: {'f1_macro': 0.5420731563840324, 'ece': 0.1446763075821207}
+
+Total time taken: 409.47 seconds
+2026-02-12 14:52:03 - INFO - 
+Total time taken: 409.47 seconds
+2026-02-12 14:52:03 - INFO - Trial 0 finished with value: 0.5420731563840324 and parameters: {'learning_rate': 0.00011055105809535694, 'weight_decay': 6.269626328006286e-05, 'batch_size': 32, 'co_train_epochs': 11, 'epoch_patience': 3}. Best is trial 0 with value: 0.5420731563840324.
+Using devices: cuda, cuda
+2026-02-12 14:52:03 - INFO - Using devices: cuda, cuda
+Devices: cuda, cuda
+2026-02-12 14:52:03 - INFO - Devices: cuda, cuda
+Starting log
+2026-02-12 14:52:03 - INFO - Starting log
+Dataset: humanitarian10, Event: cyclone_idai_2019, N: 25, Seed: 1234, HF Model: GPT-4o, NumShots: 25, PLM: bert-tweet
+2026-02-12 14:52:03 - INFO - Dataset: humanitarian10, Event: cyclone_idai_2019, N: 25, Seed: 1234, HF Model: GPT-4o, NumShots: 25, PLM: bert-tweet
+Learning Rate: 0.00012845000400475842
+Weight Decay: 2.5955269427795678e-05
+Batch Size: 8
+No. Epochs: 10
+Epoch Patience: 2
+ Accumulation Steps: 8
+2026-02-12 14:52:03 - INFO - Learning Rate: 0.00012845000400475842
+Weight Decay: 2.5955269427795678e-05
+Batch Size: 8
+No. Epochs: 10
+Epoch Patience: 2
+ Accumulation Steps: 8
+Using Bert Tweet model: bert-tweet
+Generating initial weights
+2026-02-12 14:52:05 - INFO - Generating initial weights
+Time taken for Epoch 1:10.31 - F1: 0.0287
+2026-02-12 14:52:16 - INFO - Time taken for Epoch 1:10.31 - F1: 0.0287
+Time taken for Epoch 2:10.12 - F1: 0.0639
+2026-02-12 14:52:26 - INFO - Time taken for Epoch 2:10.12 - F1: 0.0639
+Time taken for Epoch 3:10.13 - F1: 0.1217
+2026-02-12 14:52:36 - INFO - Time taken for Epoch 3:10.13 - F1: 0.1217
+Time taken for Epoch 4:10.14 - F1: 0.1387
+2026-02-12 14:52:47 - INFO - Time taken for Epoch 4:10.14 - F1: 0.1387
+Time taken for Epoch 5:10.17 - F1: 0.1306
+2026-02-12 14:52:57 - INFO - Time taken for Epoch 5:10.17 - F1: 0.1306
+Time taken for Epoch 6:10.15 - F1: 0.2175
+2026-02-12 14:53:07 - INFO - Time taken for Epoch 6:10.15 - F1: 0.2175
+Time taken for Epoch 7:10.20 - F1: 0.2923
+2026-02-12 14:53:17 - INFO - Time taken for Epoch 7:10.20 - F1: 0.2923
+Time taken for Epoch 8:10.24 - F1: 0.3452
+2026-02-12 14:53:27 - INFO - Time taken for Epoch 8:10.24 - F1: 0.3452
+Time taken for Epoch 9:10.12 - F1: 0.3265
+2026-02-12 14:53:37 - INFO - Time taken for Epoch 9:10.12 - F1: 0.3265
+Time taken for Epoch 10:10.10 - F1: 0.3920
+2026-02-12 14:53:48 - INFO - Time taken for Epoch 10:10.10 - F1: 0.3920
+Best F1:0.3920 - Best Epoch:10
+2026-02-12 14:53:48 - INFO - Best F1:0.3920 - Best Epoch:10
+Using Bert Tweet model: bert-tweet
+Starting co-training
+2026-02-12 14:53:49 - INFO - Starting co-training
+Time taken for Epoch 1: 10.17s - F1: 0.10704499
+2026-02-12 14:53:59 - INFO - Time taken for Epoch 1: 10.17s - F1: 0.10704499
+Time taken for Epoch 2: 11.17s - F1: 0.06452703
+2026-02-12 14:54:10 - INFO - Time taken for Epoch 2: 11.17s - F1: 0.06452703
+Time taken for Epoch 3: 10.17s - F1: 0.06452703
+2026-02-12 14:54:21 - INFO - Time taken for Epoch 3: 10.17s - F1: 0.06452703
+Performance not improving for 2 consecutive epochs.
+Performance not improving for 2 consecutive epochs.
+2026-02-12 14:54:21 - INFO - Performance not improving for 2 consecutive epochs.
+Using Bert Tweet model: bert-tweet
+/tmp/ipykernel_213/485473895.py:775: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_1.load_state_dict(torch.load(model_1_path))
+/tmp/ipykernel_213/485473895.py:776: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_2.load_state_dict(torch.load(model_2_path))
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/co_trained_model_1_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/co_trained_model_2_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+Fine-tuning models
+2026-02-12 14:54:23 - INFO - Fine-tuning models
+Time taken for Epoch 1:3.01 - F1: 0.0198
+2026-02-12 14:54:27 - INFO - Time taken for Epoch 1:3.01 - F1: 0.0198
+Time taken for Epoch 2:3.88 - F1: 0.0974
+2026-02-12 14:54:31 - INFO - Time taken for Epoch 2:3.88 - F1: 0.0974
+Time taken for Epoch 3:15.53 - F1: 0.0675
+2026-02-12 14:54:46 - INFO - Time taken for Epoch 3:15.53 - F1: 0.0675
+Time taken for Epoch 4:2.77 - F1: 0.0652
+2026-02-12 14:54:49 - INFO - Time taken for Epoch 4:2.77 - F1: 0.0652
+Time taken for Epoch 5:2.77 - F1: 0.0853
+2026-02-12 14:54:52 - INFO - Time taken for Epoch 5:2.77 - F1: 0.0853
+Time taken for Epoch 6:2.77 - F1: 0.1371
+2026-02-12 14:54:54 - INFO - Time taken for Epoch 6:2.77 - F1: 0.1371
+Time taken for Epoch 7:11.58 - F1: 0.1084
+2026-02-12 14:55:06 - INFO - Time taken for Epoch 7:11.58 - F1: 0.1084
+Time taken for Epoch 8:2.79 - F1: 0.0911
+2026-02-12 14:55:09 - INFO - Time taken for Epoch 8:2.79 - F1: 0.0911
+Time taken for Epoch 9:2.77 - F1: 0.1098
+2026-02-12 14:55:11 - INFO - Time taken for Epoch 9:2.77 - F1: 0.1098
+Time taken for Epoch 10:2.76 - F1: 0.0846
+2026-02-12 14:55:14 - INFO - Time taken for Epoch 10:2.76 - F1: 0.0846
+Time taken for Epoch 11:2.80 - F1: 0.0847
+2026-02-12 14:55:17 - INFO - Time taken for Epoch 11:2.80 - F1: 0.0847
+Time taken for Epoch 12:2.81 - F1: 0.0624
+2026-02-12 14:55:20 - INFO - Time taken for Epoch 12:2.81 - F1: 0.0624
+Time taken for Epoch 13:2.79 - F1: 0.0659
+2026-02-12 14:55:23 - INFO - Time taken for Epoch 13:2.79 - F1: 0.0659
+Time taken for Epoch 14:2.79 - F1: 0.1056
+2026-02-12 14:55:25 - INFO - Time taken for Epoch 14:2.79 - F1: 0.1056
+Time taken for Epoch 15:2.80 - F1: 0.1186
+2026-02-12 14:55:28 - INFO - Time taken for Epoch 15:2.80 - F1: 0.1186
+Time taken for Epoch 16:2.80 - F1: 0.1706
+2026-02-12 14:55:31 - INFO - Time taken for Epoch 16:2.80 - F1: 0.1706
+Time taken for Epoch 17:11.28 - F1: 0.1473
+2026-02-12 14:55:42 - INFO - Time taken for Epoch 17:11.28 - F1: 0.1473
+Time taken for Epoch 18:2.78 - F1: 0.2840
+2026-02-12 14:55:45 - INFO - Time taken for Epoch 18:2.78 - F1: 0.2840
+Time taken for Epoch 19:9.18 - F1: 0.2266
+2026-02-12 14:55:54 - INFO - Time taken for Epoch 19:9.18 - F1: 0.2266
+Time taken for Epoch 20:2.79 - F1: 0.2333
+2026-02-12 14:55:57 - INFO - Time taken for Epoch 20:2.79 - F1: 0.2333
+Time taken for Epoch 21:2.77 - F1: 0.2473
+2026-02-12 14:56:00 - INFO - Time taken for Epoch 21:2.77 - F1: 0.2473
+Time taken for Epoch 22:2.76 - F1: 0.2886
+2026-02-12 14:56:03 - INFO - Time taken for Epoch 22:2.76 - F1: 0.2886
+Time taken for Epoch 23:9.28 - F1: 0.2417
+2026-02-12 14:56:12 - INFO - Time taken for Epoch 23:9.28 - F1: 0.2417
+Time taken for Epoch 24:2.79 - F1: 0.2485
+2026-02-12 14:56:15 - INFO - Time taken for Epoch 24:2.79 - F1: 0.2485
+Time taken for Epoch 25:2.77 - F1: 0.2735
+2026-02-12 14:56:17 - INFO - Time taken for Epoch 25:2.77 - F1: 0.2735
+Time taken for Epoch 26:2.78 - F1: 0.2679
+2026-02-12 14:56:20 - INFO - Time taken for Epoch 26:2.78 - F1: 0.2679
+Time taken for Epoch 27:2.77 - F1: 0.2584
+2026-02-12 14:56:23 - INFO - Time taken for Epoch 27:2.77 - F1: 0.2584
+Time taken for Epoch 28:2.78 - F1: 0.2632
+2026-02-12 14:56:26 - INFO - Time taken for Epoch 28:2.78 - F1: 0.2632
+Time taken for Epoch 29:2.81 - F1: 0.2409
+2026-02-12 14:56:29 - INFO - Time taken for Epoch 29:2.81 - F1: 0.2409
+Time taken for Epoch 30:2.78 - F1: 0.2359
+2026-02-12 14:56:31 - INFO - Time taken for Epoch 30:2.78 - F1: 0.2359
+Time taken for Epoch 31:2.77 - F1: 0.2470
+2026-02-12 14:56:34 - INFO - Time taken for Epoch 31:2.77 - F1: 0.2470
+Time taken for Epoch 32:2.76 - F1: 0.2848
+2026-02-12 14:56:37 - INFO - Time taken for Epoch 32:2.76 - F1: 0.2848
+Performance not improving for 10 consecutive epochs.
+2026-02-12 14:56:37 - INFO - Performance not improving for 10 consecutive epochs.
+Best F1:0.2886 - Best Epoch:21
+2026-02-12 14:56:37 - INFO - Best F1:0.2886 - Best Epoch:21
+Using Bert Tweet model: bert-tweet
+/tmp/ipykernel_213/485473895.py:816: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_1.load_state_dict(torch.load(model_1_path))
+/tmp/ipykernel_213/485473895.py:817: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_2.load_state_dict(torch.load(model_2_path))
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/final_model_1_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/final_model_2_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian10, NumShots: 25, N: 25 Test SEED: 1234 F1: 0.2854, Test ECE: 0.1396
+2026-02-12 14:56:43 - INFO - 
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian10, NumShots: 25, N: 25 Test SEED: 1234 F1: 0.2854, Test ECE: 0.1396
+All results: {'f1_macro': 0.2854423147959773, 'ece': 0.13962263274407052}
+2026-02-12 14:56:43 - INFO - All results: {'f1_macro': 0.2854423147959773, 'ece': 0.13962263274407052}
+
+Total time taken: 280.37 seconds
+2026-02-12 14:56:43 - INFO - 
+Total time taken: 280.37 seconds
+2026-02-12 14:56:43 - INFO - Trial 1 finished with value: 0.2854423147959773 and parameters: {'learning_rate': 0.00012845000400475842, 'weight_decay': 2.5955269427795678e-05, 'batch_size': 8, 'co_train_epochs': 10, 'epoch_patience': 2}. Best is trial 0 with value: 0.5420731563840324.
+Using devices: cuda, cuda
+2026-02-12 14:56:43 - INFO - Using devices: cuda, cuda
+Devices: cuda, cuda
+2026-02-12 14:56:43 - INFO - Devices: cuda, cuda
+Starting log
+2026-02-12 14:56:43 - INFO - Starting log
+Dataset: humanitarian10, Event: cyclone_idai_2019, N: 25, Seed: 1234, HF Model: GPT-4o, NumShots: 25, PLM: bert-tweet
+2026-02-12 14:56:43 - INFO - Dataset: humanitarian10, Event: cyclone_idai_2019, N: 25, Seed: 1234, HF Model: GPT-4o, NumShots: 25, PLM: bert-tweet
+/opt/conda/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+Learning Rate: 0.0006934136949415935
+Weight Decay: 0.001887963061746896
+Batch Size: 32
+No. Epochs: 6
+Epoch Patience: 10
+ Accumulation Steps: 2
+2026-02-12 14:56:44 - INFO - Learning Rate: 0.0006934136949415935
+Weight Decay: 0.001887963061746896
+Batch Size: 32
+No. Epochs: 6
+Epoch Patience: 10
+ Accumulation Steps: 2
+Using Bert Tweet model: bert-tweet
+Generating initial weights
+2026-02-12 14:56:45 - INFO - Generating initial weights
+Time taken for Epoch 1:8.70 - F1: 0.0198
+2026-02-12 14:56:55 - INFO - Time taken for Epoch 1:8.70 - F1: 0.0198
+Time taken for Epoch 2:8.60 - F1: 0.0165
+2026-02-12 14:57:04 - INFO - Time taken for Epoch 2:8.60 - F1: 0.0165
+Time taken for Epoch 3:8.62 - F1: 0.0165
+2026-02-12 14:57:12 - INFO - Time taken for Epoch 3:8.62 - F1: 0.0165
+Time taken for Epoch 4:8.57 - F1: 0.0165
+2026-02-12 14:57:21 - INFO - Time taken for Epoch 4:8.57 - F1: 0.0165
+Time taken for Epoch 5:8.64 - F1: 0.0198
+2026-02-12 14:57:29 - INFO - Time taken for Epoch 5:8.64 - F1: 0.0198
+Time taken for Epoch 6:8.56 - F1: 0.0198
+2026-02-12 14:57:38 - INFO - Time taken for Epoch 6:8.56 - F1: 0.0198
+Best F1:0.0198 - Best Epoch:1
+2026-02-12 14:57:38 - INFO - Best F1:0.0198 - Best Epoch:1
+Using Bert Tweet model: bert-tweet
+Starting co-training
+2026-02-12 14:57:39 - INFO - Starting co-training
+Time taken for Epoch 1: 12.86s - F1: 0.06452703
+2026-02-12 14:57:52 - INFO - Time taken for Epoch 1: 12.86s - F1: 0.06452703
+Time taken for Epoch 2: 13.90s - F1: 0.06452703
+2026-02-12 14:58:06 - INFO - Time taken for Epoch 2: 13.90s - F1: 0.06452703
+Time taken for Epoch 3: 12.83s - F1: 0.06452703
+2026-02-12 14:58:19 - INFO - Time taken for Epoch 3: 12.83s - F1: 0.06452703
+Time taken for Epoch 4: 12.85s - F1: 0.06452703
+2026-02-12 14:58:32 - INFO - Time taken for Epoch 4: 12.85s - F1: 0.06452703
+Time taken for Epoch 5: 12.82s - F1: 0.06452703
+2026-02-12 14:58:45 - INFO - Time taken for Epoch 5: 12.82s - F1: 0.06452703
+Time taken for Epoch 6: 12.83s - F1: 0.06452703
+2026-02-12 14:58:58 - INFO - Time taken for Epoch 6: 12.83s - F1: 0.06452703
+Using Bert Tweet model: bert-tweet
+/tmp/ipykernel_213/485473895.py:775: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_1.load_state_dict(torch.load(model_1_path))
+/tmp/ipykernel_213/485473895.py:776: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_2.load_state_dict(torch.load(model_2_path))
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/co_trained_model_1_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/co_trained_model_2_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+Fine-tuning models
+2026-02-12 14:59:01 - INFO - Fine-tuning models
+Time taken for Epoch 1:2.49 - F1: 0.0029
+2026-02-12 14:59:03 - INFO - Time taken for Epoch 1:2.49 - F1: 0.0029
+Time taken for Epoch 2:3.51 - F1: 0.0044
+2026-02-12 14:59:07 - INFO - Time taken for Epoch 2:3.51 - F1: 0.0044
+Time taken for Epoch 3:30.60 - F1: 0.0218
+2026-02-12 14:59:37 - INFO - Time taken for Epoch 3:30.60 - F1: 0.0218
+Time taken for Epoch 4:7.05 - F1: 0.0218
+2026-02-12 14:59:45 - INFO - Time taken for Epoch 4:7.05 - F1: 0.0218
+Time taken for Epoch 5:2.39 - F1: 0.0645
+2026-02-12 14:59:47 - INFO - Time taken for Epoch 5:2.39 - F1: 0.0645
+Time taken for Epoch 6:8.80 - F1: 0.0029
+2026-02-12 14:59:56 - INFO - Time taken for Epoch 6:8.80 - F1: 0.0029
+Time taken for Epoch 7:2.42 - F1: 0.0029
+2026-02-12 14:59:58 - INFO - Time taken for Epoch 7:2.42 - F1: 0.0029
+Time taken for Epoch 8:2.40 - F1: 0.0218
+2026-02-12 15:00:01 - INFO - Time taken for Epoch 8:2.40 - F1: 0.0218
+Time taken for Epoch 9:2.39 - F1: 0.0218
+2026-02-12 15:00:03 - INFO - Time taken for Epoch 9:2.39 - F1: 0.0218
+Time taken for Epoch 10:2.38 - F1: 0.0218
+2026-02-12 15:00:05 - INFO - Time taken for Epoch 10:2.38 - F1: 0.0218
+Time taken for Epoch 11:2.39 - F1: 0.0218
+2026-02-12 15:00:08 - INFO - Time taken for Epoch 11:2.39 - F1: 0.0218
+Time taken for Epoch 12:2.39 - F1: 0.0218
+2026-02-12 15:00:10 - INFO - Time taken for Epoch 12:2.39 - F1: 0.0218
+Time taken for Epoch 13:2.40 - F1: 0.0218
+2026-02-12 15:00:12 - INFO - Time taken for Epoch 13:2.40 - F1: 0.0218
+Time taken for Epoch 14:2.39 - F1: 0.0218
+2026-02-12 15:00:15 - INFO - Time taken for Epoch 14:2.39 - F1: 0.0218
+Time taken for Epoch 15:2.43 - F1: 0.0218
+2026-02-12 15:00:17 - INFO - Time taken for Epoch 15:2.43 - F1: 0.0218
+Performance not improving for 10 consecutive epochs.
+2026-02-12 15:00:17 - INFO - Performance not improving for 10 consecutive epochs.
+Best F1:0.0645 - Best Epoch:4
+2026-02-12 15:00:17 - INFO - Best F1:0.0645 - Best Epoch:4
+Using Bert Tweet model: bert-tweet
+/tmp/ipykernel_213/485473895.py:816: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_1.load_state_dict(torch.load(model_1_path))
+/tmp/ipykernel_213/485473895.py:817: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_2.load_state_dict(torch.load(model_2_path))
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/final_model_1_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/final_model_2_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian10, NumShots: 25, N: 25 Test SEED: 1234 F1: 0.0644, Test ECE: 0.2248
+2026-02-12 15:00:23 - INFO - 
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian10, NumShots: 25, N: 25 Test SEED: 1234 F1: 0.0644, Test ECE: 0.2248
+All results: {'f1_macro': 0.06440382941688425, 'ece': 0.2247991746289127}
+2026-02-12 15:00:23 - INFO - All results: {'f1_macro': 0.06440382941688425, 'ece': 0.2247991746289127}
+
+Total time taken: 219.89 seconds
+2026-02-12 15:00:23 - INFO - 
+Total time taken: 219.89 seconds
+2026-02-12 15:00:23 - INFO - Trial 2 finished with value: 0.06440382941688425 and parameters: {'learning_rate': 0.0006934136949415935, 'weight_decay': 0.001887963061746896, 'batch_size': 32, 'co_train_epochs': 6, 'epoch_patience': 10}. Best is trial 0 with value: 0.5420731563840324.
+Using devices: cuda, cuda
+2026-02-12 15:00:23 - INFO - Using devices: cuda, cuda
+Devices: cuda, cuda
+2026-02-12 15:00:23 - INFO - Devices: cuda, cuda
+Starting log
+2026-02-12 15:00:23 - INFO - Starting log
+Dataset: humanitarian10, Event: cyclone_idai_2019, N: 25, Seed: 1234, HF Model: GPT-4o, NumShots: 25, PLM: bert-tweet
+2026-02-12 15:00:23 - INFO - Dataset: humanitarian10, Event: cyclone_idai_2019, N: 25, Seed: 1234, HF Model: GPT-4o, NumShots: 25, PLM: bert-tweet
+/opt/conda/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+Learning Rate: 5.067428021121373e-05
+Weight Decay: 0.00012149233899658187
+Batch Size: 16
+No. Epochs: 15
+Epoch Patience: 7
+ Accumulation Steps: 4
+2026-02-12 15:00:24 - INFO - Learning Rate: 5.067428021121373e-05
+Weight Decay: 0.00012149233899658187
+Batch Size: 16
+No. Epochs: 15
+Epoch Patience: 7
+ Accumulation Steps: 4
+Using Bert Tweet model: bert-tweet
+Generating initial weights
+2026-02-12 15:00:25 - INFO - Generating initial weights
+Time taken for Epoch 1:9.63 - F1: 0.0368
+2026-02-12 15:00:36 - INFO - Time taken for Epoch 1:9.63 - F1: 0.0368
+Time taken for Epoch 2:9.33 - F1: 0.0608
+2026-02-12 15:00:45 - INFO - Time taken for Epoch 2:9.33 - F1: 0.0608
+Time taken for Epoch 3:9.36 - F1: 0.0892
+2026-02-12 15:00:55 - INFO - Time taken for Epoch 3:9.36 - F1: 0.0892
+Time taken for Epoch 4:9.41 - F1: 0.1228
+2026-02-12 15:01:04 - INFO - Time taken for Epoch 4:9.41 - F1: 0.1228
+Time taken for Epoch 5:9.37 - F1: 0.1945
+2026-02-12 15:01:13 - INFO - Time taken for Epoch 5:9.37 - F1: 0.1945
+Time taken for Epoch 6:9.31 - F1: 0.1967
+2026-02-12 15:01:23 - INFO - Time taken for Epoch 6:9.31 - F1: 0.1967
+Time taken for Epoch 7:9.39 - F1: 0.1887
+2026-02-12 15:01:32 - INFO - Time taken for Epoch 7:9.39 - F1: 0.1887
+Time taken for Epoch 8:9.33 - F1: 0.2008
+2026-02-12 15:01:41 - INFO - Time taken for Epoch 8:9.33 - F1: 0.2008
+Time taken for Epoch 9:9.34 - F1: 0.2364
+2026-02-12 15:01:51 - INFO - Time taken for Epoch 9:9.34 - F1: 0.2364
+Time taken for Epoch 10:9.37 - F1: 0.2578
+2026-02-12 15:02:00 - INFO - Time taken for Epoch 10:9.37 - F1: 0.2578
+Time taken for Epoch 11:9.34 - F1: 0.2900
+2026-02-12 15:02:09 - INFO - Time taken for Epoch 11:9.34 - F1: 0.2900
+Time taken for Epoch 12:9.35 - F1: 0.3088
+2026-02-12 15:02:19 - INFO - Time taken for Epoch 12:9.35 - F1: 0.3088
+Time taken for Epoch 13:9.32 - F1: 0.3151
+2026-02-12 15:02:28 - INFO - Time taken for Epoch 13:9.32 - F1: 0.3151
+Time taken for Epoch 14:9.35 - F1: 0.3348
+2026-02-12 15:02:37 - INFO - Time taken for Epoch 14:9.35 - F1: 0.3348
+Time taken for Epoch 15:9.34 - F1: 0.3441
+2026-02-12 15:02:47 - INFO - Time taken for Epoch 15:9.34 - F1: 0.3441
+Best F1:0.3441 - Best Epoch:15
+2026-02-12 15:02:47 - INFO - Best F1:0.3441 - Best Epoch:15
+Using Bert Tweet model: bert-tweet
+Starting co-training
+2026-02-12 15:02:48 - INFO - Starting co-training
+Time taken for Epoch 1: 10.84s - F1: 0.20867271
+2026-02-12 15:02:59 - INFO - Time taken for Epoch 1: 10.84s - F1: 0.20867271
+Time taken for Epoch 2: 11.86s - F1: 0.22622265
+2026-02-12 15:03:11 - INFO - Time taken for Epoch 2: 11.86s - F1: 0.22622265
+Time taken for Epoch 3: 17.44s - F1: 0.29264820
+2026-02-12 15:03:28 - INFO - Time taken for Epoch 3: 17.44s - F1: 0.29264820
+Time taken for Epoch 4: 19.93s - F1: 0.28816070
+2026-02-12 15:03:48 - INFO - Time taken for Epoch 4: 19.93s - F1: 0.28816070
+Time taken for Epoch 5: 10.84s - F1: 0.31742690
+2026-02-12 15:03:59 - INFO - Time taken for Epoch 5: 10.84s - F1: 0.31742690
+Time taken for Epoch 6: 15.98s - F1: 0.34603498
+2026-02-12 15:04:15 - INFO - Time taken for Epoch 6: 15.98s - F1: 0.34603498
+Time taken for Epoch 7: 15.66s - F1: 0.33987628
+2026-02-12 15:04:31 - INFO - Time taken for Epoch 7: 15.66s - F1: 0.33987628
+Time taken for Epoch 8: 10.81s - F1: 0.35293886
+2026-02-12 15:04:42 - INFO - Time taken for Epoch 8: 10.81s - F1: 0.35293886
+Time taken for Epoch 9: 17.41s - F1: 0.33017923
+2026-02-12 15:04:59 - INFO - Time taken for Epoch 9: 17.41s - F1: 0.33017923
+Time taken for Epoch 10: 10.79s - F1: 0.34619617
+2026-02-12 15:05:10 - INFO - Time taken for Epoch 10: 10.79s - F1: 0.34619617
+Time taken for Epoch 11: 10.82s - F1: 0.37887617
+2026-02-12 15:05:21 - INFO - Time taken for Epoch 11: 10.82s - F1: 0.37887617
+Time taken for Epoch 12: 18.86s - F1: 0.36090705
+2026-02-12 15:05:40 - INFO - Time taken for Epoch 12: 18.86s - F1: 0.36090705
+Time taken for Epoch 13: 10.83s - F1: 0.34474806
+2026-02-12 15:05:50 - INFO - Time taken for Epoch 13: 10.83s - F1: 0.34474806
+Time taken for Epoch 14: 10.80s - F1: 0.33621267
+2026-02-12 15:06:01 - INFO - Time taken for Epoch 14: 10.80s - F1: 0.33621267
+Time taken for Epoch 15: 10.78s - F1: 0.38425901
+2026-02-12 15:06:12 - INFO - Time taken for Epoch 15: 10.78s - F1: 0.38425901
+Using Bert Tweet model: bert-tweet
+/tmp/ipykernel_213/485473895.py:775: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_1.load_state_dict(torch.load(model_1_path))
+/tmp/ipykernel_213/485473895.py:776: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_2.load_state_dict(torch.load(model_2_path))
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/co_trained_model_1_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/co_trained_model_2_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+Fine-tuning models
+2026-02-12 15:06:22 - INFO - Fine-tuning models
+Time taken for Epoch 1:2.66 - F1: 0.4049
+2026-02-12 15:06:25 - INFO - Time taken for Epoch 1:2.66 - F1: 0.4049
+Time taken for Epoch 2:3.54 - F1: 0.4230
+2026-02-12 15:06:28 - INFO - Time taken for Epoch 2:3.54 - F1: 0.4230
+Time taken for Epoch 3:6.62 - F1: 0.3579
+2026-02-12 15:06:35 - INFO - Time taken for Epoch 3:6.62 - F1: 0.3579
+Time taken for Epoch 4:2.57 - F1: 0.3658
+2026-02-12 15:06:37 - INFO - Time taken for Epoch 4:2.57 - F1: 0.3658
+Time taken for Epoch 5:2.57 - F1: 0.3907
+2026-02-12 15:06:40 - INFO - Time taken for Epoch 5:2.57 - F1: 0.3907
+Time taken for Epoch 6:2.58 - F1: 0.4335
+2026-02-12 15:06:43 - INFO - Time taken for Epoch 6:2.58 - F1: 0.4335
+Time taken for Epoch 7:6.38 - F1: 0.4520
+2026-02-12 15:06:49 - INFO - Time taken for Epoch 7:6.38 - F1: 0.4520
+Time taken for Epoch 8:7.87 - F1: 0.4677
+2026-02-12 15:06:57 - INFO - Time taken for Epoch 8:7.87 - F1: 0.4677
+Time taken for Epoch 9:8.02 - F1: 0.4692
+2026-02-12 15:07:05 - INFO - Time taken for Epoch 9:8.02 - F1: 0.4692
+Time taken for Epoch 10:6.36 - F1: 0.4601
+2026-02-12 15:07:11 - INFO - Time taken for Epoch 10:6.36 - F1: 0.4601
+Time taken for Epoch 11:2.58 - F1: 0.4719
+2026-02-12 15:07:14 - INFO - Time taken for Epoch 11:2.58 - F1: 0.4719
+Time taken for Epoch 12:7.99 - F1: 0.4656
+2026-02-12 15:07:22 - INFO - Time taken for Epoch 12:7.99 - F1: 0.4656
+Time taken for Epoch 13:2.59 - F1: 0.4738
+2026-02-12 15:07:24 - INFO - Time taken for Epoch 13:2.59 - F1: 0.4738
+Time taken for Epoch 14:7.84 - F1: 0.4812
+2026-02-12 15:07:32 - INFO - Time taken for Epoch 14:7.84 - F1: 0.4812
+Time taken for Epoch 15:8.93 - F1: 0.4875
+2026-02-12 15:07:41 - INFO - Time taken for Epoch 15:8.93 - F1: 0.4875
+Time taken for Epoch 16:6.61 - F1: 0.4800
+2026-02-12 15:07:48 - INFO - Time taken for Epoch 16:6.61 - F1: 0.4800
+Time taken for Epoch 17:2.57 - F1: 0.4883
+2026-02-12 15:07:50 - INFO - Time taken for Epoch 17:2.57 - F1: 0.4883
+Time taken for Epoch 18:6.96 - F1: 0.4835
+2026-02-12 15:07:57 - INFO - Time taken for Epoch 18:6.96 - F1: 0.4835
+Time taken for Epoch 19:2.57 - F1: 0.4816
+2026-02-12 15:08:00 - INFO - Time taken for Epoch 19:2.57 - F1: 0.4816
+Time taken for Epoch 20:2.58 - F1: 0.4916
+2026-02-12 15:08:02 - INFO - Time taken for Epoch 20:2.58 - F1: 0.4916
+Time taken for Epoch 21:7.03 - F1: 0.4802
+2026-02-12 15:08:09 - INFO - Time taken for Epoch 21:7.03 - F1: 0.4802
+Time taken for Epoch 22:2.56 - F1: 0.4811
+2026-02-12 15:08:12 - INFO - Time taken for Epoch 22:2.56 - F1: 0.4811
+Time taken for Epoch 23:2.59 - F1: 0.4789
+2026-02-12 15:08:15 - INFO - Time taken for Epoch 23:2.59 - F1: 0.4789
+Time taken for Epoch 24:2.61 - F1: 0.4834
+2026-02-12 15:08:17 - INFO - Time taken for Epoch 24:2.61 - F1: 0.4834
+Time taken for Epoch 25:2.60 - F1: 0.5032
+2026-02-12 15:08:20 - INFO - Time taken for Epoch 25:2.60 - F1: 0.5032
+Time taken for Epoch 26:36.38 - F1: 0.5018
+2026-02-12 15:08:56 - INFO - Time taken for Epoch 26:36.38 - F1: 0.5018
+Time taken for Epoch 27:2.65 - F1: 0.5368
+2026-02-12 15:08:59 - INFO - Time taken for Epoch 27:2.65 - F1: 0.5368
+Time taken for Epoch 28:7.40 - F1: 0.5312
+2026-02-12 15:09:06 - INFO - Time taken for Epoch 28:7.40 - F1: 0.5312
+Time taken for Epoch 29:2.57 - F1: 0.5296
+2026-02-12 15:09:09 - INFO - Time taken for Epoch 29:2.57 - F1: 0.5296
+Time taken for Epoch 30:2.57 - F1: 0.5326
+2026-02-12 15:09:11 - INFO - Time taken for Epoch 30:2.57 - F1: 0.5326
+Time taken for Epoch 31:2.57 - F1: 0.5270
+2026-02-12 15:09:14 - INFO - Time taken for Epoch 31:2.57 - F1: 0.5270
+Time taken for Epoch 32:2.57 - F1: 0.5277
+2026-02-12 15:09:17 - INFO - Time taken for Epoch 32:2.57 - F1: 0.5277
+Time taken for Epoch 33:2.57 - F1: 0.5245
+2026-02-12 15:09:19 - INFO - Time taken for Epoch 33:2.57 - F1: 0.5245
+Time taken for Epoch 34:2.57 - F1: 0.5244
+2026-02-12 15:09:22 - INFO - Time taken for Epoch 34:2.57 - F1: 0.5244
+Time taken for Epoch 35:2.56 - F1: 0.5244
+2026-02-12 15:09:24 - INFO - Time taken for Epoch 35:2.56 - F1: 0.5244
+Time taken for Epoch 36:2.56 - F1: 0.5233
+2026-02-12 15:09:27 - INFO - Time taken for Epoch 36:2.56 - F1: 0.5233
+Time taken for Epoch 37:2.57 - F1: 0.5235
+2026-02-12 15:09:29 - INFO - Time taken for Epoch 37:2.57 - F1: 0.5235
+Performance not improving for 10 consecutive epochs.
+2026-02-12 15:09:29 - INFO - Performance not improving for 10 consecutive epochs.
+Best F1:0.5368 - Best Epoch:26
+2026-02-12 15:09:29 - INFO - Best F1:0.5368 - Best Epoch:26
+Using Bert Tweet model: bert-tweet
+/tmp/ipykernel_213/485473895.py:816: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_1.load_state_dict(torch.load(model_1_path))
+/tmp/ipykernel_213/485473895.py:817: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_2.load_state_dict(torch.load(model_2_path))
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/final_model_1_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/final_model_2_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian10, NumShots: 25, N: 25 Test SEED: 1234 F1: 0.5820, Test ECE: 0.0678
+2026-02-12 15:09:36 - INFO - 
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian10, NumShots: 25, N: 25 Test SEED: 1234 F1: 0.5820, Test ECE: 0.0678
+All results: {'f1_macro': 0.5819934073932725, 'ece': 0.06781218331952762}
+2026-02-12 15:09:36 - INFO - All results: {'f1_macro': 0.5819934073932725, 'ece': 0.06781218331952762}
+
+Total time taken: 552.96 seconds
+2026-02-12 15:09:36 - INFO - 
+Total time taken: 552.96 seconds
+2026-02-12 15:09:36 - INFO - Trial 3 finished with value: 0.5819934073932725 and parameters: {'learning_rate': 5.067428021121373e-05, 'weight_decay': 0.00012149233899658187, 'batch_size': 16, 'co_train_epochs': 15, 'epoch_patience': 7}. Best is trial 3 with value: 0.5819934073932725.
+Using devices: cuda, cuda
+2026-02-12 15:09:36 - INFO - Using devices: cuda, cuda
+Devices: cuda, cuda
+2026-02-12 15:09:36 - INFO - Devices: cuda, cuda
+Starting log
+2026-02-12 15:09:36 - INFO - Starting log
+Dataset: humanitarian10, Event: cyclone_idai_2019, N: 25, Seed: 1234, HF Model: GPT-4o, NumShots: 25, PLM: bert-tweet
+2026-02-12 15:09:36 - INFO - Dataset: humanitarian10, Event: cyclone_idai_2019, N: 25, Seed: 1234, HF Model: GPT-4o, NumShots: 25, PLM: bert-tweet
+Learning Rate: 0.0003581970439276791
+Weight Decay: 0.00114704958268821
+Batch Size: 8
+No. Epochs: 12
+Epoch Patience: 1
+ Accumulation Steps: 8
+2026-02-12 15:09:37 - INFO - Learning Rate: 0.0003581970439276791
+Weight Decay: 0.00114704958268821
+Batch Size: 8
+No. Epochs: 12
+Epoch Patience: 1
+ Accumulation Steps: 8
+Using Bert Tweet model: bert-tweet
+Generating initial weights
+2026-02-12 15:09:38 - INFO - Generating initial weights
+Time taken for Epoch 1:10.21 - F1: 0.0029
+2026-02-12 15:09:49 - INFO - Time taken for Epoch 1:10.21 - F1: 0.0029
+Time taken for Epoch 2:10.13 - F1: 0.0428
+2026-02-12 15:09:59 - INFO - Time taken for Epoch 2:10.13 - F1: 0.0428
+Time taken for Epoch 3:10.21 - F1: 0.0218
+2026-02-12 15:10:10 - INFO - Time taken for Epoch 3:10.21 - F1: 0.0218
+Time taken for Epoch 4:10.15 - F1: 0.0218
+2026-02-12 15:10:20 - INFO - Time taken for Epoch 4:10.15 - F1: 0.0218
+Time taken for Epoch 5:10.23 - F1: 0.0261
+2026-02-12 15:10:30 - INFO - Time taken for Epoch 5:10.23 - F1: 0.0261
+Time taken for Epoch 6:10.18 - F1: 0.0285
+2026-02-12 15:10:40 - INFO - Time taken for Epoch 6:10.18 - F1: 0.0285
+Time taken for Epoch 7:10.14 - F1: 0.0313
+2026-02-12 15:10:50 - INFO - Time taken for Epoch 7:10.14 - F1: 0.0313
+Time taken for Epoch 8:10.17 - F1: 0.0218
+2026-02-12 15:11:00 - INFO - Time taken for Epoch 8:10.17 - F1: 0.0218
+Time taken for Epoch 9:10.31 - F1: 0.0218
+2026-02-12 15:11:11 - INFO - Time taken for Epoch 9:10.31 - F1: 0.0218
+Time taken for Epoch 10:10.41 - F1: 0.0901
+2026-02-12 15:11:21 - INFO - Time taken for Epoch 10:10.41 - F1: 0.0901
+Time taken for Epoch 11:10.87 - F1: 0.0228
+2026-02-12 15:11:32 - INFO - Time taken for Epoch 11:10.87 - F1: 0.0228
+Time taken for Epoch 12:10.82 - F1: 0.0072
+2026-02-12 15:11:43 - INFO - Time taken for Epoch 12:10.82 - F1: 0.0072
+Best F1:0.0901 - Best Epoch:10
+2026-02-12 15:11:43 - INFO - Best F1:0.0901 - Best Epoch:10
+Using Bert Tweet model: bert-tweet
+Starting co-training
+2026-02-12 15:11:45 - INFO - Starting co-training
+Time taken for Epoch 1: 10.22s - F1: 0.06452703
+2026-02-12 15:11:55 - INFO - Time taken for Epoch 1: 10.22s - F1: 0.06452703
+Time taken for Epoch 2: 11.28s - F1: 0.06452703
+2026-02-12 15:12:07 - INFO - Time taken for Epoch 2: 11.28s - F1: 0.06452703
+Performance not improving for 1 consecutive epochs.
+Performance not improving for 1 consecutive epochs.
+2026-02-12 15:12:07 - INFO - Performance not improving for 1 consecutive epochs.
+Using Bert Tweet model: bert-tweet
+/tmp/ipykernel_213/485473895.py:775: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_1.load_state_dict(torch.load(model_1_path))
+/tmp/ipykernel_213/485473895.py:776: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_2.load_state_dict(torch.load(model_2_path))
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/co_trained_model_1_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/co_trained_model_2_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+Fine-tuning models
+2026-02-12 15:12:10 - INFO - Fine-tuning models
+Time taken for Epoch 1:3.00 - F1: 0.0218
+2026-02-12 15:12:13 - INFO - Time taken for Epoch 1:3.00 - F1: 0.0218
+Time taken for Epoch 2:3.96 - F1: 0.0186
+2026-02-12 15:12:17 - INFO - Time taken for Epoch 2:3.96 - F1: 0.0186
+Time taken for Epoch 3:2.98 - F1: 0.0072
+2026-02-12 15:12:20 - INFO - Time taken for Epoch 3:2.98 - F1: 0.0072
+Time taken for Epoch 4:2.90 - F1: 0.0072
+2026-02-12 15:12:23 - INFO - Time taken for Epoch 4:2.90 - F1: 0.0072
+Time taken for Epoch 5:2.80 - F1: 0.0029
+2026-02-12 15:12:26 - INFO - Time taken for Epoch 5:2.80 - F1: 0.0029
+Time taken for Epoch 6:2.76 - F1: 0.0029
+2026-02-12 15:12:29 - INFO - Time taken for Epoch 6:2.76 - F1: 0.0029
+Time taken for Epoch 7:2.77 - F1: 0.0218
+2026-02-12 15:12:32 - INFO - Time taken for Epoch 7:2.77 - F1: 0.0218
+Time taken for Epoch 8:2.79 - F1: 0.0645
+2026-02-12 15:12:34 - INFO - Time taken for Epoch 8:2.79 - F1: 0.0645
+Time taken for Epoch 9:11.21 - F1: 0.0645
+2026-02-12 15:12:46 - INFO - Time taken for Epoch 9:11.21 - F1: 0.0645
+Time taken for Epoch 10:2.78 - F1: 0.0198
+2026-02-12 15:12:48 - INFO - Time taken for Epoch 10:2.78 - F1: 0.0198
+Time taken for Epoch 11:2.79 - F1: 0.0198
+2026-02-12 15:12:51 - INFO - Time taken for Epoch 11:2.79 - F1: 0.0198
+Time taken for Epoch 12:2.77 - F1: 0.0198
+2026-02-12 15:12:54 - INFO - Time taken for Epoch 12:2.77 - F1: 0.0198
+Time taken for Epoch 13:2.77 - F1: 0.0072
+2026-02-12 15:12:57 - INFO - Time taken for Epoch 13:2.77 - F1: 0.0072
+Time taken for Epoch 14:2.76 - F1: 0.0072
+2026-02-12 15:12:59 - INFO - Time taken for Epoch 14:2.76 - F1: 0.0072
+Time taken for Epoch 15:2.78 - F1: 0.0218
+2026-02-12 15:13:02 - INFO - Time taken for Epoch 15:2.78 - F1: 0.0218
+Time taken for Epoch 16:2.78 - F1: 0.0218
+2026-02-12 15:13:05 - INFO - Time taken for Epoch 16:2.78 - F1: 0.0218
+Time taken for Epoch 17:2.77 - F1: 0.0218
+2026-02-12 15:13:08 - INFO - Time taken for Epoch 17:2.77 - F1: 0.0218
+Time taken for Epoch 18:2.78 - F1: 0.0039
+2026-02-12 15:13:11 - INFO - Time taken for Epoch 18:2.78 - F1: 0.0039
+Performance not improving for 10 consecutive epochs.
+2026-02-12 15:13:11 - INFO - Performance not improving for 10 consecutive epochs.
+Best F1:0.0645 - Best Epoch:7
+2026-02-12 15:13:11 - INFO - Best F1:0.0645 - Best Epoch:7
+Using Bert Tweet model: bert-tweet
+/tmp/ipykernel_213/485473895.py:816: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_1.load_state_dict(torch.load(model_1_path))
+/tmp/ipykernel_213/485473895.py:817: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_2.load_state_dict(torch.load(model_2_path))
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/final_model_1_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/final_model_2_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian10, NumShots: 25, N: 25 Test SEED: 1234 F1: 0.0644, Test ECE: 0.2304
+2026-02-12 15:13:17 - INFO - 
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian10, NumShots: 25, N: 25 Test SEED: 1234 F1: 0.0644, Test ECE: 0.2304
+All results: {'f1_macro': 0.06440382941688425, 'ece': 0.2304485470094791}
+2026-02-12 15:13:17 - INFO - All results: {'f1_macro': 0.06440382941688425, 'ece': 0.2304485470094791}
+
+Total time taken: 221.02 seconds
+2026-02-12 15:13:17 - INFO - 
+Total time taken: 221.02 seconds
+2026-02-12 15:13:17 - INFO - Trial 4 finished with value: 0.06440382941688425 and parameters: {'learning_rate': 0.0003581970439276791, 'weight_decay': 0.00114704958268821, 'batch_size': 8, 'co_train_epochs': 12, 'epoch_patience': 1}. Best is trial 3 with value: 0.5819934073932725.
+Using devices: cuda, cuda
+2026-02-12 15:13:17 - INFO - Using devices: cuda, cuda
+Devices: cuda, cuda
+2026-02-12 15:13:17 - INFO - Devices: cuda, cuda
+Starting log
+2026-02-12 15:13:17 - INFO - Starting log
+Dataset: humanitarian10, Event: cyclone_idai_2019, N: 25, Seed: 1234, HF Model: GPT-4o, NumShots: 25, PLM: bert-tweet
+2026-02-12 15:13:17 - INFO - Dataset: humanitarian10, Event: cyclone_idai_2019, N: 25, Seed: 1234, HF Model: GPT-4o, NumShots: 25, PLM: bert-tweet
+/opt/conda/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+Learning Rate: 0.00016154091769253023
+Weight Decay: 0.001953708110807891
+Batch Size: 8
+No. Epochs: 9
+Epoch Patience: 10
+ Accumulation Steps: 8
+2026-02-12 15:13:18 - INFO - Learning Rate: 0.00016154091769253023
+Weight Decay: 0.001953708110807891
+Batch Size: 8
+No. Epochs: 9
+Epoch Patience: 10
+ Accumulation Steps: 8
+Using Bert Tweet model: bert-tweet
+Generating initial weights
+2026-02-12 15:13:19 - INFO - Generating initial weights
+Time taken for Epoch 1:10.31 - F1: 0.0289
+2026-02-12 15:13:30 - INFO - Time taken for Epoch 1:10.31 - F1: 0.0289
+Time taken for Epoch 2:10.21 - F1: 0.0721
+2026-02-12 15:13:41 - INFO - Time taken for Epoch 2:10.21 - F1: 0.0721
+Time taken for Epoch 3:10.17 - F1: 0.0934
+2026-02-12 15:13:51 - INFO - Time taken for Epoch 3:10.17 - F1: 0.0934
+Time taken for Epoch 4:10.16 - F1: 0.1417
+2026-02-12 15:14:01 - INFO - Time taken for Epoch 4:10.16 - F1: 0.1417
+Time taken for Epoch 5:10.20 - F1: 0.1406
+2026-02-12 15:14:11 - INFO - Time taken for Epoch 5:10.20 - F1: 0.1406
+Time taken for Epoch 6:10.23 - F1: 0.2062
+2026-02-12 15:14:21 - INFO - Time taken for Epoch 6:10.23 - F1: 0.2062
+Time taken for Epoch 7:10.16 - F1: 0.2987
+2026-02-12 15:14:32 - INFO - Time taken for Epoch 7:10.16 - F1: 0.2987
+Time taken for Epoch 8:10.49 - F1: 0.3211
+2026-02-12 15:14:42 - INFO - Time taken for Epoch 8:10.49 - F1: 0.3211
+Time taken for Epoch 9:10.32 - F1: 0.3679
+2026-02-12 15:14:52 - INFO - Time taken for Epoch 9:10.32 - F1: 0.3679
+Best F1:0.3679 - Best Epoch:9
+2026-02-12 15:14:52 - INFO - Best F1:0.3679 - Best Epoch:9
+Using Bert Tweet model: bert-tweet
+Starting co-training
+2026-02-12 15:14:54 - INFO - Starting co-training
+Time taken for Epoch 1: 10.35s - F1: 0.06452703
+2026-02-12 15:15:04 - INFO - Time taken for Epoch 1: 10.35s - F1: 0.06452703
+Time taken for Epoch 2: 11.26s - F1: 0.06452703
+2026-02-12 15:15:16 - INFO - Time taken for Epoch 2: 11.26s - F1: 0.06452703
+Time taken for Epoch 3: 10.18s - F1: 0.06452703
+2026-02-12 15:15:26 - INFO - Time taken for Epoch 3: 10.18s - F1: 0.06452703
+Time taken for Epoch 4: 10.19s - F1: 0.06452703
+2026-02-12 15:15:36 - INFO - Time taken for Epoch 4: 10.19s - F1: 0.06452703
+Time taken for Epoch 5: 10.17s - F1: 0.06452703
+2026-02-12 15:15:46 - INFO - Time taken for Epoch 5: 10.17s - F1: 0.06452703
+Time taken for Epoch 6: 10.18s - F1: 0.06452703
+2026-02-12 15:15:56 - INFO - Time taken for Epoch 6: 10.18s - F1: 0.06452703
+Time taken for Epoch 7: 10.18s - F1: 0.06452703
+2026-02-12 15:16:06 - INFO - Time taken for Epoch 7: 10.18s - F1: 0.06452703
+Time taken for Epoch 8: 10.19s - F1: 0.06452703
+2026-02-12 15:16:17 - INFO - Time taken for Epoch 8: 10.19s - F1: 0.06452703
+Time taken for Epoch 9: 10.23s - F1: 0.06452703
+2026-02-12 15:16:27 - INFO - Time taken for Epoch 9: 10.23s - F1: 0.06452703
+Using Bert Tweet model: bert-tweet
+/tmp/ipykernel_213/485473895.py:775: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_1.load_state_dict(torch.load(model_1_path))
+/tmp/ipykernel_213/485473895.py:776: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_2.load_state_dict(torch.load(model_2_path))
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/co_trained_model_1_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/co_trained_model_2_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+Fine-tuning models
+2026-02-12 15:16:29 - INFO - Fine-tuning models
+Time taken for Epoch 1:2.88 - F1: 0.0198
+2026-02-12 15:16:32 - INFO - Time taken for Epoch 1:2.88 - F1: 0.0198
+Time taken for Epoch 2:3.97 - F1: 0.0198
+2026-02-12 15:16:36 - INFO - Time taken for Epoch 2:3.97 - F1: 0.0198
+Time taken for Epoch 3:2.78 - F1: 0.0198
+2026-02-12 15:16:39 - INFO - Time taken for Epoch 3:2.78 - F1: 0.0198
+Time taken for Epoch 4:2.77 - F1: 0.0198
+2026-02-12 15:16:42 - INFO - Time taken for Epoch 4:2.77 - F1: 0.0198
+Time taken for Epoch 5:2.78 - F1: 0.0165
+2026-02-12 15:16:45 - INFO - Time taken for Epoch 5:2.78 - F1: 0.0165
+Time taken for Epoch 6:2.78 - F1: 0.0165
+2026-02-12 15:16:48 - INFO - Time taken for Epoch 6:2.78 - F1: 0.0165
+Time taken for Epoch 7:2.77 - F1: 0.0165
+2026-02-12 15:16:50 - INFO - Time taken for Epoch 7:2.77 - F1: 0.0165
+Time taken for Epoch 8:2.79 - F1: 0.0165
+2026-02-12 15:16:53 - INFO - Time taken for Epoch 8:2.79 - F1: 0.0165
+Time taken for Epoch 9:2.80 - F1: 0.0165
+2026-02-12 15:16:56 - INFO - Time taken for Epoch 9:2.80 - F1: 0.0165
+Time taken for Epoch 10:2.78 - F1: 0.0165
+2026-02-12 15:16:59 - INFO - Time taken for Epoch 10:2.78 - F1: 0.0165
+Time taken for Epoch 11:2.77 - F1: 0.0218
+2026-02-12 15:17:01 - INFO - Time taken for Epoch 11:2.77 - F1: 0.0218
+Time taken for Epoch 12:19.99 - F1: 0.0218
+2026-02-12 15:17:21 - INFO - Time taken for Epoch 12:19.99 - F1: 0.0218
+Time taken for Epoch 13:2.76 - F1: 0.0218
+2026-02-12 15:17:24 - INFO - Time taken for Epoch 13:2.76 - F1: 0.0218
+Time taken for Epoch 14:2.76 - F1: 0.0218
+2026-02-12 15:17:27 - INFO - Time taken for Epoch 14:2.76 - F1: 0.0218
+Time taken for Epoch 15:2.77 - F1: 0.0218
+2026-02-12 15:17:30 - INFO - Time taken for Epoch 15:2.77 - F1: 0.0218
+Time taken for Epoch 16:2.77 - F1: 0.0218
+2026-02-12 15:17:33 - INFO - Time taken for Epoch 16:2.77 - F1: 0.0218
+Time taken for Epoch 17:2.77 - F1: 0.0072
+2026-02-12 15:17:35 - INFO - Time taken for Epoch 17:2.77 - F1: 0.0072
+Time taken for Epoch 18:2.77 - F1: 0.0072
+2026-02-12 15:17:38 - INFO - Time taken for Epoch 18:2.77 - F1: 0.0072
+Time taken for Epoch 19:2.77 - F1: 0.0072
+2026-02-12 15:17:41 - INFO - Time taken for Epoch 19:2.77 - F1: 0.0072
+Time taken for Epoch 20:2.77 - F1: 0.0072
+2026-02-12 15:17:44 - INFO - Time taken for Epoch 20:2.77 - F1: 0.0072
+Time taken for Epoch 21:2.77 - F1: 0.0072
+2026-02-12 15:17:46 - INFO - Time taken for Epoch 21:2.77 - F1: 0.0072
+Performance not improving for 10 consecutive epochs.
+2026-02-12 15:17:46 - INFO - Performance not improving for 10 consecutive epochs.
+Best F1:0.0218 - Best Epoch:10
+2026-02-12 15:17:46 - INFO - Best F1:0.0218 - Best Epoch:10
+Using Bert Tweet model: bert-tweet
+/tmp/ipykernel_213/485473895.py:816: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_1.load_state_dict(torch.load(model_1_path))
+/tmp/ipykernel_213/485473895.py:817: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_2.load_state_dict(torch.load(model_2_path))
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/final_model_1_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/final_model_2_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian10, NumShots: 25, N: 25 Test SEED: 1234 F1: 0.0217, Test ECE: 0.1289
+2026-02-12 15:17:52 - INFO - 
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian10, NumShots: 25, N: 25 Test SEED: 1234 F1: 0.0217, Test ECE: 0.1289
+All results: {'f1_macro': 0.021739130434782608, 'ece': 0.1289109624013668}
+2026-02-12 15:17:52 - INFO - All results: {'f1_macro': 0.021739130434782608, 'ece': 0.1289109624013668}
+
+Total time taken: 275.12 seconds
+2026-02-12 15:17:52 - INFO - 
+Total time taken: 275.12 seconds
+2026-02-12 15:17:52 - INFO - Trial 5 finished with value: 0.021739130434782608 and parameters: {'learning_rate': 0.00016154091769253023, 'weight_decay': 0.001953708110807891, 'batch_size': 8, 'co_train_epochs': 9, 'epoch_patience': 10}. Best is trial 3 with value: 0.5819934073932725.
+Using devices: cuda, cuda
+2026-02-12 15:17:52 - INFO - Using devices: cuda, cuda
+Devices: cuda, cuda
+2026-02-12 15:17:52 - INFO - Devices: cuda, cuda
+Starting log
+2026-02-12 15:17:52 - INFO - Starting log
+Dataset: humanitarian10, Event: cyclone_idai_2019, N: 25, Seed: 1234, HF Model: GPT-4o, NumShots: 25, PLM: bert-tweet
+2026-02-12 15:17:52 - INFO - Dataset: humanitarian10, Event: cyclone_idai_2019, N: 25, Seed: 1234, HF Model: GPT-4o, NumShots: 25, PLM: bert-tweet
+/opt/conda/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+Learning Rate: 1.3287651324356697e-05
+Weight Decay: 0.002447175920136395
+Batch Size: 16
+No. Epochs: 18
+Epoch Patience: 5
+ Accumulation Steps: 4
+2026-02-12 15:17:53 - INFO - Learning Rate: 1.3287651324356697e-05
+Weight Decay: 0.002447175920136395
+Batch Size: 16
+No. Epochs: 18
+Epoch Patience: 5
+ Accumulation Steps: 4
+Using Bert Tweet model: bert-tweet
+Generating initial weights
+2026-02-12 15:17:54 - INFO - Generating initial weights
+Time taken for Epoch 1:9.54 - F1: 0.0255
+2026-02-12 15:18:05 - INFO - Time taken for Epoch 1:9.54 - F1: 0.0255
+Time taken for Epoch 2:9.33 - F1: 0.0273
+2026-02-12 15:18:14 - INFO - Time taken for Epoch 2:9.33 - F1: 0.0273
+Time taken for Epoch 3:9.41 - F1: 0.0350
+2026-02-12 15:18:24 - INFO - Time taken for Epoch 3:9.41 - F1: 0.0350
+Time taken for Epoch 4:9.44 - F1: 0.0427
+2026-02-12 15:18:33 - INFO - Time taken for Epoch 4:9.44 - F1: 0.0427
+Time taken for Epoch 5:9.40 - F1: 0.0722
+2026-02-12 15:18:43 - INFO - Time taken for Epoch 5:9.40 - F1: 0.0722
+Time taken for Epoch 6:9.32 - F1: 0.1000
+2026-02-12 15:18:52 - INFO - Time taken for Epoch 6:9.32 - F1: 0.1000
+Time taken for Epoch 7:9.35 - F1: 0.1085
+2026-02-12 15:19:01 - INFO - Time taken for Epoch 7:9.35 - F1: 0.1085
+Time taken for Epoch 8:9.35 - F1: 0.1215
+2026-02-12 15:19:11 - INFO - Time taken for Epoch 8:9.35 - F1: 0.1215
+Time taken for Epoch 9:9.40 - F1: 0.1314
+2026-02-12 15:19:20 - INFO - Time taken for Epoch 9:9.40 - F1: 0.1314
+Time taken for Epoch 10:9.36 - F1: 0.1385
+2026-02-12 15:19:29 - INFO - Time taken for Epoch 10:9.36 - F1: 0.1385
+Time taken for Epoch 11:9.41 - F1: 0.1253
+2026-02-12 15:19:39 - INFO - Time taken for Epoch 11:9.41 - F1: 0.1253
+Time taken for Epoch 12:9.39 - F1: 0.1652
+2026-02-12 15:19:48 - INFO - Time taken for Epoch 12:9.39 - F1: 0.1652
+Time taken for Epoch 13:9.35 - F1: 0.1782
+2026-02-12 15:19:57 - INFO - Time taken for Epoch 13:9.35 - F1: 0.1782
+Time taken for Epoch 14:9.42 - F1: 0.1843
+2026-02-12 15:20:07 - INFO - Time taken for Epoch 14:9.42 - F1: 0.1843
+Time taken for Epoch 15:9.39 - F1: 0.1956
+2026-02-12 15:20:16 - INFO - Time taken for Epoch 15:9.39 - F1: 0.1956
+Time taken for Epoch 16:9.37 - F1: 0.1926
+2026-02-12 15:20:26 - INFO - Time taken for Epoch 16:9.37 - F1: 0.1926
+Time taken for Epoch 17:9.42 - F1: 0.1913
+2026-02-12 15:20:35 - INFO - Time taken for Epoch 17:9.42 - F1: 0.1913
+Time taken for Epoch 18:9.40 - F1: 0.1861
+2026-02-12 15:20:44 - INFO - Time taken for Epoch 18:9.40 - F1: 0.1861
+Best F1:0.1956 - Best Epoch:15
+2026-02-12 15:20:44 - INFO - Best F1:0.1956 - Best Epoch:15
+Using Bert Tweet model: bert-tweet
+Starting co-training
+2026-02-12 15:20:46 - INFO - Starting co-training
+Time taken for Epoch 1: 10.88s - F1: 0.06452703
+2026-02-12 15:20:57 - INFO - Time taken for Epoch 1: 10.88s - F1: 0.06452703
+Time taken for Epoch 2: 12.05s - F1: 0.14065934
+2026-02-12 15:21:09 - INFO - Time taken for Epoch 2: 12.05s - F1: 0.14065934
+Time taken for Epoch 3: 16.10s - F1: 0.19075508
+2026-02-12 15:21:25 - INFO - Time taken for Epoch 3: 16.10s - F1: 0.19075508
+Time taken for Epoch 4: 19.33s - F1: 0.21006761
+2026-02-12 15:21:45 - INFO - Time taken for Epoch 4: 19.33s - F1: 0.21006761
+Time taken for Epoch 5: 16.07s - F1: 0.26054181
+2026-02-12 15:22:01 - INFO - Time taken for Epoch 5: 16.07s - F1: 0.26054181
+Time taken for Epoch 6: 13.43s - F1: 0.28995008
+2026-02-12 15:22:14 - INFO - Time taken for Epoch 6: 13.43s - F1: 0.28995008
+Time taken for Epoch 7: 14.87s - F1: 0.28996690
+2026-02-12 15:22:29 - INFO - Time taken for Epoch 7: 14.87s - F1: 0.28996690
+Time taken for Epoch 8: 20.98s - F1: 0.29750571
+2026-02-12 15:22:50 - INFO - Time taken for Epoch 8: 20.98s - F1: 0.29750571
+Time taken for Epoch 9: 32.30s - F1: 0.29771903
+2026-02-12 15:23:22 - INFO - Time taken for Epoch 9: 32.30s - F1: 0.29771903
+Time taken for Epoch 10: 16.87s - F1: 0.29264315
+2026-02-12 15:23:39 - INFO - Time taken for Epoch 10: 16.87s - F1: 0.29264315
+Time taken for Epoch 11: 10.79s - F1: 0.32765654
+2026-02-12 15:23:50 - INFO - Time taken for Epoch 11: 10.79s - F1: 0.32765654
+Time taken for Epoch 12: 30.49s - F1: 0.32438646
+2026-02-12 15:24:20 - INFO - Time taken for Epoch 12: 30.49s - F1: 0.32438646
+Time taken for Epoch 13: 10.88s - F1: 0.32555018
+2026-02-12 15:24:31 - INFO - Time taken for Epoch 13: 10.88s - F1: 0.32555018
+Time taken for Epoch 14: 10.80s - F1: 0.33621035
+2026-02-12 15:24:42 - INFO - Time taken for Epoch 14: 10.80s - F1: 0.33621035
+Time taken for Epoch 15: 16.83s - F1: 0.35438896
+2026-02-12 15:24:59 - INFO - Time taken for Epoch 15: 16.83s - F1: 0.35438896
+Time taken for Epoch 16: 19.05s - F1: 0.35626564
+2026-02-12 15:25:18 - INFO - Time taken for Epoch 16: 19.05s - F1: 0.35626564
+Time taken for Epoch 17: 31.85s - F1: 0.34168003
+2026-02-12 15:25:50 - INFO - Time taken for Epoch 17: 31.85s - F1: 0.34168003
+Time taken for Epoch 18: 10.83s - F1: 0.34845011
+2026-02-12 15:26:01 - INFO - Time taken for Epoch 18: 10.83s - F1: 0.34845011
+Using Bert Tweet model: bert-tweet
+/tmp/ipykernel_213/485473895.py:775: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_1.load_state_dict(torch.load(model_1_path))
+/tmp/ipykernel_213/485473895.py:776: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_2.load_state_dict(torch.load(model_2_path))
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/co_trained_model_1_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/co_trained_model_2_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+Fine-tuning models
+2026-02-12 15:26:03 - INFO - Fine-tuning models
+Time taken for Epoch 1:2.69 - F1: 0.3467
+2026-02-12 15:26:06 - INFO - Time taken for Epoch 1:2.69 - F1: 0.3467
+Time taken for Epoch 2:3.85 - F1: 0.3400
+2026-02-12 15:26:10 - INFO - Time taken for Epoch 2:3.85 - F1: 0.3400
+Time taken for Epoch 3:2.58 - F1: 0.3298
+2026-02-12 15:26:13 - INFO - Time taken for Epoch 3:2.58 - F1: 0.3298
+Time taken for Epoch 4:2.58 - F1: 0.3326
+2026-02-12 15:26:15 - INFO - Time taken for Epoch 4:2.58 - F1: 0.3326
+Time taken for Epoch 5:2.59 - F1: 0.3369
+2026-02-12 15:26:18 - INFO - Time taken for Epoch 5:2.59 - F1: 0.3369
+Time taken for Epoch 6:2.58 - F1: 0.3433
+2026-02-12 15:26:21 - INFO - Time taken for Epoch 6:2.58 - F1: 0.3433
+Time taken for Epoch 7:2.58 - F1: 0.3487
+2026-02-12 15:26:23 - INFO - Time taken for Epoch 7:2.58 - F1: 0.3487
+Time taken for Epoch 8:9.33 - F1: 0.3473
+2026-02-12 15:26:32 - INFO - Time taken for Epoch 8:9.33 - F1: 0.3473
+Time taken for Epoch 9:2.57 - F1: 0.3926
+2026-02-12 15:26:35 - INFO - Time taken for Epoch 9:2.57 - F1: 0.3926
+Time taken for Epoch 10:6.66 - F1: 0.4008
+2026-02-12 15:26:42 - INFO - Time taken for Epoch 10:6.66 - F1: 0.4008
+Time taken for Epoch 11:7.59 - F1: 0.4000
+2026-02-12 15:26:49 - INFO - Time taken for Epoch 11:7.59 - F1: 0.4000
+Time taken for Epoch 12:2.63 - F1: 0.4062
+2026-02-12 15:26:52 - INFO - Time taken for Epoch 12:2.63 - F1: 0.4062
+Time taken for Epoch 13:8.39 - F1: 0.4096
+2026-02-12 15:27:00 - INFO - Time taken for Epoch 13:8.39 - F1: 0.4096
+Time taken for Epoch 14:7.39 - F1: 0.4098
+2026-02-12 15:27:08 - INFO - Time taken for Epoch 14:7.39 - F1: 0.4098
+Time taken for Epoch 15:8.57 - F1: 0.4039
+2026-02-12 15:27:16 - INFO - Time taken for Epoch 15:8.57 - F1: 0.4039
+Time taken for Epoch 16:2.60 - F1: 0.3912
+2026-02-12 15:27:19 - INFO - Time taken for Epoch 16:2.60 - F1: 0.3912
+Time taken for Epoch 17:2.66 - F1: 0.3886
+2026-02-12 15:27:21 - INFO - Time taken for Epoch 17:2.66 - F1: 0.3886
+Time taken for Epoch 18:2.68 - F1: 0.3927
+2026-02-12 15:27:24 - INFO - Time taken for Epoch 18:2.68 - F1: 0.3927
+Time taken for Epoch 19:2.62 - F1: 0.3990
+2026-02-12 15:27:27 - INFO - Time taken for Epoch 19:2.62 - F1: 0.3990
+Time taken for Epoch 20:2.58 - F1: 0.4118
+2026-02-12 15:27:29 - INFO - Time taken for Epoch 20:2.58 - F1: 0.4118
+Time taken for Epoch 21:9.74 - F1: 0.4103
+2026-02-12 15:27:39 - INFO - Time taken for Epoch 21:9.74 - F1: 0.4103
+Time taken for Epoch 22:2.66 - F1: 0.3949
+2026-02-12 15:27:42 - INFO - Time taken for Epoch 22:2.66 - F1: 0.3949
+Time taken for Epoch 23:2.68 - F1: 0.3986
+2026-02-12 15:27:44 - INFO - Time taken for Epoch 23:2.68 - F1: 0.3986
+Time taken for Epoch 24:2.64 - F1: 0.4035
+2026-02-12 15:27:47 - INFO - Time taken for Epoch 24:2.64 - F1: 0.4035
+Time taken for Epoch 25:2.60 - F1: 0.3841
+2026-02-12 15:27:50 - INFO - Time taken for Epoch 25:2.60 - F1: 0.3841
+Time taken for Epoch 26:2.60 - F1: 0.3981
+2026-02-12 15:27:52 - INFO - Time taken for Epoch 26:2.60 - F1: 0.3981
+Time taken for Epoch 27:2.57 - F1: 0.4240
+2026-02-12 15:27:55 - INFO - Time taken for Epoch 27:2.57 - F1: 0.4240
+Time taken for Epoch 28:8.85 - F1: 0.4204
+2026-02-12 15:28:04 - INFO - Time taken for Epoch 28:8.85 - F1: 0.4204
+Time taken for Epoch 29:2.67 - F1: 0.4086
+2026-02-12 15:28:06 - INFO - Time taken for Epoch 29:2.67 - F1: 0.4086
+Time taken for Epoch 30:2.58 - F1: 0.3981
+2026-02-12 15:28:09 - INFO - Time taken for Epoch 30:2.58 - F1: 0.3981
+Time taken for Epoch 31:2.57 - F1: 0.3878
+2026-02-12 15:28:12 - INFO - Time taken for Epoch 31:2.57 - F1: 0.3878
+Time taken for Epoch 32:2.59 - F1: 0.3873
+2026-02-12 15:28:14 - INFO - Time taken for Epoch 32:2.59 - F1: 0.3873
+Time taken for Epoch 33:2.59 - F1: 0.3996
+2026-02-12 15:28:17 - INFO - Time taken for Epoch 33:2.59 - F1: 0.3996
+Time taken for Epoch 34:2.58 - F1: 0.4145
+2026-02-12 15:28:19 - INFO - Time taken for Epoch 34:2.58 - F1: 0.4145
+Time taken for Epoch 35:2.57 - F1: 0.4211
+2026-02-12 15:28:22 - INFO - Time taken for Epoch 35:2.57 - F1: 0.4211
+Time taken for Epoch 36:2.57 - F1: 0.4261
+2026-02-12 15:28:24 - INFO - Time taken for Epoch 36:2.57 - F1: 0.4261
+Time taken for Epoch 37:10.70 - F1: 0.4109
+2026-02-12 15:28:35 - INFO - Time taken for Epoch 37:10.70 - F1: 0.4109
+Time taken for Epoch 38:2.64 - F1: 0.3959
+2026-02-12 15:28:38 - INFO - Time taken for Epoch 38:2.64 - F1: 0.3959
+Time taken for Epoch 39:2.59 - F1: 0.3931
+2026-02-12 15:28:40 - INFO - Time taken for Epoch 39:2.59 - F1: 0.3931
+Time taken for Epoch 40:2.61 - F1: 0.4072
+2026-02-12 15:28:43 - INFO - Time taken for Epoch 40:2.61 - F1: 0.4072
+Time taken for Epoch 41:2.60 - F1: 0.4056
+2026-02-12 15:28:46 - INFO - Time taken for Epoch 41:2.60 - F1: 0.4056
+Time taken for Epoch 42:2.60 - F1: 0.4346
+2026-02-12 15:28:48 - INFO - Time taken for Epoch 42:2.60 - F1: 0.4346
+Time taken for Epoch 43:25.22 - F1: 0.4171
+2026-02-12 15:29:13 - INFO - Time taken for Epoch 43:25.22 - F1: 0.4171
+Time taken for Epoch 44:2.57 - F1: 0.4104
+2026-02-12 15:29:16 - INFO - Time taken for Epoch 44:2.57 - F1: 0.4104
+Time taken for Epoch 45:2.58 - F1: 0.4203
+2026-02-12 15:29:19 - INFO - Time taken for Epoch 45:2.58 - F1: 0.4203
+Time taken for Epoch 46:2.59 - F1: 0.4157
+2026-02-12 15:29:21 - INFO - Time taken for Epoch 46:2.59 - F1: 0.4157
+Time taken for Epoch 47:2.60 - F1: 0.4267
+2026-02-12 15:29:24 - INFO - Time taken for Epoch 47:2.60 - F1: 0.4267
+Time taken for Epoch 48:2.58 - F1: 0.4358
+2026-02-12 15:29:26 - INFO - Time taken for Epoch 48:2.58 - F1: 0.4358
+Time taken for Epoch 49:25.02 - F1: 0.4252
+2026-02-12 15:29:51 - INFO - Time taken for Epoch 49:25.02 - F1: 0.4252
+Time taken for Epoch 50:2.58 - F1: 0.4210
+2026-02-12 15:29:54 - INFO - Time taken for Epoch 50:2.58 - F1: 0.4210
+Time taken for Epoch 51:2.58 - F1: 0.4431
+2026-02-12 15:29:56 - INFO - Time taken for Epoch 51:2.58 - F1: 0.4431
+Time taken for Epoch 52:17.44 - F1: 0.4457
+2026-02-12 15:30:14 - INFO - Time taken for Epoch 52:17.44 - F1: 0.4457
+Time taken for Epoch 53:18.32 - F1: 0.4407
+2026-02-12 15:30:32 - INFO - Time taken for Epoch 53:18.32 - F1: 0.4407
+Time taken for Epoch 54:2.65 - F1: 0.4480
+2026-02-12 15:30:35 - INFO - Time taken for Epoch 54:2.65 - F1: 0.4480
+Time taken for Epoch 55:20.73 - F1: 0.4648
+2026-02-12 15:30:56 - INFO - Time taken for Epoch 55:20.73 - F1: 0.4648
+Time taken for Epoch 56:18.19 - F1: 0.4569
+2026-02-12 15:31:14 - INFO - Time taken for Epoch 56:18.19 - F1: 0.4569
+Time taken for Epoch 57:2.59 - F1: 0.4570
+2026-02-12 15:31:16 - INFO - Time taken for Epoch 57:2.59 - F1: 0.4570
+Time taken for Epoch 58:2.64 - F1: 0.4597
+2026-02-12 15:31:19 - INFO - Time taken for Epoch 58:2.64 - F1: 0.4597
+Time taken for Epoch 59:2.57 - F1: 0.4523
+2026-02-12 15:31:22 - INFO - Time taken for Epoch 59:2.57 - F1: 0.4523
+Time taken for Epoch 60:2.67 - F1: 0.4610
+2026-02-12 15:31:24 - INFO - Time taken for Epoch 60:2.67 - F1: 0.4610
+Time taken for Epoch 61:2.66 - F1: 0.4416
+2026-02-12 15:31:27 - INFO - Time taken for Epoch 61:2.66 - F1: 0.4416
+Time taken for Epoch 62:2.62 - F1: 0.4411
+2026-02-12 15:31:30 - INFO - Time taken for Epoch 62:2.62 - F1: 0.4411
+Time taken for Epoch 63:2.62 - F1: 0.4641
+2026-02-12 15:31:32 - INFO - Time taken for Epoch 63:2.62 - F1: 0.4641
+Time taken for Epoch 64:2.60 - F1: 0.4620
+2026-02-12 15:31:35 - INFO - Time taken for Epoch 64:2.60 - F1: 0.4620
+Time taken for Epoch 65:2.66 - F1: 0.4584
+2026-02-12 15:31:37 - INFO - Time taken for Epoch 65:2.66 - F1: 0.4584
+Performance not improving for 10 consecutive epochs.
+2026-02-12 15:31:37 - INFO - Performance not improving for 10 consecutive epochs.
+Best F1:0.4648 - Best Epoch:54
+2026-02-12 15:31:37 - INFO - Best F1:0.4648 - Best Epoch:54
+Using Bert Tweet model: bert-tweet
+/tmp/ipykernel_213/485473895.py:816: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_1.load_state_dict(torch.load(model_1_path))
+/tmp/ipykernel_213/485473895.py:817: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_2.load_state_dict(torch.load(model_2_path))
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/final_model_1_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/final_model_2_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian10, NumShots: 25, N: 25 Test SEED: 1234 F1: 0.5490, Test ECE: 0.1055
+2026-02-12 15:31:44 - INFO - 
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian10, NumShots: 25, N: 25 Test SEED: 1234 F1: 0.5490, Test ECE: 0.1055
+All results: {'f1_macro': 0.5490462202931778, 'ece': 0.10551654401119315}
+2026-02-12 15:31:44 - INFO - All results: {'f1_macro': 0.5490462202931778, 'ece': 0.10551654401119315}
+
+Total time taken: 832.34 seconds
+2026-02-12 15:31:44 - INFO - 
+Total time taken: 832.34 seconds
+2026-02-12 15:31:45 - INFO - Trial 6 finished with value: 0.5490462202931778 and parameters: {'learning_rate': 1.3287651324356697e-05, 'weight_decay': 0.002447175920136395, 'batch_size': 16, 'co_train_epochs': 18, 'epoch_patience': 5}. Best is trial 3 with value: 0.5819934073932725.
+Using devices: cuda, cuda
+2026-02-12 15:31:45 - INFO - Using devices: cuda, cuda
+Devices: cuda, cuda
+2026-02-12 15:31:45 - INFO - Devices: cuda, cuda
+Starting log
+2026-02-12 15:31:45 - INFO - Starting log
+Dataset: humanitarian10, Event: cyclone_idai_2019, N: 25, Seed: 1234, HF Model: GPT-4o, NumShots: 25, PLM: bert-tweet
+2026-02-12 15:31:45 - INFO - Dataset: humanitarian10, Event: cyclone_idai_2019, N: 25, Seed: 1234, HF Model: GPT-4o, NumShots: 25, PLM: bert-tweet
+Learning Rate: 0.0009722308544014087
+Weight Decay: 0.0002188585290918532
+Batch Size: 32
+No. Epochs: 17
+Epoch Patience: 6
+ Accumulation Steps: 2
+2026-02-12 15:31:45 - INFO - Learning Rate: 0.0009722308544014087
+Weight Decay: 0.0002188585290918532
+Batch Size: 32
+No. Epochs: 17
+Epoch Patience: 6
+ Accumulation Steps: 2
+Using Bert Tweet model: bert-tweet
+Generating initial weights
+2026-02-12 15:31:46 - INFO - Generating initial weights
+Time taken for Epoch 1:8.82 - F1: 0.0044
+2026-02-12 15:31:56 - INFO - Time taken for Epoch 1:8.82 - F1: 0.0044
+Time taken for Epoch 2:8.84 - F1: 0.0039
+2026-02-12 15:32:05 - INFO - Time taken for Epoch 2:8.84 - F1: 0.0039
+Time taken for Epoch 3:8.73 - F1: 0.0218
+2026-02-12 15:32:14 - INFO - Time taken for Epoch 3:8.73 - F1: 0.0218
+Time taken for Epoch 4:8.73 - F1: 0.0165
+2026-02-12 15:32:23 - INFO - Time taken for Epoch 4:8.73 - F1: 0.0165
+Time taken for Epoch 5:8.69 - F1: 0.0029
+2026-02-12 15:32:31 - INFO - Time taken for Epoch 5:8.69 - F1: 0.0029
+Time taken for Epoch 6:8.65 - F1: 0.0198
+2026-02-12 15:32:40 - INFO - Time taken for Epoch 6:8.65 - F1: 0.0198
+Time taken for Epoch 7:8.55 - F1: 0.0198
+2026-02-12 15:32:49 - INFO - Time taken for Epoch 7:8.55 - F1: 0.0198
+Time taken for Epoch 8:8.53 - F1: 0.0044
+2026-02-12 15:32:57 - INFO - Time taken for Epoch 8:8.53 - F1: 0.0044
+Time taken for Epoch 9:8.53 - F1: 0.0044
+2026-02-12 15:33:06 - INFO - Time taken for Epoch 9:8.53 - F1: 0.0044
+Time taken for Epoch 10:8.59 - F1: 0.0044
+2026-02-12 15:33:14 - INFO - Time taken for Epoch 10:8.59 - F1: 0.0044
+Time taken for Epoch 11:8.56 - F1: 0.0198
+2026-02-12 15:33:23 - INFO - Time taken for Epoch 11:8.56 - F1: 0.0198
+Time taken for Epoch 12:8.63 - F1: 0.0165
+2026-02-12 15:33:31 - INFO - Time taken for Epoch 12:8.63 - F1: 0.0165
+Time taken for Epoch 13:8.63 - F1: 0.0165
+2026-02-12 15:33:40 - INFO - Time taken for Epoch 13:8.63 - F1: 0.0165
+Time taken for Epoch 14:8.60 - F1: 0.0044
+2026-02-12 15:33:49 - INFO - Time taken for Epoch 14:8.60 - F1: 0.0044
+Time taken for Epoch 15:8.53 - F1: 0.0044
+2026-02-12 15:33:57 - INFO - Time taken for Epoch 15:8.53 - F1: 0.0044
+Time taken for Epoch 16:8.56 - F1: 0.0044
+2026-02-12 15:34:06 - INFO - Time taken for Epoch 16:8.56 - F1: 0.0044
+Time taken for Epoch 17:8.57 - F1: 0.0165
+2026-02-12 15:34:14 - INFO - Time taken for Epoch 17:8.57 - F1: 0.0165
+Best F1:0.0218 - Best Epoch:3
+2026-02-12 15:34:14 - INFO - Best F1:0.0218 - Best Epoch:3
+Using Bert Tweet model: bert-tweet
+Starting co-training
+2026-02-12 15:34:16 - INFO - Starting co-training
+Time taken for Epoch 1: 12.86s - F1: 0.06452703
+2026-02-12 15:34:29 - INFO - Time taken for Epoch 1: 12.86s - F1: 0.06452703
+Time taken for Epoch 2: 13.69s - F1: 0.06452703
+2026-02-12 15:34:42 - INFO - Time taken for Epoch 2: 13.69s - F1: 0.06452703
+Time taken for Epoch 3: 12.83s - F1: 0.06452703
+2026-02-12 15:34:55 - INFO - Time taken for Epoch 3: 12.83s - F1: 0.06452703
+Time taken for Epoch 4: 12.81s - F1: 0.06452703
+2026-02-12 15:35:08 - INFO - Time taken for Epoch 4: 12.81s - F1: 0.06452703
+Time taken for Epoch 5: 12.86s - F1: 0.06452703
+2026-02-12 15:35:21 - INFO - Time taken for Epoch 5: 12.86s - F1: 0.06452703
+Time taken for Epoch 6: 12.85s - F1: 0.06452703
+2026-02-12 15:35:34 - INFO - Time taken for Epoch 6: 12.85s - F1: 0.06452703
+Time taken for Epoch 7: 12.85s - F1: 0.06452703
+2026-02-12 15:35:47 - INFO - Time taken for Epoch 7: 12.85s - F1: 0.06452703
+Performance not improving for 6 consecutive epochs.
+Performance not improving for 6 consecutive epochs.
+2026-02-12 15:35:47 - INFO - Performance not improving for 6 consecutive epochs.
+Using Bert Tweet model: bert-tweet
+/tmp/ipykernel_213/485473895.py:775: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_1.load_state_dict(torch.load(model_1_path))
+/tmp/ipykernel_213/485473895.py:776: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_2.load_state_dict(torch.load(model_2_path))
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/co_trained_model_1_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/co_trained_model_2_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+Fine-tuning models
+2026-02-12 15:35:49 - INFO - Fine-tuning models
+Time taken for Epoch 1:2.58 - F1: 0.0072
+2026-02-12 15:35:52 - INFO - Time taken for Epoch 1:2.58 - F1: 0.0072
+Time taken for Epoch 2:3.31 - F1: 0.0218
+2026-02-12 15:35:55 - INFO - Time taken for Epoch 2:3.31 - F1: 0.0218
+Time taken for Epoch 3:19.10 - F1: 0.0218
+2026-02-12 15:36:14 - INFO - Time taken for Epoch 3:19.10 - F1: 0.0218
+Time taken for Epoch 4:2.39 - F1: 0.0218
+2026-02-12 15:36:17 - INFO - Time taken for Epoch 4:2.39 - F1: 0.0218
+Time taken for Epoch 5:2.40 - F1: 0.0218
+2026-02-12 15:36:19 - INFO - Time taken for Epoch 5:2.40 - F1: 0.0218
+Time taken for Epoch 6:2.41 - F1: 0.0029
+2026-02-12 15:36:22 - INFO - Time taken for Epoch 6:2.41 - F1: 0.0029
+Time taken for Epoch 7:2.39 - F1: 0.0218
+2026-02-12 15:36:24 - INFO - Time taken for Epoch 7:2.39 - F1: 0.0218
+Time taken for Epoch 8:2.40 - F1: 0.0218
+2026-02-12 15:36:26 - INFO - Time taken for Epoch 8:2.40 - F1: 0.0218
+Time taken for Epoch 9:2.39 - F1: 0.0218
+2026-02-12 15:36:29 - INFO - Time taken for Epoch 9:2.39 - F1: 0.0218
+Time taken for Epoch 10:2.39 - F1: 0.0218
+2026-02-12 15:36:31 - INFO - Time taken for Epoch 10:2.39 - F1: 0.0218
+Time taken for Epoch 11:2.40 - F1: 0.0218
+2026-02-12 15:36:34 - INFO - Time taken for Epoch 11:2.40 - F1: 0.0218
+Time taken for Epoch 12:2.40 - F1: 0.0218
+2026-02-12 15:36:36 - INFO - Time taken for Epoch 12:2.40 - F1: 0.0218
+Performance not improving for 10 consecutive epochs.
+2026-02-12 15:36:36 - INFO - Performance not improving for 10 consecutive epochs.
+Best F1:0.0218 - Best Epoch:1
+2026-02-12 15:36:36 - INFO - Best F1:0.0218 - Best Epoch:1
+Using Bert Tweet model: bert-tweet
+/tmp/ipykernel_213/485473895.py:816: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_1.load_state_dict(torch.load(model_1_path))
+/tmp/ipykernel_213/485473895.py:817: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_2.load_state_dict(torch.load(model_2_path))
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/final_model_1_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/final_model_2_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian10, NumShots: 25, N: 25 Test SEED: 1234 F1: 0.0217, Test ECE: 0.2082
+2026-02-12 15:36:41 - INFO - 
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian10, NumShots: 25, N: 25 Test SEED: 1234 F1: 0.0217, Test ECE: 0.2082
+All results: {'f1_macro': 0.021739130434782608, 'ece': 0.20822773118227222}
+2026-02-12 15:36:41 - INFO - All results: {'f1_macro': 0.021739130434782608, 'ece': 0.20822773118227222}
+
+Total time taken: 296.62 seconds
+2026-02-12 15:36:41 - INFO - 
+Total time taken: 296.62 seconds
+2026-02-12 15:36:41 - INFO - Trial 7 finished with value: 0.021739130434782608 and parameters: {'learning_rate': 0.0009722308544014087, 'weight_decay': 0.0002188585290918532, 'batch_size': 32, 'co_train_epochs': 17, 'epoch_patience': 6}. Best is trial 3 with value: 0.5819934073932725.
+Using devices: cuda, cuda
+2026-02-12 15:36:41 - INFO - Using devices: cuda, cuda
+Devices: cuda, cuda
+2026-02-12 15:36:41 - INFO - Devices: cuda, cuda
+Starting log
+2026-02-12 15:36:41 - INFO - Starting log
+Dataset: humanitarian10, Event: cyclone_idai_2019, N: 25, Seed: 1234, HF Model: GPT-4o, NumShots: 25, PLM: bert-tweet
+2026-02-12 15:36:41 - INFO - Dataset: humanitarian10, Event: cyclone_idai_2019, N: 25, Seed: 1234, HF Model: GPT-4o, NumShots: 25, PLM: bert-tweet
+/opt/conda/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+Learning Rate: 1.1023623891734049e-05
+Weight Decay: 0.0030368206024003835
+Batch Size: 8
+No. Epochs: 9
+Epoch Patience: 4
+ Accumulation Steps: 8
+2026-02-12 15:36:42 - INFO - Learning Rate: 1.1023623891734049e-05
+Weight Decay: 0.0030368206024003835
+Batch Size: 8
+No. Epochs: 9
+Epoch Patience: 4
+ Accumulation Steps: 8
+Using Bert Tweet model: bert-tweet
+Generating initial weights
+2026-02-12 15:36:43 - INFO - Generating initial weights
+Time taken for Epoch 1:10.55 - F1: 0.0251
+2026-02-12 15:36:55 - INFO - Time taken for Epoch 1:10.55 - F1: 0.0251
+Time taken for Epoch 2:10.23 - F1: 0.0253
+2026-02-12 15:37:05 - INFO - Time taken for Epoch 2:10.23 - F1: 0.0253
+Time taken for Epoch 3:10.16 - F1: 0.0264
+2026-02-12 15:37:15 - INFO - Time taken for Epoch 3:10.16 - F1: 0.0264
+Time taken for Epoch 4:10.19 - F1: 0.0340
+2026-02-12 15:37:25 - INFO - Time taken for Epoch 4:10.19 - F1: 0.0340
+Time taken for Epoch 5:10.22 - F1: 0.0454
+2026-02-12 15:37:35 - INFO - Time taken for Epoch 5:10.22 - F1: 0.0454
+Time taken for Epoch 6:10.19 - F1: 0.0556
+2026-02-12 15:37:46 - INFO - Time taken for Epoch 6:10.19 - F1: 0.0556
+Time taken for Epoch 7:10.16 - F1: 0.0839
+2026-02-12 15:37:56 - INFO - Time taken for Epoch 7:10.16 - F1: 0.0839
+Time taken for Epoch 8:10.19 - F1: 0.0825
+2026-02-12 15:38:06 - INFO - Time taken for Epoch 8:10.19 - F1: 0.0825
+Time taken for Epoch 9:10.61 - F1: 0.0899
+2026-02-12 15:38:17 - INFO - Time taken for Epoch 9:10.61 - F1: 0.0899
+Best F1:0.0899 - Best Epoch:9
+2026-02-12 15:38:17 - INFO - Best F1:0.0899 - Best Epoch:9
+Using Bert Tweet model: bert-tweet
+Starting co-training
+2026-02-12 15:38:18 - INFO - Starting co-training
+Time taken for Epoch 1: 10.32s - F1: 0.06452703
+2026-02-12 15:38:28 - INFO - Time taken for Epoch 1: 10.32s - F1: 0.06452703
+Time taken for Epoch 2: 11.13s - F1: 0.06452703
+2026-02-12 15:38:39 - INFO - Time taken for Epoch 2: 11.13s - F1: 0.06452703
+Time taken for Epoch 3: 10.28s - F1: 0.06452703
+2026-02-12 15:38:50 - INFO - Time taken for Epoch 3: 10.28s - F1: 0.06452703
+Time taken for Epoch 4: 10.26s - F1: 0.18690988
+2026-02-12 15:39:00 - INFO - Time taken for Epoch 4: 10.26s - F1: 0.18690988
+Time taken for Epoch 5: 18.17s - F1: 0.20521119
+2026-02-12 15:39:18 - INFO - Time taken for Epoch 5: 18.17s - F1: 0.20521119
+Time taken for Epoch 6: 18.59s - F1: 0.21191471
+2026-02-12 15:39:37 - INFO - Time taken for Epoch 6: 18.59s - F1: 0.21191471
+Time taken for Epoch 7: 14.58s - F1: 0.21729030
+2026-02-12 15:39:51 - INFO - Time taken for Epoch 7: 14.58s - F1: 0.21729030
+Time taken for Epoch 8: 14.45s - F1: 0.22094953
+2026-02-12 15:40:06 - INFO - Time taken for Epoch 8: 14.45s - F1: 0.22094953
+Time taken for Epoch 9: 18.18s - F1: 0.22397216
+2026-02-12 15:40:24 - INFO - Time taken for Epoch 9: 18.18s - F1: 0.22397216
+Using Bert Tweet model: bert-tweet
+/tmp/ipykernel_213/485473895.py:775: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_1.load_state_dict(torch.load(model_1_path))
+/tmp/ipykernel_213/485473895.py:776: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_2.load_state_dict(torch.load(model_2_path))
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/co_trained_model_1_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/co_trained_model_2_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+Fine-tuning models
+2026-02-12 15:40:34 - INFO - Fine-tuning models
+Time taken for Epoch 1:3.03 - F1: 0.2145
+2026-02-12 15:40:37 - INFO - Time taken for Epoch 1:3.03 - F1: 0.2145
+Time taken for Epoch 2:3.89 - F1: 0.1959
+2026-02-12 15:40:41 - INFO - Time taken for Epoch 2:3.89 - F1: 0.1959
+Time taken for Epoch 3:2.89 - F1: 0.1803
+2026-02-12 15:40:44 - INFO - Time taken for Epoch 3:2.89 - F1: 0.1803
+Time taken for Epoch 4:2.88 - F1: 0.1900
+2026-02-12 15:40:47 - INFO - Time taken for Epoch 4:2.88 - F1: 0.1900
+Time taken for Epoch 5:2.78 - F1: 0.2431
+2026-02-12 15:40:50 - INFO - Time taken for Epoch 5:2.78 - F1: 0.2431
+Time taken for Epoch 6:21.49 - F1: 0.2597
+2026-02-12 15:41:11 - INFO - Time taken for Epoch 6:21.49 - F1: 0.2597
+Time taken for Epoch 7:9.29 - F1: 0.2753
+2026-02-12 15:41:20 - INFO - Time taken for Epoch 7:9.29 - F1: 0.2753
+Time taken for Epoch 8:8.96 - F1: 0.2891
+2026-02-12 15:41:29 - INFO - Time taken for Epoch 8:8.96 - F1: 0.2891
+Time taken for Epoch 9:8.33 - F1: 0.2975
+2026-02-12 15:41:38 - INFO - Time taken for Epoch 9:8.33 - F1: 0.2975
+Time taken for Epoch 10:9.30 - F1: 0.2975
+2026-02-12 15:41:47 - INFO - Time taken for Epoch 10:9.30 - F1: 0.2975
+Time taken for Epoch 11:2.76 - F1: 0.2948
+2026-02-12 15:41:50 - INFO - Time taken for Epoch 11:2.76 - F1: 0.2948
+Time taken for Epoch 12:2.78 - F1: 0.2938
+2026-02-12 15:41:52 - INFO - Time taken for Epoch 12:2.78 - F1: 0.2938
+Time taken for Epoch 13:2.79 - F1: 0.3212
+2026-02-12 15:41:55 - INFO - Time taken for Epoch 13:2.79 - F1: 0.3212
+Time taken for Epoch 14:20.91 - F1: 0.3232
+2026-02-12 15:42:16 - INFO - Time taken for Epoch 14:20.91 - F1: 0.3232
+Time taken for Epoch 15:8.90 - F1: 0.3353
+2026-02-12 15:42:25 - INFO - Time taken for Epoch 15:8.90 - F1: 0.3353
+Time taken for Epoch 16:11.09 - F1: 0.3514
+2026-02-12 15:42:36 - INFO - Time taken for Epoch 16:11.09 - F1: 0.3514
+Time taken for Epoch 17:10.39 - F1: 0.3674
+2026-02-12 15:42:47 - INFO - Time taken for Epoch 17:10.39 - F1: 0.3674
+Time taken for Epoch 18:8.97 - F1: 0.3757
+2026-02-12 15:42:56 - INFO - Time taken for Epoch 18:8.97 - F1: 0.3757
+Time taken for Epoch 19:9.38 - F1: 0.3816
+2026-02-12 15:43:05 - INFO - Time taken for Epoch 19:9.38 - F1: 0.3816
+Time taken for Epoch 20:7.94 - F1: 0.3823
+2026-02-12 15:43:13 - INFO - Time taken for Epoch 20:7.94 - F1: 0.3823
+Time taken for Epoch 21:8.27 - F1: 0.3900
+2026-02-12 15:43:21 - INFO - Time taken for Epoch 21:8.27 - F1: 0.3900
+Time taken for Epoch 22:8.79 - F1: 0.4052
+2026-02-12 15:43:30 - INFO - Time taken for Epoch 22:8.79 - F1: 0.4052
+Time taken for Epoch 23:7.21 - F1: 0.3736
+2026-02-12 15:43:37 - INFO - Time taken for Epoch 23:7.21 - F1: 0.3736
+Time taken for Epoch 24:2.79 - F1: 0.3708
+2026-02-12 15:43:40 - INFO - Time taken for Epoch 24:2.79 - F1: 0.3708
+Time taken for Epoch 25:2.78 - F1: 0.3746
+2026-02-12 15:43:43 - INFO - Time taken for Epoch 25:2.78 - F1: 0.3746
+Time taken for Epoch 26:2.77 - F1: 0.3760
+2026-02-12 15:43:45 - INFO - Time taken for Epoch 26:2.77 - F1: 0.3760
+Time taken for Epoch 27:2.78 - F1: 0.3742
+2026-02-12 15:43:48 - INFO - Time taken for Epoch 27:2.78 - F1: 0.3742
+Time taken for Epoch 28:2.81 - F1: 0.3767
+2026-02-12 15:43:51 - INFO - Time taken for Epoch 28:2.81 - F1: 0.3767
+Time taken for Epoch 29:2.79 - F1: 0.3980
+2026-02-12 15:43:54 - INFO - Time taken for Epoch 29:2.79 - F1: 0.3980
+Time taken for Epoch 30:2.79 - F1: 0.3742
+2026-02-12 15:43:57 - INFO - Time taken for Epoch 30:2.79 - F1: 0.3742
+Time taken for Epoch 31:2.77 - F1: 0.3714
+2026-02-12 15:43:59 - INFO - Time taken for Epoch 31:2.77 - F1: 0.3714
+Time taken for Epoch 32:2.77 - F1: 0.3735
+2026-02-12 15:44:02 - INFO - Time taken for Epoch 32:2.77 - F1: 0.3735
+Performance not improving for 10 consecutive epochs.
+2026-02-12 15:44:02 - INFO - Performance not improving for 10 consecutive epochs.
+Best F1:0.4052 - Best Epoch:21
+2026-02-12 15:44:02 - INFO - Best F1:0.4052 - Best Epoch:21
+Using Bert Tweet model: bert-tweet
+/tmp/ipykernel_213/485473895.py:816: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_1.load_state_dict(torch.load(model_1_path))
+/tmp/ipykernel_213/485473895.py:817: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_2.load_state_dict(torch.load(model_2_path))
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/final_model_1_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/final_model_2_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian10, NumShots: 25, N: 25 Test SEED: 1234 F1: 0.3948, Test ECE: 0.0319
+2026-02-12 15:44:08 - INFO - 
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian10, NumShots: 25, N: 25 Test SEED: 1234 F1: 0.3948, Test ECE: 0.0319
+All results: {'f1_macro': 0.3947577452902279, 'ece': 0.03185246951772863}
+2026-02-12 15:44:08 - INFO - All results: {'f1_macro': 0.3947577452902279, 'ece': 0.03185246951772863}
+
+Total time taken: 446.95 seconds
+2026-02-12 15:44:08 - INFO - 
+Total time taken: 446.95 seconds
+2026-02-12 15:44:08 - INFO - Trial 8 finished with value: 0.3947577452902279 and parameters: {'learning_rate': 1.1023623891734049e-05, 'weight_decay': 0.0030368206024003835, 'batch_size': 8, 'co_train_epochs': 9, 'epoch_patience': 4}. Best is trial 3 with value: 0.5819934073932725.
+Using devices: cuda, cuda
+2026-02-12 15:44:08 - INFO - Using devices: cuda, cuda
+Devices: cuda, cuda
+2026-02-12 15:44:08 - INFO - Devices: cuda, cuda
+Starting log
+2026-02-12 15:44:08 - INFO - Starting log
+Dataset: humanitarian10, Event: cyclone_idai_2019, N: 25, Seed: 1234, HF Model: GPT-4o, NumShots: 25, PLM: bert-tweet
+2026-02-12 15:44:08 - INFO - Dataset: humanitarian10, Event: cyclone_idai_2019, N: 25, Seed: 1234, HF Model: GPT-4o, NumShots: 25, PLM: bert-tweet
+/opt/conda/lib/python3.12/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+Learning Rate: 0.00032106818145232364
+Weight Decay: 3.21857955747105e-05
+Batch Size: 32
+No. Epochs: 13
+Epoch Patience: 4
+ Accumulation Steps: 2
+2026-02-12 15:44:09 - INFO - Learning Rate: 0.00032106818145232364
+Weight Decay: 3.21857955747105e-05
+Batch Size: 32
+No. Epochs: 13
+Epoch Patience: 4
+ Accumulation Steps: 2
+Using Bert Tweet model: bert-tweet
+Generating initial weights
+2026-02-12 15:44:10 - INFO - Generating initial weights
+Time taken for Epoch 1:8.78 - F1: 0.0239
+2026-02-12 15:44:20 - INFO - Time taken for Epoch 1:8.78 - F1: 0.0239
+Time taken for Epoch 2:8.58 - F1: 0.0553
+2026-02-12 15:44:28 - INFO - Time taken for Epoch 2:8.58 - F1: 0.0553
+Time taken for Epoch 3:8.64 - F1: 0.0029
+2026-02-12 15:44:37 - INFO - Time taken for Epoch 3:8.64 - F1: 0.0029
+Time taken for Epoch 4:8.60 - F1: 0.0218
+2026-02-12 15:44:46 - INFO - Time taken for Epoch 4:8.60 - F1: 0.0218
+Time taken for Epoch 5:8.62 - F1: 0.0218
+2026-02-12 15:44:54 - INFO - Time taken for Epoch 5:8.62 - F1: 0.0218
+Time taken for Epoch 6:8.62 - F1: 0.0218
+2026-02-12 15:45:03 - INFO - Time taken for Epoch 6:8.62 - F1: 0.0218
+Time taken for Epoch 7:8.58 - F1: 0.0218
+2026-02-12 15:45:11 - INFO - Time taken for Epoch 7:8.58 - F1: 0.0218
+Time taken for Epoch 8:8.64 - F1: 0.0645
+2026-02-12 15:45:20 - INFO - Time taken for Epoch 8:8.64 - F1: 0.0645
+Time taken for Epoch 9:8.59 - F1: 0.0218
+2026-02-12 15:45:29 - INFO - Time taken for Epoch 9:8.59 - F1: 0.0218
+Time taken for Epoch 10:8.61 - F1: 0.0218
+2026-02-12 15:45:37 - INFO - Time taken for Epoch 10:8.61 - F1: 0.0218
+Time taken for Epoch 11:8.62 - F1: 0.0218
+2026-02-12 15:45:46 - INFO - Time taken for Epoch 11:8.62 - F1: 0.0218
+Time taken for Epoch 12:8.54 - F1: 0.0218
+2026-02-12 15:45:54 - INFO - Time taken for Epoch 12:8.54 - F1: 0.0218
+Time taken for Epoch 13:8.52 - F1: 0.0218
+2026-02-12 15:46:03 - INFO - Time taken for Epoch 13:8.52 - F1: 0.0218
+Best F1:0.0645 - Best Epoch:8
+2026-02-12 15:46:03 - INFO - Best F1:0.0645 - Best Epoch:8
+Using Bert Tweet model: bert-tweet
+Starting co-training
+2026-02-12 15:46:04 - INFO - Starting co-training
+Time taken for Epoch 1: 12.84s - F1: 0.06452703
+2026-02-12 15:46:17 - INFO - Time taken for Epoch 1: 12.84s - F1: 0.06452703
+Time taken for Epoch 2: 13.89s - F1: 0.06452703
+2026-02-12 15:46:31 - INFO - Time taken for Epoch 2: 13.89s - F1: 0.06452703
+Time taken for Epoch 3: 12.85s - F1: 0.06452703
+2026-02-12 15:46:44 - INFO - Time taken for Epoch 3: 12.85s - F1: 0.06452703
+Time taken for Epoch 4: 12.82s - F1: 0.06452703
+2026-02-12 15:46:57 - INFO - Time taken for Epoch 4: 12.82s - F1: 0.06452703
+Time taken for Epoch 5: 12.83s - F1: 0.06452703
+2026-02-12 15:47:10 - INFO - Time taken for Epoch 5: 12.83s - F1: 0.06452703
+Performance not improving for 4 consecutive epochs.
+Performance not improving for 4 consecutive epochs.
+2026-02-12 15:47:10 - INFO - Performance not improving for 4 consecutive epochs.
+Using Bert Tweet model: bert-tweet
+/tmp/ipykernel_213/485473895.py:775: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_1.load_state_dict(torch.load(model_1_path))
+/tmp/ipykernel_213/485473895.py:776: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_2.load_state_dict(torch.load(model_2_path))
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/co_trained_model_1_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/co_trained_model_2_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+Fine-tuning models
+2026-02-12 15:47:12 - INFO - Fine-tuning models
+Time taken for Epoch 1:2.45 - F1: 0.0218
+2026-02-12 15:47:15 - INFO - Time taken for Epoch 1:2.45 - F1: 0.0218
+Time taken for Epoch 2:3.31 - F1: 0.0218
+2026-02-12 15:47:18 - INFO - Time taken for Epoch 2:3.31 - F1: 0.0218
+Time taken for Epoch 3:2.39 - F1: 0.0072
+2026-02-12 15:47:21 - INFO - Time taken for Epoch 3:2.39 - F1: 0.0072
+Time taken for Epoch 4:2.39 - F1: 0.0072
+2026-02-12 15:47:23 - INFO - Time taken for Epoch 4:2.39 - F1: 0.0072
+Time taken for Epoch 5:2.39 - F1: 0.0218
+2026-02-12 15:47:26 - INFO - Time taken for Epoch 5:2.39 - F1: 0.0218
+Time taken for Epoch 6:2.39 - F1: 0.0645
+2026-02-12 15:47:28 - INFO - Time taken for Epoch 6:2.39 - F1: 0.0645
+Time taken for Epoch 7:6.81 - F1: 0.0645
+2026-02-12 15:47:35 - INFO - Time taken for Epoch 7:6.81 - F1: 0.0645
+Time taken for Epoch 8:2.42 - F1: 0.0645
+2026-02-12 15:47:37 - INFO - Time taken for Epoch 8:2.42 - F1: 0.0645
+Time taken for Epoch 9:2.40 - F1: 0.0218
+2026-02-12 15:47:40 - INFO - Time taken for Epoch 9:2.40 - F1: 0.0218
+Time taken for Epoch 10:2.43 - F1: 0.0218
+2026-02-12 15:47:42 - INFO - Time taken for Epoch 10:2.43 - F1: 0.0218
+Time taken for Epoch 11:2.41 - F1: 0.0218
+2026-02-12 15:47:44 - INFO - Time taken for Epoch 11:2.41 - F1: 0.0218
+Time taken for Epoch 12:2.40 - F1: 0.0218
+2026-02-12 15:47:47 - INFO - Time taken for Epoch 12:2.40 - F1: 0.0218
+Time taken for Epoch 13:2.40 - F1: 0.0218
+2026-02-12 15:47:49 - INFO - Time taken for Epoch 13:2.40 - F1: 0.0218
+Time taken for Epoch 14:2.40 - F1: 0.0218
+2026-02-12 15:47:52 - INFO - Time taken for Epoch 14:2.40 - F1: 0.0218
+Time taken for Epoch 15:2.44 - F1: 0.0218
+2026-02-12 15:47:54 - INFO - Time taken for Epoch 15:2.44 - F1: 0.0218
+Time taken for Epoch 16:2.40 - F1: 0.0218
+2026-02-12 15:47:56 - INFO - Time taken for Epoch 16:2.40 - F1: 0.0218
+Performance not improving for 10 consecutive epochs.
+2026-02-12 15:47:56 - INFO - Performance not improving for 10 consecutive epochs.
+Best F1:0.0645 - Best Epoch:5
+2026-02-12 15:47:56 - INFO - Best F1:0.0645 - Best Epoch:5
+Using Bert Tweet model: bert-tweet
+/tmp/ipykernel_213/485473895.py:816: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_1.load_state_dict(torch.load(model_1_path))
+/tmp/ipykernel_213/485473895.py:817: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  model_2.load_state_dict(torch.load(model_2_path))
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/final_model_1_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+Successfully deleted /home/jovyan/saved_models/humanitarian10/optuna-bertweet-cyclone-idai-2019-label25-set2/final_model_2_optuna-bertweet-cyclone-idai-2019-label25-set2_gpt4o_25_shot_bert-tweet_25_seed_1234.pt
+
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian10, NumShots: 25, N: 25 Test SEED: 1234 F1: 0.0644, Test ECE: 0.1866
+2026-02-12 15:48:02 - INFO - 
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian10, NumShots: 25, N: 25 Test SEED: 1234 F1: 0.0644, Test ECE: 0.1866
+All results: {'f1_macro': 0.06440382941688425, 'ece': 0.18655286203299926}
+2026-02-12 15:48:02 - INFO - All results: {'f1_macro': 0.06440382941688425, 'ece': 0.18655286203299926}
+
+Total time taken: 233.75 seconds
+2026-02-12 15:48:02 - INFO - 
+Total time taken: 233.75 seconds
+2026-02-12 15:48:02 - INFO - Trial 9 finished with value: 0.06440382941688425 and parameters: {'learning_rate': 0.00032106818145232364, 'weight_decay': 3.21857955747105e-05, 'batch_size': 32, 'co_train_epochs': 13, 'epoch_patience': 4}. Best is trial 3 with value: 0.5819934073932725.
+
+[BEST TRIAL RESULTS]
+2026-02-12 15:48:02 - INFO - 
+[BEST TRIAL RESULTS]
+F1 Score: 0.5820
+2026-02-12 15:48:02 - INFO - F1 Score: 0.5820
+Params: {'learning_rate': 5.067428021121373e-05, 'weight_decay': 0.00012149233899658187, 'batch_size': 16, 'co_train_epochs': 15, 'epoch_patience': 7}
+2026-02-12 15:48:02 - INFO - Params: {'learning_rate': 5.067428021121373e-05, 'weight_decay': 0.00012149233899658187, 'batch_size': 16, 'co_train_epochs': 15, 'epoch_patience': 7}
+  learning_rate: 5.067428021121373e-05
+2026-02-12 15:48:02 - INFO -   learning_rate: 5.067428021121373e-05
+  weight_decay: 0.00012149233899658187
+2026-02-12 15:48:02 - INFO -   weight_decay: 0.00012149233899658187
+  batch_size: 16
+2026-02-12 15:48:02 - INFO -   batch_size: 16
+  co_train_epochs: 15
+2026-02-12 15:48:02 - INFO -   co_train_epochs: 15
+  epoch_patience: 7
+2026-02-12 15:48:02 - INFO -   epoch_patience: 7
+
+Total time taken: 28649.84 seconds
+2026-02-12 15:48:02 - INFO - 
+Total time taken: 28649.84 seconds

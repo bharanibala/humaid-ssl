@@ -1,0 +1,1432 @@
+Running with 5 label/class set 2
+
+[Optuna] Starting hyperparameter search with 10 trials.
+2026-02-13 04:48:45 - INFO - 
+[Optuna] Starting hyperparameter search with 10 trials.
+2026-02-13 04:48:45 - INFO - A new study created in memory with name: study_humanitarian9_hurricane_florence_2018
+Using devices: cuda, cuda
+2026-02-13 04:48:45 - INFO - Using devices: cuda, cuda
+Devices: cuda, cuda
+2026-02-13 04:48:45 - INFO - Devices: cuda, cuda
+Starting log
+2026-02-13 04:48:45 - INFO - Starting log
+Dataset: humanitarian9, Event: hurricane_florence_2018, N: 5, Seed: 1234, HF Model: GPT-4o, NumShots: 5, PLM: bert-tweet
+2026-02-13 04:48:45 - INFO - Dataset: humanitarian9, Event: hurricane_florence_2018, N: 5, Seed: 1234, HF Model: GPT-4o, NumShots: 5, PLM: bert-tweet
+Learning Rate: 0.00021238168273690603
+Weight Decay: 9.405874710485739e-05
+Batch Size: 16
+No. Epochs: 18
+Epoch Patience: 7
+ Accumulation Steps: 4
+2026-02-13 04:48:46 - INFO - Learning Rate: 0.00021238168273690603
+Weight Decay: 9.405874710485739e-05
+Batch Size: 16
+No. Epochs: 18
+Epoch Patience: 7
+ Accumulation Steps: 4
+Using Bert Tweet model: bert-tweet
+Generating initial weights
+2026-02-13 04:48:47 - INFO - Generating initial weights
+Time taken for Epoch 1:18.35 - F1: 0.0155
+2026-02-13 04:49:10 - INFO - Time taken for Epoch 1:18.35 - F1: 0.0155
+Time taken for Epoch 2:17.94 - F1: 0.0155
+2026-02-13 04:49:28 - INFO - Time taken for Epoch 2:17.94 - F1: 0.0155
+Time taken for Epoch 3:17.94 - F1: 0.0155
+2026-02-13 04:49:46 - INFO - Time taken for Epoch 3:17.94 - F1: 0.0155
+Time taken for Epoch 4:18.01 - F1: 0.0155
+2026-02-13 04:50:04 - INFO - Time taken for Epoch 4:18.01 - F1: 0.0155
+Time taken for Epoch 5:18.11 - F1: 0.0694
+2026-02-13 04:50:22 - INFO - Time taken for Epoch 5:18.11 - F1: 0.0694
+Time taken for Epoch 6:18.17 - F1: 0.1982
+2026-02-13 04:50:40 - INFO - Time taken for Epoch 6:18.17 - F1: 0.1982
+Time taken for Epoch 7:18.20 - F1: 0.2752
+2026-02-13 04:50:58 - INFO - Time taken for Epoch 7:18.20 - F1: 0.2752
+Time taken for Epoch 8:18.23 - F1: 0.2481
+2026-02-13 04:51:16 - INFO - Time taken for Epoch 8:18.23 - F1: 0.2481
+Time taken for Epoch 9:18.28 - F1: 0.2312
+2026-02-13 04:51:35 - INFO - Time taken for Epoch 9:18.28 - F1: 0.2312
+Time taken for Epoch 10:18.25 - F1: 0.2679
+2026-02-13 04:51:53 - INFO - Time taken for Epoch 10:18.25 - F1: 0.2679
+Time taken for Epoch 11:18.27 - F1: 0.2654
+2026-02-13 04:52:11 - INFO - Time taken for Epoch 11:18.27 - F1: 0.2654
+Time taken for Epoch 12:18.27 - F1: 0.2529
+2026-02-13 04:52:29 - INFO - Time taken for Epoch 12:18.27 - F1: 0.2529
+Time taken for Epoch 13:18.29 - F1: 0.2500
+2026-02-13 04:52:48 - INFO - Time taken for Epoch 13:18.29 - F1: 0.2500
+Time taken for Epoch 14:18.29 - F1: 0.2571
+2026-02-13 04:53:06 - INFO - Time taken for Epoch 14:18.29 - F1: 0.2571
+Time taken for Epoch 15:18.29 - F1: 0.2717
+2026-02-13 04:53:24 - INFO - Time taken for Epoch 15:18.29 - F1: 0.2717
+Time taken for Epoch 16:18.31 - F1: 0.2770
+2026-02-13 04:53:42 - INFO - Time taken for Epoch 16:18.31 - F1: 0.2770
+Time taken for Epoch 17:18.30 - F1: 0.2800
+2026-02-13 04:54:01 - INFO - Time taken for Epoch 17:18.30 - F1: 0.2800
+Time taken for Epoch 18:18.37 - F1: 0.2835
+2026-02-13 04:54:19 - INFO - Time taken for Epoch 18:18.37 - F1: 0.2835
+Best F1:0.2835 - Best Epoch:18
+2026-02-13 04:54:19 - INFO - Best F1:0.2835 - Best Epoch:18
+Using Bert Tweet model: bert-tweet
+Starting co-training
+2026-02-13 04:54:21 - INFO - Starting co-training
+Time taken for Epoch 1: 25.46s - F1: 0.06870209
+2026-02-13 04:54:47 - INFO - Time taken for Epoch 1: 25.46s - F1: 0.06870209
+Time taken for Epoch 2: 26.51s - F1: 0.03212851
+2026-02-13 04:55:13 - INFO - Time taken for Epoch 2: 26.51s - F1: 0.03212851
+Time taken for Epoch 3: 25.45s - F1: 0.04247539
+2026-02-13 04:55:38 - INFO - Time taken for Epoch 3: 25.45s - F1: 0.04247539
+Time taken for Epoch 4: 25.40s - F1: 0.04247539
+2026-02-13 04:56:04 - INFO - Time taken for Epoch 4: 25.40s - F1: 0.04247539
+Time taken for Epoch 5: 25.45s - F1: 0.04247539
+2026-02-13 04:56:29 - INFO - Time taken for Epoch 5: 25.45s - F1: 0.04247539
+Time taken for Epoch 6: 25.44s - F1: 0.04247539
+2026-02-13 04:56:55 - INFO - Time taken for Epoch 6: 25.44s - F1: 0.04247539
+Time taken for Epoch 7: 25.39s - F1: 0.04247539
+2026-02-13 04:57:20 - INFO - Time taken for Epoch 7: 25.39s - F1: 0.04247539
+Time taken for Epoch 8: 25.43s - F1: 0.04247539
+2026-02-13 04:57:46 - INFO - Time taken for Epoch 8: 25.43s - F1: 0.04247539
+Performance not improving for 7 consecutive epochs.
+Performance not improving for 7 consecutive epochs.
+2026-02-13 04:57:46 - INFO - Performance not improving for 7 consecutive epochs.
+Using Bert Tweet model: bert-tweet
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/co_trained_model_1_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/co_trained_model_2_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+Fine-tuning models
+2026-02-13 04:57:49 - INFO - Fine-tuning models
+Time taken for Epoch 1:2.61 - F1: 0.0475
+2026-02-13 04:57:52 - INFO - Time taken for Epoch 1:2.61 - F1: 0.0475
+Time taken for Epoch 2:3.86 - F1: 0.0478
+2026-02-13 04:57:56 - INFO - Time taken for Epoch 2:3.86 - F1: 0.0478
+Time taken for Epoch 3:3.93 - F1: 0.0486
+2026-02-13 04:57:59 - INFO - Time taken for Epoch 3:3.93 - F1: 0.0486
+Time taken for Epoch 4:3.96 - F1: 0.0467
+2026-02-13 04:58:03 - INFO - Time taken for Epoch 4:3.96 - F1: 0.0467
+Time taken for Epoch 5:2.59 - F1: 0.0356
+2026-02-13 04:58:06 - INFO - Time taken for Epoch 5:2.59 - F1: 0.0356
+Time taken for Epoch 6:2.59 - F1: 0.0446
+2026-02-13 04:58:09 - INFO - Time taken for Epoch 6:2.59 - F1: 0.0446
+Time taken for Epoch 7:2.59 - F1: 0.0732
+2026-02-13 04:58:11 - INFO - Time taken for Epoch 7:2.59 - F1: 0.0732
+Time taken for Epoch 8:3.92 - F1: 0.0803
+2026-02-13 04:58:15 - INFO - Time taken for Epoch 8:3.92 - F1: 0.0803
+Time taken for Epoch 9:3.97 - F1: 0.0683
+2026-02-13 04:58:19 - INFO - Time taken for Epoch 9:3.97 - F1: 0.0683
+Time taken for Epoch 10:2.61 - F1: 0.0100
+2026-02-13 04:58:22 - INFO - Time taken for Epoch 10:2.61 - F1: 0.0100
+Time taken for Epoch 11:2.61 - F1: 0.0155
+2026-02-13 04:58:24 - INFO - Time taken for Epoch 11:2.61 - F1: 0.0155
+Time taken for Epoch 12:2.62 - F1: 0.0155
+2026-02-13 04:58:27 - INFO - Time taken for Epoch 12:2.62 - F1: 0.0155
+Time taken for Epoch 13:2.60 - F1: 0.0155
+2026-02-13 04:58:30 - INFO - Time taken for Epoch 13:2.60 - F1: 0.0155
+Time taken for Epoch 14:2.60 - F1: 0.0155
+2026-02-13 04:58:32 - INFO - Time taken for Epoch 14:2.60 - F1: 0.0155
+Time taken for Epoch 15:2.60 - F1: 0.0155
+2026-02-13 04:58:35 - INFO - Time taken for Epoch 15:2.60 - F1: 0.0155
+Time taken for Epoch 16:2.61 - F1: 0.0155
+2026-02-13 04:58:37 - INFO - Time taken for Epoch 16:2.61 - F1: 0.0155
+Time taken for Epoch 17:2.58 - F1: 0.0155
+2026-02-13 04:58:40 - INFO - Time taken for Epoch 17:2.58 - F1: 0.0155
+Time taken for Epoch 18:2.56 - F1: 0.0155
+2026-02-13 04:58:42 - INFO - Time taken for Epoch 18:2.56 - F1: 0.0155
+Performance not improving for 10 consecutive epochs.
+2026-02-13 04:58:42 - INFO - Performance not improving for 10 consecutive epochs.
+Best F1:0.0803 - Best Epoch:7
+2026-02-13 04:58:42 - INFO - Best F1:0.0803 - Best Epoch:7
+/homes/bharanibala/optuna/lib64/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+Using Bert Tweet model: bert-tweet
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/final_model_1_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/final_model_2_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian9, NumShots: 5, N: 5 Test SEED: 1234 F1: 0.0748, Test ECE: 0.2792
+2026-02-13 04:58:51 - INFO - 
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian9, NumShots: 5, N: 5 Test SEED: 1234 F1: 0.0748, Test ECE: 0.2792
+All results: {'f1_macro': 0.07479115371515445, 'ece': np.float64(0.2792060754887045)}
+2026-02-13 04:58:51 - INFO - All results: {'f1_macro': 0.07479115371515445, 'ece': np.float64(0.2792060754887045)}
+
+Total time taken: 605.89 seconds
+2026-02-13 04:58:51 - INFO - 
+Total time taken: 605.89 seconds
+2026-02-13 04:58:51 - INFO - Trial 0 finished with value: 0.07479115371515445 and parameters: {'learning_rate': 0.00021238168273690603, 'weight_decay': 9.405874710485739e-05, 'batch_size': 16, 'co_train_epochs': 18, 'epoch_patience': 7}. Best is trial 0 with value: 0.07479115371515445.
+Using devices: cuda, cuda
+2026-02-13 04:58:51 - INFO - Using devices: cuda, cuda
+Devices: cuda, cuda
+2026-02-13 04:58:51 - INFO - Devices: cuda, cuda
+Starting log
+2026-02-13 04:58:51 - INFO - Starting log
+Dataset: humanitarian9, Event: hurricane_florence_2018, N: 5, Seed: 1234, HF Model: GPT-4o, NumShots: 5, PLM: bert-tweet
+2026-02-13 04:58:51 - INFO - Dataset: humanitarian9, Event: hurricane_florence_2018, N: 5, Seed: 1234, HF Model: GPT-4o, NumShots: 5, PLM: bert-tweet
+Learning Rate: 1.1969736323847831e-05
+Weight Decay: 0.0006598677074231824
+Batch Size: 16
+No. Epochs: 11
+Epoch Patience: 9
+ Accumulation Steps: 4
+2026-02-13 04:58:52 - INFO - Learning Rate: 1.1969736323847831e-05
+Weight Decay: 0.0006598677074231824
+Batch Size: 16
+No. Epochs: 11
+Epoch Patience: 9
+ Accumulation Steps: 4
+Using Bert Tweet model: bert-tweet
+Generating initial weights
+2026-02-13 04:58:53 - INFO - Generating initial weights
+Time taken for Epoch 1:18.36 - F1: 0.0408
+2026-02-13 04:59:15 - INFO - Time taken for Epoch 1:18.36 - F1: 0.0408
+Time taken for Epoch 2:18.29 - F1: 0.0293
+2026-02-13 04:59:33 - INFO - Time taken for Epoch 2:18.29 - F1: 0.0293
+Time taken for Epoch 3:18.32 - F1: 0.0347
+2026-02-13 04:59:52 - INFO - Time taken for Epoch 3:18.32 - F1: 0.0347
+Time taken for Epoch 4:18.33 - F1: 0.0256
+2026-02-13 05:00:10 - INFO - Time taken for Epoch 4:18.33 - F1: 0.0256
+Time taken for Epoch 5:18.35 - F1: 0.0199
+2026-02-13 05:00:28 - INFO - Time taken for Epoch 5:18.35 - F1: 0.0199
+Time taken for Epoch 6:18.31 - F1: 0.0162
+2026-02-13 05:00:47 - INFO - Time taken for Epoch 6:18.31 - F1: 0.0162
+Time taken for Epoch 7:18.34 - F1: 0.0158
+2026-02-13 05:01:05 - INFO - Time taken for Epoch 7:18.34 - F1: 0.0158
+Time taken for Epoch 8:18.36 - F1: 0.0156
+2026-02-13 05:01:23 - INFO - Time taken for Epoch 8:18.36 - F1: 0.0156
+Time taken for Epoch 9:18.37 - F1: 0.0155
+2026-02-13 05:01:42 - INFO - Time taken for Epoch 9:18.37 - F1: 0.0155
+Time taken for Epoch 10:18.38 - F1: 0.0155
+2026-02-13 05:02:00 - INFO - Time taken for Epoch 10:18.38 - F1: 0.0155
+Time taken for Epoch 11:18.39 - F1: 0.0155
+2026-02-13 05:02:18 - INFO - Time taken for Epoch 11:18.39 - F1: 0.0155
+Best F1:0.0408 - Best Epoch:1
+2026-02-13 05:02:18 - INFO - Best F1:0.0408 - Best Epoch:1
+Using Bert Tweet model: bert-tweet
+Starting co-training
+2026-02-13 05:02:20 - INFO - Starting co-training
+Time taken for Epoch 1: 25.43s - F1: 0.24604467
+2026-02-13 05:02:46 - INFO - Time taken for Epoch 1: 25.43s - F1: 0.24604467
+Time taken for Epoch 2: 26.73s - F1: 0.24811227
+2026-02-13 05:03:13 - INFO - Time taken for Epoch 2: 26.73s - F1: 0.24811227
+Time taken for Epoch 3: 26.79s - F1: 0.39331426
+2026-02-13 05:03:39 - INFO - Time taken for Epoch 3: 26.79s - F1: 0.39331426
+Time taken for Epoch 4: 26.72s - F1: 0.52424085
+2026-02-13 05:04:06 - INFO - Time taken for Epoch 4: 26.72s - F1: 0.52424085
+Time taken for Epoch 5: 26.74s - F1: 0.56538747
+2026-02-13 05:04:33 - INFO - Time taken for Epoch 5: 26.74s - F1: 0.56538747
+Time taken for Epoch 6: 26.74s - F1: 0.58182947
+2026-02-13 05:05:00 - INFO - Time taken for Epoch 6: 26.74s - F1: 0.58182947
+Time taken for Epoch 7: 26.74s - F1: 0.60203405
+2026-02-13 05:05:26 - INFO - Time taken for Epoch 7: 26.74s - F1: 0.60203405
+Time taken for Epoch 8: 26.79s - F1: 0.60577146
+2026-02-13 05:05:53 - INFO - Time taken for Epoch 8: 26.79s - F1: 0.60577146
+Time taken for Epoch 9: 26.73s - F1: 0.61817251
+2026-02-13 05:06:20 - INFO - Time taken for Epoch 9: 26.73s - F1: 0.61817251
+Time taken for Epoch 10: 26.63s - F1: 0.61873729
+2026-02-13 05:06:46 - INFO - Time taken for Epoch 10: 26.63s - F1: 0.61873729
+Time taken for Epoch 11: 26.61s - F1: 0.62161557
+2026-02-13 05:07:13 - INFO - Time taken for Epoch 11: 26.61s - F1: 0.62161557
+Using Bert Tweet model: bert-tweet
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/co_trained_model_1_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/co_trained_model_2_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+Fine-tuning models
+2026-02-13 05:07:17 - INFO - Fine-tuning models
+Time taken for Epoch 1:2.60 - F1: 0.6187
+2026-02-13 05:07:20 - INFO - Time taken for Epoch 1:2.60 - F1: 0.6187
+Time taken for Epoch 2:3.64 - F1: 0.6224
+2026-02-13 05:07:24 - INFO - Time taken for Epoch 2:3.64 - F1: 0.6224
+Time taken for Epoch 3:3.87 - F1: 0.6277
+2026-02-13 05:07:27 - INFO - Time taken for Epoch 3:3.87 - F1: 0.6277
+Time taken for Epoch 4:3.87 - F1: 0.6342
+2026-02-13 05:07:31 - INFO - Time taken for Epoch 4:3.87 - F1: 0.6342
+Time taken for Epoch 5:3.81 - F1: 0.6363
+2026-02-13 05:07:35 - INFO - Time taken for Epoch 5:3.81 - F1: 0.6363
+Time taken for Epoch 6:3.76 - F1: 0.6384
+2026-02-13 05:07:39 - INFO - Time taken for Epoch 6:3.76 - F1: 0.6384
+Time taken for Epoch 7:3.84 - F1: 0.6369
+2026-02-13 05:07:43 - INFO - Time taken for Epoch 7:3.84 - F1: 0.6369
+Time taken for Epoch 8:2.56 - F1: 0.6369
+2026-02-13 05:07:45 - INFO - Time taken for Epoch 8:2.56 - F1: 0.6369
+Time taken for Epoch 9:2.57 - F1: 0.6378
+2026-02-13 05:07:48 - INFO - Time taken for Epoch 9:2.57 - F1: 0.6378
+Time taken for Epoch 10:2.58 - F1: 0.6364
+2026-02-13 05:07:50 - INFO - Time taken for Epoch 10:2.58 - F1: 0.6364
+Time taken for Epoch 11:2.57 - F1: 0.6386
+2026-02-13 05:07:53 - INFO - Time taken for Epoch 11:2.57 - F1: 0.6386
+Time taken for Epoch 12:3.79 - F1: 0.6469
+2026-02-13 05:07:57 - INFO - Time taken for Epoch 12:3.79 - F1: 0.6469
+Time taken for Epoch 13:3.83 - F1: 0.6487
+2026-02-13 05:08:01 - INFO - Time taken for Epoch 13:3.83 - F1: 0.6487
+Time taken for Epoch 14:3.77 - F1: 0.6504
+2026-02-13 05:08:04 - INFO - Time taken for Epoch 14:3.77 - F1: 0.6504
+Time taken for Epoch 15:3.81 - F1: 0.6514
+2026-02-13 05:08:08 - INFO - Time taken for Epoch 15:3.81 - F1: 0.6514
+Time taken for Epoch 16:3.76 - F1: 0.6441
+2026-02-13 05:08:12 - INFO - Time taken for Epoch 16:3.76 - F1: 0.6441
+Time taken for Epoch 17:2.57 - F1: 0.6452
+2026-02-13 05:08:15 - INFO - Time taken for Epoch 17:2.57 - F1: 0.6452
+Time taken for Epoch 18:2.57 - F1: 0.6433
+2026-02-13 05:08:17 - INFO - Time taken for Epoch 18:2.57 - F1: 0.6433
+Time taken for Epoch 19:2.58 - F1: 0.6478
+2026-02-13 05:08:20 - INFO - Time taken for Epoch 19:2.58 - F1: 0.6478
+Time taken for Epoch 20:2.57 - F1: 0.6475
+2026-02-13 05:08:22 - INFO - Time taken for Epoch 20:2.57 - F1: 0.6475
+Time taken for Epoch 21:2.57 - F1: 0.6477
+2026-02-13 05:08:25 - INFO - Time taken for Epoch 21:2.57 - F1: 0.6477
+Time taken for Epoch 22:2.57 - F1: 0.6442
+2026-02-13 05:08:27 - INFO - Time taken for Epoch 22:2.57 - F1: 0.6442
+Time taken for Epoch 23:2.57 - F1: 0.6431
+2026-02-13 05:08:30 - INFO - Time taken for Epoch 23:2.57 - F1: 0.6431
+Time taken for Epoch 24:2.66 - F1: 0.6377
+2026-02-13 05:08:33 - INFO - Time taken for Epoch 24:2.66 - F1: 0.6377
+Time taken for Epoch 25:2.58 - F1: 0.6350
+2026-02-13 05:08:35 - INFO - Time taken for Epoch 25:2.58 - F1: 0.6350
+Performance not improving for 10 consecutive epochs.
+2026-02-13 05:08:35 - INFO - Performance not improving for 10 consecutive epochs.
+Best F1:0.6514 - Best Epoch:14
+2026-02-13 05:08:35 - INFO - Best F1:0.6514 - Best Epoch:14
+/homes/bharanibala/optuna/lib64/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+Using Bert Tweet model: bert-tweet
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/final_model_1_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/final_model_2_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian9, NumShots: 5, N: 5 Test SEED: 1234 F1: 0.6487, Test ECE: 0.0770
+2026-02-13 05:08:43 - INFO - 
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian9, NumShots: 5, N: 5 Test SEED: 1234 F1: 0.6487, Test ECE: 0.0770
+All results: {'f1_macro': 0.6486901409954856, 'ece': np.float64(0.07698298888663724)}
+2026-02-13 05:08:43 - INFO - All results: {'f1_macro': 0.6486901409954856, 'ece': np.float64(0.07698298888663724)}
+
+Total time taken: 592.16 seconds
+2026-02-13 05:08:43 - INFO - 
+Total time taken: 592.16 seconds
+2026-02-13 05:08:43 - INFO - Trial 1 finished with value: 0.6486901409954856 and parameters: {'learning_rate': 1.1969736323847831e-05, 'weight_decay': 0.0006598677074231824, 'batch_size': 16, 'co_train_epochs': 11, 'epoch_patience': 9}. Best is trial 1 with value: 0.6486901409954856.
+Using devices: cuda, cuda
+2026-02-13 05:08:43 - INFO - Using devices: cuda, cuda
+Devices: cuda, cuda
+2026-02-13 05:08:43 - INFO - Devices: cuda, cuda
+Starting log
+2026-02-13 05:08:43 - INFO - Starting log
+Dataset: humanitarian9, Event: hurricane_florence_2018, N: 5, Seed: 1234, HF Model: GPT-4o, NumShots: 5, PLM: bert-tweet
+2026-02-13 05:08:43 - INFO - Dataset: humanitarian9, Event: hurricane_florence_2018, N: 5, Seed: 1234, HF Model: GPT-4o, NumShots: 5, PLM: bert-tweet
+Learning Rate: 0.0003462558549868977
+Weight Decay: 0.00010290353245908599
+Batch Size: 64
+No. Epochs: 5
+Epoch Patience: 5
+ Accumulation Steps: 1
+2026-02-13 05:08:44 - INFO - Learning Rate: 0.0003462558549868977
+Weight Decay: 0.00010290353245908599
+Batch Size: 64
+No. Epochs: 5
+Epoch Patience: 5
+ Accumulation Steps: 1
+Using Bert Tweet model: bert-tweet
+Generating initial weights
+2026-02-13 05:08:45 - INFO - Generating initial weights
+Time taken for Epoch 1:17.02 - F1: 0.1052
+2026-02-13 05:09:06 - INFO - Time taken for Epoch 1:17.02 - F1: 0.1052
+Time taken for Epoch 2:16.89 - F1: 0.1510
+2026-02-13 05:09:23 - INFO - Time taken for Epoch 2:16.89 - F1: 0.1510
+Time taken for Epoch 3:16.89 - F1: 0.2805
+2026-02-13 05:09:40 - INFO - Time taken for Epoch 3:16.89 - F1: 0.2805
+Time taken for Epoch 4:16.95 - F1: 0.2677
+2026-02-13 05:09:56 - INFO - Time taken for Epoch 4:16.95 - F1: 0.2677
+Time taken for Epoch 5:16.96 - F1: 0.2797
+2026-02-13 05:10:13 - INFO - Time taken for Epoch 5:16.96 - F1: 0.2797
+Best F1:0.2805 - Best Epoch:3
+2026-02-13 05:10:13 - INFO - Best F1:0.2805 - Best Epoch:3
+Using Bert Tweet model: bert-tweet
+Starting co-training
+2026-02-13 05:10:15 - INFO - Starting co-training
+Time taken for Epoch 1: 40.18s - F1: 0.03212851
+2026-02-13 05:10:55 - INFO - Time taken for Epoch 1: 40.18s - F1: 0.03212851
+Time taken for Epoch 2: 41.32s - F1: 0.03212851
+2026-02-13 05:11:37 - INFO - Time taken for Epoch 2: 41.32s - F1: 0.03212851
+Time taken for Epoch 3: 40.31s - F1: 0.04247539
+2026-02-13 05:12:17 - INFO - Time taken for Epoch 3: 40.31s - F1: 0.04247539
+Time taken for Epoch 4: 41.46s - F1: 0.04247539
+2026-02-13 05:12:58 - INFO - Time taken for Epoch 4: 41.46s - F1: 0.04247539
+Time taken for Epoch 5: 40.37s - F1: 0.04247539
+2026-02-13 05:13:39 - INFO - Time taken for Epoch 5: 40.37s - F1: 0.04247539
+Using Bert Tweet model: bert-tweet
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/co_trained_model_1_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/co_trained_model_2_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+Fine-tuning models
+2026-02-13 05:13:42 - INFO - Fine-tuning models
+Time taken for Epoch 1:2.38 - F1: 0.0425
+2026-02-13 05:13:44 - INFO - Time taken for Epoch 1:2.38 - F1: 0.0425
+Time taken for Epoch 2:3.47 - F1: 0.0425
+2026-02-13 05:13:48 - INFO - Time taken for Epoch 2:3.47 - F1: 0.0425
+Time taken for Epoch 3:2.37 - F1: 0.0425
+2026-02-13 05:13:50 - INFO - Time taken for Epoch 3:2.37 - F1: 0.0425
+Time taken for Epoch 4:2.38 - F1: 0.0721
+2026-02-13 05:13:52 - INFO - Time taken for Epoch 4:2.38 - F1: 0.0721
+Time taken for Epoch 5:3.57 - F1: 0.0017
+2026-02-13 05:13:56 - INFO - Time taken for Epoch 5:3.57 - F1: 0.0017
+Time taken for Epoch 6:2.37 - F1: 0.0017
+2026-02-13 05:13:58 - INFO - Time taken for Epoch 6:2.37 - F1: 0.0017
+Time taken for Epoch 7:2.38 - F1: 0.0017
+2026-02-13 05:14:01 - INFO - Time taken for Epoch 7:2.38 - F1: 0.0017
+Time taken for Epoch 8:2.38 - F1: 0.0017
+2026-02-13 05:14:03 - INFO - Time taken for Epoch 8:2.38 - F1: 0.0017
+Time taken for Epoch 9:2.38 - F1: 0.0017
+2026-02-13 05:14:06 - INFO - Time taken for Epoch 9:2.38 - F1: 0.0017
+Time taken for Epoch 10:2.37 - F1: 0.0205
+2026-02-13 05:14:08 - INFO - Time taken for Epoch 10:2.37 - F1: 0.0205
+Time taken for Epoch 11:2.37 - F1: 0.0205
+2026-02-13 05:14:10 - INFO - Time taken for Epoch 11:2.37 - F1: 0.0205
+Time taken for Epoch 12:2.37 - F1: 0.0155
+2026-02-13 05:14:13 - INFO - Time taken for Epoch 12:2.37 - F1: 0.0155
+Time taken for Epoch 13:2.37 - F1: 0.0155
+2026-02-13 05:14:15 - INFO - Time taken for Epoch 13:2.37 - F1: 0.0155
+Time taken for Epoch 14:2.38 - F1: 0.0155
+2026-02-13 05:14:17 - INFO - Time taken for Epoch 14:2.38 - F1: 0.0155
+Performance not improving for 10 consecutive epochs.
+2026-02-13 05:14:17 - INFO - Performance not improving for 10 consecutive epochs.
+Best F1:0.0721 - Best Epoch:3
+2026-02-13 05:14:17 - INFO - Best F1:0.0721 - Best Epoch:3
+/homes/bharanibala/optuna/lib64/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+Using Bert Tweet model: bert-tweet
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/final_model_1_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/final_model_2_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian9, NumShots: 5, N: 5 Test SEED: 1234 F1: 0.0709, Test ECE: 0.0838
+2026-02-13 05:14:24 - INFO - 
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian9, NumShots: 5, N: 5 Test SEED: 1234 F1: 0.0709, Test ECE: 0.0838
+All results: {'f1_macro': 0.0708692602198609, 'ece': np.float64(0.08378701400699202)}
+2026-02-13 05:14:24 - INFO - All results: {'f1_macro': 0.0708692602198609, 'ece': np.float64(0.08378701400699202)}
+
+Total time taken: 341.16 seconds
+2026-02-13 05:14:24 - INFO - 
+Total time taken: 341.16 seconds
+2026-02-13 05:14:25 - INFO - Trial 2 finished with value: 0.0708692602198609 and parameters: {'learning_rate': 0.0003462558549868977, 'weight_decay': 0.00010290353245908599, 'batch_size': 64, 'co_train_epochs': 5, 'epoch_patience': 5}. Best is trial 1 with value: 0.6486901409954856.
+Using devices: cuda, cuda
+2026-02-13 05:14:25 - INFO - Using devices: cuda, cuda
+Devices: cuda, cuda
+2026-02-13 05:14:25 - INFO - Devices: cuda, cuda
+Starting log
+2026-02-13 05:14:25 - INFO - Starting log
+Dataset: humanitarian9, Event: hurricane_florence_2018, N: 5, Seed: 1234, HF Model: GPT-4o, NumShots: 5, PLM: bert-tweet
+2026-02-13 05:14:25 - INFO - Dataset: humanitarian9, Event: hurricane_florence_2018, N: 5, Seed: 1234, HF Model: GPT-4o, NumShots: 5, PLM: bert-tweet
+Learning Rate: 0.0001199283295671555
+Weight Decay: 3.84471313419775e-05
+Batch Size: 8
+No. Epochs: 13
+Epoch Patience: 10
+ Accumulation Steps: 8
+2026-02-13 05:14:25 - INFO - Learning Rate: 0.0001199283295671555
+Weight Decay: 3.84471313419775e-05
+Batch Size: 8
+No. Epochs: 13
+Epoch Patience: 10
+ Accumulation Steps: 8
+Using Bert Tweet model: bert-tweet
+Generating initial weights
+2026-02-13 05:14:26 - INFO - Generating initial weights
+Time taken for Epoch 1:19.93 - F1: 0.0277
+2026-02-13 05:14:50 - INFO - Time taken for Epoch 1:19.93 - F1: 0.0277
+Time taken for Epoch 2:19.85 - F1: 0.0155
+2026-02-13 05:15:10 - INFO - Time taken for Epoch 2:19.85 - F1: 0.0155
+Time taken for Epoch 3:19.91 - F1: 0.0155
+2026-02-13 05:15:30 - INFO - Time taken for Epoch 3:19.91 - F1: 0.0155
+Time taken for Epoch 4:19.86 - F1: 0.0188
+2026-02-13 05:15:49 - INFO - Time taken for Epoch 4:19.86 - F1: 0.0188
+Time taken for Epoch 5:19.89 - F1: 0.0377
+2026-02-13 05:16:09 - INFO - Time taken for Epoch 5:19.89 - F1: 0.0377
+Time taken for Epoch 6:19.91 - F1: 0.2563
+2026-02-13 05:16:29 - INFO - Time taken for Epoch 6:19.91 - F1: 0.2563
+Time taken for Epoch 7:19.89 - F1: 0.3428
+2026-02-13 05:16:49 - INFO - Time taken for Epoch 7:19.89 - F1: 0.3428
+Time taken for Epoch 8:19.92 - F1: 0.3169
+2026-02-13 05:17:09 - INFO - Time taken for Epoch 8:19.92 - F1: 0.3169
+Time taken for Epoch 9:19.94 - F1: 0.3200
+2026-02-13 05:17:29 - INFO - Time taken for Epoch 9:19.94 - F1: 0.3200
+Time taken for Epoch 10:19.92 - F1: 0.3486
+2026-02-13 05:17:49 - INFO - Time taken for Epoch 10:19.92 - F1: 0.3486
+Time taken for Epoch 11:19.97 - F1: 0.3598
+2026-02-13 05:18:09 - INFO - Time taken for Epoch 11:19.97 - F1: 0.3598
+Time taken for Epoch 12:19.94 - F1: 0.3630
+2026-02-13 05:18:29 - INFO - Time taken for Epoch 12:19.94 - F1: 0.3630
+Time taken for Epoch 13:19.94 - F1: 0.3611
+2026-02-13 05:18:49 - INFO - Time taken for Epoch 13:19.94 - F1: 0.3611
+Best F1:0.3630 - Best Epoch:12
+2026-02-13 05:18:49 - INFO - Best F1:0.3630 - Best Epoch:12
+Using Bert Tweet model: bert-tweet
+Starting co-training
+2026-02-13 05:18:50 - INFO - Starting co-training
+Time taken for Epoch 1: 23.99s - F1: 0.32014729
+2026-02-13 05:19:15 - INFO - Time taken for Epoch 1: 23.99s - F1: 0.32014729
+Time taken for Epoch 2: 25.22s - F1: 0.32247086
+2026-02-13 05:19:40 - INFO - Time taken for Epoch 2: 25.22s - F1: 0.32247086
+Time taken for Epoch 3: 25.07s - F1: 0.55542978
+2026-02-13 05:20:05 - INFO - Time taken for Epoch 3: 25.07s - F1: 0.55542978
+Time taken for Epoch 4: 25.17s - F1: 0.52618361
+2026-02-13 05:20:30 - INFO - Time taken for Epoch 4: 25.17s - F1: 0.52618361
+Time taken for Epoch 5: 23.95s - F1: 0.53490066
+2026-02-13 05:20:54 - INFO - Time taken for Epoch 5: 23.95s - F1: 0.53490066
+Time taken for Epoch 6: 24.07s - F1: 0.54793858
+2026-02-13 05:21:18 - INFO - Time taken for Epoch 6: 24.07s - F1: 0.54793858
+Time taken for Epoch 7: 23.96s - F1: 0.52934458
+2026-02-13 05:21:42 - INFO - Time taken for Epoch 7: 23.96s - F1: 0.52934458
+Time taken for Epoch 8: 24.11s - F1: 0.55683944
+2026-02-13 05:22:06 - INFO - Time taken for Epoch 8: 24.11s - F1: 0.55683944
+Time taken for Epoch 9: 25.19s - F1: 0.54517766
+2026-02-13 05:22:31 - INFO - Time taken for Epoch 9: 25.19s - F1: 0.54517766
+Time taken for Epoch 10: 24.11s - F1: 0.57315512
+2026-02-13 05:22:55 - INFO - Time taken for Epoch 10: 24.11s - F1: 0.57315512
+Time taken for Epoch 11: 25.35s - F1: 0.54033822
+2026-02-13 05:23:21 - INFO - Time taken for Epoch 11: 25.35s - F1: 0.54033822
+Time taken for Epoch 12: 24.19s - F1: 0.57032963
+2026-02-13 05:23:45 - INFO - Time taken for Epoch 12: 24.19s - F1: 0.57032963
+Time taken for Epoch 13: 24.12s - F1: 0.57357945
+2026-02-13 05:24:09 - INFO - Time taken for Epoch 13: 24.12s - F1: 0.57357945
+Using Bert Tweet model: bert-tweet
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/co_trained_model_1_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/co_trained_model_2_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+Fine-tuning models
+2026-02-13 05:24:13 - INFO - Fine-tuning models
+Time taken for Epoch 1:2.78 - F1: 0.5740
+2026-02-13 05:24:16 - INFO - Time taken for Epoch 1:2.78 - F1: 0.5740
+Time taken for Epoch 2:3.85 - F1: 0.5818
+2026-02-13 05:24:20 - INFO - Time taken for Epoch 2:3.85 - F1: 0.5818
+Time taken for Epoch 3:3.93 - F1: 0.5802
+2026-02-13 05:24:24 - INFO - Time taken for Epoch 3:3.93 - F1: 0.5802
+Time taken for Epoch 4:2.74 - F1: 0.5588
+2026-02-13 05:24:27 - INFO - Time taken for Epoch 4:2.74 - F1: 0.5588
+Time taken for Epoch 5:2.74 - F1: 0.5477
+2026-02-13 05:24:30 - INFO - Time taken for Epoch 5:2.74 - F1: 0.5477
+Time taken for Epoch 6:2.74 - F1: 0.5596
+2026-02-13 05:24:32 - INFO - Time taken for Epoch 6:2.74 - F1: 0.5596
+Time taken for Epoch 7:2.74 - F1: 0.5780
+2026-02-13 05:24:35 - INFO - Time taken for Epoch 7:2.74 - F1: 0.5780
+Time taken for Epoch 8:2.74 - F1: 0.5689
+2026-02-13 05:24:38 - INFO - Time taken for Epoch 8:2.74 - F1: 0.5689
+Time taken for Epoch 9:2.74 - F1: 0.5644
+2026-02-13 05:24:40 - INFO - Time taken for Epoch 9:2.74 - F1: 0.5644
+Time taken for Epoch 10:2.74 - F1: 0.5529
+2026-02-13 05:24:43 - INFO - Time taken for Epoch 10:2.74 - F1: 0.5529
+Time taken for Epoch 11:2.74 - F1: 0.5477
+2026-02-13 05:24:46 - INFO - Time taken for Epoch 11:2.74 - F1: 0.5477
+Time taken for Epoch 12:2.75 - F1: 0.5418
+2026-02-13 05:24:49 - INFO - Time taken for Epoch 12:2.75 - F1: 0.5418
+Performance not improving for 10 consecutive epochs.
+2026-02-13 05:24:49 - INFO - Performance not improving for 10 consecutive epochs.
+Best F1:0.5818 - Best Epoch:1
+2026-02-13 05:24:49 - INFO - Best F1:0.5818 - Best Epoch:1
+/homes/bharanibala/optuna/lib64/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+Using Bert Tweet model: bert-tweet
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/final_model_1_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/final_model_2_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian9, NumShots: 5, N: 5 Test SEED: 1234 F1: 0.5846, Test ECE: 0.0878
+2026-02-13 05:24:57 - INFO - 
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian9, NumShots: 5, N: 5 Test SEED: 1234 F1: 0.5846, Test ECE: 0.0878
+All results: {'f1_macro': 0.5845925393940011, 'ece': np.float64(0.08782806300905613)}
+2026-02-13 05:24:57 - INFO - All results: {'f1_macro': 0.5845925393940011, 'ece': np.float64(0.08782806300905613)}
+
+Total time taken: 632.11 seconds
+2026-02-13 05:24:57 - INFO - 
+Total time taken: 632.11 seconds
+2026-02-13 05:24:57 - INFO - Trial 3 finished with value: 0.5845925393940011 and parameters: {'learning_rate': 0.0001199283295671555, 'weight_decay': 3.84471313419775e-05, 'batch_size': 8, 'co_train_epochs': 13, 'epoch_patience': 10}. Best is trial 1 with value: 0.6486901409954856.
+Using devices: cuda, cuda
+2026-02-13 05:24:57 - INFO - Using devices: cuda, cuda
+Devices: cuda, cuda
+2026-02-13 05:24:57 - INFO - Devices: cuda, cuda
+Starting log
+2026-02-13 05:24:57 - INFO - Starting log
+Dataset: humanitarian9, Event: hurricane_florence_2018, N: 5, Seed: 1234, HF Model: GPT-4o, NumShots: 5, PLM: bert-tweet
+2026-02-13 05:24:57 - INFO - Dataset: humanitarian9, Event: hurricane_florence_2018, N: 5, Seed: 1234, HF Model: GPT-4o, NumShots: 5, PLM: bert-tweet
+Learning Rate: 0.0008179668724837508
+Weight Decay: 0.0011308378156630501
+Batch Size: 64
+No. Epochs: 19
+Epoch Patience: 6
+ Accumulation Steps: 1
+2026-02-13 05:24:57 - INFO - Learning Rate: 0.0008179668724837508
+Weight Decay: 0.0011308378156630501
+Batch Size: 64
+No. Epochs: 19
+Epoch Patience: 6
+ Accumulation Steps: 1
+Using Bert Tweet model: bert-tweet
+Generating initial weights
+2026-02-13 05:24:58 - INFO - Generating initial weights
+Time taken for Epoch 1:17.02 - F1: 0.0691
+2026-02-13 05:25:19 - INFO - Time taken for Epoch 1:17.02 - F1: 0.0691
+Time taken for Epoch 2:16.94 - F1: 0.0213
+2026-02-13 05:25:36 - INFO - Time taken for Epoch 2:16.94 - F1: 0.0213
+Time taken for Epoch 3:16.90 - F1: 0.0689
+2026-02-13 05:25:53 - INFO - Time taken for Epoch 3:16.90 - F1: 0.0689
+Time taken for Epoch 4:16.93 - F1: 0.0321
+2026-02-13 05:26:10 - INFO - Time taken for Epoch 4:16.93 - F1: 0.0321
+Time taken for Epoch 5:16.94 - F1: 0.0017
+2026-02-13 05:26:27 - INFO - Time taken for Epoch 5:16.94 - F1: 0.0017
+Time taken for Epoch 6:16.92 - F1: 0.0385
+2026-02-13 05:26:44 - INFO - Time taken for Epoch 6:16.92 - F1: 0.0385
+Time taken for Epoch 7:16.88 - F1: 0.0385
+2026-02-13 05:27:01 - INFO - Time taken for Epoch 7:16.88 - F1: 0.0385
+Time taken for Epoch 8:16.87 - F1: 0.0385
+2026-02-13 05:27:17 - INFO - Time taken for Epoch 8:16.87 - F1: 0.0385
+Time taken for Epoch 9:16.87 - F1: 0.0385
+2026-02-13 05:27:34 - INFO - Time taken for Epoch 9:16.87 - F1: 0.0385
+Time taken for Epoch 10:16.88 - F1: 0.0321
+2026-02-13 05:27:51 - INFO - Time taken for Epoch 10:16.88 - F1: 0.0321
+Time taken for Epoch 11:16.88 - F1: 0.0321
+2026-02-13 05:28:08 - INFO - Time taken for Epoch 11:16.88 - F1: 0.0321
+Time taken for Epoch 12:16.89 - F1: 0.0425
+2026-02-13 05:28:25 - INFO - Time taken for Epoch 12:16.89 - F1: 0.0425
+Time taken for Epoch 13:16.88 - F1: 0.0425
+2026-02-13 05:28:42 - INFO - Time taken for Epoch 13:16.88 - F1: 0.0425
+Time taken for Epoch 14:16.91 - F1: 0.0425
+2026-02-13 05:28:59 - INFO - Time taken for Epoch 14:16.91 - F1: 0.0425
+Time taken for Epoch 15:16.94 - F1: 0.0321
+2026-02-13 05:29:16 - INFO - Time taken for Epoch 15:16.94 - F1: 0.0321
+Time taken for Epoch 16:16.89 - F1: 0.0321
+2026-02-13 05:29:33 - INFO - Time taken for Epoch 16:16.89 - F1: 0.0321
+Time taken for Epoch 17:16.88 - F1: 0.0385
+2026-02-13 05:29:49 - INFO - Time taken for Epoch 17:16.88 - F1: 0.0385
+Time taken for Epoch 18:16.90 - F1: 0.0385
+2026-02-13 05:30:06 - INFO - Time taken for Epoch 18:16.90 - F1: 0.0385
+Time taken for Epoch 19:16.90 - F1: 0.0385
+2026-02-13 05:30:23 - INFO - Time taken for Epoch 19:16.90 - F1: 0.0385
+Best F1:0.0691 - Best Epoch:1
+2026-02-13 05:30:23 - INFO - Best F1:0.0691 - Best Epoch:1
+Using Bert Tweet model: bert-tweet
+Starting co-training
+2026-02-13 05:30:25 - INFO - Starting co-training
+Time taken for Epoch 1: 40.27s - F1: 0.04247539
+2026-02-13 05:31:05 - INFO - Time taken for Epoch 1: 40.27s - F1: 0.04247539
+Time taken for Epoch 2: 41.53s - F1: 0.03212851
+2026-02-13 05:31:47 - INFO - Time taken for Epoch 2: 41.53s - F1: 0.03212851
+Time taken for Epoch 3: 40.37s - F1: 0.04247539
+2026-02-13 05:32:27 - INFO - Time taken for Epoch 3: 40.37s - F1: 0.04247539
+Time taken for Epoch 4: 40.40s - F1: 0.03212851
+2026-02-13 05:33:08 - INFO - Time taken for Epoch 4: 40.40s - F1: 0.03212851
+Time taken for Epoch 5: 40.40s - F1: 0.04247539
+2026-02-13 05:33:48 - INFO - Time taken for Epoch 5: 40.40s - F1: 0.04247539
+Time taken for Epoch 6: 40.39s - F1: 0.04247539
+2026-02-13 05:34:29 - INFO - Time taken for Epoch 6: 40.39s - F1: 0.04247539
+Time taken for Epoch 7: 40.42s - F1: 0.04247539
+2026-02-13 05:35:09 - INFO - Time taken for Epoch 7: 40.42s - F1: 0.04247539
+Performance not improving for 6 consecutive epochs.
+Performance not improving for 6 consecutive epochs.
+2026-02-13 05:35:09 - INFO - Performance not improving for 6 consecutive epochs.
+Using Bert Tweet model: bert-tweet
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/co_trained_model_1_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/co_trained_model_2_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+Fine-tuning models
+2026-02-13 05:35:12 - INFO - Fine-tuning models
+Time taken for Epoch 1:2.36 - F1: 0.0425
+2026-02-13 05:35:14 - INFO - Time taken for Epoch 1:2.36 - F1: 0.0425
+Time taken for Epoch 2:3.46 - F1: 0.0017
+2026-02-13 05:35:18 - INFO - Time taken for Epoch 2:3.46 - F1: 0.0017
+Time taken for Epoch 3:2.35 - F1: 0.0017
+2026-02-13 05:35:20 - INFO - Time taken for Epoch 3:2.35 - F1: 0.0017
+Time taken for Epoch 4:2.36 - F1: 0.0205
+2026-02-13 05:35:23 - INFO - Time taken for Epoch 4:2.36 - F1: 0.0205
+Time taken for Epoch 5:2.35 - F1: 0.0205
+2026-02-13 05:35:25 - INFO - Time taken for Epoch 5:2.35 - F1: 0.0205
+Time taken for Epoch 6:2.35 - F1: 0.0205
+2026-02-13 05:35:27 - INFO - Time taken for Epoch 6:2.35 - F1: 0.0205
+Time taken for Epoch 7:2.35 - F1: 0.0321
+2026-02-13 05:35:30 - INFO - Time taken for Epoch 7:2.35 - F1: 0.0321
+Time taken for Epoch 8:2.36 - F1: 0.0321
+2026-02-13 05:35:32 - INFO - Time taken for Epoch 8:2.36 - F1: 0.0321
+Time taken for Epoch 9:2.36 - F1: 0.0321
+2026-02-13 05:35:34 - INFO - Time taken for Epoch 9:2.36 - F1: 0.0321
+Time taken for Epoch 10:2.37 - F1: 0.0017
+2026-02-13 05:35:37 - INFO - Time taken for Epoch 10:2.37 - F1: 0.0017
+Time taken for Epoch 11:2.37 - F1: 0.0017
+2026-02-13 05:35:39 - INFO - Time taken for Epoch 11:2.37 - F1: 0.0017
+Performance not improving for 10 consecutive epochs.
+2026-02-13 05:35:39 - INFO - Performance not improving for 10 consecutive epochs.
+Best F1:0.0425 - Best Epoch:0
+2026-02-13 05:35:39 - INFO - Best F1:0.0425 - Best Epoch:0
+/homes/bharanibala/optuna/lib64/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+Using Bert Tweet model: bert-tweet
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/final_model_1_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/final_model_2_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian9, NumShots: 5, N: 5 Test SEED: 1234 F1: 0.0424, Test ECE: 0.0585
+2026-02-13 05:35:46 - INFO - 
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian9, NumShots: 5, N: 5 Test SEED: 1234 F1: 0.0424, Test ECE: 0.0585
+All results: {'f1_macro': 0.042445313631754314, 'ece': np.float64(0.058543407201382736)}
+2026-02-13 05:35:46 - INFO - All results: {'f1_macro': 0.042445313631754314, 'ece': np.float64(0.058543407201382736)}
+
+Total time taken: 649.79 seconds
+2026-02-13 05:35:46 - INFO - 
+Total time taken: 649.79 seconds
+2026-02-13 05:35:47 - INFO - Trial 4 finished with value: 0.042445313631754314 and parameters: {'learning_rate': 0.0008179668724837508, 'weight_decay': 0.0011308378156630501, 'batch_size': 64, 'co_train_epochs': 19, 'epoch_patience': 6}. Best is trial 1 with value: 0.6486901409954856.
+Using devices: cuda, cuda
+2026-02-13 05:35:47 - INFO - Using devices: cuda, cuda
+Devices: cuda, cuda
+2026-02-13 05:35:47 - INFO - Devices: cuda, cuda
+Starting log
+2026-02-13 05:35:47 - INFO - Starting log
+Dataset: humanitarian9, Event: hurricane_florence_2018, N: 5, Seed: 1234, HF Model: GPT-4o, NumShots: 5, PLM: bert-tweet
+2026-02-13 05:35:47 - INFO - Dataset: humanitarian9, Event: hurricane_florence_2018, N: 5, Seed: 1234, HF Model: GPT-4o, NumShots: 5, PLM: bert-tweet
+Learning Rate: 0.0006605935035038852
+Weight Decay: 2.17413245378551e-05
+Batch Size: 8
+No. Epochs: 11
+Epoch Patience: 8
+ Accumulation Steps: 8
+2026-02-13 05:35:47 - INFO - Learning Rate: 0.0006605935035038852
+Weight Decay: 2.17413245378551e-05
+Batch Size: 8
+No. Epochs: 11
+Epoch Patience: 8
+ Accumulation Steps: 8
+Using Bert Tweet model: bert-tweet
+Generating initial weights
+2026-02-13 05:35:48 - INFO - Generating initial weights
+Time taken for Epoch 1:19.95 - F1: 0.0155
+2026-02-13 05:36:12 - INFO - Time taken for Epoch 1:19.95 - F1: 0.0155
+Time taken for Epoch 2:19.90 - F1: 0.0425
+2026-02-13 05:36:32 - INFO - Time taken for Epoch 2:19.90 - F1: 0.0425
+Time taken for Epoch 3:19.96 - F1: 0.0155
+2026-02-13 05:36:52 - INFO - Time taken for Epoch 3:19.96 - F1: 0.0155
+Time taken for Epoch 4:19.87 - F1: 0.0155
+2026-02-13 05:37:12 - INFO - Time taken for Epoch 4:19.87 - F1: 0.0155
+Time taken for Epoch 5:19.85 - F1: 0.0806
+2026-02-13 05:37:31 - INFO - Time taken for Epoch 5:19.85 - F1: 0.0806
+Time taken for Epoch 6:19.85 - F1: 0.0100
+2026-02-13 05:37:51 - INFO - Time taken for Epoch 6:19.85 - F1: 0.0100
+Time taken for Epoch 7:19.88 - F1: 0.0109
+2026-02-13 05:38:11 - INFO - Time taken for Epoch 7:19.88 - F1: 0.0109
+Time taken for Epoch 8:19.85 - F1: 0.0155
+2026-02-13 05:38:31 - INFO - Time taken for Epoch 8:19.85 - F1: 0.0155
+Time taken for Epoch 9:19.85 - F1: 0.0155
+2026-02-13 05:38:51 - INFO - Time taken for Epoch 9:19.85 - F1: 0.0155
+Time taken for Epoch 10:19.86 - F1: 0.0155
+2026-02-13 05:39:11 - INFO - Time taken for Epoch 10:19.86 - F1: 0.0155
+Time taken for Epoch 11:19.83 - F1: 0.0155
+2026-02-13 05:39:31 - INFO - Time taken for Epoch 11:19.83 - F1: 0.0155
+Best F1:0.0806 - Best Epoch:5
+2026-02-13 05:39:31 - INFO - Best F1:0.0806 - Best Epoch:5
+Using Bert Tweet model: bert-tweet
+Starting co-training
+2026-02-13 05:39:32 - INFO - Starting co-training
+Time taken for Epoch 1: 23.97s - F1: 0.03852235
+2026-02-13 05:39:56 - INFO - Time taken for Epoch 1: 23.97s - F1: 0.03852235
+Time taken for Epoch 2: 25.10s - F1: 0.03852235
+2026-02-13 05:40:21 - INFO - Time taken for Epoch 2: 25.10s - F1: 0.03852235
+Time taken for Epoch 3: 23.91s - F1: 0.03852235
+2026-02-13 05:40:45 - INFO - Time taken for Epoch 3: 23.91s - F1: 0.03852235
+Time taken for Epoch 4: 23.98s - F1: 0.03852235
+2026-02-13 05:41:09 - INFO - Time taken for Epoch 4: 23.98s - F1: 0.03852235
+Time taken for Epoch 5: 23.94s - F1: 0.03852235
+2026-02-13 05:41:33 - INFO - Time taken for Epoch 5: 23.94s - F1: 0.03852235
+Time taken for Epoch 6: 24.00s - F1: 0.03852235
+2026-02-13 05:41:57 - INFO - Time taken for Epoch 6: 24.00s - F1: 0.03852235
+Time taken for Epoch 7: 23.93s - F1: 0.03852235
+2026-02-13 05:42:21 - INFO - Time taken for Epoch 7: 23.93s - F1: 0.03852235
+Time taken for Epoch 8: 23.93s - F1: 0.03852235
+2026-02-13 05:42:45 - INFO - Time taken for Epoch 8: 23.93s - F1: 0.03852235
+Time taken for Epoch 9: 23.91s - F1: 0.03852235
+2026-02-13 05:43:09 - INFO - Time taken for Epoch 9: 23.91s - F1: 0.03852235
+Performance not improving for 8 consecutive epochs.
+Performance not improving for 8 consecutive epochs.
+2026-02-13 05:43:09 - INFO - Performance not improving for 8 consecutive epochs.
+Using Bert Tweet model: bert-tweet
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/co_trained_model_1_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/co_trained_model_2_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+Fine-tuning models
+2026-02-13 05:43:18 - INFO - Fine-tuning models
+Time taken for Epoch 1:2.73 - F1: 0.0155
+2026-02-13 05:43:21 - INFO - Time taken for Epoch 1:2.73 - F1: 0.0155
+Time taken for Epoch 2:3.93 - F1: 0.0155
+2026-02-13 05:43:25 - INFO - Time taken for Epoch 2:3.93 - F1: 0.0155
+Time taken for Epoch 3:2.72 - F1: 0.0155
+2026-02-13 05:43:27 - INFO - Time taken for Epoch 3:2.72 - F1: 0.0155
+Time taken for Epoch 4:2.72 - F1: 0.0155
+2026-02-13 05:43:30 - INFO - Time taken for Epoch 4:2.72 - F1: 0.0155
+Time taken for Epoch 5:2.73 - F1: 0.0155
+2026-02-13 05:43:33 - INFO - Time taken for Epoch 5:2.73 - F1: 0.0155
+Time taken for Epoch 6:2.72 - F1: 0.0155
+2026-02-13 05:43:36 - INFO - Time taken for Epoch 6:2.72 - F1: 0.0155
+Time taken for Epoch 7:2.72 - F1: 0.0155
+2026-02-13 05:43:38 - INFO - Time taken for Epoch 7:2.72 - F1: 0.0155
+Time taken for Epoch 8:2.72 - F1: 0.0155
+2026-02-13 05:43:41 - INFO - Time taken for Epoch 8:2.72 - F1: 0.0155
+Time taken for Epoch 9:2.73 - F1: 0.0155
+2026-02-13 05:43:44 - INFO - Time taken for Epoch 9:2.73 - F1: 0.0155
+Time taken for Epoch 10:2.73 - F1: 0.0155
+2026-02-13 05:43:47 - INFO - Time taken for Epoch 10:2.73 - F1: 0.0155
+Time taken for Epoch 11:2.76 - F1: 0.0155
+2026-02-13 05:43:49 - INFO - Time taken for Epoch 11:2.76 - F1: 0.0155
+Performance not improving for 10 consecutive epochs.
+2026-02-13 05:43:49 - INFO - Performance not improving for 10 consecutive epochs.
+Best F1:0.0155 - Best Epoch:0
+2026-02-13 05:43:49 - INFO - Best F1:0.0155 - Best Epoch:0
+/homes/bharanibala/optuna/lib64/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+Using Bert Tweet model: bert-tweet
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/final_model_1_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/final_model_2_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian9, NumShots: 5, N: 5 Test SEED: 1234 F1: 0.0156, Test ECE: 0.2391
+2026-02-13 05:43:57 - INFO - 
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian9, NumShots: 5, N: 5 Test SEED: 1234 F1: 0.0156, Test ECE: 0.2391
+All results: {'f1_macro': 0.015647107781939243, 'ece': np.float64(0.2391325378254668)}
+2026-02-13 05:43:57 - INFO - All results: {'f1_macro': 0.015647107781939243, 'ece': np.float64(0.2391325378254668)}
+
+Total time taken: 490.78 seconds
+2026-02-13 05:43:57 - INFO - 
+Total time taken: 490.78 seconds
+2026-02-13 05:43:57 - INFO - Trial 5 finished with value: 0.015647107781939243 and parameters: {'learning_rate': 0.0006605935035038852, 'weight_decay': 2.17413245378551e-05, 'batch_size': 8, 'co_train_epochs': 11, 'epoch_patience': 8}. Best is trial 1 with value: 0.6486901409954856.
+Using devices: cuda, cuda
+2026-02-13 05:43:57 - INFO - Using devices: cuda, cuda
+Devices: cuda, cuda
+2026-02-13 05:43:57 - INFO - Devices: cuda, cuda
+Starting log
+2026-02-13 05:43:57 - INFO - Starting log
+Dataset: humanitarian9, Event: hurricane_florence_2018, N: 5, Seed: 1234, HF Model: GPT-4o, NumShots: 5, PLM: bert-tweet
+2026-02-13 05:43:57 - INFO - Dataset: humanitarian9, Event: hurricane_florence_2018, N: 5, Seed: 1234, HF Model: GPT-4o, NumShots: 5, PLM: bert-tweet
+Learning Rate: 6.961808672260509e-05
+Weight Decay: 0.000651205846444423
+Batch Size: 64
+No. Epochs: 17
+Epoch Patience: 4
+ Accumulation Steps: 1
+2026-02-13 05:43:58 - INFO - Learning Rate: 6.961808672260509e-05
+Weight Decay: 0.000651205846444423
+Batch Size: 64
+No. Epochs: 17
+Epoch Patience: 4
+ Accumulation Steps: 1
+Using Bert Tweet model: bert-tweet
+Generating initial weights
+2026-02-13 05:43:59 - INFO - Generating initial weights
+Time taken for Epoch 1:16.98 - F1: 0.0470
+2026-02-13 05:44:20 - INFO - Time taken for Epoch 1:16.98 - F1: 0.0470
+Time taken for Epoch 2:16.89 - F1: 0.1068
+2026-02-13 05:44:37 - INFO - Time taken for Epoch 2:16.89 - F1: 0.1068
+Time taken for Epoch 3:16.92 - F1: 0.1422
+2026-02-13 05:44:54 - INFO - Time taken for Epoch 3:16.92 - F1: 0.1422
+Time taken for Epoch 4:16.96 - F1: 0.2137
+2026-02-13 05:45:11 - INFO - Time taken for Epoch 4:16.96 - F1: 0.2137
+Time taken for Epoch 5:16.96 - F1: 0.2590
+2026-02-13 05:45:28 - INFO - Time taken for Epoch 5:16.96 - F1: 0.2590
+Time taken for Epoch 6:16.94 - F1: 0.3058
+2026-02-13 05:45:44 - INFO - Time taken for Epoch 6:16.94 - F1: 0.3058
+Time taken for Epoch 7:16.97 - F1: 0.3365
+2026-02-13 05:46:01 - INFO - Time taken for Epoch 7:16.97 - F1: 0.3365
+Time taken for Epoch 8:16.98 - F1: 0.3274
+2026-02-13 05:46:18 - INFO - Time taken for Epoch 8:16.98 - F1: 0.3274
+Time taken for Epoch 9:16.97 - F1: 0.3217
+2026-02-13 05:46:35 - INFO - Time taken for Epoch 9:16.97 - F1: 0.3217
+Time taken for Epoch 10:17.02 - F1: 0.3269
+2026-02-13 05:46:52 - INFO - Time taken for Epoch 10:17.02 - F1: 0.3269
+Time taken for Epoch 11:17.01 - F1: 0.3323
+2026-02-13 05:47:09 - INFO - Time taken for Epoch 11:17.01 - F1: 0.3323
+Time taken for Epoch 12:17.01 - F1: 0.3382
+2026-02-13 05:47:26 - INFO - Time taken for Epoch 12:17.01 - F1: 0.3382
+Time taken for Epoch 13:17.01 - F1: 0.3464
+2026-02-13 05:47:43 - INFO - Time taken for Epoch 13:17.01 - F1: 0.3464
+Time taken for Epoch 14:16.96 - F1: 0.3439
+2026-02-13 05:48:00 - INFO - Time taken for Epoch 14:16.96 - F1: 0.3439
+Time taken for Epoch 15:16.99 - F1: 0.3462
+2026-02-13 05:48:17 - INFO - Time taken for Epoch 15:16.99 - F1: 0.3462
+Time taken for Epoch 16:16.99 - F1: 0.3450
+2026-02-13 05:48:34 - INFO - Time taken for Epoch 16:16.99 - F1: 0.3450
+Time taken for Epoch 17:17.02 - F1: 0.3399
+2026-02-13 05:48:51 - INFO - Time taken for Epoch 17:17.02 - F1: 0.3399
+Best F1:0.3464 - Best Epoch:13
+2026-02-13 05:48:51 - INFO - Best F1:0.3464 - Best Epoch:13
+Using Bert Tweet model: bert-tweet
+Starting co-training
+2026-02-13 05:48:53 - INFO - Starting co-training
+Time taken for Epoch 1: 40.32s - F1: 0.60361074
+2026-02-13 05:49:34 - INFO - Time taken for Epoch 1: 40.32s - F1: 0.60361074
+Time taken for Epoch 2: 41.53s - F1: 0.61309160
+2026-02-13 05:50:15 - INFO - Time taken for Epoch 2: 41.53s - F1: 0.61309160
+Time taken for Epoch 3: 41.64s - F1: 0.62193768
+2026-02-13 05:50:57 - INFO - Time taken for Epoch 3: 41.64s - F1: 0.62193768
+Time taken for Epoch 4: 41.65s - F1: 0.62998289
+2026-02-13 05:51:38 - INFO - Time taken for Epoch 4: 41.65s - F1: 0.62998289
+Time taken for Epoch 5: 41.70s - F1: 0.63542979
+2026-02-13 05:52:20 - INFO - Time taken for Epoch 5: 41.70s - F1: 0.63542979
+Time taken for Epoch 6: 41.67s - F1: 0.62975755
+2026-02-13 05:53:02 - INFO - Time taken for Epoch 6: 41.67s - F1: 0.62975755
+Time taken for Epoch 7: 40.35s - F1: 0.63271493
+2026-02-13 05:53:42 - INFO - Time taken for Epoch 7: 40.35s - F1: 0.63271493
+Time taken for Epoch 8: 40.40s - F1: 0.63434306
+2026-02-13 05:54:23 - INFO - Time taken for Epoch 8: 40.40s - F1: 0.63434306
+Time taken for Epoch 9: 40.40s - F1: 0.63775803
+2026-02-13 05:55:03 - INFO - Time taken for Epoch 9: 40.40s - F1: 0.63775803
+Time taken for Epoch 10: 41.68s - F1: 0.64244418
+2026-02-13 05:55:45 - INFO - Time taken for Epoch 10: 41.68s - F1: 0.64244418
+Time taken for Epoch 11: 41.70s - F1: 0.63474418
+2026-02-13 05:56:26 - INFO - Time taken for Epoch 11: 41.70s - F1: 0.63474418
+Time taken for Epoch 12: 40.40s - F1: 0.65701932
+2026-02-13 05:57:07 - INFO - Time taken for Epoch 12: 40.40s - F1: 0.65701932
+Time taken for Epoch 13: 41.67s - F1: 0.64687626
+2026-02-13 05:57:48 - INFO - Time taken for Epoch 13: 41.67s - F1: 0.64687626
+Time taken for Epoch 14: 40.37s - F1: 0.67781277
+2026-02-13 05:58:29 - INFO - Time taken for Epoch 14: 40.37s - F1: 0.67781277
+Time taken for Epoch 15: 41.69s - F1: 0.63403657
+2026-02-13 05:59:10 - INFO - Time taken for Epoch 15: 41.69s - F1: 0.63403657
+Time taken for Epoch 16: 40.40s - F1: 0.67768740
+2026-02-13 05:59:51 - INFO - Time taken for Epoch 16: 40.40s - F1: 0.67768740
+Time taken for Epoch 17: 40.40s - F1: 0.64390228
+2026-02-13 06:00:31 - INFO - Time taken for Epoch 17: 40.40s - F1: 0.64390228
+Using Bert Tweet model: bert-tweet
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/co_trained_model_1_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/co_trained_model_2_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+Fine-tuning models
+2026-02-13 06:00:34 - INFO - Fine-tuning models
+Time taken for Epoch 1:2.37 - F1: 0.6697
+2026-02-13 06:00:37 - INFO - Time taken for Epoch 1:2.37 - F1: 0.6697
+Time taken for Epoch 2:3.62 - F1: 0.6828
+2026-02-13 06:00:40 - INFO - Time taken for Epoch 2:3.62 - F1: 0.6828
+Time taken for Epoch 3:3.73 - F1: 0.6739
+2026-02-13 06:00:44 - INFO - Time taken for Epoch 3:3.73 - F1: 0.6739
+Time taken for Epoch 4:2.36 - F1: 0.6551
+2026-02-13 06:00:47 - INFO - Time taken for Epoch 4:2.36 - F1: 0.6551
+Time taken for Epoch 5:2.36 - F1: 0.6538
+2026-02-13 06:00:49 - INFO - Time taken for Epoch 5:2.36 - F1: 0.6538
+Time taken for Epoch 6:2.36 - F1: 0.6540
+2026-02-13 06:00:51 - INFO - Time taken for Epoch 6:2.36 - F1: 0.6540
+Time taken for Epoch 7:2.36 - F1: 0.6584
+2026-02-13 06:00:54 - INFO - Time taken for Epoch 7:2.36 - F1: 0.6584
+Time taken for Epoch 8:2.36 - F1: 0.6608
+2026-02-13 06:00:56 - INFO - Time taken for Epoch 8:2.36 - F1: 0.6608
+Time taken for Epoch 9:2.36 - F1: 0.6625
+2026-02-13 06:00:58 - INFO - Time taken for Epoch 9:2.36 - F1: 0.6625
+Time taken for Epoch 10:2.36 - F1: 0.6684
+2026-02-13 06:01:01 - INFO - Time taken for Epoch 10:2.36 - F1: 0.6684
+Time taken for Epoch 11:2.36 - F1: 0.6634
+2026-02-13 06:01:03 - INFO - Time taken for Epoch 11:2.36 - F1: 0.6634
+Time taken for Epoch 12:2.36 - F1: 0.6647
+2026-02-13 06:01:05 - INFO - Time taken for Epoch 12:2.36 - F1: 0.6647
+Performance not improving for 10 consecutive epochs.
+2026-02-13 06:01:05 - INFO - Performance not improving for 10 consecutive epochs.
+Best F1:0.6828 - Best Epoch:1
+2026-02-13 06:01:05 - INFO - Best F1:0.6828 - Best Epoch:1
+Using Bert Tweet model: bert-tweet
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/final_model_1_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/final_model_2_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian9, NumShots: 5, N: 5 Test SEED: 1234 F1: 0.6864, Test ECE: 0.0346
+2026-02-13 06:01:13 - INFO - 
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian9, NumShots: 5, N: 5 Test SEED: 1234 F1: 0.6864, Test ECE: 0.0346
+All results: {'f1_macro': 0.6864033469270392, 'ece': np.float64(0.03462950598319436)}
+2026-02-13 06:01:13 - INFO - All results: {'f1_macro': 0.6864033469270392, 'ece': np.float64(0.03462950598319436)}
+
+Total time taken: 1035.22 seconds
+2026-02-13 06:01:13 - INFO - 
+Total time taken: 1035.22 seconds
+2026-02-13 06:01:13 - INFO - Trial 6 finished with value: 0.6864033469270392 and parameters: {'learning_rate': 6.961808672260509e-05, 'weight_decay': 0.000651205846444423, 'batch_size': 64, 'co_train_epochs': 17, 'epoch_patience': 4}. Best is trial 6 with value: 0.6864033469270392.
+Using devices: cuda, cuda
+2026-02-13 06:01:13 - INFO - Using devices: cuda, cuda
+Devices: cuda, cuda
+2026-02-13 06:01:13 - INFO - Devices: cuda, cuda
+Starting log
+2026-02-13 06:01:13 - INFO - Starting log
+Dataset: humanitarian9, Event: hurricane_florence_2018, N: 5, Seed: 1234, HF Model: GPT-4o, NumShots: 5, PLM: bert-tweet
+2026-02-13 06:01:13 - INFO - Dataset: humanitarian9, Event: hurricane_florence_2018, N: 5, Seed: 1234, HF Model: GPT-4o, NumShots: 5, PLM: bert-tweet
+Learning Rate: 1.094159124258647e-05
+Weight Decay: 4.555450146595795e-05
+Batch Size: 64
+No. Epochs: 14
+Epoch Patience: 8
+ Accumulation Steps: 1
+2026-02-13 06:01:13 - INFO - Learning Rate: 1.094159124258647e-05
+Weight Decay: 4.555450146595795e-05
+Batch Size: 64
+No. Epochs: 14
+Epoch Patience: 8
+ Accumulation Steps: 1
+Using Bert Tweet model: bert-tweet
+Generating initial weights
+2026-02-13 06:01:14 - INFO - Generating initial weights
+Time taken for Epoch 1:17.00 - F1: 0.0553
+2026-02-13 06:01:35 - INFO - Time taken for Epoch 1:17.00 - F1: 0.0553
+Time taken for Epoch 2:16.92 - F1: 0.0569
+2026-02-13 06:01:52 - INFO - Time taken for Epoch 2:16.92 - F1: 0.0569
+Time taken for Epoch 3:16.91 - F1: 0.0529
+2026-02-13 06:02:09 - INFO - Time taken for Epoch 3:16.91 - F1: 0.0529
+Time taken for Epoch 4:16.92 - F1: 0.0444
+2026-02-13 06:02:26 - INFO - Time taken for Epoch 4:16.92 - F1: 0.0444
+Time taken for Epoch 5:16.98 - F1: 0.0418
+2026-02-13 06:02:43 - INFO - Time taken for Epoch 5:16.98 - F1: 0.0418
+Time taken for Epoch 6:16.96 - F1: 0.0524
+2026-02-13 06:03:00 - INFO - Time taken for Epoch 6:16.96 - F1: 0.0524
+Time taken for Epoch 7:17.00 - F1: 0.0552
+2026-02-13 06:03:17 - INFO - Time taken for Epoch 7:17.00 - F1: 0.0552
+Time taken for Epoch 8:16.95 - F1: 0.0585
+2026-02-13 06:03:34 - INFO - Time taken for Epoch 8:16.95 - F1: 0.0585
+Time taken for Epoch 9:16.99 - F1: 0.0585
+2026-02-13 06:03:51 - INFO - Time taken for Epoch 9:16.99 - F1: 0.0585
+Time taken for Epoch 10:16.99 - F1: 0.0584
+2026-02-13 06:04:08 - INFO - Time taken for Epoch 10:16.99 - F1: 0.0584
+Time taken for Epoch 11:16.98 - F1: 0.0637
+2026-02-13 06:04:25 - INFO - Time taken for Epoch 11:16.98 - F1: 0.0637
+Time taken for Epoch 12:16.96 - F1: 0.0691
+2026-02-13 06:04:42 - INFO - Time taken for Epoch 12:16.96 - F1: 0.0691
+Time taken for Epoch 13:16.96 - F1: 0.0758
+2026-02-13 06:04:58 - INFO - Time taken for Epoch 13:16.96 - F1: 0.0758
+Time taken for Epoch 14:16.97 - F1: 0.0758
+2026-02-13 06:05:15 - INFO - Time taken for Epoch 14:16.97 - F1: 0.0758
+Best F1:0.0758 - Best Epoch:13
+2026-02-13 06:05:15 - INFO - Best F1:0.0758 - Best Epoch:13
+Using Bert Tweet model: bert-tweet
+Starting co-training
+2026-02-13 06:05:17 - INFO - Starting co-training
+Time taken for Epoch 1: 40.30s - F1: 0.34691150
+2026-02-13 06:05:58 - INFO - Time taken for Epoch 1: 40.30s - F1: 0.34691150
+Time taken for Epoch 2: 41.54s - F1: 0.55266873
+2026-02-13 06:06:39 - INFO - Time taken for Epoch 2: 41.54s - F1: 0.55266873
+Time taken for Epoch 3: 41.61s - F1: 0.58536350
+2026-02-13 06:07:21 - INFO - Time taken for Epoch 3: 41.61s - F1: 0.58536350
+Time taken for Epoch 4: 41.67s - F1: 0.60788695
+2026-02-13 06:08:02 - INFO - Time taken for Epoch 4: 41.67s - F1: 0.60788695
+Time taken for Epoch 5: 41.70s - F1: 0.62040898
+2026-02-13 06:08:44 - INFO - Time taken for Epoch 5: 41.70s - F1: 0.62040898
+Time taken for Epoch 6: 41.70s - F1: 0.61976255
+2026-02-13 06:09:26 - INFO - Time taken for Epoch 6: 41.70s - F1: 0.61976255
+Time taken for Epoch 7: 40.38s - F1: 0.60683923
+2026-02-13 06:10:06 - INFO - Time taken for Epoch 7: 40.38s - F1: 0.60683923
+Time taken for Epoch 8: 40.41s - F1: 0.62312605
+2026-02-13 06:10:47 - INFO - Time taken for Epoch 8: 40.41s - F1: 0.62312605
+Time taken for Epoch 9: 41.68s - F1: 0.62247271
+2026-02-13 06:11:28 - INFO - Time taken for Epoch 9: 41.68s - F1: 0.62247271
+Time taken for Epoch 10: 40.33s - F1: 0.63401619
+2026-02-13 06:12:09 - INFO - Time taken for Epoch 10: 40.33s - F1: 0.63401619
+Time taken for Epoch 11: 41.67s - F1: 0.64003329
+2026-02-13 06:12:50 - INFO - Time taken for Epoch 11: 41.67s - F1: 0.64003329
+Time taken for Epoch 12: 41.67s - F1: 0.65256954
+2026-02-13 06:13:32 - INFO - Time taken for Epoch 12: 41.67s - F1: 0.65256954
+Time taken for Epoch 13: 41.65s - F1: 0.64996618
+2026-02-13 06:14:14 - INFO - Time taken for Epoch 13: 41.65s - F1: 0.64996618
+Time taken for Epoch 14: 40.36s - F1: 0.64841626
+2026-02-13 06:14:54 - INFO - Time taken for Epoch 14: 40.36s - F1: 0.64841626
+Using Bert Tweet model: bert-tweet
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/co_trained_model_1_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/co_trained_model_2_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+Fine-tuning models
+2026-02-13 06:14:57 - INFO - Fine-tuning models
+Time taken for Epoch 1:2.37 - F1: 0.6564
+2026-02-13 06:15:00 - INFO - Time taken for Epoch 1:2.37 - F1: 0.6564
+Time taken for Epoch 2:3.58 - F1: 0.6528
+2026-02-13 06:15:03 - INFO - Time taken for Epoch 2:3.58 - F1: 0.6528
+Time taken for Epoch 3:2.36 - F1: 0.6536
+2026-02-13 06:15:06 - INFO - Time taken for Epoch 3:2.36 - F1: 0.6536
+Time taken for Epoch 4:2.36 - F1: 0.6553
+2026-02-13 06:15:08 - INFO - Time taken for Epoch 4:2.36 - F1: 0.6553
+Time taken for Epoch 5:2.36 - F1: 0.6549
+2026-02-13 06:15:10 - INFO - Time taken for Epoch 5:2.36 - F1: 0.6549
+Time taken for Epoch 6:2.36 - F1: 0.6557
+2026-02-13 06:15:13 - INFO - Time taken for Epoch 6:2.36 - F1: 0.6557
+Time taken for Epoch 7:2.36 - F1: 0.6547
+2026-02-13 06:15:15 - INFO - Time taken for Epoch 7:2.36 - F1: 0.6547
+Time taken for Epoch 8:2.36 - F1: 0.6582
+2026-02-13 06:15:17 - INFO - Time taken for Epoch 8:2.36 - F1: 0.6582
+Time taken for Epoch 9:3.68 - F1: 0.6572
+2026-02-13 06:15:21 - INFO - Time taken for Epoch 9:3.68 - F1: 0.6572
+Time taken for Epoch 10:2.36 - F1: 0.6646
+2026-02-13 06:15:23 - INFO - Time taken for Epoch 10:2.36 - F1: 0.6646
+Time taken for Epoch 11:3.68 - F1: 0.6624
+2026-02-13 06:15:27 - INFO - Time taken for Epoch 11:3.68 - F1: 0.6624
+Time taken for Epoch 12:2.36 - F1: 0.6607
+2026-02-13 06:15:30 - INFO - Time taken for Epoch 12:2.36 - F1: 0.6607
+Time taken for Epoch 13:2.36 - F1: 0.6599
+2026-02-13 06:15:32 - INFO - Time taken for Epoch 13:2.36 - F1: 0.6599
+Time taken for Epoch 14:2.36 - F1: 0.6588
+2026-02-13 06:15:34 - INFO - Time taken for Epoch 14:2.36 - F1: 0.6588
+Time taken for Epoch 15:2.36 - F1: 0.6630
+2026-02-13 06:15:37 - INFO - Time taken for Epoch 15:2.36 - F1: 0.6630
+Time taken for Epoch 16:2.36 - F1: 0.6649
+2026-02-13 06:15:39 - INFO - Time taken for Epoch 16:2.36 - F1: 0.6649
+Time taken for Epoch 17:3.67 - F1: 0.6628
+2026-02-13 06:15:43 - INFO - Time taken for Epoch 17:3.67 - F1: 0.6628
+Time taken for Epoch 18:2.36 - F1: 0.6649
+2026-02-13 06:15:45 - INFO - Time taken for Epoch 18:2.36 - F1: 0.6649
+Time taken for Epoch 19:3.69 - F1: 0.6646
+2026-02-13 06:15:49 - INFO - Time taken for Epoch 19:3.69 - F1: 0.6646
+Time taken for Epoch 20:2.36 - F1: 0.6646
+2026-02-13 06:15:51 - INFO - Time taken for Epoch 20:2.36 - F1: 0.6646
+Time taken for Epoch 21:2.36 - F1: 0.6665
+2026-02-13 06:15:53 - INFO - Time taken for Epoch 21:2.36 - F1: 0.6665
+Time taken for Epoch 22:3.68 - F1: 0.6694
+2026-02-13 06:15:57 - INFO - Time taken for Epoch 22:3.68 - F1: 0.6694
+Time taken for Epoch 23:3.68 - F1: 0.6694
+2026-02-13 06:16:01 - INFO - Time taken for Epoch 23:3.68 - F1: 0.6694
+Time taken for Epoch 24:2.36 - F1: 0.6700
+2026-02-13 06:16:03 - INFO - Time taken for Epoch 24:2.36 - F1: 0.6700
+Time taken for Epoch 25:4.28 - F1: 0.6692
+2026-02-13 06:16:07 - INFO - Time taken for Epoch 25:4.28 - F1: 0.6692
+Time taken for Epoch 26:2.36 - F1: 0.6688
+2026-02-13 06:16:10 - INFO - Time taken for Epoch 26:2.36 - F1: 0.6688
+Time taken for Epoch 27:2.35 - F1: 0.6710
+2026-02-13 06:16:12 - INFO - Time taken for Epoch 27:2.35 - F1: 0.6710
+Time taken for Epoch 28:3.69 - F1: 0.6697
+2026-02-13 06:16:16 - INFO - Time taken for Epoch 28:3.69 - F1: 0.6697
+Time taken for Epoch 29:2.35 - F1: 0.6681
+2026-02-13 06:16:18 - INFO - Time taken for Epoch 29:2.35 - F1: 0.6681
+Time taken for Epoch 30:2.35 - F1: 0.6698
+2026-02-13 06:16:20 - INFO - Time taken for Epoch 30:2.35 - F1: 0.6698
+Time taken for Epoch 31:2.35 - F1: 0.6660
+2026-02-13 06:16:23 - INFO - Time taken for Epoch 31:2.35 - F1: 0.6660
+Time taken for Epoch 32:2.35 - F1: 0.6663
+2026-02-13 06:16:25 - INFO - Time taken for Epoch 32:2.35 - F1: 0.6663
+Time taken for Epoch 33:2.36 - F1: 0.6679
+2026-02-13 06:16:28 - INFO - Time taken for Epoch 33:2.36 - F1: 0.6679
+Time taken for Epoch 34:2.35 - F1: 0.6666
+2026-02-13 06:16:30 - INFO - Time taken for Epoch 34:2.35 - F1: 0.6666
+Time taken for Epoch 35:2.36 - F1: 0.6676
+2026-02-13 06:16:32 - INFO - Time taken for Epoch 35:2.36 - F1: 0.6676
+Time taken for Epoch 36:2.36 - F1: 0.6686
+2026-02-13 06:16:35 - INFO - Time taken for Epoch 36:2.36 - F1: 0.6686
+Time taken for Epoch 37:2.36 - F1: 0.6713
+2026-02-13 06:16:37 - INFO - Time taken for Epoch 37:2.36 - F1: 0.6713
+Time taken for Epoch 38:3.67 - F1: 0.6710
+2026-02-13 06:16:41 - INFO - Time taken for Epoch 38:3.67 - F1: 0.6710
+Time taken for Epoch 39:2.35 - F1: 0.6721
+2026-02-13 06:16:43 - INFO - Time taken for Epoch 39:2.35 - F1: 0.6721
+Time taken for Epoch 40:3.70 - F1: 0.6690
+2026-02-13 06:16:47 - INFO - Time taken for Epoch 40:3.70 - F1: 0.6690
+Time taken for Epoch 41:2.36 - F1: 0.6657
+2026-02-13 06:16:49 - INFO - Time taken for Epoch 41:2.36 - F1: 0.6657
+Time taken for Epoch 42:2.35 - F1: 0.6634
+2026-02-13 06:16:51 - INFO - Time taken for Epoch 42:2.35 - F1: 0.6634
+Time taken for Epoch 43:2.35 - F1: 0.6611
+2026-02-13 06:16:54 - INFO - Time taken for Epoch 43:2.35 - F1: 0.6611
+Time taken for Epoch 44:2.36 - F1: 0.6575
+2026-02-13 06:16:56 - INFO - Time taken for Epoch 44:2.36 - F1: 0.6575
+Time taken for Epoch 45:2.35 - F1: 0.6575
+2026-02-13 06:16:58 - INFO - Time taken for Epoch 45:2.35 - F1: 0.6575
+Time taken for Epoch 46:2.36 - F1: 0.6559
+2026-02-13 06:17:01 - INFO - Time taken for Epoch 46:2.36 - F1: 0.6559
+Time taken for Epoch 47:2.37 - F1: 0.6561
+2026-02-13 06:17:03 - INFO - Time taken for Epoch 47:2.37 - F1: 0.6561
+Time taken for Epoch 48:2.37 - F1: 0.6562
+2026-02-13 06:17:06 - INFO - Time taken for Epoch 48:2.37 - F1: 0.6562
+Time taken for Epoch 49:2.37 - F1: 0.6566
+2026-02-13 06:17:08 - INFO - Time taken for Epoch 49:2.37 - F1: 0.6566
+Performance not improving for 10 consecutive epochs.
+2026-02-13 06:17:08 - INFO - Performance not improving for 10 consecutive epochs.
+Best F1:0.6721 - Best Epoch:38
+2026-02-13 06:17:08 - INFO - Best F1:0.6721 - Best Epoch:38
+Using Bert Tweet model: bert-tweet
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/final_model_1_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/final_model_2_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian9, NumShots: 5, N: 5 Test SEED: 1234 F1: 0.6641, Test ECE: 0.0427
+2026-02-13 06:17:15 - INFO - 
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian9, NumShots: 5, N: 5 Test SEED: 1234 F1: 0.6641, Test ECE: 0.0427
+All results: {'f1_macro': 0.6640841889256772, 'ece': np.float64(0.042731153302188844)}
+2026-02-13 06:17:15 - INFO - All results: {'f1_macro': 0.6640841889256772, 'ece': np.float64(0.042731153302188844)}
+
+Total time taken: 962.79 seconds
+2026-02-13 06:17:15 - INFO - 
+Total time taken: 962.79 seconds
+2026-02-13 06:17:15 - INFO - Trial 7 finished with value: 0.6640841889256772 and parameters: {'learning_rate': 1.094159124258647e-05, 'weight_decay': 4.555450146595795e-05, 'batch_size': 64, 'co_train_epochs': 14, 'epoch_patience': 8}. Best is trial 6 with value: 0.6864033469270392.
+Using devices: cuda, cuda
+2026-02-13 06:17:15 - INFO - Using devices: cuda, cuda
+Devices: cuda, cuda
+2026-02-13 06:17:15 - INFO - Devices: cuda, cuda
+Starting log
+2026-02-13 06:17:15 - INFO - Starting log
+Dataset: humanitarian9, Event: hurricane_florence_2018, N: 5, Seed: 1234, HF Model: GPT-4o, NumShots: 5, PLM: bert-tweet
+2026-02-13 06:17:15 - INFO - Dataset: humanitarian9, Event: hurricane_florence_2018, N: 5, Seed: 1234, HF Model: GPT-4o, NumShots: 5, PLM: bert-tweet
+Learning Rate: 2.2479298589529918e-05
+Weight Decay: 0.0011224105973910536
+Batch Size: 16
+No. Epochs: 17
+Epoch Patience: 4
+ Accumulation Steps: 4
+2026-02-13 06:17:16 - INFO - Learning Rate: 2.2479298589529918e-05
+Weight Decay: 0.0011224105973910536
+Batch Size: 16
+No. Epochs: 17
+Epoch Patience: 4
+ Accumulation Steps: 4
+Using Bert Tweet model: bert-tweet
+Generating initial weights
+2026-02-13 06:17:17 - INFO - Generating initial weights
+Time taken for Epoch 1:18.38 - F1: 0.0379
+2026-02-13 06:17:39 - INFO - Time taken for Epoch 1:18.38 - F1: 0.0379
+Time taken for Epoch 2:18.33 - F1: 0.0219
+2026-02-13 06:17:58 - INFO - Time taken for Epoch 2:18.33 - F1: 0.0219
+Time taken for Epoch 3:18.36 - F1: 0.0162
+2026-02-13 06:18:16 - INFO - Time taken for Epoch 3:18.36 - F1: 0.0162
+Time taken for Epoch 4:18.38 - F1: 0.0156
+2026-02-13 06:18:34 - INFO - Time taken for Epoch 4:18.38 - F1: 0.0156
+Time taken for Epoch 5:18.41 - F1: 0.0155
+2026-02-13 06:18:53 - INFO - Time taken for Epoch 5:18.41 - F1: 0.0155
+Time taken for Epoch 6:18.42 - F1: 0.0155
+2026-02-13 06:19:11 - INFO - Time taken for Epoch 6:18.42 - F1: 0.0155
+Time taken for Epoch 7:18.46 - F1: 0.0155
+2026-02-13 06:19:30 - INFO - Time taken for Epoch 7:18.46 - F1: 0.0155
+Time taken for Epoch 8:18.43 - F1: 0.0155
+2026-02-13 06:19:48 - INFO - Time taken for Epoch 8:18.43 - F1: 0.0155
+Time taken for Epoch 9:18.44 - F1: 0.0155
+2026-02-13 06:20:07 - INFO - Time taken for Epoch 9:18.44 - F1: 0.0155
+Time taken for Epoch 10:18.42 - F1: 0.0155
+2026-02-13 06:20:25 - INFO - Time taken for Epoch 10:18.42 - F1: 0.0155
+Time taken for Epoch 11:18.42 - F1: 0.0155
+2026-02-13 06:20:43 - INFO - Time taken for Epoch 11:18.42 - F1: 0.0155
+Time taken for Epoch 12:18.43 - F1: 0.0155
+2026-02-13 06:21:02 - INFO - Time taken for Epoch 12:18.43 - F1: 0.0155
+Time taken for Epoch 13:18.46 - F1: 0.0155
+2026-02-13 06:21:20 - INFO - Time taken for Epoch 13:18.46 - F1: 0.0155
+Time taken for Epoch 14:18.46 - F1: 0.0155
+2026-02-13 06:21:39 - INFO - Time taken for Epoch 14:18.46 - F1: 0.0155
+Time taken for Epoch 15:18.46 - F1: 0.0155
+2026-02-13 06:21:57 - INFO - Time taken for Epoch 15:18.46 - F1: 0.0155
+Time taken for Epoch 16:18.42 - F1: 0.0155
+2026-02-13 06:22:16 - INFO - Time taken for Epoch 16:18.42 - F1: 0.0155
+Time taken for Epoch 17:18.42 - F1: 0.0155
+2026-02-13 06:22:34 - INFO - Time taken for Epoch 17:18.42 - F1: 0.0155
+Best F1:0.0379 - Best Epoch:1
+2026-02-13 06:22:34 - INFO - Best F1:0.0379 - Best Epoch:1
+Using Bert Tweet model: bert-tweet
+Starting co-training
+2026-02-13 06:22:35 - INFO - Starting co-training
+Time taken for Epoch 1: 25.54s - F1: 0.39187259
+2026-02-13 06:23:01 - INFO - Time taken for Epoch 1: 25.54s - F1: 0.39187259
+Time taken for Epoch 2: 26.73s - F1: 0.53364654
+2026-02-13 06:23:28 - INFO - Time taken for Epoch 2: 26.73s - F1: 0.53364654
+Time taken for Epoch 3: 26.79s - F1: 0.58319119
+2026-02-13 06:23:55 - INFO - Time taken for Epoch 3: 26.79s - F1: 0.58319119
+Time taken for Epoch 4: 26.83s - F1: 0.59848337
+2026-02-13 06:24:22 - INFO - Time taken for Epoch 4: 26.83s - F1: 0.59848337
+Time taken for Epoch 5: 26.77s - F1: 0.60903307
+2026-02-13 06:24:49 - INFO - Time taken for Epoch 5: 26.77s - F1: 0.60903307
+Time taken for Epoch 6: 26.82s - F1: 0.61980002
+2026-02-13 06:25:15 - INFO - Time taken for Epoch 6: 26.82s - F1: 0.61980002
+Time taken for Epoch 7: 26.84s - F1: 0.61362336
+2026-02-13 06:25:42 - INFO - Time taken for Epoch 7: 26.84s - F1: 0.61362336
+Time taken for Epoch 8: 25.56s - F1: 0.62254470
+2026-02-13 06:26:08 - INFO - Time taken for Epoch 8: 25.56s - F1: 0.62254470
+Time taken for Epoch 9: 26.82s - F1: 0.62639709
+2026-02-13 06:26:35 - INFO - Time taken for Epoch 9: 26.82s - F1: 0.62639709
+Time taken for Epoch 10: 26.81s - F1: 0.64264611
+2026-02-13 06:27:01 - INFO - Time taken for Epoch 10: 26.81s - F1: 0.64264611
+Time taken for Epoch 11: 26.77s - F1: 0.63385444
+2026-02-13 06:27:28 - INFO - Time taken for Epoch 11: 26.77s - F1: 0.63385444
+Time taken for Epoch 12: 25.49s - F1: 0.64143594
+2026-02-13 06:27:54 - INFO - Time taken for Epoch 12: 25.49s - F1: 0.64143594
+Time taken for Epoch 13: 25.52s - F1: 0.65927534
+2026-02-13 06:28:19 - INFO - Time taken for Epoch 13: 25.52s - F1: 0.65927534
+Time taken for Epoch 14: 26.84s - F1: 0.64070653
+2026-02-13 06:28:46 - INFO - Time taken for Epoch 14: 26.84s - F1: 0.64070653
+Time taken for Epoch 15: 25.57s - F1: 0.68600996
+2026-02-13 06:29:12 - INFO - Time taken for Epoch 15: 25.57s - F1: 0.68600996
+Time taken for Epoch 16: 26.82s - F1: 0.66118449
+2026-02-13 06:29:38 - INFO - Time taken for Epoch 16: 26.82s - F1: 0.66118449
+Time taken for Epoch 17: 25.54s - F1: 0.66210723
+2026-02-13 06:30:04 - INFO - Time taken for Epoch 17: 25.54s - F1: 0.66210723
+Using Bert Tweet model: bert-tweet
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/co_trained_model_1_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/co_trained_model_2_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+Fine-tuning models
+2026-02-13 06:30:07 - INFO - Fine-tuning models
+Time taken for Epoch 1:2.60 - F1: 0.6812
+2026-02-13 06:30:10 - INFO - Time taken for Epoch 1:2.60 - F1: 0.6812
+Time taken for Epoch 2:3.76 - F1: 0.6907
+2026-02-13 06:30:14 - INFO - Time taken for Epoch 2:3.76 - F1: 0.6907
+Time taken for Epoch 3:3.85 - F1: 0.6982
+2026-02-13 06:30:17 - INFO - Time taken for Epoch 3:3.85 - F1: 0.6982
+Time taken for Epoch 4:3.86 - F1: 0.6797
+2026-02-13 06:30:21 - INFO - Time taken for Epoch 4:3.86 - F1: 0.6797
+Time taken for Epoch 5:2.57 - F1: 0.6601
+2026-02-13 06:30:24 - INFO - Time taken for Epoch 5:2.57 - F1: 0.6601
+Time taken for Epoch 6:2.57 - F1: 0.6558
+2026-02-13 06:30:26 - INFO - Time taken for Epoch 6:2.57 - F1: 0.6558
+Time taken for Epoch 7:2.57 - F1: 0.6503
+2026-02-13 06:30:29 - INFO - Time taken for Epoch 7:2.57 - F1: 0.6503
+Time taken for Epoch 8:2.58 - F1: 0.6538
+2026-02-13 06:30:32 - INFO - Time taken for Epoch 8:2.58 - F1: 0.6538
+Time taken for Epoch 9:2.58 - F1: 0.6512
+2026-02-13 06:30:34 - INFO - Time taken for Epoch 9:2.58 - F1: 0.6512
+Time taken for Epoch 10:2.57 - F1: 0.6498
+2026-02-13 06:30:37 - INFO - Time taken for Epoch 10:2.57 - F1: 0.6498
+Time taken for Epoch 11:2.57 - F1: 0.6532
+2026-02-13 06:30:39 - INFO - Time taken for Epoch 11:2.57 - F1: 0.6532
+Time taken for Epoch 12:2.57 - F1: 0.6514
+2026-02-13 06:30:42 - INFO - Time taken for Epoch 12:2.57 - F1: 0.6514
+Time taken for Epoch 13:2.57 - F1: 0.6553
+2026-02-13 06:30:44 - INFO - Time taken for Epoch 13:2.57 - F1: 0.6553
+Performance not improving for 10 consecutive epochs.
+2026-02-13 06:30:44 - INFO - Performance not improving for 10 consecutive epochs.
+Best F1:0.6982 - Best Epoch:2
+2026-02-13 06:30:44 - INFO - Best F1:0.6982 - Best Epoch:2
+Using Bert Tweet model: bert-tweet
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/final_model_1_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/final_model_2_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian9, NumShots: 5, N: 5 Test SEED: 1234 F1: 0.6457, Test ECE: 0.0367
+2026-02-13 06:30:52 - INFO - 
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian9, NumShots: 5, N: 5 Test SEED: 1234 F1: 0.6457, Test ECE: 0.0367
+All results: {'f1_macro': 0.6456820370520955, 'ece': np.float64(0.03669799416416793)}
+2026-02-13 06:30:52 - INFO - All results: {'f1_macro': 0.6456820370520955, 'ece': np.float64(0.03669799416416793)}
+
+Total time taken: 816.62 seconds
+2026-02-13 06:30:52 - INFO - 
+Total time taken: 816.62 seconds
+2026-02-13 06:30:52 - INFO - Trial 8 finished with value: 0.6456820370520955 and parameters: {'learning_rate': 2.2479298589529918e-05, 'weight_decay': 0.0011224105973910536, 'batch_size': 16, 'co_train_epochs': 17, 'epoch_patience': 4}. Best is trial 6 with value: 0.6864033469270392.
+Using devices: cuda, cuda
+2026-02-13 06:30:52 - INFO - Using devices: cuda, cuda
+Devices: cuda, cuda
+2026-02-13 06:30:52 - INFO - Devices: cuda, cuda
+Starting log
+2026-02-13 06:30:52 - INFO - Starting log
+Dataset: humanitarian9, Event: hurricane_florence_2018, N: 5, Seed: 1234, HF Model: GPT-4o, NumShots: 5, PLM: bert-tweet
+2026-02-13 06:30:52 - INFO - Dataset: humanitarian9, Event: hurricane_florence_2018, N: 5, Seed: 1234, HF Model: GPT-4o, NumShots: 5, PLM: bert-tweet
+Learning Rate: 0.00029949942251045886
+Weight Decay: 7.023275449283964e-05
+Batch Size: 16
+No. Epochs: 12
+Epoch Patience: 6
+ Accumulation Steps: 4
+2026-02-13 06:30:53 - INFO - Learning Rate: 0.00029949942251045886
+Weight Decay: 7.023275449283964e-05
+Batch Size: 16
+No. Epochs: 12
+Epoch Patience: 6
+ Accumulation Steps: 4
+Using Bert Tweet model: bert-tweet
+Generating initial weights
+2026-02-13 06:30:54 - INFO - Generating initial weights
+Time taken for Epoch 1:18.45 - F1: 0.0155
+2026-02-13 06:31:16 - INFO - Time taken for Epoch 1:18.45 - F1: 0.0155
+Time taken for Epoch 2:18.30 - F1: 0.0155
+2026-02-13 06:31:34 - INFO - Time taken for Epoch 2:18.30 - F1: 0.0155
+Time taken for Epoch 3:18.32 - F1: 0.0155
+2026-02-13 06:31:53 - INFO - Time taken for Epoch 3:18.32 - F1: 0.0155
+Time taken for Epoch 4:18.38 - F1: 0.0155
+2026-02-13 06:32:11 - INFO - Time taken for Epoch 4:18.38 - F1: 0.0155
+Time taken for Epoch 5:18.35 - F1: 0.2360
+2026-02-13 06:32:29 - INFO - Time taken for Epoch 5:18.35 - F1: 0.2360
+Time taken for Epoch 6:18.36 - F1: 0.2622
+2026-02-13 06:32:48 - INFO - Time taken for Epoch 6:18.36 - F1: 0.2622
+Time taken for Epoch 7:18.37 - F1: 0.2319
+2026-02-13 06:33:06 - INFO - Time taken for Epoch 7:18.37 - F1: 0.2319
+Time taken for Epoch 8:18.41 - F1: 0.2278
+2026-02-13 06:33:25 - INFO - Time taken for Epoch 8:18.41 - F1: 0.2278
+Time taken for Epoch 9:18.47 - F1: 0.2342
+2026-02-13 06:33:43 - INFO - Time taken for Epoch 9:18.47 - F1: 0.2342
+Time taken for Epoch 10:18.42 - F1: 0.2570
+2026-02-13 06:34:01 - INFO - Time taken for Epoch 10:18.42 - F1: 0.2570
+Time taken for Epoch 11:18.42 - F1: 0.2529
+2026-02-13 06:34:20 - INFO - Time taken for Epoch 11:18.42 - F1: 0.2529
+Time taken for Epoch 12:18.44 - F1: 0.2395
+2026-02-13 06:34:38 - INFO - Time taken for Epoch 12:18.44 - F1: 0.2395
+Best F1:0.2622 - Best Epoch:6
+2026-02-13 06:34:38 - INFO - Best F1:0.2622 - Best Epoch:6
+Using Bert Tweet model: bert-tweet
+Starting co-training
+2026-02-13 06:34:40 - INFO - Starting co-training
+Time taken for Epoch 1: 25.53s - F1: 0.03852235
+2026-02-13 06:35:06 - INFO - Time taken for Epoch 1: 25.53s - F1: 0.03852235
+Time taken for Epoch 2: 26.74s - F1: 0.03212851
+2026-02-13 06:35:32 - INFO - Time taken for Epoch 2: 26.74s - F1: 0.03212851
+Time taken for Epoch 3: 25.49s - F1: 0.03212851
+2026-02-13 06:35:58 - INFO - Time taken for Epoch 3: 25.49s - F1: 0.03212851
+Time taken for Epoch 4: 25.52s - F1: 0.04247539
+2026-02-13 06:36:23 - INFO - Time taken for Epoch 4: 25.52s - F1: 0.04247539
+Time taken for Epoch 5: 26.86s - F1: 0.04247539
+2026-02-13 06:36:50 - INFO - Time taken for Epoch 5: 26.86s - F1: 0.04247539
+Time taken for Epoch 6: 25.52s - F1: 0.04247539
+2026-02-13 06:37:16 - INFO - Time taken for Epoch 6: 25.52s - F1: 0.04247539
+Time taken for Epoch 7: 25.48s - F1: 0.04247539
+2026-02-13 06:37:41 - INFO - Time taken for Epoch 7: 25.48s - F1: 0.04247539
+Time taken for Epoch 8: 25.46s - F1: 0.04247539
+2026-02-13 06:38:07 - INFO - Time taken for Epoch 8: 25.46s - F1: 0.04247539
+Time taken for Epoch 9: 25.46s - F1: 0.04247539
+2026-02-13 06:38:32 - INFO - Time taken for Epoch 9: 25.46s - F1: 0.04247539
+Time taken for Epoch 10: 25.48s - F1: 0.04247539
+2026-02-13 06:38:58 - INFO - Time taken for Epoch 10: 25.48s - F1: 0.04247539
+Performance not improving for 6 consecutive epochs.
+Performance not improving for 6 consecutive epochs.
+2026-02-13 06:38:58 - INFO - Performance not improving for 6 consecutive epochs.
+Using Bert Tweet model: bert-tweet
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/co_trained_model_1_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/co_trained_model_2_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+Fine-tuning models
+2026-02-13 06:39:00 - INFO - Fine-tuning models
+Time taken for Epoch 1:2.61 - F1: 0.0425
+2026-02-13 06:39:03 - INFO - Time taken for Epoch 1:2.61 - F1: 0.0425
+Time taken for Epoch 2:3.83 - F1: 0.0425
+2026-02-13 06:39:07 - INFO - Time taken for Epoch 2:3.83 - F1: 0.0425
+Time taken for Epoch 3:2.60 - F1: 0.0425
+2026-02-13 06:39:10 - INFO - Time taken for Epoch 3:2.60 - F1: 0.0425
+Time taken for Epoch 4:2.60 - F1: 0.0425
+2026-02-13 06:39:12 - INFO - Time taken for Epoch 4:2.60 - F1: 0.0425
+Time taken for Epoch 5:2.60 - F1: 0.0425
+2026-02-13 06:39:15 - INFO - Time taken for Epoch 5:2.60 - F1: 0.0425
+Time taken for Epoch 6:2.60 - F1: 0.0425
+2026-02-13 06:39:17 - INFO - Time taken for Epoch 6:2.60 - F1: 0.0425
+Time taken for Epoch 7:2.60 - F1: 0.0155
+2026-02-13 06:39:20 - INFO - Time taken for Epoch 7:2.60 - F1: 0.0155
+Time taken for Epoch 8:2.60 - F1: 0.0155
+2026-02-13 06:39:23 - INFO - Time taken for Epoch 8:2.60 - F1: 0.0155
+Time taken for Epoch 9:2.60 - F1: 0.0155
+2026-02-13 06:39:25 - INFO - Time taken for Epoch 9:2.60 - F1: 0.0155
+Time taken for Epoch 10:2.60 - F1: 0.0155
+2026-02-13 06:39:28 - INFO - Time taken for Epoch 10:2.60 - F1: 0.0155
+Time taken for Epoch 11:2.59 - F1: 0.0155
+2026-02-13 06:39:30 - INFO - Time taken for Epoch 11:2.59 - F1: 0.0155
+Performance not improving for 10 consecutive epochs.
+2026-02-13 06:39:30 - INFO - Performance not improving for 10 consecutive epochs.
+Best F1:0.0425 - Best Epoch:0
+2026-02-13 06:39:30 - INFO - Best F1:0.0425 - Best Epoch:0
+/homes/bharanibala/optuna/lib64/python3.9/site-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f"{metric.capitalize()} is", len(result))
+Using Bert Tweet model: bert-tweet
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/final_model_1_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+Successfully deleted /homes/bharanibala/llmcot/saved_models/humanitarian9/optuna-bertweet-hurricane-florence-2018-label5-set2/final_model_2_optuna-bertweet-hurricane-florence-2018-label5-set2_gpt4o_5_shot_bert-tweet_5_seed_1234.pt
+
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian9, NumShots: 5, N: 5 Test SEED: 1234 F1: 0.0424, Test ECE: 0.3784
+2026-02-13 06:39:38 - INFO - 
+
+Hf Model: GPT-4o PLM: bert-tweet Dataset: humanitarian9, NumShots: 5, N: 5 Test SEED: 1234 F1: 0.0424, Test ECE: 0.3784
+All results: {'f1_macro': 0.042445313631754314, 'ece': np.float64(0.3784311064109987)}
+2026-02-13 06:39:38 - INFO - All results: {'f1_macro': 0.042445313631754314, 'ece': np.float64(0.3784311064109987)}
+
+Total time taken: 525.96 seconds
+2026-02-13 06:39:38 - INFO - 
+Total time taken: 525.96 seconds
+2026-02-13 06:39:38 - INFO - Trial 9 finished with value: 0.042445313631754314 and parameters: {'learning_rate': 0.00029949942251045886, 'weight_decay': 7.023275449283964e-05, 'batch_size': 16, 'co_train_epochs': 12, 'epoch_patience': 6}. Best is trial 6 with value: 0.6864033469270392.
+
+[BEST TRIAL RESULTS]
+2026-02-13 06:39:38 - INFO - 
+[BEST TRIAL RESULTS]
+F1 Score: 0.6864
+2026-02-13 06:39:38 - INFO - F1 Score: 0.6864
+Params: {'learning_rate': 6.961808672260509e-05, 'weight_decay': 0.000651205846444423, 'batch_size': 64, 'co_train_epochs': 17, 'epoch_patience': 4}
+2026-02-13 06:39:38 - INFO - Params: {'learning_rate': 6.961808672260509e-05, 'weight_decay': 0.000651205846444423, 'batch_size': 64, 'co_train_epochs': 17, 'epoch_patience': 4}
+  learning_rate: 6.961808672260509e-05
+2026-02-13 06:39:38 - INFO -   learning_rate: 6.961808672260509e-05
+  weight_decay: 0.000651205846444423
+2026-02-13 06:39:38 - INFO -   weight_decay: 0.000651205846444423
+  batch_size: 64
+2026-02-13 06:39:38 - INFO -   batch_size: 64
+  co_train_epochs: 17
+2026-02-13 06:39:38 - INFO -   co_train_epochs: 17
+  epoch_patience: 4
+2026-02-13 06:39:38 - INFO -   epoch_patience: 4
+
+Total time taken: 6653.04 seconds
+2026-02-13 06:39:38 - INFO - 
+Total time taken: 6653.04 seconds

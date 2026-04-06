@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LLM Error Analysis — CrisisMMD · California Wildfires 2018</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;500;700;800&family=Instrument+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+:root {
+  --bg: #0a0a0f;
+  --surface: #111118;
+  --surface2: #1a1a24;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.13);
+  --text: #e8e6f0;
+  --muted: #7a7890;
+  --accent: #7c6af7;
+  --accent2: #f7c26a;
+  --accent3: #6af7b8;
+  --danger: #f76a7c;
+  --warn: #f7b26a;
+  --good: #6af7a0;
+  --font-head: 'Syne', sans-serif;
+  --font-body: 'Instrument Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --radius: 10px;
+  --radius-lg: 16px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+.header {
+  border-bottom: 1px solid var(--border);
+  padding: 2.5rem 2rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: end;
+  background: linear-gradient(180deg, #0d0c18 0%, var(--bg) 100%);
+}
+.header-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.header h1 {
+  font-family: var(--font-head);
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+.header h1 span { color: var(--accent2); }
+.header-meta {
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 2;
+}
+.header-meta strong { color: var(--text); font-weight: 500; }
+
+/* ── LAYOUT ── */
+.main { max-width: 1280px; margin: 0 auto; padding: 2rem; }
+.section { margin-bottom: 2.5rem; }
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 12px; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
+
+/* ── CARDS ── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+}
+.card-title {
+  font-family: var(--font-head);
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1rem;
+  letter-spacing: 0.01em;
+}
+
+/* ── METRIC CARDS ── */
+.metric {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.metric::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+}
+.metric.accent::before { background: var(--accent); }
+.metric.accent2::before { background: var(--accent2); }
+.metric.danger::before { background: var(--danger); }
+.metric.good::before { background: var(--good); }
+.metric-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+.metric-val {
+  font-family: var(--font-head);
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #fff;
+}
+.metric-val.accent { color: var(--accent); }
+.metric-val.accent2 { color: var(--accent2); }
+.metric-val.danger { color: var(--danger); }
+.metric-val.good { color: var(--good); }
+.metric-sub {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 0.35rem;
+}
+
+/* ── TABS ── */
+.tabs { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 1rem; }
+.tab {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  padding: 5px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border2);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.tab:hover { color: var(--text); border-color: var(--accent); }
+.tab.active {
+  background: rgba(124,106,247,0.15);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ── CONFUSION MATRIX ── */
+#cmContainer {
+  overflow-x: auto;
+  margin-top: 0.5rem;
+}
+.cm-table {
+  border-collapse: collapse;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  width: 100%;
+}
+.cm-table td, .cm-table th {
+  padding: 5px 4px;
+  text-align: center;
+  min-width: 48px;
+}
+.cm-table .row-label {
+  text-align: right;
+  padding-right: 10px;
+  color: var(--muted);
+  font-size: 9px;
+  white-space: nowrap;
+  min-width: 100px;
+}
+.cm-table .col-label {
+  color: var(--muted);
+  font-size: 9px;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  padding: 6px 2px;
+  height: 80px;
+  vertical-align: bottom;
+}
+.cm-table .corner { min-width: 100px; }
+
+/* ── CALIBRATION BAR ── */
+.cal-row {
+  display: grid;
+  grid-template-columns: 60px 1fr 80px;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.cal-label { font-family: var(--font-mono); font-size: 11px; color: var(--muted); text-align: right; }
+.cal-track {
+  height: 22px;
+  background: var(--surface2);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+.cal-fill {
+  height: 100%;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  transition: width 0.6s ease;
+}
+.cal-ideal {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: rgba(255,255,255,0.15);
+}
+.cal-n { font-family: var(--font-mono); font-size: 10px; color: var(--muted); text-align: right; }
+
+/* ── ERROR EXAMPLE CARDS ── */
+.ex-card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.9rem 1rem;
+  margin-bottom: 8px;
+  transition: border-color 0.15s;
+}
+.ex-card:hover { border-color: var(--border2); }
+.ex-badges { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 7px; align-items: center; }
+.badge {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+.badge-true { background: rgba(106,247,160,0.12); color: var(--good); border: 1px solid rgba(106,247,160,0.2); }
+.badge-pred { background: rgba(247,106,124,0.12); color: var(--danger); border: 1px solid rgba(247,106,124,0.2); }
+.badge-conf { background: rgba(247,178,106,0.1); color: var(--warn); border: 1px solid rgba(247,178,106,0.18); }
+.ex-tweet { font-size: 12px; color: var(--text); line-height: 1.5; margin-bottom: 6px; }
+.ex-cause { font-size: 11px; color: var(--muted); font-style: italic; }
+.ex-cause-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-right: 4px;
+}
+
+/* ── ERROR DEST TABLE ── */
+.dest-table { width: 100%; border-collapse: collapse; }
+.dest-table tr { border-bottom: 1px solid var(--border); }
+.dest-table tr:last-child { border-bottom: none; }
+.dest-table td { padding: 7px 4px; font-size: 12px; vertical-align: top; }
+.dest-table .class-col { color: var(--text); font-weight: 500; min-width: 130px; }
+.dest-table .err-col { font-family: var(--font-mono); font-size: 11px; width: 40px; text-align: right; }
+.dest-pill-row { display: flex; flex-wrap: wrap; gap: 4px; }
+.dest-pill {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: var(--surface2);
+  border: 1px solid var(--border2);
+  color: var(--muted);
+  white-space: nowrap;
+}
+.err-rate-bar {
+  height: 4px;
+  background: var(--surface2);
+  border-radius: 2px;
+  margin-top: 3px;
+  overflow: hidden;
+}
+.err-rate-fill { height: 100%; border-radius: 2px; }
+
+/* ── INSIGHT CARDS ── */
+.insight {
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 0.9rem 1rem;
+  margin-bottom: 10px;
+}
+.insight.danger { border-left-color: var(--danger); }
+.insight.warn { border-left-color: var(--warn); }
+.insight.good { border-left-color: var(--good); }
+.insight-title {
+  font-family: var(--font-head);
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+.insight-body { font-size: 12px; color: var(--muted); line-height: 1.6; }
+.insight-body strong { color: var(--text); }
+
+/* ── LEGEND ── */
+.legend { display: flex; flex-wrap: wrap; gap: 12px; font-size: 11px; color: var(--muted); margin-bottom: 10px; }
+.legend-item { display: flex; align-items: center; gap: 5px; }
+.legend-dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+
+/* ── FOOTER ── */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 2rem;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 900px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-2 { grid-template-columns: 1fr; }
+  .grid-3 { grid-template-columns: 1fr; }
+  .header { grid-template-columns: 1fr; }
+  .header-meta { text-align: left; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <div class="header-eyebrow">LLM Zero-Shot · HumAID Dataset · Error Analysis</div>
+    <h1>California Wildfires <span>2018</span><br>Prediction Report</h1>
+  </div>
+  <div class="header-meta">
+    <div><strong>Model</strong> LLM Zero-Shot (Text-Only)</div>
+    <div><strong>Dataset</strong> HumAID — CrisisMMD</div>
+    <div><strong>Event</strong> California Wildfires 2018</div>
+    <div><strong>Total Samples</strong> 5,163</div>
+    <div><strong>Task</strong> 10-class Humanitarian Classification</div>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- ── SECTION 1: SUMMARY METRICS ── -->
+  <div class="section">
+    <div class="section-label">01 · Summary metrics</div>
+    <div class="grid-4">
+      <div class="metric accent">
+        <div class="metric-label">Overall accuracy</div>
+        <div class="metric-val accent">71.9%</div>
+        <div class="metric-sub">3,714 / 5,163 correct</div>
+      </div>
+      <div class="metric accent2">
+        <div class="metric-label">Macro F1</div>
+        <div class="metric-val accent2">0.633</div>
+        <div class="metric-sub">Unweighted avg across 10 classes</div>
+      </div>
+      <div class="metric accent2">
+        <div class="metric-label">Weighted F1</div>
+        <div class="metric-val accent2">0.704</div>
+        <div class="metric-sub">Support-weighted average</div>
+      </div>
+      <div class="metric danger">
+        <div class="metric-label">Confidently wrong</div>
+        <div class="metric-val danger">855</div>
+        <div class="metric-sub">conf ≥ 0.90, prediction wrong (59% of errors)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SECTION 2: KEY INSIGHTS ── -->
+  <div class="section">
+    <div class="section-label">02 · Key findings</div>
+    <div class="grid-3">
+      <div class="insight danger">
+        <div class="insight-title">Other Relevant Info: near-total failure</div>
+        <div class="insight-body"><strong>80.7% error rate</strong> — the worst class by far. With F1 of only 0.285, the model hemorrhages 353 samples into "Not Humanitarian" alone. This class is a semantic catch-all, making it inherently ambiguous for zero-shot prompting.</div>
+      </div>
+      <div class="insight warn">
+        <div class="insight-title">Model is overconfident on wrong predictions</div>
+        <div class="insight-body"><strong>59% of all errors</strong> were made at confidence ≥ 0.90. At conf=0.70 only 12.5% accuracy — the model's confidence scores are poorly calibrated and do not track correctness reliably.</div>
+      </div>
+      <div class="insight">
+        <div class="insight-title">Requests/Needs is a rare-class failure</div>
+        <div class="insight-body"><strong>63.6% error rate</strong> on a class with only 55 samples. The model defaults to "Rescue/Donation" (28 errors) likely because surface keywords overlap. Class imbalance amplifies the failure.</div>
+      </div>
+      <div class="insight good">
+        <div class="insight-title">Injured/Dead is the anchor class</div>
+        <div class="insight-body"><strong>F1 = 0.893</strong> — the best-performing class with the largest support (1,362). Death-count and casualty language is unambiguous and likely well-represented in the LLM's pretraining.</div>
+      </div>
+      <div class="insight warn">
+        <div class="insight-title">Not Humanitarian bleeds into Sympathy</div>
+        <div class="insight-body">68 "Not Humanitarian" tweets were predicted as "Sympathy/Support." Emotional, opinionated tweets about the disaster are semantically close to sympathy — the LLM cannot distinguish social commentary from emotional support.</div>
+      </div>
+      <div class="insight danger">
+        <div class="insight-title">Missing People confused with Injured/Dead</div>
+        <div class="insight-body"><strong>32 / 125 missing-person tweets</strong> predicted as "Injured/Dead." Co-occurrence of names + disaster context drives the model toward the more frequent fatality class — a critical real-world error for emergency response.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SECTION 3: PER-CLASS METRICS ── -->
+  <div class="section">
+    <div class="section-label">03 · Per-class performance</div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Precision · Recall · F1 by class</div>
+        <div class="legend">
+          <span class="legend-item"><span class="legend-dot" style="background:#7c6af7;"></span>Precision</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#6af7b8;"></span>Recall</span>
+          <span class="legend-item"><span class="legend-dot" style="background:#f7c26a;"></span>F1</span>
+        </div>
+        <div style="position:relative;height:320px;">
+          <canvas id="classChart"></canvas>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Error rate by class</div>
+        <div style="position:relative;height:320px;">
+          <canvas id="errRateChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SECTION 4: CONFUSION MATRIX ── -->
+  <div class="section">
+    <div class="section-label">04 · Confusion matrix</div>
+    <div class="card">
+      <div class="card-title">True label (rows) vs Predicted label (columns) — diagonal = correct</div>
+      <div style="font-size:10px;color:var(--muted);margin-bottom:0.75rem;font-family:var(--font-mono);">
+        Color intensity ∝ cell count &nbsp;·&nbsp; Blue = diagonal (correct) &nbsp;·&nbsp; Red = high error &nbsp;·&nbsp; Orange = moderate error
+      </div>
+      <div id="cmContainer"></div>
+    </div>
+  </div>
+
+  <!-- ── SECTION 5: TOP ERROR PAIRS + EXAMPLES ── -->
+  <div class="section">
+    <div class="section-label">05 · Top error pairs · qualitative examples</div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Most frequent misclassifications</div>
+        <div style="position:relative;height:320px;">
+          <canvas id="errorPairsChart"></canvas>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title">Qualitative examples</div>
+        <div class="tabs" id="exTabs"></div>
+        <div id="examplesBox"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SECTION 6: CONFIDENCE CALIBRATION ── -->
+  <div class="section">
+    <div class="section-label">06 · Confidence calibration</div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Accuracy at each confidence level</div>
+        <div style="margin-bottom:0.75rem;font-size:11px;color:var(--muted);">A well-calibrated model should have accuracy ≈ confidence. The gap here reveals overconfidence.</div>
+        <div id="calibrationBars"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Confidence distribution</div>
+        <div style="position:relative;height:220px;">
+          <canvas id="confDistChart"></canvas>
+        </div>
+        <div style="margin-top:1rem;padding:0.75rem;background:var(--surface2);border-radius:var(--radius);border:1px solid var(--border);">
+          <div style="font-family:var(--font-mono);font-size:10px;color:var(--muted);margin-bottom:5px;">OVERCONFIDENCE SUMMARY</div>
+          <div style="font-size:12px;color:var(--text);">Mean confidence on <span style="color:var(--good);">correct</span> predictions: <strong>0.918</strong></div>
+          <div style="font-size:12px;color:var(--text);margin-top:3px;">Mean confidence on <span style="color:var(--danger);">wrong</span> predictions: <strong>0.881</strong></div>
+          <div style="font-size:12px;color:var(--muted);margin-top:5px;">Gap of only <strong style="color:var(--warn);">0.037</strong> — confidence is not a reliable correctness signal.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SECTION 7: ERROR DESTINATION ── -->
+  <div class="section">
+    <div class="section-label">07 · Where errors go — misclassification destinations</div>
+    <div class="card">
+      <div class="card-title">For each true class, where did the model send wrong predictions?</div>
+      <table class="dest-table" id="destTable"></table>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  Generated from LLM zero-shot predictions · HumAID California Wildfires 2018 · CrisisMMD · 10-class humanitarian classification
+</div>
+
+<script>
+const LABELS = [
+  'caution_and_advice',
+  'displaced_people_and_evacuations',
+  'infrastructure_and_utility_damage',
+  'injured_or_dead_people',
+  'missing_or_found_people',
+  'not_humanitarian',
+  'other_relevant_information',
+  'requests_or_urgent_needs',
+  'rescue_volunteering_or_donation_effort',
+  'sympathy_and_support'
+];
+const SHORT = {
+  'caution_and_advice': 'Caution/Advice',
+  'displaced_people_and_evacuations': 'Displaced/Evac',
+  'infrastructure_and_utility_damage': 'Infra Damage',
+  'injured_or_dead_people': 'Injured/Dead',
+  'missing_or_found_people': 'Missing People',
+  'not_humanitarian': 'Not Humanitarian',
+  'other_relevant_information': 'Other Relevant',
+  'requests_or_urgent_needs': 'Requests/Needs',
+  'rescue_volunteering_or_donation_effort': 'Rescue/Donation',
+  'sympathy_and_support': 'Sympathy/Support'
+};
+const ABBR = {
+  'caution_and_advice': 'CAU',
+  'displaced_people_and_evacuations': 'DIS',
+  'infrastructure_and_utility_damage': 'INF',
+  'injured_or_dead_people': 'INJ',
+  'missing_or_found_people': 'MIS',
+  'not_humanitarian': 'NOT',
+  'other_relevant_information': 'OTH',
+  'requests_or_urgent_needs': 'REQ',
+  'rescue_volunteering_or_donation_effort': 'RES',
+  'sympathy_and_support': 'SYM'
+};
+
+const CLASS_DATA = {
+  'caution_and_advice':                    {p:0.466, r:0.639, f1:0.539, support:97,   err:36.1},
+  'displaced_people_and_evacuations':      {p:0.611, r:0.841, f1:0.708, support:258,  err:15.9},
+  'infrastructure_and_utility_damage':     {p:0.572, r:0.688, f1:0.625, support:295,  err:31.2},
+  'injured_or_dead_people':               {p:0.913, r:0.874, f1:0.893, support:1362, err:12.6},
+  'missing_or_found_people':              {p:0.721, r:0.704, f1:0.713, support:125,  err:29.6},
+  'not_humanitarian':                     {p:0.600, r:0.795, f1:0.684, support:923,  err:20.5},
+  'other_relevant_information':           {p:0.545, r:0.193, f1:0.285, support:727,  err:80.7},
+  'requests_or_urgent_needs':             {p:0.377, r:0.364, f1:0.370, support:55,   err:63.6},
+  'rescue_volunteering_or_donation_effort':{p:0.879, r:0.800, f1:0.838, support:991, err:20.0},
+  'sympathy_and_support':                 {p:0.583, r:0.809, f1:0.678, support:330,  err:19.1},
+};
+
+const CM_DATA = [
+  [62, 1, 3, 4, 0, 10, 16, 0, 1, 0],
+  [10, 217, 2, 3, 0, 6, 0, 3, 11, 6],
+  [2, 19, 203, 18, 1, 24, 10, 3, 4, 11],
+  [1, 36, 36, 1190, 15, 40, 10, 0, 6, 28],
+  [0, 0, 0, 32, 88, 0, 2, 0, 0, 3],
+  [12, 17, 25, 15, 1, 734, 38, 7, 6, 68],
+  [35, 30, 78, 20, 2, 353, 140, 4, 18, 47],
+  [1, 0, 1, 2, 1, 2, 0, 20, 28, 0],
+  [5, 25, 6, 16, 12, 50, 41, 15, 793, 28],
+  [5, 10, 1, 4, 2, 5, 0, 1, 35, 267]
+];
+
+const TOP_ERRORS = [
+  {true:'other_relevant_information',  pred:'not_humanitarian',                 n:353},
+  {true:'other_relevant_information',  pred:'infrastructure_and_utility_damage',n:78},
+  {true:'not_humanitarian',            pred:'sympathy_and_support',             n:68},
+  {true:'rescue_volunteering_or_donation_effort', pred:'not_humanitarian',      n:50},
+  {true:'other_relevant_information',  pred:'sympathy_and_support',             n:47},
+  {true:'rescue_volunteering_or_donation_effort', pred:'other_relevant_information', n:41},
+  {true:'injured_or_dead_people',      pred:'not_humanitarian',                 n:40},
+  {true:'not_humanitarian',            pred:'other_relevant_information',       n:38},
+];
+
+const EXAMPLES = {
+  'other_relevant_information→not_humanitarian': {
+    count:353,
+    items:[
+      {conf:0.95, tweet:"RT @GabbyVatistas: You're a disgrace to humanity.", cause:"Emotionally negative tweet — model reads sentiment as non-disaster, flags as not humanitarian. True label requires expert context."},
+      {conf:0.95, tweet:"2018 California Fires, Paradise, Malibu, 2017 California Fires, Dew Lase via @YouTube", cause:"Pure metadata/listing tweet — lacks humanitarian keywords; model correctly identifies absence of actionable content but label is Other Relevant."}
+    ]
+  },
+  'other_relevant_information→infrastructure_and_utility_damage': {
+    count:78,
+    items:[
+      {conf:0.85, tweet:"California's utility, PG&E was responsible for 16 of the fires that have ravaged CA. Victims of the CA Paradise fire are now suing the utility...", cause:"Mentions utility infrastructure — model triggers on 'PG&E / utility' keywords and predicts infra damage. True label is Other Relevant (policy discussion)."},
+      {conf:0.85, tweet:"Scarred Landscape - nasa: With California wildfires still burning, the 2018 fire season continues to leave devastation...", cause:"'Landscape' destruction implies infrastructure to model. Text-only model lacks image signal to distinguish visual reporting from infra damage."}
+    ]
+  },
+  'not_humanitarian→sympathy_and_support': {
+    count:68,
+    items:[
+      {conf:0.85, tweet:"People suffering here in the fires in California, along with our fire fighters and police, our lands, the environment, school systems, families...", cause:"Emotional enumeration of suffering — model interprets empathetic tone as sympathy. True label is Not Humanitarian (political commentary)."},
+      {conf:0.80, tweet:"Absolutely disgusting. Thousands lose their homes and this is your response. I didn't support you before this, but many in my area did. Their hearts are already broken.", cause:"Anger-at-official tweet about victims — sympathy surface words ('hearts broken') mislead model despite political framing."}
+    ]
+  },
+  'rescue_volunteering_or_donation_effort→not_humanitarian': {
+    count:50,
+    items:[
+      {conf:0.85, tweet:"Why disaster relief is so hard", cause:"Title-only tweet with no humanitarian action words. Without article content (URL only), model cannot infer rescue intent."},
+      {conf:0.90, tweet:"#Why #DisasterRelief is#SoHard via @voxdotcom #News #CampFire #California #Donations #Disaster #Relief #IsHard...", cause:"Hashtag-heavy retweet of article — hashtag fragmentation removes semantic coherence needed to identify rescue/donation intent."}
+    ]
+  },
+  'other_relevant_information→sympathy_and_support': {
+    count:47,
+    items:[
+      {conf:0.85, tweet:"With deep Compassion for all Refugees of 2017~2018 California Fires! Ask Questions! We all deserve Answers!~ Burned Out Northern California Fire Victim", cause:"'Deep Compassion' triggers sympathy class. Tweet is actually a victim advocacy post (Other Relevant) not an expression of sympathy."},
+      {conf:0.85, tweet:"RT @washingtonpost: Opinion: The California fires remind us of our common humanity", cause:"'Common humanity' — editorial framing of empathy classified as sympathy. The model cannot distinguish opinion reporting from direct emotional support."}
+    ]
+  },
+  'rescue_volunteering_or_donation_effort→other_relevant_information': {
+    count:41,
+    items:[
+      {conf:0.85, tweet:"Sunrise over Base Camp, the @Cal_OES staging area for emergency managers, first responders and resources for response to the Camp Fire", cause:"Descriptive/atmospheric tweet about a relief camp — lacks explicit donation/volunteer call-to-action verbs. Model hedges to Other Relevant."},
+      {conf:0.80, tweet:"Firefighters, inmates work to battle California wildfires @msnbcLockup #lockup", cause:"Firefighting is rescue effort but tweet reads as news report. Model can't distinguish news-about-rescue from rescue-effort tweets."}
+    ]
+  },
+  'injured_or_dead_people→not_humanitarian': {
+    count:40,
+    items:[
+      {conf:0.90, tweet:"NOTHING TO SEE HERE!! JUST #Agenda21 #Agenda2030 CONTINUING! PREDICTED #FakeVirus #Chemtrails #Geoengineering #WeatherWarfare Norovirus Outbreak Reported in California...", cause:"Conspiracy framing with shouting tone — model dismisses as not humanitarian. True label is Injured/Dead (co-occurring disease outbreak with fire)."},
+      {conf:0.90, tweet:"The Game thinks the 3 wildfires in California have been started by someone to distract us from the Borderline Bar shooting that killed 12 people near Thousand Oaks.", cause:"Conspiracy narrative combining two events — model cannot resolve which event drives the label. Defaults to not humanitarian."}
+    ]
+  },
+  'not_humanitarian→other_relevant_information': {
+    count:38,
+    items:[
+      {conf:0.80, tweet:"Published on November 9, 2018@9:45am: Wildfires scorch California: What we know and don't know #USA TODAY", cause:"News summary headline — model sees disaster content and bumps to Other Relevant. True label is Not Humanitarian (pure information aggregation)."},
+      {conf:0.80, tweet:"After Fire, comes Rain, in California. It cleans the air, causes floods and landslides, with the land being so vulnerable from the burning before. But it's a gift.", cause:"Post-fire weather observation — model sees disaster-adjacent content and marks Other Relevant; true label is Not Humanitarian."}
+    ]
+  }
+};
+
+const DEST_DATA = [
+  {cls:'Caution/Advice',         err:35.1, total:97,  dests:[['Other Relevant',16],['Not Humanitarian',10],['Injured/Dead',4]]},
+  {cls:'Displaced/Evac',         err:15.9, total:258, dests:[['Rescue/Donation',11],['Caution/Advice',10],['Sympathy/Support',6]]},
+  {cls:'Infra Damage',           err:31.2, total:295, dests:[['Not Humanitarian',24],['Displaced/Evac',19],['Injured/Dead',18]]},
+  {cls:'Injured/Dead',           err:12.6, total:1362,dests:[['Not Humanitarian',40],['Displaced/Evac',36],['Infra Damage',36]]},
+  {cls:'Missing People',         err:29.6, total:125, dests:[['Injured/Dead',32],['Sympathy/Support',3],['Other Relevant',2]]},
+  {cls:'Not Humanitarian',       err:20.5, total:923, dests:[['Sympathy/Support',68],['Other Relevant',38],['Infra Damage',25]]},
+  {cls:'Other Relevant',         err:80.7, total:727, dests:[['Not Humanitarian',353],['Infra Damage',78],['Sympathy/Support',47]]},
+  {cls:'Requests/Needs',         err:63.6, total:55,  dests:[['Rescue/Donation',28],['Not Humanitarian',2],['Injured/Dead',2]]},
+  {cls:'Rescue/Donation',        err:20.0, total:991, dests:[['Not Humanitarian',50],['Other Relevant',41],['Sympathy/Support',28]]},
+  {cls:'Sympathy/Support',       err:19.1, total:330, dests:[['Rescue/Donation',35],['Displaced/Evac',10],['Not Humanitarian',5]]},
+];
+
+const CAL_DATA = [
+  {conf:0.60, acc:0.0,  n:1},
+  {conf:0.70, acc:12.5, n:40},
+  {conf:0.80, acc:39.8, n:397},
+  {conf:0.85, acc:53.9, n:692},
+  {conf:0.90, acc:72.0, n:1605},
+  {conf:0.95, acc:83.3, n:2428},
+];
+
+// ── CHART 1: Per-class precision/recall/F1 ──
+new Chart(document.getElementById('classChart'), {
+  type:'bar',
+  data:{
+    labels: LABELS.map(l=>SHORT[l]),
+    datasets:[
+      {label:'Precision', data:LABELS.map(l=>CLASS_DATA[l].p), backgroundColor:'rgba(124,106,247,0.75)'},
+      {label:'Recall',    data:LABELS.map(l=>CLASS_DATA[l].r), backgroundColor:'rgba(106,247,184,0.75)'},
+      {label:'F1',        data:LABELS.map(l=>CLASS_DATA[l].f1),backgroundColor:'rgba(247,194,106,0.85)'}
+    ]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false, indexAxis:'y',
+    plugins:{legend:{display:false}},
+    scales:{
+      x:{min:0, max:1.05, ticks:{color:'#7a7890',font:{size:9},callback:v=>v.toFixed(1)}, grid:{color:'rgba(255,255,255,0.05)'}},
+      y:{ticks:{color:'#a0a0c0',font:{size:9}}, grid:{display:false}}
+    }
+  }
+});
+
+// ── CHART 2: Error rate ──
+const errColors = LABELS.map(l => CLASS_DATA[l].err >= 60 ? '#f76a7c' : CLASS_DATA[l].err >= 30 ? '#f7b26a' : '#6af7b8');
+new Chart(document.getElementById('errRateChart'), {
+  type:'bar',
+  data:{
+    labels: LABELS.map(l=>SHORT[l]),
+    datasets:[{label:'Error rate %', data:LABELS.map(l=>CLASS_DATA[l].err), backgroundColor:errColors}]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false, indexAxis:'y',
+    plugins:{legend:{display:false}, tooltip:{callbacks:{label:ctx=>`${ctx.raw.toFixed(1)}% error rate`}}},
+    scales:{
+      x:{min:0, max:100, ticks:{color:'#7a7890',font:{size:9},callback:v=>v+'%'}, grid:{color:'rgba(255,255,255,0.05)'}},
+      y:{ticks:{color:'#a0a0c0',font:{size:9}}, grid:{display:false}}
+    }
+  }
+});
+
+// ── CHART 3: Top error pairs ──
+new Chart(document.getElementById('errorPairsChart'), {
+  type:'bar',
+  data:{
+    labels: TOP_ERRORS.map(e=>`${SHORT[e.true]} → ${SHORT[e.pred]}`),
+    datasets:[{
+      label:'Count',
+      data: TOP_ERRORS.map(e=>e.n),
+      backgroundColor: TOP_ERRORS.map((_,i)=>`rgba(247,106,124,${0.5+i*0.02})`),
+    }]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false, indexAxis:'y',
+    plugins:{legend:{display:false}},
+    scales:{
+      x:{ticks:{color:'#7a7890',font:{size:9}}, grid:{color:'rgba(255,255,255,0.05)'}},
+      y:{ticks:{color:'#a0a0c0',font:{size:9},font:{size:9}}, grid:{display:false}}
+    }
+  }
+});
+
+// ── CHART 4: Confidence distribution ──
+new Chart(document.getElementById('confDistChart'), {
+  type:'bar',
+  data:{
+    labels: CAL_DATA.map(d=>d.conf.toFixed(2)),
+    datasets:[
+      {label:'All predictions', data:[1,40,397,692,1605,2428], backgroundColor:'rgba(124,106,247,0.5)'},
+      {label:'Correct', data:[0,5,158,373,1155,2023], backgroundColor:'rgba(106,247,160,0.7)'},
+    ]
+  },
+  options:{
+    responsive:true, maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{
+      x:{ticks:{color:'#7a7890',font:{size:10}}, grid:{display:false}},
+      y:{ticks:{color:'#7a7890',font:{size:9}}, grid:{color:'rgba(255,255,255,0.05)'}}
+    }
+  }
+});
+
+// ── CONFUSION MATRIX ──
+(function buildCM() {
+  const maxVal = Math.max(...CM_DATA.flat());
+  let html = '<table class="cm-table"><thead><tr><th class="corner"></th>';
+  LABELS.forEach(l=>{ html += `<th class="col-label">${SHORT[l]}</th>`; });
+  html += '</tr></thead><tbody>';
+  CM_DATA.forEach((row, i) => {
+    const rowSum = row.reduce((a,b)=>a+b,0);
+    html += `<tr><td class="row-label">${SHORT[LABELS[i]]}</td>`;
+    row.forEach((v, j) => {
+      const norm = v / maxVal;
+      let bg, tc;
+      if (i === j) {
+        bg = `rgba(106,247,184,${0.12 + norm * 0.6})`;
+        tc = norm > 0.5 ? '#000' : '#6af7b8';
+      } else if (v > 80) {
+        bg = `rgba(247,106,124,${0.1 + norm * 0.55})`;
+        tc = norm > 0.4 ? '#fff' : '#f76a7c';
+      } else if (v > 20) {
+        bg = `rgba(247,178,106,${0.08 + norm * 0.4})`;
+        tc = '#f7b26a';
+      } else if (v > 0) {
+        bg = `rgba(255,255,255,${0.02 + norm * 0.06})`;
+        tc = '#7a7890';
+      } else {
+        bg = 'transparent'; tc = '#3a3850';
+      }
+      html += `<td style="background:${bg};color:${tc};font-weight:${i===j?'500':'400'}">${v}</td>`;
+    });
+    html += '</tr>';
+  });
+  html += '</tbody></table>';
+  document.getElementById('cmContainer').innerHTML = html;
+})();
+
+// ── CALIBRATION BARS ──
+(function buildCal() {
+  let html = '';
+  CAL_DATA.forEach(d => {
+    const pct = d.acc;
+    const conf_pct = d.conf * 100;
+    let fillColor;
+    if (pct < 30) fillColor = '#f76a7c';
+    else if (pct < 60) fillColor = '#f7b26a';
+    else fillColor = '#6af7b8';
+    const gap = Math.abs(pct - conf_pct);
+    html += `<div class="cal-row">
+      <div class="cal-label">${d.conf.toFixed(2)}</div>
+      <div class="cal-track">
+        <div class="cal-fill" style="width:${pct}%;background:${fillColor};color:#000;">
+          ${pct > 15 ? pct.toFixed(1)+'%' : ''}
+        </div>
+        <div class="cal-ideal" style="left:${conf_pct}%;"></div>
+      </div>
+      <div class="cal-n">n=${d.n.toLocaleString()} &nbsp;<span style="color:${gap>30?'#f76a7c':'#7a7890'}">Δ${gap.toFixed(1)}%</span></div>
+    </div>`;
+  });
+  html += `<div style="font-size:10px;color:var(--muted);margin-top:0.5rem;font-family:var(--font-mono);">White line = expected accuracy if conf were calibrated · Δ = miscalibration gap</div>`;
+  document.getElementById('calibrationBars').innerHTML = html;
+})();
+
+// ── EXAMPLE TABS ──
+(function buildExamples() {
+  const keys = Object.keys(EXAMPLES);
+  const tabsEl = document.getElementById('exTabs');
+  const boxEl = document.getElementById('examplesBox');
+
+  keys.forEach((key, idx) => {
+    const pair = key.replace('→',' → ').split('→').map(p=>SHORT[p.trim()]||p.trim());
+    const btn = document.createElement('button');
+    btn.className = 'tab' + (idx===0?' active':'');
+    btn.textContent = `${EXAMPLES[key].count}x`;
+    btn.title = key.replace('→',' → ');
+    btn.onclick = () => {
+      document.querySelectorAll('#exTabs .tab').forEach(t=>t.classList.remove('active'));
+      btn.classList.add('active');
+      renderEx(key);
+    };
+    tabsEl.appendChild(btn);
+  });
+
+  function renderEx(key) {
+    const data = EXAMPLES[key];
+    const parts = key.split('→');
+    const trueLabel = SHORT[parts[0].trim()] || parts[0].trim();
+    const predLabel = SHORT[parts[1].trim()] || parts[1].trim();
+    let html = `<div style="font-size:11px;color:var(--muted);margin-bottom:8px;font-family:var(--font-mono);">${data.count} total cases · top 2 shown</div>`;
+    data.items.forEach(item => {
+      html += `<div class="ex-card">
+        <div class="ex-badges">
+          <span class="badge badge-true">TRUE: ${trueLabel}</span>
+          <span class="badge badge-pred">PRED: ${predLabel}</span>
+          <span class="badge badge-conf">conf=${item.conf.toFixed(2)}</span>
+        </div>
+        <div class="ex-tweet">"${item.tweet}"</div>
+        <div class="ex-cause"><span class="ex-cause-label">root cause</span>${item.cause}</div>
+      </div>`;
+    });
+    boxEl.innerHTML = html;
+  }
+  renderEx(keys[0]);
+})();
+
+// ── ERROR DESTINATION TABLE ──
+(function buildDest() {
+  let html = '<thead><tr>';
+  html += '<th style="text-align:left;padding:8px 4px;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.08em;font-weight:500;border-bottom:1px solid var(--border);">True class</th>';
+  html += '<th style="text-align:right;padding:8px 4px;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.08em;font-weight:500;border-bottom:1px solid var(--border);">Support</th>';
+  html += '<th style="text-align:right;padding:8px 4px;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.08em;font-weight:500;border-bottom:1px solid var(--border);">Error rate</th>';
+  html += '<th style="text-align:left;padding:8px 4px;font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:0.08em;font-weight:500;border-bottom:1px solid var(--border);">Top misclassification targets</th>';
+  html += '</tr></thead><tbody>';
+
+  DEST_DATA.sort((a,b)=>b.err-a.err).forEach(row => {
+    const errColor = row.err >= 60 ? '#f76a7c' : row.err >= 30 ? '#f7b26a' : '#6af7b8';
+    const fillPct = Math.min(row.err, 100);
+    const pillsHtml = row.dests.map(([dest,cnt]) => `<span class="dest-pill">${dest} <strong style="color:var(--text);">(${cnt})</strong></span>`).join('');
+    html += `<tr>
+      <td class="class-col">${row.cls}</td>
+      <td class="err-col" style="color:var(--muted);">${row.total.toLocaleString()}</td>
+      <td style="width:120px;vertical-align:middle;padding:7px 8px;">
+        <div style="font-family:var(--font-mono);font-size:11px;font-weight:500;color:${errColor};">${row.err.toFixed(1)}%</div>
+        <div class="err-rate-bar"><div class="err-rate-fill" style="width:${fillPct}%;background:${errColor};"></div></div>
+      </td>
+      <td><div class="dest-pill-row">${pillsHtml}</div></td>
+    </tr>`;
+  });
+  html += '</tbody>';
+  document.getElementById('destTable').innerHTML = html;
+})();
+</script>
+</body>
+</html>
